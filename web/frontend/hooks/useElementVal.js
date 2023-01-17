@@ -48,7 +48,7 @@ export const useElementVal = (data) => {
       } else if (data == "text_divider") {
         let saveData = {
           ...newData,
-          title_text: "Enter Your Title Here",
+          divider_text: "Enter Your Title Here",
         };
         newData = saveData;
       } else if (data == "hero_slider" || data == "offer") {
@@ -59,7 +59,7 @@ export const useElementVal = (data) => {
               title_text: "Example Test",
               button_text: "Add",
               sub_title: "example Subtitle",
-              image: "src/assets/image/hero.png",
+              image: "/assets/images/dummyImages/hero.png",
             },
             {
               title_text: "Slider 2",
@@ -100,7 +100,14 @@ export const useElementVal = (data) => {
       } else if (data == "featured_product") {
         let saveData = {
           ...newData,
-          title_text: "Enter Your Title Here",
+          featured_title: "Featured Product",
+          subtitle_text:"The fashion is here!",
+          // featured_product:{
+          //   image:{
+          //     url:"/assets/images/dummyImages/hero.png"
+          //   }
+          // }
+         
         };
         newData = saveData;
       }

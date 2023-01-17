@@ -101,11 +101,11 @@ function Test() {
             <li>
               <Link
                 className={
-                  params.pathname == "/admin/builder"
+                  params.pathname == "/globalSettings"
                     ? "SD-sidebar_active"
                     : "sidebar_no_active"
                 }
-                to="/admin/builder"
+                to="/globalSettings"
               >
                 <img src={DashboardIcon} />
               </Link>

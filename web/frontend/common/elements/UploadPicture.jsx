@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import axios from 'axios'
 
 function UploadPicture({
     label,
@@ -21,9 +22,9 @@ function UploadPicture({
         formData.append("menuIcon", e.target.files[0]);
         setUploadFile(URL.createObjectURL(e.target.files[0]));
         //300×150
-        // await axios
-        //   .post("/api/uploadImage", formData)
-        //   .then((res) => handleAddIcon(res.data.url));
+        await axios
+          .post("/api/admin/uploadImage", formData)
+          .then((res) => handleAddIcon(res.data.url));
       } else {
         console.log("enter in Else");
         setErrorMessage("Image Should be 150 X 150");

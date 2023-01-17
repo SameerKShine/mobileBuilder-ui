@@ -3,8 +3,11 @@ import HeroSlider from "./HeroSlider";
 import CountDown from "./CountDown";
 import CollectionDesign from "./CollectionDesign";
 import ProductDesign from "./ProductDesign";
+import DummyImage from "../../assets/images/dummyImages/dummyImage.png"
+import DummyProductImage from "../../assets/images/dummyImages/hero.png"
 export const FieldsPreview = (eleType, index) => {
     const style = eleType.style;
+    // console.log(eleType)
     switch (eleType.type) {
       case "header":
         return (
@@ -51,7 +54,7 @@ export const FieldsPreview = (eleType, index) => {
             style={{
               margin: `${style.margin_top}px  ${style.margin_right}px  ${style.margin_bottom}px  ${style.margin_left}px `,
               padding: `${style.padding_top}px  ${style.padding_right}px  ${style.padding_bottom}px  ${style.padding_left}px `,
-              backgroundColor: style?.background_style?.background_color,
+              backgroundColor: style?.background_color,
             }}
           >
             <marquee
@@ -156,7 +159,7 @@ export const FieldsPreview = (eleType, index) => {
             </p>
             <figure className="img-box">
               <img
-                src={eleType?.featured_product?.image?.url ?? 'DummyImage'}
+                src={eleType?.featured_product?.image?.url ?? DummyProductImage}
                 alt="img"
                 className="img-fluid"
               />

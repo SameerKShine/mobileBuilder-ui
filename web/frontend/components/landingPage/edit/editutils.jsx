@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { TextField, Popover, ActionList } from "@shopify/polaris";
+import {  Popover, ActionList } from "@shopify/polaris";
 import { Collapse, Switch, TimePicker, DatePicker, Space } from "antd";
 import {
   DeleteOutlined,
@@ -8,9 +8,10 @@ import {
 } from "@ant-design/icons";
 import moment from "moment";
 import { CommonInput, CommonSelect } from "../../../common/elements/commonElements";
-// import ProductandCollectionPicker from "../../../common/elements/ProductandCollectionPicker";
+import ProductandCollectionPicker from "../../../common/elements/ProductCollectionPicker";
 // import { errToast } from "../../../common/notification/notification";
-// import UploadImage from "../../../common/UploadImage";
+import UploadImage from "../../../common/elements/UploadPicture";
+import CommonPopover from "../../../common/elements/CommonPopover";
 const { Panel } = Collapse;
 const { RangePicker } = DatePicker;
 
@@ -122,9 +123,7 @@ export const editHeroSlider = (
   setBuilderFields,
   handleEditElement,
   open,
-  setOpen,
-  setopenPopup,
-  openPopup
+  setOpen
 ) => {
   console.log(builderFields[elementIndex].data);
   const handleEditFields = (e, index) => {
@@ -184,21 +183,7 @@ export const editHeroSlider = (
     prevData[elementIndex].data[index].link_type = type;
     setBuilderFields(prevData);
     setOpen(true);
-    setopenPopup(!openPopup);
   };
-  const togglePopoverActive = () => {
-    setopenPopup(!openPopup);
-  };
-  const activator = (val) => (
-    <CommonInput
-      label="Link To"
-      value={val}
-      input={{
-        onClick: togglePopoverActive,
-      }}
-      autoComplete="off"
-    />
-  );
   return (
     <>
       <div className="hroSldrTglBtns">
@@ -258,35 +243,12 @@ export const editHeroSlider = (
                     </div>
                   );
                 })}
-                <div>
-                  <Popover
-                    active={openPopup}
-                    activator={activator(ele?.selected_item?.label)}
-                    autofocusTarget="first-node"
-                    onClose={togglePopoverActive}
-                  >
-                    <ActionList
-                      actionRole="menuitem"
-                      items={[
-                        {
-                          content: (
-                            <a onClick={() => handleType("products", index)}>
-                              Products
-                            </a>
-                          ),
-                        },
-                        {
-                          content: (
-                            <a onClick={() => handleType("collections", index)}>
-                              Collections
-                            </a>
-                          ),
-                        },
-                      ]}
-                    />
-                  </Popover>
-                </div>
-                {/* {open && (
+                <CommonPopover
+                    handleType={handleType}
+                    val={ele?.selected_item?.label}
+                    index={index}
+                />
+                {open && (
                   <ProductandCollectionPicker
                     // show = {open}
                     checkedIDs={[ele?.selected_item?.id ?? ""]}
@@ -313,7 +275,7 @@ export const editHeroSlider = (
                       builderFields[elementIndex].data[index].link_type
                     }
                   />
-                )} */}
+                )}
                 <CommonSelect
                   label="Text alignment"
                   onChange={(e) => handleEditFields(e, index)}
@@ -334,7 +296,7 @@ export const editHeroSlider = (
         })}
       </Collapse>
       {/* </Space> */}
-      <div className="SD-resertButton" onClick={handleAddBtn}>
+      <div className="SelectedPrdctBtn" onClick={handleAddBtn}>
         <button>
           {" "}
           <PlusCircleOutlined /> Add New Slider
@@ -523,7 +485,7 @@ export function featuredProduct(
         value={builderFields[elementIndex].text_align}
         option={options}
       />
-      {/* {open && (
+      {open && (
         <ProductandCollectionPicker
           // show = {open}
           checkedIDs={[builderFields[elementIndex]?.featured_product?.id ?? ""]}
@@ -534,15 +496,12 @@ export function featuredProduct(
               arr[elementIndex].featured_product = ele;
               setBuilderFields(arr);
               setOpen(false);
-            } else {
-              // arr[elementIndex]?.featured_product = {};
-              // setBuilderFields(arr);
-            }
+            } 
           }}
           setOpen={setOpen}
           elementType="products"
         />
-      )} */}
+      )}
     </>
   );
 }
@@ -555,16 +514,17 @@ export function editAnnouncemenrBar(
   setOpen,
   open
 ) {
-  const options = [
-    { label: "Select Option", value: "" },
-    { label: "Products", value: "products" },
-    { label: "Collections", value: "collections" },
-  ];
   const annimationOptions = [
     { label: "Select Option", value: "" },
     { label: "Left-Right", value: "right" },
     { label: "Right-Left", value: "left" },
   ];
+  const handleType = (type, index) => {
+    let prevData = [...builderFields];
+    prevData[elementIndex].redirect_to = type;
+    setBuilderFields(prevData);
+    setOpen(true);
+  };
   return (
     <>
       <CommonInput
@@ -585,7 +545,7 @@ export function editAnnouncemenrBar(
           elementIndex,
           setBuilderFields
         )}
-        {/* {builderFields[elementIndex].show_icon && <UploadImage className="" />} */}
+        {builderFields[elementIndex].show_icon && <UploadImage className="" />}
       </div>
 
       <CommonSelect
@@ -595,27 +555,12 @@ export function editAnnouncemenrBar(
         value={builderFields[elementIndex].animation_type}
         option={annimationOptions}
       />
-      <CommonSelect
-        label="Select Item to Redirect"
-        onChange={handleEditElement}
-        name="redirect_to"
-        value={builderFields[elementIndex].redirect_to}
-        option={options}
+      <CommonPopover
+        handleType={handleType}
+        val={builderFields[elementIndex]?.selected_item?.label}
+        index={elementIndex}
       />
-      {builderFields[elementIndex].redirect_to !== "" && (
-        <>
-          <label>Link To</label>
-          <div
-            className="SD-featured_product inputHeight32"
-            onClick={() => setOpen(true)}
-          >
-            {builderFields[elementIndex]?.selected_item
-              ? builderFields[elementIndex].selected_item?.label
-              : "Select Item"}
-          </div>
-        </>
-      )}
-      {/* {open && (
+      {open && (
         <ProductandCollectionPicker
           checkedIDs={[builderFields[elementIndex]?.selected_item?.id ?? ""]}
           onSelect={(e, ele, id) => {
@@ -630,7 +575,7 @@ export function editAnnouncemenrBar(
           setOpen={setOpen}
           elementType={builderFields[elementIndex].redirect_to}
         />
-      )} */}
+      )}
     </>
   );
 }

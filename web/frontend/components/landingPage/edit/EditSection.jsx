@@ -22,7 +22,6 @@ function EditSection({
   setShowTopbar,
 }) {
   const [open, setOpen] = useState(false);
-  const [openPopup, setopenPopup] = useState(false);
 
   useEffect(() => {
     console.log("useEffect working ", elementIndex);
@@ -40,7 +39,7 @@ function EditSection({
         type: e,
       };
     } else if (
-      name == "background_color" ||
+      name == "countdown_background_color" ||
       name == "background_image" ||
       name == "gradient_color1" ||
       name == "gradient_color2"
@@ -148,9 +147,7 @@ function EditSection({
           setBuilderFields,
           handleEditElement,
           open,
-          setOpen,
-          setopenPopup,
-          openPopup
+          setOpen
         )}
       </>
     ) : elementType == "countdown_offer" ? (

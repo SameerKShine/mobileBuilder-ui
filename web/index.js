@@ -17,7 +17,7 @@ const STATIC_PATH =
     : `${process.cwd()}/frontend/`;
 
 const app = express();
-
+console.log(shopify)
 // Set up Shopify authentication and webhook handling
 app.get(shopify.config.auth.path, shopify.auth.begin());
 app.get(
@@ -31,9 +31,14 @@ app.post(
 );
 mongodb()
 app.use(express.json());
-app.use("/api/admin/", adminRoutes)
+app.use("/api/admin/",shopify.validateAuthenticatedSession(), adminRoutes)
 // All endpoints after this point will require an active session
 app.use("/api/*", shopify.validateAuthenticatedSession());
+
+// app.post("/api/admin/searchDataproduct", async ( _req, res)=>{
+//   console.log("enter here")
+//   console.log(res.locals.shopify)
+// })
 
 
 app.post("/api/admin/test", async ( _req, res) => {

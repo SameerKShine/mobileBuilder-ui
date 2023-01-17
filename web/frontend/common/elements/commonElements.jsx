@@ -43,7 +43,7 @@ export const Color_field = (props) => {
   return (
     <div className="SD-color_field SD-countdown">
       <label>{props.label}</label>
-      <div className="color_fieldDiv SD-common_input">
+      <div className="color_fieldDiv backGroundSection SD-common_input">
         <input
           type="color"
           value={props.value ?? "#fff"}

@@ -68,6 +68,7 @@ function CreatePage({ builderFields, setBuilderFields, menu }) {
     setBuilderFields(prevData);
     setEditForm(false);
   };
+  console.log(builderFields)
   return (
     <>
       {showTopbar && (
@@ -82,7 +83,7 @@ function CreatePage({ builderFields, setBuilderFields, menu }) {
           setDropHere={setDropHere}
           handleAddElements={handleAddElements}
         />
-        <PreviewCard data={menu}>
+        <PreviewCard data={menu} bottomRef={bottomRef}>
           <Droppable
             types={["string"]}
             onDrop={(data) => handleAddElements(data.string, "TOP_DRAG")}
@@ -109,7 +110,8 @@ function CreatePage({ builderFields, setBuilderFields, menu }) {
             handleAddElements={handleAddElements}
             setActiveClass={setActiveClass}
           />
-        </PreviewCard>
+        </PreviewCard >
+     
         {openEditForm && (
           <EditSection
             elementIndex={elementIndex}

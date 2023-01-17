@@ -3,6 +3,8 @@ import { Button, Spin, Input, Checkbox, Card, Avatar } from "antd";
 import { CloseOutlined, SearchOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useGetCollection } from "../../hooks";
+import { useAppBridge } from "@shopify/app-bridge-react"  
+import { getSessionToken } from "@shopify/app-bridge-utils";
 // import { useAPI } from "../globalState/getShopData";
 
 function ProductandCollectionPicker({
@@ -22,12 +24,14 @@ function ProductandCollectionPicker({
   const [timer, setTimer] = useState(null);
   const [productCollection, setProductCollection] = useState([]);
 
-//   const { getShop } = useAPI();
-  const  getShop  = 'test-updatedpre.myshopify.com'
+console.log(elementType)
+const app = useAppBridge();
   useEffect(() => {
     getData();
   }, []);
   async function getData(intialCursor, initialPage) {
+   const sessionToken = await getSessionToken(app);
+   console.log(sessionToken)
     console.log(serachCursor);
     console.log(serachNextPage);
     console.log("Getdata function");
@@ -35,78 +39,68 @@ function ProductandCollectionPicker({
     let data = {
       cursor: intialCursor ?? serachCursor,
       nextPage: initialPage ?? serachNextPage,
-      shop: getShop,
+      // shop: getShop,
     };
     let GET_URL = "";
     if (elementType == "products") {
-      GET_URL = "/api/searchDataproduct";
-    } else if (elementType == "col_products") {
-      data = { ...data, id: selectedCollectionId ?? "" };
-      GET_URL = "/api/collectionProducts";
+      GET_URL = "/api/admin/getProduct";
     } else {
-      GET_URL = "/api/searchDatacollection";
+      GET_URL = "/api/admin/getCollections";
     }
+        const config = {
+          headers: { Authorization: `Bearer ${sessionToken}` },
+        };
 
-    // await axios
-    //   .post(GET_URL, data)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     setProductCollection((prev) => [...prev, ...res.data.response]);
-    //     setSearchCursor(res.data.nextPageCursor);
-    //     setSearchNextPage(res.data.hasNextPage);
-    //   })
-    //   .catch((err) => console.log(err));
+    await axios
+      .post(GET_URL, data, config )
+      .then((res) => {
+        console.log(res.data);
+        setProductCollection((prev) => [...prev, ...res.data.response]);
+        setSearchCursor(res.data.nextPageCursor);
+        setSearchNextPage(res.data.hasNextPage);
+      })
+      .catch((err) => console.log(err));
     setLoading(false);
   }
-  const {
-    data1,
-    refetch: refetchProductCount,
-    isLoading: isLoadingCount,
-    isRefetching: isRefetchingCount,
-  } = useGetCollection({
-    url: "/api/admin/collectionProducts",
-    reactQueryOptions: {
-      onSuccess: () => {
-        // setIsLoading(false);
-      },
-    },
-  });
+
   //get products and collections by search
   async function getDataBySearch(e, newCursor, newPage) {
+    const sessionToken = await getSessionToken(app);
+    console.log(sessionToken)
+    const config = {
+      headers: { Authorization: `Bearer ${sessionToken}` },
+    };
     setLoading(true);
     console.log("nahid");
     let data = {
       search: e,
       cursor: newCursor,
       nextPage: newPage,
-      shop: getShop,
+      // shop: getShop,
     };
     let SEARCH_URL = "";
     clearTimeout(timer);
     if (elementType == "products") {
-      SEARCH_URL = "/api/searchDataproduct";
-    } else if (elementType == "col_products") {
-      data = { ...data, id: selectedCollectionId ?? "" };
-      SEARCH_URL = "/api/collectionProducts";
-    } else {
-      SEARCH_URL = "/api/searchDatacollection";
+      SEARCH_URL = "/api/admin/getProduct";
+    }  else {
+      SEARCH_URL = "/api/admin/getCollections";
     }
-    // if (e != "") {
-    //   console.log("enter in search api");
-    //   const newTime = setTimeout(() => {
-    //     axios
-    //       .post(SEARCH_URL, data)
-    //       .then((res) => {
-    //         setSearchNextPage(res.data.hasNextPage);
-    //         console.log(res.data.response);
-    //         setProductCollection(res.data.response);
-    //         setSearchCursor(res.data.nextPageCursor);
-    //       })
-    //       .catch((err) => console.log(err));
-    //     setLoading(false);
-    //   }, 1000);
-    //   setTimer(newTime);
-    // }
+    if (e != "") {
+      console.log("enter in search api");
+      const newTime = setTimeout(() => {
+        axios
+          .post(SEARCH_URL, data, config)
+          .then((res) => {
+            setSearchNextPage(res.data.hasNextPage);
+            console.log(res.data.response);
+            setProductCollection(res.data.response);
+            setSearchCursor(res.data.nextPageCursor);
+          })
+          .catch((err) => console.log(err));
+        setLoading(false);
+      }, 1000);
+      setTimer(newTime);
+    }
   }
 
   //search by name

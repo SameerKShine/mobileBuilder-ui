@@ -1,14 +1,18 @@
 import { BillingInterval, LATEST_API_VERSION } from "@shopify/shopify-api";
 import { shopifyApp } from "@shopify/shopify-app-express";
 import { SQLiteSessionStorage } from "@shopify/shopify-app-session-storage-sqlite";
+import {MongoDBSessionStorage} from '@shopify/shopify-app-session-storage-mongodb';
 let { restResources } = await import(
   `@shopify/shopify-api/rest/admin/${LATEST_API_VERSION}`
 );
 // If you want IntelliSense for the rest resources, you should import them directly
 // import { restResources } from "@shopify/shopify-api/rest/admin/2022-10";
-
-const DB_PATH = `${process.cwd()}/database.sqlite`;
-
+const STATIC_PATH =
+  process.env.NODE_ENV === "production"
+    ? `${process.cwd()}/frontend/dist`
+    : `${process.cwd()}/frontend/`;
+// const DB_PATH = `$mongodb://127.0.0.1:27017/${STATIC_PATH}`;
+const DB_PATH =  `${process.cwd()}/database.sqlite`;
 // The transactions with Shopify will always be marked as test transactions, unless NODE_ENV is production.
 // See the ensureBilling helper to learn more about billing in this template.
 const billingConfig = {
@@ -35,6 +39,7 @@ const shopify = shopifyApp({
   },
   // This should be replaced with your preferred storage strategy
   sessionStorage: new SQLiteSessionStorage(DB_PATH),
+  // sessionStorage: new MongoDBSessionStorage(DB_PATH),
 });
 
 export default shopify;

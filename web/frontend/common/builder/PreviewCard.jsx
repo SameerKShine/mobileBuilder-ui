@@ -4,11 +4,11 @@ import MobileHeader from './MobileHeader';
 import MenuPreview from './MenuPreview';
 import { useMobileview } from '../../globalState/mobileView';
  
-function PreviewCard({children, data}) {
+function PreviewCard({children, data, bottomRef}) {
 
   const { mobileview , setMobileview} = useMobileview();
   console.log(mobileview)
-    const [value, setValue] = useState('/src/assets/images/phoneView/android.png');
+    const [value, setValue] = useState('/assets/images/phoneView/android.png');
     const onChange = useCallback((e)=>{
         setValue(e.target.value);
         setMobileview(e.target.value)
@@ -28,10 +28,14 @@ function PreviewCard({children, data}) {
 
       <div
         className="white-bg-box mobile_preview"
-        style={{ backgroundImage: `url(${value})` }}
+        style={{ backgroundImage: `url(${mobileview})` }}
       >
         <MobileHeader />
-        <div className="inner-scroll-cont">{children}</div>
+        <div className="inner-scroll-cont">
+          {children}
+          <div ref={bottomRef}></div>
+        </div>
+       
         <MenuPreview data={data} />
       </div>
     </div>

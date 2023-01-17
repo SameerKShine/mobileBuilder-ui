@@ -70,7 +70,7 @@ function BuilderPreview({
 
   const Dragging = () => {
     return (
-      <DragDropContext onDragEnd={handleDrag}>
+      <>      <DragDropContext onDragEnd={handleDrag}>
         <InDroppable droppableId="root">
           {(provided) => {
             return (
@@ -154,9 +154,7 @@ function BuilderPreview({
                                 </div>
                               </Droppable>
                             </div>
-                            <div ref={bottomRef}>
-                               
-                            </div>
+                           
                           </div>
                         );
                       }}
@@ -170,6 +168,10 @@ function BuilderPreview({
           }}
         </InDroppable>
       </DragDropContext>
+      {/* <div ref={bottomRef}>
+                               
+                               </div> */}
+      </>
     );
   };
 

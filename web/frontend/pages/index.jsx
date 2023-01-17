@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useCallback} from "react";
 import { useOutletContext } from "react-router-dom";
 import CreatePage from "../components/landingPage/CreatePage";
 import { useQuery } from "react-query";
@@ -7,7 +7,7 @@ import axios from "axios";
 import {useApi} from '../hooks'
 import { useAppBridge } from "@shopify/app-bridge-react"  
 import { getSessionToken } from "@shopify/app-bridge-utils";
-import { Button } from "@shopify/polaris";
+import { Button, Checkbox } from "@shopify/polaris";
 // import {ProductsCard} from '../components/ProductsCard'
 
 export default function HomePage() {
@@ -20,7 +20,12 @@ export default function HomePage() {
       subheading_text: "Enter Subheading Here",
       text_alignment: "left",
       show_subheading: true,
-      style: {},
+      style: {
+        margin_top: "0",
+        margin_bottom: "0",
+        margin_left: "0",
+        margin_right: "0",
+      },
     },
   ]);
 
@@ -79,29 +84,44 @@ export default function HomePage() {
 // console.log(data)
 // const app = useAppBridge();
 // // const apis = useApi('/api/admin/test')
+
+// const handleTest = async() => {
 // const sessionToken = await getSessionToken(app);
 // console.log(sessionToken)
-// const handleTest = async() => {
-
-  // const config = {
-  //   headers: { Authorization: `Bearer ${sessionToken}` }
-  // };
-  // const { loading, data } = apis
-  // console.log(data)
-  // axios
-  //   .post('/api/admin/test', {data:'dfghj'}, config)
-  //   .then(({ data: isData }) => {
-  //     console.log(isData);
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   });
+//   const config = {
+//     headers: { Authorization: `Bearer ${sessionToken}` }
+//   };
+//   // const { loading, data } = apis
+//   // console.log(data)
+//   axios
+//     .post('/api/admin/test', {data:'dfghj'}, config)
+//     .then(({ data: isData }) => {
+//       console.log(isData);
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
 // }
+// const [checked, setChecked] = useState(false);
+// // const handleChange = useCallback((newChecked) => console.log(newChecked), []);
+// const handleChange = (e,name) => {
+// console.log(e,name)
+// } 
   return (
     <>
     {/* <button onClick={handleTest}>Click</button> */}
+    {/* <div className="ploris_BUTTON">
+    <Button class="Tetsinh the polris">Add product</Button>
+    <Checkbox
+      label="Basic checkbox"
+      checked={checked}
+      id="checking"
+      name="chekboxname"
+      onChange={(e,name)=>handleChange(e,name)}
+    />
+    </div> */}
     {/* <ProductsCard/> */}
-    <Button className="oloarisTestBtn">Click</Button>
+    {/* <Button className="oloarisTestBtn">Click</Button> */}
       {step == 0 ? (
         <CreatePage
           setBuilderFields={setBuilderFields}

@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { CommonInput } from "../../../common/elements/commonElements";
 import UploadPicture from "../../../common/elements/UploadPicture";
+import ProductandCollectionPicker from "../../../common/elements/ProductCollectionPicker";
 
 function CustomiseIcon({ index, data, setMenu, setEditElement }) {
   const [getImageUrl, setImgUrl] = useState('')
+  const [open, setOpen] = useState(false)
   const handleChange = (value, name, iconUrl) => {
     console.log(value);
     console.log(name);
@@ -36,8 +38,6 @@ function CustomiseIcon({ index, data, setMenu, setEditElement }) {
   //   }
   //   }
   // }
-
-  console.log(getImageUrl.length)
   const deleteImage = async() => {
       await axios
    .post("/api/deleteImage", {file:getImageUrl})
@@ -50,8 +50,25 @@ function CustomiseIcon({ index, data, setMenu, setEditElement }) {
     newD.elements[index].icon_url = e;
     setMenu(newD);
   }
-  console.log(data);
-//   console.log(menu_icons[data.elements[index].id]);
+
+  const selectCollection =(
+    <>
+    {
+      data.elements[index].id == 'Collections' &&
+      <>
+      <label>Select Collection</label>
+      <div
+        className="SD-featured_product SD-common_input"
+        onClick={() => setOpen(true)}
+      >
+        {data.elements[index]?.collection_details
+          ? data.elements[index]?.collection_details?.label
+          : "Select Collection"}
+      </div>
+      </>
+    }
+    </>
+  )
   return (
     <div>
       {/* CustomiseIcon {index} */}
@@ -90,6 +107,24 @@ function CustomiseIcon({ index, data, setMenu, setEditElement }) {
         <UploadPicture onuploadImage = {uploadImage} disable={getImageUrl.length > 0 ? true:false} handleAddIcon={setImgUrl} />
         {getImageUrl.length > 0 &&<button onClick={deleteImage}>delete</button>}
       </div>
+      {selectCollection}
+      {open && (
+        <ProductandCollectionPicker
+          // show = {open}
+          checkedIDs={[data.elements[index]?.collection_details?.id??""]}
+          onSelect={(e, ele, id) => {
+            const arr = {...data};
+            if (e.target.checked) {
+              console.log(arr.elements[index]);
+              arr.elements[index].collection_details = ele;
+              setMenu(arr);
+              setOpen(false);
+            } 
+          }}
+          setOpen={setOpen}
+          elementType="collections"
+        />
+      )}
     </div>
   );
 }

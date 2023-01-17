@@ -387,8 +387,8 @@ return(
           ) : val?.style?.background_style?.type == "color" ? (
             <Color_field
               label="Background Color"
-              value={data[fieldIndex]?.style?.background_style.background_color}
-              name="background_color"
+              value={data[fieldIndex]?.style?.background_style.countdown_background_color}
+              name="countdown_background_color"
               onChange={(e) => handleEditElement(e.target.value, e.target.name)}
             />
           ) : (

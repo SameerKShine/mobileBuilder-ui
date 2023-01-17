@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button } from "antd";
 import { CloseOutlined, PlusCircleOutlined } from "@ant-design/icons";
-// import { errToast } from "../../../common/notification/notification";
+import { errToast } from "../../../common/notification/notification";
 import ProductandCollectionPicker from "../../../common/elements/ProductCollectionPicker";
 import { CommonInput, CommonSelect } from "../../../common/elements/commonElements";
 import { commonToggle } from "./editUtils";
-// import { useAPI } from "../../../globalState/getShopData";
+import { useAppBridge } from "@shopify/app-bridge-react"  
+import { getSessionToken } from "@shopify/app-bridge-utils";
 
 function EditCollectionProduct({
   values,
@@ -17,6 +18,7 @@ function EditCollectionProduct({
   setOpen,
   open,
 }) {
+  const app = useAppBridge();
   // console.log(values);
   const [checkedIDs, setCheckedIds] = useState([]);
   // const [checkSingleIDs, setCheckSingleIds] = useState([]);
@@ -41,10 +43,15 @@ const  getShop  = 'test-updatedpre.myshopify.com'
 
   //products of specific collection
   async function getProductsOfCollection(collectionId) {
+    const sessionToken = await getSessionToken(app);
+    console.log(sessionToken)
+    const config = {
+      headers: { Authorization: `Bearer ${sessionToken}` },
+    };
     const arr = [...values];
     console.log(collectionId);
     await axios
-      .post("/api/collectionProducts", { id: collectionId, shop: getShop })
+      .post("/api/admin/collectionProducts", { id: collectionId }, config)
       .then((res) => {
         console.log(res.data.response);
         arr[elementIndex].data = res.data.response.slice(0, 4);
@@ -127,10 +134,10 @@ const  getShop  = 'test-updatedpre.myshopify.com'
                     setBuilderFields(arr);
                   } else {
                     console.log("enter in Else length exceeded");
-                    // errToast(
-                    //   `Maximum ${validation} Products can be Selected`,
-                    //   "top"
-                    // );
+                    errToast(
+                      `Maximum ${validation} Products can be Selected`,
+                      "top"
+                    );
                   }
                 } else {
                   let arr1 = [...checkedIDs];
@@ -145,6 +152,7 @@ const  getShop  = 'test-updatedpre.myshopify.com'
             }}
             setOpen={setOpen}
             elementType={elementType}
+            // elementType="products"
           />
         ) : (
           <>

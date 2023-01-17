@@ -1,4 +1,5 @@
 import React, { useContext, useState, createContext } from "react";
+import { useAppBridge } from "@shopify/app-bridge-react"  
 
 const APIContext = createContext();
 
@@ -6,7 +7,8 @@ function ContextProvider({ children }) {
   const [getShop, setGetShop] = useState(
     new URL(location).searchParams.get("shop")
   );
-  return <APIContext.Provider value={{getShop}}>{children}</APIContext.Provider>;
+  const app = useAppBridge()
+  return <APIContext.Provider value={{getShop, app}}>{children}</APIContext.Provider>;
 }
 export default ContextProvider;
 

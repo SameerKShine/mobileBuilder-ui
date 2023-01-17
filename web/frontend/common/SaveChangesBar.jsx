@@ -3,9 +3,11 @@ import CommonModal from './modal/CommonModal'
 import axios from "axios";
 import { errToast, sucessToast } from './notification/notification';
 import { useAPI } from '../globalState/getShop';
+import { useAppBridge } from "@shopify/app-bridge-react"  
+import { getSessionToken } from "@shopify/app-bridge-utils";
 
 function SaveChangesBar({ data, api_url, setShowTopbar }) {
-    const { getShop } = useAPI();
+    // const { getShop } = useAPI();
     // const getShop = 'test-updatedpre.myshopify.com'
     // useEffect(()=>{
     //   console.log(checkVal, ' checkVal')
@@ -16,14 +18,19 @@ function SaveChangesBar({ data, api_url, setShowTopbar }) {
     //   }
     // }, [builderFields])
   
-    const handleSaveBuilder = () => {
+    const app = useAppBridge();
+    const handleSaveBuilder = async() => {
+      const sessionToken = await getSessionToken(app);
+       console.log(sessionToken)
+   const config = {
+     headers: { Authorization: `Bearer ${sessionToken}` }
+   };
       const bodyData = {
-        data,
-        shop: getShop,
+        data
       };
       console.log(data);
       axios
-        .post(`/api/admin${api_url}`, bodyData)
+        .post(`/api/admin${api_url}`, bodyData, config)
         .then((res) => {
           console.log(res);
           if(res.data.message == 'succcess'){
