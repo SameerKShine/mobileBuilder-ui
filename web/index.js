@@ -7,7 +7,7 @@ import mongodb from './backend/config/mongodb.js'
 import adminRoutes from "./backend/api/adminRoutes.js";
 import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
-import GDPRWebhookHandlers from "./gdpr.js";
+import GDPRWebhookHandlers   from "./gdpr.js";
 
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
 
@@ -17,7 +17,7 @@ const STATIC_PATH =
     : `${process.cwd()}/frontend/`;
 
 const app = express();
-console.log(shopify)
+// console.log(shopify)
 // Set up Shopify authentication and webhook handling
 app.get(shopify.config.auth.path, shopify.auth.begin());
 app.get(
@@ -29,6 +29,10 @@ app.post(
   shopify.config.webhooks.path,
   shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
 );
+// app.post(
+//   shopify.config.webhooks.path,
+//   shopify.processWebhooks({ webhookHandlers })
+//   );
 mongodb()
 app.use(express.json());
 app.use("/api/admin/",shopify.validateAuthenticatedSession(), adminRoutes)

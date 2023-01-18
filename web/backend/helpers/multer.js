@@ -19,7 +19,7 @@ const multerStorage = multer.diskStorage({
     cb(
       null,
 
-      `/web/public/-${file.fieldname}-${Date.now()}.${ext}`
+      `./public/uploads/-${file.fieldname}-${Date.now()}.${ext}`
       // file.fieldname + "-" + Date.now() + path.extname(file.originalname)
     );
   },
@@ -48,7 +48,7 @@ const multerStorage = multer.diskStorage({
 }).single("menuIcon");
 
 export const UploadImage = async(req, res) => {
-
+console.log('enter here in upload function')
   upload(req, res, (err) => {
     if (err) {
       return res.send({
@@ -58,7 +58,7 @@ export const UploadImage = async(req, res) => {
       });
     } else if (req.file) {
     }
-    console.log(req.file,"hahahah")
+    // console.log(req.file,"hahahah")
 
     res.send({ status: true, url: req.file.filename });
   });

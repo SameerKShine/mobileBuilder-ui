@@ -1839,3 +1839,26 @@ figure {
   font-weight: 600;
 }
   /********************************************** SAMEERR CHANGESSSS END ********************************************/
+
+  /* *****************************************GLOBAL SETTING ******************************* */
+  .SD-globalSetting{
+    padding: 40px;
+  }
+  .SD-appLogo{
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+  }
+  .globalSettingIconPrev{
+    border: 6px solid grey;
+    width: 40%;
+    border-bottom: none;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    border-top: 12px solid gray;
+}
+.globalSettingSaveBtn{
+  text-align: right;
+  margin-bottom: 10px;
+}
+  /* *****************************************GLOBAL SETTING END ******************************* */

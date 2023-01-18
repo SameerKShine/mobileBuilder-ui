@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import axios from 'axios'
+import postApi from '../../utils/postApi';
+import { useAppBridge } from "@shopify/app-bridge-react";
 
 function UploadPicture({
     label,
@@ -12,24 +13,28 @@ function UploadPicture({
     const [uploadFile, setUploadFile] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     console.log(disable);
+    const app = useAppBridge();
     const handleUploadImage = async (e) => {
-      console.log(e.target.files[0]);
-      onuploadImage(URL.createObjectURL(e.target.files[0]));
-      if (e.target.files[0].size <= 1600) {
+      setUploadFile(URL.createObjectURL(e.target.files[0]));
+      // onuploadImage(URL.createObjectURL(e.target.files[0]));
+   
+      // if (e.target.files[0].size <= 1600) {
         console.log("enter in valid condition", e.target.files[0]);
         const formData = new FormData();
         setErrorMessage("");
         formData.append("menuIcon", e.target.files[0]);
-        setUploadFile(URL.createObjectURL(e.target.files[0]));
+        const res =  postApi("/api/admin/uploadImage", formData, app)
+        console.log(res)
+        // setUploadFile(URL.createObjectURL(e.target.files[0]));
         //300×150
-        await axios
-          .post("/api/admin/uploadImage", formData)
-          .then((res) => handleAddIcon(res.data.url));
-      } else {
-        console.log("enter in Else");
-        setErrorMessage("Image Should be 150 X 150");
-        setUploadFile("");
-      }
+        // await axios
+        //   .post("/api/admin/uploadImage", formData)
+        //   .then((res) => handleAddIcon(res.data.url));
+      // } else {
+        // console.log("enter in Else");
+        // setErrorMessage("Image Should be 150 X 150");
+        // setUploadFile("");
+      // }
     };
   
     console.log(uploadFile);

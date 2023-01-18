@@ -82,26 +82,26 @@ export default function HomePage() {
   //   },
   // });
 // console.log(data)
-// const app = useAppBridge();
+const app = useAppBridge();
 // // const apis = useApi('/api/admin/test')
 
-// const handleTest = async() => {
-// const sessionToken = await getSessionToken(app);
-// console.log(sessionToken)
-//   const config = {
-//     headers: { Authorization: `Bearer ${sessionToken}` }
-//   };
-//   // const { loading, data } = apis
-//   // console.log(data)
-//   axios
-//     .post('/api/admin/test', {data:'dfghj'}, config)
-//     .then(({ data: isData }) => {
-//       console.log(isData);
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// }
+const handleTest = async() => {
+const sessionToken = await getSessionToken(app);
+console.log(sessionToken)
+  const config = {
+    headers: { Authorization: `Bearer ${sessionToken}` }
+  };
+  // const { loading, data } = apis
+  // console.log(data)
+  axios
+    .post('/api/admin/test', {data:'dfghj'}, config)
+    .then(({ data: isData }) => {
+      console.log(isData);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
 // const [checked, setChecked] = useState(false);
 // // const handleChange = useCallback((newChecked) => console.log(newChecked), []);
 // const handleChange = (e,name) => {
@@ -109,7 +109,7 @@ export default function HomePage() {
 // } 
   return (
     <>
-    {/* <button onClick={handleTest}>Click</button> */}
+    <button onClick={handleTest}>Click</button>
     {/* <div className="ploris_BUTTON">
     <Button class="Tetsinh the polris">Add product</Button>
     <Checkbox

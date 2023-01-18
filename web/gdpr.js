@@ -1,5 +1,4 @@
 import { DeliveryMethod } from "@shopify/shopify-api";
-
 export default {
   /**
    * Customers can request their data from a store owner. When this happens,
@@ -7,6 +6,18 @@ export default {
    *
    * https://shopify.dev/apps/webhooks/configuration/mandatory-webhooks#customers-data_request
    */
+
+   PRODUCTS_UPDATE: {
+    deliveryMethod: DeliveryMethod.Http,
+    callbackUrl: "/api/webhooks",
+    callback: async (topic, shop, body, webhookId) => {
+      console.log('--- Product update ---');
+      const payload = JSON.parse(body);
+      console.log(payload);
+      console.log('--- /Product update ---');
+    },
+  },
+
   CUSTOMERS_DATA_REQUEST: {
     deliveryMethod: DeliveryMethod.Http,
     callbackUrl: "/api/webhooks",
