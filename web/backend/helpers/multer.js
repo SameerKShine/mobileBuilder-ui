@@ -2,9 +2,10 @@ import multer from "multer";
 import path from "path";
 import fs from 'fs'
 
+
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    console.log(req, "hhhhhh");
+    // console.log(req, "hhhhhh");
 
     cb(null, "");
   },
@@ -19,11 +20,34 @@ const multerStorage = multer.diskStorage({
     cb(
       null,
 
-      `./public/uploads/-${file.fieldname}-${Date.now()}.${ext}`
+      `public/-${file.fieldname}-${Date.now()}.${ext}`
       // file.fieldname + "-" + Date.now() + path.extname(file.originalname)
     );
   },
 });
+
+// const multerStorage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     // console.log(req, "hhhhhh");
+
+//     cb(null, "public/uploads/");
+//   },
+
+//   filename: (req, file, cb) => {
+//     const ext = file.mimetype.split("/")[1];
+
+//     // console.log(req.body.shop, "hhhhhh");
+
+//     const shop = req.body.shop;
+//     cb(null,file.fieldname+"-"+Date.now().ext);
+//     // cb(
+//     //   null,
+
+//     //   `./public/uploads/-${file.fieldname}-${Date.now()}.${ext}`
+//     //   // file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+//     // );
+//   },
+// });
 
  const upload = multer({
    
@@ -51,16 +75,20 @@ export const UploadImage = async(req, res) => {
 console.log('enter here in upload function')
   upload(req, res, (err) => {
     if (err) {
+      console.log(err)
+      console.log('enter in error')
       return res.send({
         status: false,
         
         error: err,
       });
     } else if (req.file) {
+      console.log('enter in correct ')
+      res.send({ status: true, url: req.file.filename });
     }
     // console.log(req.file,"hahahah")
 
-    res.send({ status: true, url: req.file.filename });
+   
   });
 }
 

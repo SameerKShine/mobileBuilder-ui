@@ -5,6 +5,16 @@ import MobileHeader from "../common/builder/MobileHeader";
 const { Panel } = Collapse;
 
 function globalSettings() {
+  const [global_setting, setGlobalSetting] = useState({
+    app_logo :'',
+    app_icon:'',
+    splash_screen:'',
+    app_appearance:{}
+  }) 
+
+  const uploadImage = (img) =>{
+    setGlobalSetting({ ...global_setting, app_logo:img })
+  }
 
   return (
     <div className="SD-globalSetting">
@@ -14,9 +24,9 @@ function globalSettings() {
         <Collapse accordion defaultActiveKey={['1']}>
           <Panel header="App Logo" key="1">
             <div className="SD-appLogo">
-              <UploadPicture/>
+              <UploadPicture onuploadImage = {uploadImage}/>
               <div className="globalSettingIconPrev">
-                  <MobileHeader/>
+                  <MobileHeader appLogo = {global_setting.app_logo}/>
               </div>
             </div>
           </Panel>
@@ -39,9 +49,6 @@ function globalSettings() {
           <Panel header="App Appearance" key="4">
             <p>App Appearance</p>
           </Panel>
-          {/* <Panel header="This is panel header 3" key="3">
-      <p></p>
-    </Panel> */}
         </Collapse>
     </div>
   );

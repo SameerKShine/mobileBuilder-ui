@@ -7,7 +7,7 @@ import {
   QueryProvider,
   PolarisProvider,
 } from "./components";
-// import ContextProvider from "./globalState/getShop";
+import ContextProvider from "./globalState/getShop";
 import ContextMobileView from "./globalState/mobileView";
 
 export default function App() {
@@ -20,11 +20,11 @@ export default function App() {
       <BrowserRouter>
         <AppBridgeProvider>
           <QueryProvider>
-            {/* <ContextProvider> */}
+            <ContextProvider>
               <ContextMobileView>
               <Routes pages={pages} />
               </ContextMobileView>
-            {/* </ContextProvider> */}
+            </ContextProvider>
           </QueryProvider>
         </AppBridgeProvider>
       </BrowserRouter>

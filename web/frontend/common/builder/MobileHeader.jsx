@@ -4,7 +4,7 @@ import logo from '../../assets/images/mobileHeader/logo.png'
 import menu from '../../assets/images/mobileHeader/menu.png'
 import search from '../../assets/images/mobileHeader/searchIcn.png'
 
-function MobileHeader() {
+function MobileHeader({appLogo}) {
   return (
     <>
       <div className="SD-builder-topbar">
@@ -13,7 +13,7 @@ function MobileHeader() {
             <img src={search} />
           </div>
           <div className="logoBox">
-            <img src={logo} />
+            <img src={appLogo||logo} />
           </div>
           <div className="icnBox3">
             <img src={menu} />

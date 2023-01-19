@@ -4,7 +4,7 @@ import CreatePage from "../components/landingPage/CreatePage";
 import { useQuery } from "react-query";
 import CreateMenu from "../components/menu/CreateMenu";
 import axios from "axios";
-import {useApi} from '../hooks'
+// import {useApi} from '../hooks'
 import { useAppBridge } from "@shopify/app-bridge-react"  
 import { getSessionToken } from "@shopify/app-bridge-utils";
 import { Button, Checkbox } from "@shopify/polaris";
@@ -109,7 +109,7 @@ console.log(sessionToken)
 // } 
   return (
     <>
-    <button onClick={handleTest}>Click</button>
+    {/* <button onClick={handleTest}>Click</button> */}
     {/* <div className="ploris_BUTTON">
     <Button class="Tetsinh the polris">Add product</Button>
     <Checkbox
