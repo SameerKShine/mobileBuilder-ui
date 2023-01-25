@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Button, Spin, Input, Checkbox, Card, Avatar } from "antd";
 import { CloseOutlined, SearchOutlined } from "@ant-design/icons";
 import axios from "axios";
-import { useGetCollection } from "../../hooks";
 import { useAppBridge } from "@shopify/app-bridge-react"  
 import { getSessionToken } from "@shopify/app-bridge-utils";
 // import { useAPI } from "../globalState/getShopData";

@@ -13,7 +13,7 @@ function BuilderPreview({
   handleAddElements,
   builderFields,
   dropHere,
-  bottomRef,
+  app_apperance,
   setBuilderFields,
   activeClass,
   setActiveClass,
@@ -139,7 +139,7 @@ function BuilderPreview({
                                       : "SD-previewSection"
                                   }
                                 >
-                                  {FieldsPreview(eleType, index)}
+                                  {FieldsPreview(eleType, index, app_apperance)}
                                 </div>
                                 <div className="Smoothie">
                                   <div

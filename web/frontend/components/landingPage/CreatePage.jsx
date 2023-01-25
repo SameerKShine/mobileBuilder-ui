@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import PreviewCard from "../../common/builder/PreviewCard";
 import ElementList from "./ElementList";
-import axios from "axios";
 import Droppable from "react-drag-and-drop/lib/Droppable";
 import BuilderPreview from "./BuilderPreview";
 import EditSection from "./edit/EditSection";
-import { useElementVal } from "../../hooks";
+import { useElementVal, useApi } from "../../hooks";
 import SaveChangesBar from "../../common/SaveChangesBar";
 
-function CreatePage({ builderFields, setBuilderFields, menu }) {
+function CreatePage({ builderFields, setBuilderFields, menu, app_apperance }) {
   const [dropHere, setDropHere] = useState(false);
   const [openEditForm, setEditForm] = useState(true);
 
@@ -26,6 +25,8 @@ function CreatePage({ builderFields, setBuilderFields, menu }) {
       setDropHere(false);
     });
   }, []);
+
+
   const bottomRef = useRef(null)
   //add new elemnt in main array and open edit componet of recent add
   const handleAddElements = (data, flag, id) => {
@@ -68,7 +69,7 @@ function CreatePage({ builderFields, setBuilderFields, menu }) {
     setBuilderFields(prevData);
     setEditForm(false);
   };
-  console.log(builderFields)
+  
   return (
     <>
       {showTopbar && (
@@ -83,7 +84,7 @@ function CreatePage({ builderFields, setBuilderFields, menu }) {
           setDropHere={setDropHere}
           handleAddElements={handleAddElements}
         />
-        <PreviewCard data={menu} bottomRef={bottomRef}>
+        <PreviewCard data={menu} bottomRef={bottomRef} bgColor={app_apperance?.background_color}>
           <Droppable
             types={["string"]}
             onDrop={(data) => handleAddElements(data.string, "TOP_DRAG")}
@@ -104,6 +105,7 @@ function CreatePage({ builderFields, setBuilderFields, menu }) {
             activeClass={activeClass}
             setBuilderFields={setBuilderFields}
             bottomRef={bottomRef}
+            app_apperance={app_apperance}
             setElementIndex={setElementIndex}
             handleRemoveEle={handleRemoveEle}
             handleOpenEdit={handleOpenEdit}

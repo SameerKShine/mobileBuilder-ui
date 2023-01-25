@@ -3,11 +3,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import DummyImage from "../../assets/images/dummyImages/dummyImage.png";
 import { ArrowRightOutlined } from "@ant-design/icons";
 
-function CollectionDesign({viewData}) {
+function CollectionDesign({viewData, app_appearance}) {
+
+  let primary_color = "#000"
+  let secondary_color = "#000"
+  if(app_appearance){
+     primary_color = app_appearance?.primary_color??"#000"
+     secondary_color = app_appearance?.secondary_color??"#000"
+  }
+ 
     return (
         <>
           <div className="jstBtwn">
-            {viewData.show_heading && <h2>{viewData.heading ?? "Collection"}</h2>}
+            {viewData.show_heading && <h2 style={{"color":primary_color??"#000"}}>{viewData.heading ?? "Collection"}</h2>}
             <a>View All</a>
           </div>
     
@@ -25,7 +33,7 @@ function CollectionDesign({viewData}) {
                       <div className="custom_slide_section">
                         <img width={100} src={ele?.image?.url ?? DummyImage} />
     
-                        {viewData.show_collection_title && <span>{ele.label}</span>}
+                        {viewData.show_collection_title && <span style={{"color":secondary_color??"#000"}}>{ele.label}</span>}
                       </div>
                     </SwiperSlide>
                   ))}
@@ -44,7 +52,7 @@ function CollectionDesign({viewData}) {
                             className="img-fluid"
                           />
                         </figure>
-                        <p>{ele.label}</p>
+                        <p style={{"color":secondary_color??"#000"}}>{ele.label}</p>
                       </div>
                     ))}
                   </div>
@@ -66,7 +74,7 @@ function CollectionDesign({viewData}) {
     
                       <div className="SwiperSlideTxt">
                         {viewData.show_collection_title && <h3>{ele.label}</h3>}
-                        <p>Oversized Turtleneck Sweater</p>
+                        <p  style={{"color":secondary_color??"#000"}}>Oversized Turtleneck Sweater</p>
                         <button>Shop</button>
                       </div>
                     </SwiperSlide>
@@ -89,7 +97,7 @@ function CollectionDesign({viewData}) {
                         <div className="proItemBxText">
                           <div>
                             {viewData.show_collection_title && <h3>{ele.label}</h3>}
-                            <p>Collection Description</p>
+                            <p style={{"color":secondary_color??"#000"}}>Collection Description</p>
                           </div>
     
                           <span className="proItemBxIcn">
@@ -113,7 +121,7 @@ function CollectionDesign({viewData}) {
                   <div className="custom_slide_section">
                     <img width={100} src={DummyImage} />
     
-                    {viewData.show_collection_title && <span>Add here2</span>}
+                    {viewData.show_collection_title && <span style={{"color":secondary_color??"#000"}}>Add here2</span>}
                   </div>
                 </SwiperSlide>
               ))}
@@ -126,21 +134,21 @@ function CollectionDesign({viewData}) {
                     <figure>
                       <img src={DummyImage} alt="pro img" className="img-fluid" />
                     </figure>
-                    <p>Test</p>
+                    <p style={{"color":secondary_color??"#000"}}>Test</p>
                   </div>
     
                   <div className="pro-item w50">
                     <figure>
                       <img src={DummyImage} alt="pro img" className="img-fluid" />
                     </figure>
-                    <p>Test</p>
+                    <p style={{"color":secondary_color??"#000"}}>Test</p>
                   </div>
     
                   <div className="pro-item w100">
                     <figure>
                       <img src={DummyImage} alt="pro img" className="img-fluid" />
                     </figure>
-                    <p>Test</p>
+                    <p style={{"color":secondary_color??"#000"}}>Test</p>
                   </div>
                 </div>
               </div>
@@ -160,7 +168,7 @@ function CollectionDesign({viewData}) {
                     <img width={100} src={DummyImage} />
                     <div className="SwiperSlideTxt">
                       {viewData.show_collection_title && <h3>Collection Title</h3>}
-                      <p>Collection Description</p>
+                      <p style={{"color":secondary_color??"#000"}}>Collection Description</p>
                       <button>Shop Now</button>
                     </div>
                   </SwiperSlide>
@@ -177,7 +185,7 @@ function CollectionDesign({viewData}) {
                     </div>
                     <div className="proItemBxText">
                       <div>
-                        <h3>Collection Title</h3>
+                        <h3 style={{"color":secondary_color??"#000"}}>Collection Title</h3>
                         <p>Collection Description</p>
                       </div>
     

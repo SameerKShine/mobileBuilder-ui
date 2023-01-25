@@ -1,13 +1,16 @@
-import React, {useState, useCallback} from "react";
+import React, {useState, useEffect} from "react";
 import { useOutletContext } from "react-router-dom";
 import CreatePage from "../components/landingPage/CreatePage";
 import { useQuery } from "react-query";
 import CreateMenu from "../components/menu/CreateMenu";
 import axios from "axios";
 // import {useApi} from '../hooks'
-import { useAppBridge } from "@shopify/app-bridge-react"  
+import { useAPI } from "../globalState/getShop";
+import getApi from "../utils/getApi";
 import { getSessionToken } from "@shopify/app-bridge-utils";
 import { Button, Checkbox } from "@shopify/polaris";
+import { Spin } from "antd";
+import { useApi } from "../hooks";
 // import {ProductsCard} from '../components/ProductsCard'
 
 export default function HomePage() {
@@ -64,7 +67,23 @@ export default function HomePage() {
     background_color: "",
   });
 
+  const [app_apperance, setApp_apperance] = useState(null)
+  const [loading, setLoading] = useState(false)
+  
   const [step] = useOutletContext();
+  const {app} =useAPI()
+  useEffect(()=>{
+    setLoading(true)
+    getApi("/api/admin/getMobileData", app)
+    .then((res)=>{
+      console.log("res", res)
+      setBuilderFields(res.result.landing_page)
+      setMenu(res.result.menuData.menu_data)
+      setApp_apperance(res.result.builderApperanceData.builder_apperance)
+      setLoading(false)
+    })
+  },[])
+
   // const step  = 0
   // const fetch = useAuthenticatedFetch();
 
@@ -82,7 +101,6 @@ export default function HomePage() {
   //   },
   // });
 // console.log(data)
-const app = useAppBridge();
 // // const apis = useApi('/api/admin/test')
 
 const handleTest = async() => {
@@ -102,13 +120,16 @@ console.log(sessionToken)
       console.log(error);
     });
 }
+// const url = "/api/admin/getMobileData"
+// const {data} = useApi(url)
+// console.log(data)
 // const [checked, setChecked] = useState(false);
 // // const handleChange = useCallback((newChecked) => console.log(newChecked), []);
 // const handleChange = (e,name) => {
 // console.log(e,name)
 // } 
   return (
-    <>
+    <Spin spinning={loading}>
     {/* <button onClick={handleTest}>Click</button> */}
     {/* <div className="ploris_BUTTON">
     <Button class="Tetsinh the polris">Add product</Button>
@@ -127,18 +148,20 @@ console.log(sessionToken)
           setBuilderFields={setBuilderFields}
           builderFields={builderFields}
           menu={menu}
+          app_apperance={app_apperance}
         />
       ) : step == 1 ? (
         <CreateMenu
           menu={menu}
           setMenu={setMenu}
           builderFields={builderFields}
+          app_apperance={app_apperance}
         />
       ) : step == 2 ? (
         "theme"
       ) : step == 3 ? (
         "test"
       ) : null}
-    </>
+    </Spin>
   );
 }

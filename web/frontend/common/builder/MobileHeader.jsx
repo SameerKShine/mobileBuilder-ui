@@ -10,13 +10,14 @@ function MobileHeader({appLogo}) {
       <div className="SD-builder-topbar">
         <div className="builder-topbar-InrBx">
           <div className="menuBox">
-            <img src={search} />
+            <img src={menu} />
           </div>
           <div className="logoBox">
-            <img src={appLogo||logo} />
+            {/* <img src={`https://8326-14-99-195-170.ngrok.io/${appLogo}`||logo} /> */}
+            <img src={logo} />
           </div>
           <div className="icnBox3">
-            <img src={menu} />
+            <img src={search} />
             <img src={Cart} />
           </div>
         </div>

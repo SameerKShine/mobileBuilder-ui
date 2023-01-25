@@ -1,9 +1,13 @@
 import React from 'react'
 import DummyImage from '../../assets/images/dummyImages/dummyImage.png'
 
-function ProductDesign({ viewData }) {
-    console.log(viewData);
-    console.log("Products File");
+function ProductDesign({ viewData, app_appearance }) {
+  let primary_color = "#000"
+  let secondary_color = "#000"
+  if(app_appearance){
+     primary_color = app_appearance?.primary_color??"#000"
+     secondary_color = app_appearance?.secondary_color??"#000"
+  }
     const layOut = viewData.choose_layout;
     let className = "";
     if (layOut == "layout_1") {
@@ -18,7 +22,7 @@ function ProductDesign({ viewData }) {
   return (
     <>
     <div className="jstBtwn">
-      {viewData.show_heading && <h2>{viewData.heading ?? "Products"}</h2>}
+      {viewData.show_heading && <h2 style={{"color":primary_color??"#000"}}>{viewData.heading ?? "Products"}</h2>}
       <a>View All</a>
     </div>
     <>
@@ -28,7 +32,7 @@ function ProductDesign({ viewData }) {
             <div key={index} className={`grid-item ${className}`}>
               <img width={100} src={ele?.image?.url ?? DummyImage} />
               <div className="product-text">
-                <h6>{ele.label}</h6>
+                <h6 style={{"color":secondary_color??"#000"}}>{ele.label}</h6>
                 {viewData?.show_price && <p>$ {ele?.price?.amount}</p>}
               </div>
             </div>
@@ -38,29 +42,29 @@ function ProductDesign({ viewData }) {
             <div className={`grid-item ${className}`}>
               <img width={100} src={DummyImage} />
               <div className="product-text">
-                <h6>Title</h6>
-                {viewData?.show_price && <p>$ 345</p>}
+                <h6  style={{"color":secondary_color??"#000"}}>Title</h6>
+                {viewData?.show_price && <p  style={{"color":secondary_color??"#000"}}>$ 345</p>}
               </div>
             </div>
             <div className={`grid-item ${className}`}>
               <img width={100} src={DummyImage} />
               <div className="product-text">
-                <h6>Title</h6>
-                {viewData?.show_price && <p>$ 345</p>}
+                <h6  style={{"color":secondary_color??"#000"}}>Title</h6>
+                {viewData?.show_price && <p  style={{"color":secondary_color??"#000"}}>$ 345</p>}
               </div>
             </div>
             <div className={`grid-item ${className}`}>
               <img width={100} src={DummyImage} />
               <div className="product-text">
-                <h6>Title</h6>
-                {viewData?.show_price && <p>$ 345</p>}
+                <h6  style={{"color":secondary_color??"#000"}}>Title</h6>
+                {viewData?.show_price && <p  style={{"color":secondary_color??"#000"}}>$ 345</p>}
               </div>
             </div>
             <div className={`grid-item ${className}`}>
               <img width={100} src={DummyImage} />
               <div className="product-text">
-                <h6>Title</h6>
-                {viewData?.show_price && <p>$ 345</p>}
+                <h6  style={{"color":secondary_color??"#000"}}>Title</h6>
+                {viewData?.show_price && <p  style={{"color":secondary_color??"#000"}}>$ 345</p>}
               </div>
             </div>
           </>

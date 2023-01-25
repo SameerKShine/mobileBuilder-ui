@@ -1,29 +1,30 @@
+
+
 import multer from "multer";
+
+
+
+
+
+
+
 import path from "path";
 import fs from 'fs'
+import { Console } from "console";
 
 
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    // console.log(req, "hhhhhh");
-
-    cb(null, "");
+    cb(null, "public/images");
   },
-
   filename: (req, file, cb) => {
-    const ext = file.mimetype.split("/")[1];
+       console.log(file)
+    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname))
+    }
 
-    // console.log(req.body.shop, "hhhhhh");
-
-    const shop = req.body.shop;
-
-    cb(
-      null,
-
-      `public/-${file.fieldname}-${Date.now()}.${ext}`
+      // `public/-${file.fieldname}-${Date.now()}.${ext}`
       // file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
-  },
+    
 });
 
 // const multerStorage = multer.diskStorage({
@@ -69,7 +70,8 @@ const multerStorage = multer.diskStorage({
       return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
     }
   },
-}).single("menuIcon");
+}
+).single("menuIcon");
 
 export const UploadImage = async(req, res) => {
 console.log('enter here in upload function')
@@ -83,10 +85,11 @@ console.log('enter here in upload function')
         error: err,
       });
     } else if (req.file) {
+
       console.log('enter in correct ')
-      res.send({ status: true, url: req.file.filename });
+      res.send({ status: true, url: "https://32f6-14-99-195-170.ngrok.io/web/public/images/" + req.file.filename  });
     }
-    // console.log(req.file,"hahahah")
+    // console.log(req.file,"hahahah") 
 
    
   });

@@ -4,7 +4,7 @@ import MobileHeader from './MobileHeader';
 import MenuPreview from './MenuPreview';
 import { useMobileview } from '../../globalState/mobileView';
  
-function PreviewCard({children, data, bottomRef}) {
+function PreviewCard({children, data, bottomRef, className, mainClass,bgColor}) {
 
   const { mobileview , setMobileview} = useMobileview();
   console.log(mobileview)
@@ -14,8 +14,8 @@ function PreviewCard({children, data, bottomRef}) {
         setMobileview(e.target.value)
     },[value])
   return (
-    <div className="SD-builderPreview">
-      <div className='SD-mpbile_select'>
+    <div className={"SD-builderPreview " + mainClass}>
+    { (data !== "globalSetting" && data !=="globalSetting_hideHeader")  &&<div className='SD-mpbile_select'>
         <Radio.Group onChange={onChange} value={mobileview}>
           <Radio.Button value="/assets/images/phoneView/android.png">
             Andriod View
@@ -24,19 +24,19 @@ function PreviewCard({children, data, bottomRef}) {
             IOS View
           </Radio.Button>
         </Radio.Group>
-      </div>
+      </div>}
 
       <div
-        className="white-bg-box mobile_preview"
+        className={"white-bg-box mobile_preview " +className??''}
         style={{ backgroundImage: `url(${mobileview})` }}
       >
-        <MobileHeader />
-        <div className="inner-scroll-cont">
+        {data !=="globalSetting_hideHeader"&&<MobileHeader/>}
+        <div className="inner-scroll-cont" style={{'backgroundColor':bgColor??"#fff"}}>
           {children}
           <div ref={bottomRef}></div>
         </div>
        
-        <MenuPreview data={data} />
+       {(data !== "globalSetting" && data !=="globalSetting_hideHeader") && <MenuPreview data={data} />}
       </div>
     </div>
   )

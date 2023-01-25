@@ -8,6 +8,8 @@ import adminRoutes from "./backend/api/adminRoutes.js";
 import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import GDPRWebhookHandlers   from "./gdpr.js";
+import storefrontRoutes from "./backend/api/storefrontRoutes.js";
+
 
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
 
@@ -35,6 +37,8 @@ app.post(
 //   );
 mongodb()
 app.use(express.json());
+
+app.use("/api/storefront/", storefrontRoutes)
 app.use("/api/admin/",shopify.validateAuthenticatedSession(), adminRoutes)
 // All endpoints after this point will require an active session
 app.use("/api/*", shopify.validateAuthenticatedSession());

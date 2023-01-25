@@ -79,7 +79,8 @@ export async function getProducts(req, res) {
             id: products.node.id,
             label: products.node.title,
             image: products.node.featuredImage,
-            price: products.node.priceRangeV2.minVariantPrice,
+            amout: products.node.priceRangeV2.minVariantPrice.amount,
+          currency_code: products.node.priceRangeV2.minVariantPrice.currencyCode,
           });
         });
   
@@ -220,7 +221,8 @@ export async function getProducts(req, res) {
           id: products.node.id,
           label: products.node.title,
           image: products.node.featuredImage,
-          price: products.node.priceRangeV2.minVariantPrice,
+          amout: products.node.priceRangeV2.minVariantPrice.amount,
+          currency_code: products.node.priceRangeV2.minVariantPrice.currencyCode,
         });
       });
   

@@ -216,7 +216,7 @@
   justify-content: space-evenly;
   padding: 20px 2px 80px 2px;
   background: #fff;
-  height: 99vh;
+  height: 94vh;
   overflow: auto;
   align-content: baseline;
   width: 16%;
@@ -295,7 +295,7 @@
     border-radius: 3px;
     box-shadow: 0 0 0.3125rem #1718180d, 0 0.0625rem 0.125rem #00000026;
     transition: all 0.5s ease-in-out;
-    height: 100vh;
+    height: 94vh;
     overflow: auto;
     overflow-x: hidden;
     padding-bottom: 30px;
@@ -1842,13 +1842,19 @@ figure {
 
   /* *****************************************GLOBAL SETTING ******************************* */
   .SD-globalSetting{
-    padding: 40px;
-  }
-  .SD-appLogo{
     display: flex;
-    align-items: center;
-    justify-content:space-around;
   }
+  .globalSettingLeftSection{
+    padding: 20px;
+    width: 30%;
+  }
+ .globalSettingLeftSection li{
+  list-style: none;
+  margin-bottom: 16px;
+ }
+ .globalSettingLeftSection ul{
+   padding-left: 0;
+ }
   .globalSettingIconPrev{
     border: 6px solid grey;
     width: 40%;
@@ -1860,5 +1866,28 @@ figure {
 .globalSettingSaveBtn{
   text-align: right;
   margin-bottom: 10px;
+}
+.globalSettingEle{
+  display: flex;
+  justify-content: space-between;
+}
+.globalSettingPrev{
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+.globalSettingView{
+  width: 50%;
+  height: 597px;
+}
+.builderApperancePrev{
+  height: 597px;
+  width: 28%;
+}
+.appApperancePrev{
+  width: 70%;
+}
+.mainClassApperancePrev{
+  width: 100%;
 }
   /* *****************************************GLOBAL SETTING END ******************************* */

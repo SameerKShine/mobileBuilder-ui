@@ -4,7 +4,12 @@ const { Schema } = mongoose;
 let globalSettingData = new Schema(
   {
     shop: { type: String, required: true },
-    global_setting: { type: Array },
+    global_setting: { 
+      app_icon: String,
+      splash_screen: String,
+      app_name:String
+
+     },
   },
   { timestamps: true }
 );

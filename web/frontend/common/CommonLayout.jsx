@@ -8,6 +8,7 @@ import ExitIcon from "../assets/images/layout/exit.svg";
 import { Fullscreen } from "@shopify/app-bridge/actions";
 import { Button, Tooltip } from "antd";
 import { FullscreenOutlined, FullscreenExitOutlined } from "@ant-design/icons";
+import { SettingOutlined, BgColorsOutlined } from "@ant-design/icons";
 
 function Test() {
   const [step, setStep] = useState(0);
@@ -75,6 +76,7 @@ function Test() {
         <nav>
           <ul className="SD-layoutSideBar">
             <li>
+            <Tooltip title="Builder">
               <Link
                 className={
                   params.pathname == "/"
@@ -85,8 +87,10 @@ function Test() {
               >
                 <img src={DashboardIcon} />
               </Link>
+              </Tooltip>
             </li>
             <li>
+            <Tooltip title="Push Notification">
               <Link
                 className={
                   params.pathname == "/push-notification"
@@ -97,8 +101,25 @@ function Test() {
               >
                 <img src={DashboardIcon} />
               </Link>
+              </Tooltip>
             </li>
             <li>
+            <Tooltip title="App Apperance">
+              <Link
+                className={
+                  params.pathname == "/app-design"
+                    ? "SD-sidebar_active"
+                    : "sidebar_no_active"
+                }
+                to="/app-design"
+              >
+                <BgColorsOutlined width="2rem" />
+                {/* <img src={DashboardIcon} /> */}
+              </Link>
+              </Tooltip>
+            </li>
+            <li>
+            <Tooltip title="Global Settings">
               <Link
                 className={
                   params.pathname == "/globalSettings"
@@ -109,18 +130,7 @@ function Test() {
               >
                 <img src={DashboardIcon} />
               </Link>
-            </li>
-            <li>
-              <Link
-                className={
-                  params.pathname == "/admin/builder"
-                    ? "SD-sidebar_active"
-                    : "sidebar_no_active"
-                }
-                to="/admin/builder"
-              >
-                <img src={DashboardIcon} />
-              </Link>
+              </Tooltip>
             </li>
           </ul>
         </nav>

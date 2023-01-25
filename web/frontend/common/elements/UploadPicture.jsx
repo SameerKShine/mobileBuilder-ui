@@ -14,14 +14,19 @@ function UploadPicture({
   disable,
   onuploadImage,
   className,
+  name
 }) {
   const [uploadFile, setUploadFile] = useState("");
   const [serverImg, setServerImg] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   // console.log(disable);
   const {app} = useAPI();
+
   const handleUploadImage = async (e) => {
     // setUploadFile(URL.createObjectURL(e.target.files[0]));
+    // const img = new Image();
+    // img.src = uploadFile;
+ 
     console.log("enter in valid condition", e.target.files[0]);
     const formData = new FormData();
     setErrorMessage("");
@@ -32,7 +37,7 @@ function UploadPicture({
         // console.log(data);
         setServerImg(data.url);
         setUploadFile(data.url)
-        onuploadImage(data.url)
+        onuploadImage(data.url, e.target.name)
       })
       .catch((err) => console.log(err));
   };
@@ -55,7 +60,7 @@ function UploadPicture({
   return (
     <div className={className}>
       <label>{label ?? ""}</label>
-      <input disabled={disable} type="file" onChange={handleUploadImage} />
+      <input disabled={disable} type="file" name={name} onChange={handleUploadImage} />
       <div>
         {uploadFile !== "" && (
           <>

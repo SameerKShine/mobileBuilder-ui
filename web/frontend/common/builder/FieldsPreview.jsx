@@ -5,9 +5,11 @@ import CollectionDesign from "./CollectionDesign";
 import ProductDesign from "./ProductDesign";
 import DummyImage from "../../assets/images/dummyImages/dummyImage.png"
 import DummyProductImage from "../../assets/images/dummyImages/hero.png"
-export const FieldsPreview = (eleType, index) => {
+export const FieldsPreview = (eleType, index, app_appearance) => {
+
+
     const style = eleType.style;
-    // console.log(eleType)
+    // console.log(app_appearance)
     switch (eleType.type) {
       case "header":
         return (
@@ -87,7 +89,7 @@ export const FieldsPreview = (eleType, index) => {
               padding: `${style.padding_top}px  ${style.padding_right}px  ${style.padding_bottom}px  ${style.padding_left}px `,
             }}
           >
-              <CollectionDesign  key={index} viewData={eleType} />
+              <CollectionDesign  key={index} viewData={eleType} app_appearance={app_appearance} />
           </div>
         );
       case "offer":
@@ -112,7 +114,7 @@ export const FieldsPreview = (eleType, index) => {
             }}
           >
             <div className="products-box">
-                <ProductDesign viewData={eleType} />
+                <ProductDesign viewData={eleType} app_appearance={app_appearance} />
             </div>
           </div>
         );
@@ -126,7 +128,7 @@ export const FieldsPreview = (eleType, index) => {
             }}
           >
             <div className="products-box">
-            <ProductDesign viewData={eleType} />
+            <ProductDesign viewData={eleType} app_appearance={app_appearance} />
             </div>
           </div>
         );
@@ -141,6 +143,7 @@ export const FieldsPreview = (eleType, index) => {
               textAlign: eleType.text_align,
             }}
           >
+            {/* <span>Featured Products</span> */}
             <h2
               style={{
                 color: style.heading_color,

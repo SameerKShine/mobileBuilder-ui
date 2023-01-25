@@ -6,7 +6,7 @@ import PreviewCard from "../../common/builder/PreviewCard";
 import SaveChangesBar from "../../common/SaveChangesBar";
 import {usePrevious} from "../../hooks";
 
-function CreateMenu({ setMenu, menu, builderFields }) {
+function CreateMenu({ setMenu, menu, builderFields, app_apperance }) {
   const [showTopbar, setShowTopbar] = useState(false);
   const checkVal = usePrevious(menu);
   useEffect(() => {
@@ -37,9 +37,9 @@ function CreateMenu({ setMenu, menu, builderFields }) {
 
       <div className="SD-editSection">
         <MenuOptions menu={menu} setMenu={setMenu} />
-        <PreviewCard data={menu}>
+        <PreviewCard data={menu}  bgColor={app_apperance?.background_color}>
           {builderFields.map((eleType, index) => {
-            return <div key={index}>{FieldsPreview(eleType, index)}</div>;
+            return <div key={index}>{FieldsPreview(eleType, index, app_apperance)}</div>;
           })}
         </PreviewCard>
         <EditMenu menu={menu} setMenu={setMenu} />
