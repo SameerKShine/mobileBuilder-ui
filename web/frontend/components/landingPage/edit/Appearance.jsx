@@ -20,7 +20,7 @@ function Appearance({
     console.log(flag);
     let newData = [...data];
     console.log(newData[fieldIndex]);
-    newData[fieldIndex].style[flag] = newValue;
+    newData[fieldIndex].style[flag] =newValue;
     setBuilderFields(newData);
   };
 
@@ -40,7 +40,7 @@ function Appearance({
               // <div  key={index}>
               <CommonInput
                 label={input.label}
-                value={data[fieldIndex]?.style[input.name] ?? "0"}
+                value={data[fieldIndex]?.style[input.name] ?? 0}
                 onChange={(e) =>
                   handleEditElement(e.target.value, e.target.name)
                 }
@@ -96,7 +96,7 @@ return(
             min_range = {18}
             step = ''
             val = {eleValue.heading_size}
-            onChange={(e) => onChange(e, 'heading_size')}
+            onChange={(e) => onChange(e.toString(), 'heading_size')}
             />
             <Slider_field
             label = 'Subheading size'
@@ -104,7 +104,7 @@ return(
             min_range = {12}
             step = ''
             val = {eleValue.subheading_size}
-            onChange={(e) => onChange(e, 'subheading_size')}
+            onChange={(e) => onChange(e.toString(), 'subheading_size')}
             />
              <Slider_field
             label = 'Heading weight'
@@ -112,7 +112,7 @@ return(
             min_range = {100}
             step = {100}
             val = {eleValue.heading_weight}
-            onChange={(e) => onChange(e, 'heading_weight')}
+            onChange={(e) => onChange(e.toString(), 'heading_weight')}
             />
             <Slider_field
             label = 'Sub heading size'
@@ -120,7 +120,7 @@ return(
             min_range = {100}
             step = {100}
             val = {eleValue.subheading_weight}
-            onChange={(e) => onChange(e, 'subheading_weight')}
+            onChange={(e) => onChange(e.toString(), 'subheading_weight')}
             />
           </div>
 
@@ -167,43 +167,43 @@ return(
           <div className="border-radius-sec">
             <a
               className={
-                data[fieldIndex]?.style[field] == "0" &&
+                data[fieldIndex]?.style[field] == 0 &&
                 "border-radius-icon-active"
               }
-              onClick={() => onChange("0", field)}
+              onClick={() => onChange(0, field)}
             >
               <Icon
                 source={ButtonCornerSquareMajor}
                 color={
-                  data[fieldIndex]?.style[field] == "0" ? "interactive" : "base"
+                  data[fieldIndex]?.style[field] == 0 ? "interactive" : "base"
                 }
               />
             </a>
             <a
               className={
-                data[fieldIndex]?.style[field] == "5" &&
+                data[fieldIndex]?.style[field] == 5 &&
                 "border-radius-icon-active"
               }
-              onClick={() => onChange("5", field)}
+              onClick={() => onChange(5, field)}
             >
               <Icon
                 source={ButtonCornerRoundedMajor}
                 color={
-                  data[fieldIndex]?.style[field] == "5" ? "interactive" : "base"
+                  data[fieldIndex]?.style[field] == 5 ? "interactive" : "base"
                 }
               />
             </a>
             <a
               className={
-                data[fieldIndex]?.style[field] == "20" &&
+                data[fieldIndex]?.style[field] == 20 &&
                 "border-radius-icon-active"
               }
-              onClick={() => onChange("20", field)}
+              onClick={() => onChange(20, field)}
             >
               <Icon
                 source={ButtonCornerPillMajor}
                 color={
-                  data[fieldIndex]?.style[field] == "20"
+                  data[fieldIndex]?.style[field] == 20
                     ? "interactive"
                     : "base"
                 }
@@ -249,7 +249,7 @@ return(
             min_range = {24}
             step = ''
             val = {eleValue.heading_text_size}
-            onChange={(e) => onChange(e, 'heading_text_size')}
+            onChange={(e) => onChange(e.toString(), 'heading_text_size')}
             />
             <Slider_field
             label = 'Subtitle'
@@ -274,7 +274,7 @@ return(
             min_range = {100}
             step = {100}
             val = {eleValue.heading_weight}
-            onChange={(e) => onChange(e, 'heading_weight')}
+            onChange={(e) => onChange(e.toString(), 'heading_weight')}
             />
                 <Slider_field
             label = 'Subtitle bold'
@@ -282,7 +282,7 @@ return(
             min_range = {100}
             step = {100}
             val = {eleValue.subtitle_weight}
-            onChange={(e) => onChange(e, 'subtitle_weight')}
+            onChange={(e) => onChange(e.toString(), 'subtitle_weight')}
             />
           </div>
           {colorField_group(colorFields)}
