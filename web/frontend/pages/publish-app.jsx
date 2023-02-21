@@ -226,7 +226,8 @@ function PublishApp() {
             name="country_select"
             id="country_select"
             // value={formik.values.country_select}
-            onChange={formik.handleChange}
+            // onChange={formik.handleChange}
+            onChange={(e)=>console.log(e)}
           />
         </div>
         </div>

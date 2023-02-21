@@ -2010,6 +2010,7 @@ figure {
 }
 ul.plan-list {
   text-align: left;
+  list-style: none;
   padding: 18px;
 }
 .check-plan-icon svg {
@@ -2118,7 +2119,7 @@ padding: 5px;
   display: flex;
 }
 .mydesign_section{
-  /* padding: 40px; */
+  border-radius: 12px;
   margin-right: 10px;
   background-color: #ffffff;
   box-shadow: 6px 5px 9px 1px #bdbdbd;
@@ -2128,7 +2129,9 @@ padding: 5px;
     align-items: center;
     justify-content: flex-end;
     padding: 11px 9px 7px 0px;
-    background-image: linear-gradient(to right, white , #8f8f8d);
+    background: #b488f51c;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
 }
 .publishSection span{
   margin-right: 8px;
@@ -2137,20 +2140,26 @@ padding: 5px;
   padding: 40px;
   display: flex;
   flex-direction: column;
+  background: #b488f51c;
 }
 .mydesign_section:hover{
   box-shadow: 1px 1px 15px 3px #441982ba;
+  
 }
 .editDesignButton{
-  background: #cbc2c2;
+  background: #55239f;
   padding: 11px 0px 9px 4px;
   text-align: right;
 }
-.editDesignButton span{
+.editDesignButton span {
   cursor: pointer;
-  padding: 6px 13px;
-  background: grey;
+  padding: 6px 7px;
+  background: #fff;
   border-radius: 23px;
+  margin-right: 10px;
+}
+span.anticon.anticon-edit.icon-edit {
+  margin-right: 0;
 }
 .SD-template-popup h6 {
   text-align: left;
@@ -2182,6 +2191,96 @@ padding: 5px;
   display: block;
 } */
 /* ***************************** Dashboard end ************************* */
+/* ***************************** Profile Page Start **************************** */
+.profile-temp {
+  display: flex;
+}
+.prfile-design {
+  margin: 20px;
+}
+.prfile-design h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #5f5c5c;
+}
+.prfile-design .active {
+  box-shadow: 1px 1px 15px 3px #441982ba;
+  padding: 5px;
+}
+/* ***************************** Profile Page End **************************** */
+/* ***************************** Cart Page Start **************************** */
+.cart-temp {
+  display: flex;
+}
+.cart-design {
+  margin: 20px;
+}
+.cart-design h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #5f5c5c;
+}
+.cart-design .active {
+  box-shadow: 1px 1px 15px 3px #441982ba;
+  padding: 5px;
+}
+.cart-design img {
+  width: 80%;
+}
+/* ***************************** Cart Page End **************************** */
+/* ***************************** Product Page Start **************************** */
+.product-temp {
+  display: flex;
+}
+.product-design {
+  margin: 20px;
+}
+.product-design h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #5f5c5c;
+}
+.product-design .active {
+  box-shadow: 1px 1px 15px 3px #441982ba;
+  padding: 5px;
+}
+.product-design img {
+  width: 80%;
+}
+/* ***************************** Product Page End **************************** */
+/* ******************************Dashboard Design START ********************** */
+h2.SD-dashboard-headings {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.custom-create-temp {
+  border: 2px solid #7b2dec;
+  width: 301px;
+  box-shadow: 6px 5px 9px 1px #bdbdbd;
+  border-radius: 12px;
+}
+.custom-create-button {
+  text-align: center;
+  flex-direction: column;
+  display: flex;
+  background: #f7f2fe;
+  width: 185px;
+  padding: 15px;
+  font-size: 15px;
+  margin: 60px auto;
+  border: 1px dashed #5424a2;
+  border-radius: 10px;
+}
+.custom-create-button svg {
+  font-size: 30px;
+  color: #5424a2;
+}
+/* **************************** Dashboard Design End ************************ */
 
 /* ***************************** Publish app  ************************* */
 .SD-publish_app{
@@ -2223,25 +2322,6 @@ padding: 5px;
   margin-bottom: 10px;
 }
 /* ***************************** App Bar end ************************* */
-
-/* ***************************** Profile Page Start **************************** */
-.profile-temp {
-  display: flex;
-}
-.prfile-design {
-  margin: 20px;
-}
-.prfile-design h3 {
-  margin-bottom: 10px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #5f5c5c;
-}
-.prfile-design .active {
-  box-shadow: 1px 1px 15px 3px #441982ba;
-  padding: 5px;
-}
-/* ***************************** Profile Page End **************************** */
 
 /* ***************************** Sidebar **************************** */
 .sidebarPreview{

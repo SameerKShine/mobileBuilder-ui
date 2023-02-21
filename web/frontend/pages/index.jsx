@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { EditOutlined, LoadingOutlined } from "@ant-design/icons";
+import { EditOutlined, LoadingOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import CommonModal from "../common/modal/CommonModal";
 import postApi from "../utils/postApi";
@@ -293,10 +293,7 @@ function index() {
           className="editDesignButton"
           onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
         >
-          <span>
-            <EditOutlined />
-            Edit
-          </span>
+       <span> <EditOutlined className="icon-edit"/> Edit</span>
         </div>
       </div>
     );
@@ -343,20 +340,29 @@ function index() {
     >
       {templateList.length >= 1 ? (
         <>
-        <div  style={{'textAlign':'right'}} >
-          <button style={{'marginRight':'10px','marginTop':'10px'}} onClick={() => handleSelectDesign("create-theme", "create-theme")}>Create Custom Design</button>
-          {/* {modalButton} */}
-        </div>
-          <h2>Published design</h2>
+          <div style={{ textAlign: "right" }}>
+       
+            {modalButton}
+          </div>
+          <h2 className="SD-dashboard-headings">Published design</h2>
           <div className="myDesigns">
             {templateList.map(
               (ele, index) => ele.publish && createdDesigns(ele, index)
             )}
             <div>
-            {modalButton}
+              <div className="custom-create-temp">
+                <div
+                  className="custom-create-button"
+                  onClick={() =>
+                    handleSelectDesign("create-theme", "create-theme")
+                  }
+                >
+                  <PlusCircleOutlined /> Create Custom Design
+                </div>
+              </div>
             </div>
           </div>
-          <h2>My Designs design</h2>
+          <h2 className="SD-dashboard-headings">My Designs design</h2>
           <div className="myDesigns">
             {templateList.map(
               (ele, index) => !ele.publish && createdDesigns(ele, index)
