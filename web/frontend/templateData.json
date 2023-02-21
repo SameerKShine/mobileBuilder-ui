@@ -1,0 +1,357 @@
+{
+    "template_1": {
+      "design_name": "template_1",
+      "builder_apperance": {
+        "primary_color": "#cd4c4c",
+        "secondary_color": "#922626",
+        "background_color": "#c3c2c2",
+        "font_family": "",
+        "font_size": ""
+      },
+      "landing_page": [
+        {
+            "type": "announcement_bar",
+            "style": {
+              "margin_top": 2,
+              "margin_bottom": 2,
+              "margin_left": 2,
+              "margin_right": 2
+            },
+            "title": "Upcomming trends",
+            "animation_type": "left"
+          },
+          {
+            "type": "header",
+            "style": {
+              "margin_top": 5,
+              "margin_bottom": 4,
+              "margin_left": 5,
+              "margin_right": 4
+            },
+            "heading_text": "Enter Heading here",
+            "subheading_text": "Enter Subheading Here",
+            "text_alignment": "center",
+            "show_subheading": true
+          },
+          {
+            "type": "hero_slider",
+            "style": {
+              "margin_top": 5,
+              "margin_bottom": 5,
+              "margin_left": 3,
+              "margin_right": 4,
+              "button_size": "90%",
+              "button_border": 20,
+              "heading_text_size": 36,
+              "subtitle_text_size": 22,
+              "button_text_size": 15,
+              "heading_weight": "300",
+              "subtitle_weight": "400"
+            },
+            "data": [
+              {
+                "title_text": "Example Test",
+                "button_text": "Add",
+                "sub_title": "example Subtitle",
+                "image": "/assets/images/dummyImages/hero.png"
+              },
+              {
+                "title_text": "Slider 2",
+                "button_text": "Add",
+                "sub_title": "example Subtitle",
+                "image": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+              }
+            ],
+            "show_content": true
+          },
+          {
+            "type": "collection_list",
+            "style": {
+              "margin_top": 4,
+              "margin_bottom": 5,
+              "margin_left": 4,
+              "margin_right": 5
+            },
+            "heading": "Collections",
+            "show_heading": true,
+            "view_style": "slider",
+            "slider_style": "square",
+            "choose_layout": "layout_1",
+            "data": []
+          },
+          {
+            "type": "collections",
+            "style": {
+              "margin_top": 3,
+              "margin_bottom": 3,
+              "margin_left": 4,
+              "margin_right": 4
+            },
+            "heading": "Products",
+            "show_heading": true,
+            "view_style": "slider",
+            "slider_style": "square",
+            "choose_layout": "layout_1",
+            "data": []
+          },
+          {
+            "type": "products",
+            "style": {
+              "margin_top": 5,
+              "margin_bottom": 5,
+              "margin_left": 5,
+              "margin_right": 5
+            },
+            "heading": "Products",
+            "show_heading": true,
+            "view_style": "slider",
+            "slider_style": "square",
+            "choose_layout": "layout_1",
+            "data": []
+          },
+          {
+            "type": "divider",
+            "style": {
+              "size": "1",
+              "color": "#000",
+              "width": "100%",
+              "alignment": "center",
+              "margin_top": 5,
+              "margin_bottom": 5,
+              "margin_left": 4,
+              "margin_right": 5
+            },
+            "divider_type": "solid"
+          },
+          {
+            "type": "text_divider",
+            "style": {
+              "margin_top": 0,
+              "margin_bottom": 0,
+              "margin_left": 0,
+              "margin_right": 0
+            },
+            "divider_text": "Enter Your Title Here"
+          },
+          {
+            "type": "offer",
+            "style": {
+              "margin_top": 4,
+              "margin_bottom": 5,
+              "margin_left": 4,
+              "margin_right": 5,
+              "button_size": "90%",
+              "button_border": 5,
+              "subtitle_text_size": 20,
+              "heading_text_size": 31,
+              "button_text_size": 13,
+              "heading_weight": "200",
+              "subtitle_weight": "200",
+              "button_background_color": "#712828",
+              "button_text_color": "#dad7d7",
+              "title_color": "#c8b1b1",
+              "subtitle_color": "#bdb3b3"
+            },
+            "data": [
+              {
+                "title_text": "Example Test",
+                "button_text": "Add",
+                "sub_title": "example Subtitle",
+                "image": "/assets/images/dummyImages/hero.png"
+              },
+              {
+                "title_text": "Slider 2",
+                "button_text": "Add",
+                "sub_title": "example Subtitle",
+                "image": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+              }
+            ],
+            "show_content": true
+          },
+          {
+            "type": "featured_product",
+            "style": {
+              "margin_top": 4,
+              "margin_bottom": 4,
+              "margin_left": 4,
+              "margin_right": 7
+            },
+            "featured_title": "Featured Product",
+            "subtitle_text": "The fashion is here!"
+          },
+          {
+            "type": "countdown_offer",
+            "style": {
+              "margin_top": 4,
+              "margin_bottom": 3,
+              "margin_left": 2,
+              "margin_right": 2,
+              "background_style": {
+                "type": "color"
+              }
+            },
+            "heading1": "Deal of the day",
+            "paragraph1": "Black Friday",
+            "choose_layout": "layout_1",
+            "countdown_date": {
+              "start_date": "",
+              "end_date": "",
+              "start_time": "",
+              "end_time": ""
+            }
+          },
+          {
+            "type": "countdown_offer",
+            "style": {
+              "margin_top": 1,
+              "margin_bottom": 1,
+              "margin_left": 1,
+              "margin_right": 1,
+              "background_style": {
+                "type": "gradiant",
+                "gradient_color1": "#641717",
+                "gradient_color2": "#efebeb"
+              },
+              "heading_color": "#ddd5d5",
+              "sub_heading_color": "#4b2626",
+              "heading_text_size": 33,
+              "subtitle_text_size": 43,
+              "heading_line_height": 2,
+              "subtitle_line_height": 1,
+              "box_radius": 5,
+              "timer_background_color": "#bb7c7c"
+            },
+            "heading1": "Deal of the day",
+            "paragraph1": "Black Friday",
+            "choose_layout": "layout_2",
+            "countdown_date": {
+              "start_date": "2023/01/27",
+              "end_date": "2023/02/23",
+              "start_time": "06:06:06",
+              "end_time": "13:07:07"
+            },
+            "day_text": "Day",
+            "hours_text": "Hours ",
+            "min_text": "Minute ",
+            "sec_text": "Second "
+          }
+      ]
+    },
+    "template_2": {
+        "design_name": "template_1",
+        "builder_apperance": {
+          "primary_color": "#cd4c4c",
+          "secondary_color": "#922626",
+          "background_color": "#c3c2c2",
+          "font_family": "",
+          "font_size": ""
+        },
+        "landing_page": [
+            {
+              "type": "header",
+              "style": {
+                "margin_top": 5,
+                "margin_bottom": 4,
+                "margin_left": 5,
+                "margin_right": 4
+              },
+              "heading_text": "Enter Heading here",
+              "subheading_text": "Enter Subheading Here",
+              "text_alignment": "center",
+              "show_subheading": true
+            },
+            {
+              "type": "collection_list",
+              "style": {
+                "margin_top": 4,
+                "margin_bottom": 5,
+                "margin_left": 4,
+                "margin_right": 5
+              },
+              "heading": "Collections",
+              "show_heading": true,
+              "view_style": "slider",
+              "slider_style": "square",
+              "choose_layout": "layout_1",
+              "data": []
+            },
+            {
+              "type": "collections",
+              "style": {
+                "margin_top": 3,
+                "margin_bottom": 3,
+                "margin_left": 4,
+                "margin_right": 4
+              },
+              "heading": "Products",
+              "show_heading": true,
+              "view_style": "slider",
+              "slider_style": "square",
+              "choose_layout": "layout_1",
+              "data": []
+            },
+            {
+              "type": "products",
+              "style": {
+                "margin_top": 5,
+                "margin_bottom": 5,
+                "margin_left": 5,
+                "margin_right": 5
+              },
+              "heading": "Products",
+              "show_heading": true,
+              "view_style": "slider",
+              "slider_style": "square",
+              "choose_layout": "layout_1",
+              "data": []
+            },
+            {
+              "type": "divider",
+              "style": {
+                "size": "1",
+                "color": "#000",
+                "width": "100%",
+                "alignment": "center",
+                "margin_top": 5,
+                "margin_bottom": 5,
+                "margin_left": 4,
+                "margin_right": 5
+              },
+              "divider_type": "solid"
+            },
+            {
+              "type": "featured_product",
+              "style": {
+                "margin_top": 4,
+                "margin_bottom": 4,
+                "margin_left": 4,
+                "margin_right": 7
+              },
+              "featured_title": "Featured Product",
+              "subtitle_text": "The fashion is here!"
+            },
+            {
+              "type": "countdown_offer",
+              "style": {
+                "margin_top": 4,
+                "margin_bottom": 3,
+                "margin_left": 2,
+                "margin_right": 2,
+                "background_style": {
+                  "type": "color"
+                }
+              },
+              "heading1": "Deal of the day",
+              "paragraph1": "Black Friday",
+              "choose_layout": "layout_1",
+              "countdown_date": {
+                "start_date": "",
+                "end_date": "",
+                "start_time": "",
+                "end_time": ""
+              }
+            }
+        ]
+      }
+  }
+  

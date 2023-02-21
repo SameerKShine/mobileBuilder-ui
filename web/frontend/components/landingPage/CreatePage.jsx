@@ -7,7 +7,7 @@ import EditSection from "./edit/EditSection";
 import { useElementVal, useApi } from "../../hooks";
 import SaveChangesBar from "../../common/SaveChangesBar";
 
-function CreatePage({ builderFields, setBuilderFields, menu, app_apperance }) {
+function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_bar }) {
   const [dropHere, setDropHere] = useState(false);
   const [openEditForm, setEditForm] = useState(true);
 
@@ -72,19 +72,12 @@ function CreatePage({ builderFields, setBuilderFields, menu, app_apperance }) {
   
   return (
     <>
-      {showTopbar && (
-        <SaveChangesBar
-          api_url="/landingPage"
-          setShowTopbar={setShowTopbar}
-          data={builderFields}
-        />
-      )}
       <div className="SD-editSection">
         <ElementList
           setDropHere={setDropHere}
           handleAddElements={handleAddElements}
         />
-        <PreviewCard data={menu} bottomRef={bottomRef} bgColor={app_apperance?.background_color}>
+        <PreviewCard data={menu} bottomRef={bottomRef} app_bar={app_bar} bgColor={app_apperance?.background_color}>
           <Droppable
             types={["string"]}
             onDrop={(data) => handleAddElements(data.string, "TOP_DRAG")}

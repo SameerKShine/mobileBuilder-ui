@@ -42,7 +42,7 @@ function Appearance({
                 label={input.label}
                 value={data[fieldIndex]?.style[input.name] ?? 0}
                 onChange={(e) =>
-                  handleEditElement(e.target.value, e.target.name)
+                  handleEditElement(parseInt(e.target.value), e.target.name)
                 }
                 input={{
                   name: input.name,
@@ -249,7 +249,7 @@ return(
             min_range = {24}
             step = ''
             val = {eleValue.heading_text_size}
-            onChange={(e) => onChange(e.toString(), 'heading_text_size')}
+            onChange={(e) => onChange(e, 'heading_text_size')}
             />
             <Slider_field
             label = 'Subtitle'
@@ -397,7 +397,7 @@ return(
                 <div key={index} className=" ">
                   <Color_field
                     label={inp.label}
-                    // value = {data[fieldIndex]?.style?.background_style[inp.name] ?? '#fff'}
+                    value = {data[fieldIndex]?.style?.background_style[inp.name] ?? '#fff'}
                     name={inp.name}
                     onChange={(e) =>
                       handleEditElement(e.target.value, e.target.name)

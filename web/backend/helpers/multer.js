@@ -29,9 +29,9 @@ const multerStorage = multer.diskStorage({
 
 // const multerStorage = multer.diskStorage({
 //   destination: (req, file, cb) => {
-//     // console.log(req, "hhhhhh");
+//     console.log(req, "hhhhhh");
 
-//     cb(null, "public/uploads/");
+//     cb(null, "");
 //   },
 
 //   filename: (req, file, cb) => {
@@ -40,13 +40,13 @@ const multerStorage = multer.diskStorage({
 //     // console.log(req.body.shop, "hhhhhh");
 
 //     const shop = req.body.shop;
-//     cb(null,file.fieldname+"-"+Date.now().ext);
-//     // cb(
-//     //   null,
 
-//     //   `./public/uploads/-${file.fieldname}-${Date.now()}.${ext}`
-//     //   // file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-//     // );
+//     cb(
+//       null,
+
+//       `public/-${file.fieldname}-${Date.now()}.${ext}`
+//       // file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+//     );
 //   },
 // });
 
@@ -86,8 +86,10 @@ console.log('enter here in upload function')
       });
     } else if (req.file) {
 
-      console.log('enter in correct ')
-      res.send({ status: true, url: "https://32f6-14-99-195-170.ngrok.io/web/public/images/" + req.file.filename  });
+      // console.log('enter in correct ====>> ', req.file.destination)
+      console.log(req.file.path)
+      res.send({ status: true, url: `${req.file.destination}/${req.file.filename}`});
+      // res.send({ status: true, url: req.file.path});
     }
     // console.log(req.file,"hahahah") 
 

@@ -9,7 +9,7 @@ export default {
 
    PRODUCTS_UPDATE: {
     deliveryMethod: DeliveryMethod.Http,
-    callbackUrl: "/api/webhooks",
+    callbackUrl: "products/update",
     callback: async (topic, shop, body, webhookId) => {
       console.log('--- Product update ---');
       const payload = JSON.parse(body);

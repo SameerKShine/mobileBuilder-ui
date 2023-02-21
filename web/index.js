@@ -19,7 +19,7 @@ const STATIC_PATH =
     : `${process.cwd()}/frontend/`;
 
 const app = express();
-// console.log(shopify)
+// console.log( "process.env.SCOPES", process.env.SCOPES)
 // Set up Shopify authentication and webhook handling
 app.get(shopify.config.auth.path, shopify.auth.begin());
 app.get(
@@ -27,6 +27,9 @@ app.get(
   shopify.auth.callback(),
   shopify.redirectToShopifyOrAppRoot()
 );
+
+console.log(process.env.HOST)
+
 app.post(
   shopify.config.webhooks.path,
   shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
@@ -38,7 +41,7 @@ app.post(
 mongodb()
 app.use(express.json());
 
-app.use("/api/storefront/", storefrontRoutes)
+app.use("/api/storefront/",shopify.validateAuthenticatedSession(), storefrontRoutes)
 app.use("/api/admin/",shopify.validateAuthenticatedSession(), adminRoutes)
 // All endpoints after this point will require an active session
 app.use("/api/*", shopify.validateAuthenticatedSession());

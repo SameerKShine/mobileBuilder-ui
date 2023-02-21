@@ -2,7 +2,7 @@ import React from 'react'
 import { Carousel } from "antd";
 
 function HeroSlider({ viewData }) {
-    console.log(viewData);
+    // console.log(viewData);
     const contentStyle = {
       height: "160px",
       color: "#fff",

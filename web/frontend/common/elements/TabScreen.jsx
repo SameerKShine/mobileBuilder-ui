@@ -31,6 +31,7 @@ function TabScreen({ firstTab, secondTab }) {
     defaultActiveKey="1"
     animated={true}
     items={items}
+    type='card'
   />
   )
 }

@@ -26,7 +26,7 @@ function UploadPicture({
     // setUploadFile(URL.createObjectURL(e.target.files[0]));
     // const img = new Image();
     // img.src = uploadFile;
- 
+ const prevImg = URL.createObjectURL(e.target.files[0])
     console.log("enter in valid condition", e.target.files[0]);
     const formData = new FormData();
     setErrorMessage("");
@@ -37,7 +37,7 @@ function UploadPicture({
         // console.log(data);
         setServerImg(data.url);
         setUploadFile(data.url)
-        onuploadImage(data.url, e.target.name)
+        onuploadImage(data.url, e.target.name, prevImg)
       })
       .catch((err) => console.log(err));
   };

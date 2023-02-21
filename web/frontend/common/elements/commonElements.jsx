@@ -41,7 +41,7 @@ export function CommonSelect(props) {
 
 export const Color_field = (props) => {
   return (
-    <div className="SD-color_field SD-countdown">
+    <div className={`SD-color_field SD-countdown ${props.mainClass ?? ""}`}>
       <label>{props.label}</label>
       <div className="color_fieldDiv backGroundSection SD-common_input">
         <input

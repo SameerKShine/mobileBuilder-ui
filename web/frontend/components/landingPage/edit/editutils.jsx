@@ -57,7 +57,7 @@ export const editHeader = (
       <CommonInput
         label="Heading"
         className=" "
-        value={builderFields[elementIndex].heading_text}
+        value={builderFields[elementIndex]?.heading_text}
         onChange={handleEditElement}
         input={{
           name: "heading_text",
@@ -202,7 +202,13 @@ export const editHeroSlider = (
           setBuilderFields
         )}
       </div>
-
+      {commonToggle(
+                  "Content",
+                  "show_content",
+                  builderFields,
+                  elementIndex,
+                  setBuilderFields
+                )}
       <Collapse ghost={true} accordion collapsible="icon">
         {builderFields[elementIndex].data.map((ele, index) => {
           return (
@@ -283,13 +289,7 @@ export const editHeroSlider = (
                   value={ele.text_alignment}
                   option={options}
                 />
-                {commonToggle(
-                  "Content",
-                  "show_content",
-                  builderFields,
-                  elementIndex,
-                  setBuilderFields
-                )}
+            
               </Panel>
             </>
           );

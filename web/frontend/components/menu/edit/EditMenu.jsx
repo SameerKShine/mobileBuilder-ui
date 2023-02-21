@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  EditOutlined,
-  DragOutlined,
-  DeleteOutlined,
-  CloseOutlined,
-} from "@ant-design/icons";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { Tooltip } from "antd";
+import { CloseOutlined } from "@ant-design/icons";
 import CustomiseIcon from "./CustomiseIcon";
 import { Color_field } from "../../../common/elements/commonElements";
 import TabScreen from "../../../common/elements/TabScreen";
+import { errToast } from "../../../common/notification/notification";
+import DragDrop from "../../../common/elements/DragDrop";
 
 const element_types = [
   {
@@ -87,8 +82,12 @@ function EditMenu({ setMenu, menu }) {
   //  console.log(ele_types)
   const handleAddElement = (index, name) => {
     const d = element_types.find((el) => el.id == name);
-    console.log(d);
-    setMenu({ ...menu, elements: [...menu.elements, d] });
+    console.log("menu.elements ", menu.elements.length);
+    if (menu.elements.length < 5) {
+      setMenu({ ...menu, elements: [...menu.elements, d] });
+    } else {
+      errToast("only 5 menu can be selected", "top");
+    }
   };
   const handleDeleteElement = (index) => {
     console.log("handle delete", index);
@@ -138,8 +137,9 @@ function EditMenu({ setMenu, menu }) {
             }
           >
             <div className="editMenu_selectedIcon">
-              <img src={ele.icon_url} /> <span> {add == ""?ele.title:ele.id} </span>
-            </div>{" "}
+              <img src={ele.icon_url} />
+              <span> {add == "" ? ele.title : ele.id} </span>
+            </div>
           </li>
         ))}
       </ul>
@@ -151,79 +151,17 @@ function EditMenu({ setMenu, menu }) {
       <div className="">
         <div>
           <h2 className="SD-sidebarOptn">Menu Types</h2>
-          <ul className="SD-menuLists">
-            <DragDropContext onDragEnd={handleDrag}>
-              <Droppable droppableId="characters">
-                {(provided) => {
-                  return (
-                    <div {...provided.droppableProps} ref={provided.innerRef}>
-                      {menu.elements.map((ele, index) => {
-                        return (
-                          <Draggable
-                            className="sd-ado-maindnd"
-                            key={index}
-                            draggableId={index.toString()}
-                            index={index}
-                          >
-                            {(provided, snapshot) => {
-                              return (
-                                <li
-                                  className="selected_menu"
-                                  ref={provided.innerRef}
-                                  {...provided.draggableProps}
-                                  style={
-                                    snapshot.isDragging
-                                      ? {
-                                          background: "",
-                                          ...provided.draggableProps.style,
-                                        }
-                                      : provided.draggableProps.style
-                                  }
-                                >
-                                  <div className="editMenu_selectedIcon">
-                                    <img src={ele?.icon_url} />
-                                    <span> {ele.title} </span>
-                                  </div>
-                                  <div>
-                                    <Tooltip title="Delete">
-                                      <DeleteOutlined
-                                        onClick={() =>
-                                          handleDeleteElement(index)
-                                        }
-                                      />{" "}
-                                    </Tooltip>
-
-                                    <Tooltip title="Edit">
-                                      <EditOutlined
-                                        onClick={() => handleEditIcon(index)}
-                                      />
-                                    </Tooltip>
-
-                                    <Tooltip title="Drag">
-                                      <DragOutlined
-                                        {...provided.dragHandleProps}
-                                      />
-                                    </Tooltip>
-                                  </div>
-                                </li>
-                              );
-                            }}
-                          </Draggable>
-                        );
-                      })}
-                      {provided.placeholder}
-                    </div>
-                  );
-                }}
-              </Droppable>
-            </DragDropContext>
-          </ul>
-
+          <DragDrop
+            handleDrag={handleDrag}
+            data={menu.elements}
+            handleDeleteElement={handleDeleteElement}
+            handleEditIcon={handleEditIcon}
+          />
           {listPreview(results, "", "add")}
         </div>
       </div>
-      <h2 className="SD-sidebarOptn">Side Menu Options</h2>
-      {listPreview(menu.elements.slice(5), "selected_menu", "")}
+      {/* <h2 className="SD-sidebarOptn">Side Menu Options</h2>
+      {listPreview(menu.elements.slice(5), "selected_menu", "")} */}
     </>
   );
   const secondTabData = color_optn.map((clr, index) => (

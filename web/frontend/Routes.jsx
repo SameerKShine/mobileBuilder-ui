@@ -17,15 +17,21 @@ import CommonLayout from './common/CommonLayout'
  */
 export default function Routes({ pages }) {
   const routes = useRoutes(pages);
-  const routeComponents = routes.map(({ path, component: Component }) => (
+  const routeComponents = 
+  // <Route></Route>
+  routes.map(({ path, component: Component }) => (
+    // path !== '/builder/:id' &&
     <Route key={path} path={path} element={<Component />} />
   ));
 
   const NotFound = routes.find(({ path }) => path === "/notFound").component;
-
+  // console.log("routeComponents", routeComponents)
   return (
     <ReactRouterRoutes>
-      <Route element={<CommonLayout/>}>{routeComponents}</Route>
+      <Route element={<CommonLayout/>}>
+        {routeComponents}
+        {/* <Route path='/builder/:id' element={} /> */}
+        </Route>
       <Route path="*" element={<NotFound />} />
     </ReactRouterRoutes>
   );

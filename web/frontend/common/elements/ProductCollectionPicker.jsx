@@ -12,6 +12,7 @@ function ProductandCollectionPicker({
   onSelect,
   checkedIDs,
   selectedCollectionId,
+  className
   // getShop
 }) {
   const [searchData, setSearchData] = useState("");
@@ -136,7 +137,7 @@ const app = useAppBridge();
     onSelect(e, data, id);
   };
   return (
-    <div className="prdct-slct">
+    <div className={`prdct-slct ${ className}`}>
       <div className="cross">
         <p>Select {elementType}</p>
         <CloseOutlined onClick={() => setOpen(false)} />

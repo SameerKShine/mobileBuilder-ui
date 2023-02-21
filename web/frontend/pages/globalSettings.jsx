@@ -10,7 +10,7 @@ import { CommonInput } from "../common/elements/commonElements";
 function globalSettings() {
   const [global_setting, setGlobalSetting] = useState({
     app_icon: "",
-    splash_screen: "",
+    app_logo: "",
     app_name:""
   });
   const [showTopBar, setShowtopbar] = useState(false);
@@ -37,16 +37,19 @@ function globalSettings() {
  
   const options = [
     { label: "App Icon", name: "app_icon" },
-    { label: "Splash Screen", name: "splash_screen" },
+    // { label: "Splash Screen", name: "splash_screen" },
   ];
 
   return (
     <>
       {showTopBar && (
         <SaveChangesBar
+        data={{
+          global_setting,
+        }}
           api_url="/globalSetting"
           setShowTopbar={setShowtopbar}
-          data={global_setting}
+          flag="global_setting"
         />
       )}
       <div className="SD-globalSetting">
@@ -80,9 +83,6 @@ function globalSettings() {
             className="globalSettingView"
             data="globalSetting_hideHeader"
           ></PreviewCard>
-          <PreviewCard className="globalSettingView"  data="globalSetting_hideHeader">
-          
-        </PreviewCard>
         </div>
       </div>
     </>

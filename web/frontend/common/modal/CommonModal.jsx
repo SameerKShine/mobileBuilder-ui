@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Modal, Tooltip } from "antd";
 
-function CommonModal({ title, okFunc, button, tooltip, buttonText, modalWidth }) {
-    const [isModalVisible, setIsModalVisible] = useState(false);
+function CommonModal({ title, okFunc, button, tooltip, buttonText, modalWidth, visible }) {
+    const [isModalVisible, setIsModalVisible] = useState(visible??false);
 
     const showModal = () => {
       setIsModalVisible(true);
@@ -19,16 +19,16 @@ function CommonModal({ title, okFunc, button, tooltip, buttonText, modalWidth })
   return (
     <div className="SD-ShowModal">
     {/* <Tooltip title={tooltip}> */}
-    <button className="SD-saveButton" onClick={showModal}>
+  { !visible&& <button className="SD-saveButton" onClick={showModal}>
       {buttonText}
       {/* <Icon source={icon} color={iconColor} /> */}
-    </button>
+    </button>}
     {/* </Tooltip> */}
     <Modal
       width={modalWidth ?? 400}
       open={isModalVisible}
       footer={[
-        <Button key="back" onClick={handleCancel}>
+        button.cancel.length>1 && <Button key="back" onClick={handleCancel}>
           {button.cancel}
         </Button>,
         <Button

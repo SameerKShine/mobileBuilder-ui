@@ -30,7 +30,7 @@ function EditSection({
 
   //edit element Appearence tab data
   const handleEditAppearance = (e, name) => {
-    console.log(e);
+    console.log(typeof(e));
     console.log(name);
     setShowTopbar(true);
     const arr = [...builderFields];

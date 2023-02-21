@@ -1,52 +1,114 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
-// import Icon
-import { Redirect } from "@shopify/app-bridge/actions";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import {
+  ExitMajor
+} from '@shopify/polaris-icons';
+import { Icon } from "@shopify/polaris";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import DashboardIcon from "../assets/images/layout/dashboard.svg";
 import ExitIcon from "../assets/images/layout/exit.svg";
 import { Fullscreen } from "@shopify/app-bridge/actions";
 import { Button, Tooltip } from "antd";
-import { FullscreenOutlined, FullscreenExitOutlined } from "@ant-design/icons";
-import { SettingOutlined, BgColorsOutlined } from "@ant-design/icons";
+import {
+  FullscreenOutlined,
+  FullscreenExitOutlined,
+  SettingOutlined,
+  BgColorsOutlined,
+  BellOutlined,
+  MobileOutlined,
+  AppstoreOutlined,
+  UploadOutlined
+} from "@ant-design/icons";
 
 function Test() {
   const [step, setStep] = useState(0);
+  const [sideBar, setSideBar] = useState(0);
   const [showScreen, setFullScreen] = useState(false);
-
-  const params = useLocation();
-  const handlePage = useCallback((e) => {
-    setStep(e.target.value);
-  }, []);
-
-  //full screen
-  const handleScreenApp = useCallback(() => {
-    const fullscreen = Fullscreen.create(app);
-    setFullScreen(!showScreen);
-    localStorage.setItem("fullScreen_show", true);
-    if (showScreen === false) {
-      console.log("enter in if");
-      return fullscreen.dispatch(Fullscreen.Action.ENTER);
-    } else if (showScreen === true) {
-    return  fullscreen.dispatch(Fullscreen.Action.EXIT);
-    }
-  }, [showScreen]);
-
   const app = useAppBridge();
-  // useEffect(()=>{
-  //   console.log(showScreen)
-  //   const fullscreen = Fullscreen.create(app);
+  const params = useLocation();
+  const navigate = useNavigate();
+  const handlePage = useCallback((e) => {
+    setStep(e);
+    setSideBar(0)
+  }, []);
+  useEffect(() => {
+    const fullPage = sessionStorage.getItem("full_screen");
+    if (fullPage == "enter") {
+      const fullscreen = Fullscreen.create(app);
+      fullscreen.dispatch(Fullscreen.Action.ENTER);
+      setFullScreen(true);
+    }
+  }, []);
+  const handleScreenApp = () => {
+    const fullPage = sessionStorage.getItem("full_screen");
+    const fullscreen = Fullscreen.create(app);
+    if (fullPage == "enter") {
+      sessionStorage.setItem("full_screen", "exit");
+      fullscreen.dispatch(Fullscreen.Action.EXIT);
+      setFullScreen(false);
+    } else {
+      sessionStorage.setItem("full_screen", "enter");
+      fullscreen.dispatch(Fullscreen.Action.ENTER);
+      setFullScreen(true);
+    }
+  };
 
-  // },[showScreen])
-
+  const mainLayout = [
+    {
+      title: "Builder",
+      path: "/",
+      icon: <AppstoreOutlined  style={{ color: "#ffffff", fontSize: "25px" }} /> ,
+    },
+    {
+      title: "Push Notification",
+      path: "/push-notification",
+      icon: <BellOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
+    },
+    {
+      title: "Publish App",
+      path: "/publish-app",
+      icon: <UploadOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
+    },
+    {
+      title: "Global Settings",
+      path: "/globalSettings",
+      icon: <SettingOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
+    },
+  ];
+ 
+  const builderLayout = [
+    {title:"Builder", path:0, icon:<MobileOutlined style={{ color: "#ffffff", fontSize: "25px" }} />},
+    {title:"App Apperance", path:1, icon:<BgColorsOutlined style={{'color':"#ffffff", fontSize: "25px"}} />},
+    // {title:"Splash Screen", path:2, icon:<SettingOutlined style={{'color':"#ffffff", fontSize: "25px"}} />},
+  ]
+  // console.log(params.pathname)
   return (
     <div>
+ 
       <div className="SD-TopBar">
+        {params.pathname.includes("/builder")
+        &&
+          <div onClick={()=>{
+            navigate("/")
+            setStep(0)
+            setSideBar(0)
+          }}>
+      <Icon
+        source={ExitMajor}
+        color="base"
+      />
+        </div>
+}
         <div className="topbar_elements topbar_select">
-          {params.pathname == "/" && (
-            <select value={step} onChange={handlePage}>
+          {params.pathname.includes("/builder") && (
+            <select value={step} onChange={(e)=>handlePage(e.target.value)}>
               <option value={0}>Landing Page</option>
-              <option value={1}>Menu</option>
+              <option value={1}>Bottom Bar</option>
+              <option value={2}>App Bar</option>
+              <option value={6}>Side Bar</option>
+              <option value={3}>Profile Page</option>
+              <option value={4}>Cart Page</option>
+              <option value={5}>Product Detail Page</option>
             </select>
           )}
         </div>
@@ -63,79 +125,42 @@ function Test() {
           >
             {showScreen ? "Exit full screen" : "Enter to full screen"}
           </Button>
-          {/* <div onClick={handleScreenApp}>
-          {showScreen ? (
-               <Tooltip title="Exit full screen"> <FullscreenExitOutlined width="2rem" /></Tooltip>
-              ) : (
-                <Tooltip title="Enter to full screen"><FullscreenOutlined /></Tooltip>
-              )}
-          </div> */}
         </div>
       </div>
       <section className="SD-app-layout">
         <nav>
           <ul className="SD-layoutSideBar">
-            <li>
-            <Tooltip title="Builder">
-              <Link
-                className={
-                  params.pathname == "/"
-                    ? "SD-sidebar_active"
-                    : "sidebar_no_active"
-                }
-                to="/"
-              >
-                <img src={DashboardIcon} />
-              </Link>
+            { params.pathname.includes("/builder")?
+             builderLayout.map((rout, index)=> <li key={index} onClick={()=>setSideBar(rout.path)}  className={
+              rout.path == sideBar 
+                ? "SD-sidebar_active"
+                : "sidebar_no_active"
+            }>
+              <Tooltip title={rout.title}>
+                {rout.icon}
               </Tooltip>
-            </li>
-            <li>
-            <Tooltip title="Push Notification">
-              <Link
-                className={
-                  params.pathname == "/push-notification"
-                    ? "SD-sidebar_active"
-                    : "sidebar_no_active"
-                }
-                to="/push-notification"
-              >
-                <img src={DashboardIcon} />
-              </Link>
-              </Tooltip>
-            </li>
-            <li>
-            <Tooltip title="App Apperance">
-              <Link
-                className={
-                  params.pathname == "/app-design"
-                    ? "SD-sidebar_active"
-                    : "sidebar_no_active"
-                }
-                to="/app-design"
-              >
-                <BgColorsOutlined width="2rem" />
-                {/* <img src={DashboardIcon} /> */}
-              </Link>
-              </Tooltip>
-            </li>
-            <li>
-            <Tooltip title="Global Settings">
-              <Link
-                className={
-                  params.pathname == "/globalSettings"
-                    ? "SD-sidebar_active"
-                    : "sidebar_no_active"
-                }
-                to="/globalSettings"
-              >
-                <img src={DashboardIcon} />
-              </Link>
-              </Tooltip>
-            </li>
+            </li>)
+            :
+            mainLayout.map((rout, index) => (
+              <li key={index}>
+                <Tooltip title={rout.title}>
+                  <Link
+                    className={
+                      params.pathname == rout.path 
+                        ? "SD-sidebar_active"
+                        : "sidebar_no_active"
+                    }
+                    to={rout.path}
+                  >
+                    {rout.icon}
+                  </Link>
+                </Tooltip>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className="SD-mainSection">
-          <Outlet context={[step]} />
+          <Outlet context={[step, sideBar]} />
         </div>
       </section>
     </div>

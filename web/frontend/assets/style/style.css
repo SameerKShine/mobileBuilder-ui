@@ -1,4 +1,8 @@
 /*************** Common Class *******************  */
+li {
+  list-style: none;
+}
+
 .polaricIcon span {
     margin: 0px 0px 8px 0px !important;
   }
@@ -69,7 +73,16 @@
     overflow: hidden;
     padding: 0;
   }
-  
+  .disableBtnClr{
+    background: grey !important;
+    cursor: not-allowed !important;
+  }
+  .display_flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 /*************** Common Class END *******************  */
 
 
@@ -122,7 +135,6 @@
     padding-top: 20px;
   }
   .SD-layoutSideBar {
-    list-style: none;
     padding: 0.5rem 0px;
   }
   .SD-layoutSideBar li {
@@ -155,6 +167,9 @@
     align-items: center;
     justify-content: center;
   } */
+  .SD-sidebar_active svg{
+    color: #000;
+  }
   .SD-mainSection {
     width: 100%;
   }
@@ -179,6 +194,9 @@
   .SD-mpbile_select
     .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
     border-color: #7d2ae8;
+  }
+  .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn span{
+    color: #7d2ae8;
   }
   .SD-mpbile_select
     .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
@@ -699,6 +717,22 @@
 .border-radius-icon-active {
   box-shadow: 2px 2px 3px 0px #3b6fce !important;
 }
+
+.appearance_background_optn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.appearance_background_optn div {
+  padding: 24px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+.active_bgType {
+  border: 1px solid #7d2ae8;
+}
   /* Appearance END */
   /* ********************************** EDIT SECTION END ****************************** */
   /* ****************** create page END **********************/
@@ -879,7 +913,6 @@
   #countdown li {
     display: inline-block;
     font-size: 15px;
-    list-style-type: none;
     padding: 0px 10px 6px 6px;
     text-transform: uppercase;
     text-align: center;
@@ -931,7 +964,6 @@
     font-weight: 600;
     margin-top: 20px;
     margin-bottom: 21px;
-    list-style: none;
   }
   .countDown_layout_2 #countdown li {
     background: #7048c7;
@@ -1317,9 +1349,6 @@
     text-align: right;
   }
   
-  .SD-builder-topbar .builder-topbar-InrBx .icnBox3 img:nth-child(1) {
-    margin-right: 23px;
-  }
   /* *********** MOBILE HEADER END ************** */
 
   /* ************************ MENU PREVIEW ***************************** */
@@ -1421,7 +1450,7 @@
 
   /* ************** MENU OPTIONS ********************** */
   .SD-menuElements {
-    width: 16%;
+    width: 25%;
     background-color: #ffffff;
     padding: 11px;
     height: 100vh;
@@ -1448,7 +1477,6 @@
     margin-bottom: 14px;
   }
   .SD-menuLists {
-    list-style: none;
     background-color: #fafbfc;
     width: 70%;
   }
@@ -1482,19 +1510,35 @@
   /* ************** EDIT MENU END ************************* */
 
   /* ******************* SAVE CHANGES BAR ********************* */
-  .SD-builderToBar {
+  /* .SD-builderToBar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 0;
     padding: 9px 15px;
     background-color: #202123;
-    /* bottom: calc(0vh + 8.3vh); */
     z-index: 999999;
     position: absolute;
     top: -1px;
     width: 100%;
     left: 0;
-  }
+  } */
+  .SD-builderToBar{
+    display: flex;
+    padding: 0;
+    padding: 9px 15px;
+    background-color: #202123;
+    z-index: 999999;
+    position: absolute;
+    /* top: -54px; */
+    top: -21px;
+    width: 100%;
+    left: 0px;
+    justify-content: space-between;
+    align-items: center;
+}
+.SD-builderToBarCondition{
+  top: 0;
+}
   .SD-topbar-center {
     color: #fff;
     text-align: center;
@@ -1505,8 +1549,13 @@
   }
   .SD-topbar-right {
     display: flex;
-    justify-content: flex-end;
-}
+    justify-content: space-between;
+    align-items: center;
+} 
+  .SD-topbar-right input {
+ margin-bottom: 0;
+ margin-right: 8px;
+} 
   
   .SD-topbar-right .SD-saveButton:nth-child(2) {
     margin-left: 10px;
@@ -1765,7 +1814,6 @@ figure {
   font-size: 14px;
   font-variant: tabular-nums;
   line-height: 1.5715;
-  list-style: none;
   font-feature-settings: 'tnum';
   display: flex;
 }
@@ -1846,10 +1894,9 @@ figure {
   }
   .globalSettingLeftSection{
     padding: 20px;
-    width: 30%;
+    width: 25%;
   }
  .globalSettingLeftSection li{
-  list-style: none;
   margin-bottom: 16px;
  }
  .globalSettingLeftSection ul{
@@ -1872,7 +1919,7 @@ figure {
   justify-content: space-between;
 }
 .globalSettingPrev{
-  width: 70%;
+  width: 75%;
   display: flex;
   justify-content: space-between;
 }
@@ -1885,9 +1932,353 @@ figure {
   width: 28%;
 }
 .appApperancePrev{
-  width: 70%;
+  width: 75%;
 }
 .mainClassApperancePrev{
   width: 100%;
 }
   /* *****************************************GLOBAL SETTING END ******************************* */
+
+  /* ***************************** PUSH NOTIFICATION ************************* */
+  .selectMedia{
+    display: flex;
+  }
+  .pushNotificationSection{
+    display: flex;
+  }
+  .SD-pushNotifiction{
+    margin: 50px;
+    background: #ffff;
+    padding: 40px;
+    width: 85%;
+}
+  .selectMedia div{
+    padding: 10px;
+    background-color: rgb(198 198 198);
+    margin-right: 20px;
+    border-radius: 4px;
+  }
+  .send_notification{
+    padding: 7px 16px 7px 16px;
+    margin-top: 21px;
+    border: none;
+    background: #7d2ae8;
+    color: #ffffff;
+    border-radius: 4px;
+}
+.send_notification:hover{
+  background: #b688f2;
+}
+.pushNotificationPicker{
+  top: 52px;
+  width: 23%;
+}
+.pushNotification_delivery{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.subscriber_icon{
+  padding: 10px;
+    background-color: #dbc7f6;
+    border-radius: 100%;
+    margin-right: 9px;
+}
+.notificationPrev{
+  padding: 20px;
+  box-shadow: 6px 5px 9px 1px #bdbdbd;
+  margin-top: 50px;
+}
+  /* ***************************** PUSH NOTIFICATION END ************************* */
+
+
+/* ***************************** Dashboard ************************* */
+.SD-dashboard{
+  padding: 40px;
+}
+.createNewDesignSection{
+  display: flex;
+}
+.createNewDesign{
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 6px 5px 9px 1px #bdbdbd;
+  text-align: center;
+  margin-right: 30px;
+  width: 20%;
+}
+ul.plan-list {
+  text-align: left;
+  padding: 18px;
+}
+.check-plan-icon svg {
+  width: 15px;
+  margin-right: 5px;
+}
+.SD-dashboard h2 {
+  color: #5e5873;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom:20px
+}
+.publish_design {
+padding: 55px;
+background-color: #ffffff;
+border-radius: 4px;
+box-shadow: 6px 5px 9px 1px #bdbdbd;
+text-align: center;
+margin-right: 24px;
+}
+.publish_content {
+padding: 40px;
+background-color: #f6f6f7;
+}
+.publish_design .createNewDesign{
+box-shadow: none;
+}
+.SD-draft-design {
+margin-top: 35px;
+}
+.draft-design {
+display: flex;
+}
+h4.SD-modal-title {
+font-size: 16px;
+font-weight: 500;
+margin-bottom: 10px;
+}
+.ant-modal-body label {
+font-size: 12px;
+color: #7b2dec;
+}
+.draftdesigns {
+margin: 45px 0;
+}
+.createAppInitial button {
+background: #249d38;
+padding: 10px 15px 10px 15px;
+color: #fff;
+text-transform: uppercase;
+border: none;
+border-radius: 3px;
+font-weight: 600;
+}
+.createAppInitial {
+text-align: center;
+}
+.no-app-message {
+text-align: center;
+margin-top: 5%;
+font-size: 36px;
+color: #ccc;
+}
+.SD-createapp {
+margin-top: 15%;
+}
+.SD-select-option {
+  display: flex;
+  margin-bottom: 30px;
+  justify-content: center;
+  margin-top: 55px;
+}
+.createNewDesign p {
+  font-size: 14px;
+  margin-bottom: 22px;
+  padding: 1px;
+}
+.plan-list li {
+  font-size: 12px;
+}
+.createNewDesign h2 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 6px 37px;
+  border: none;
+  background: #7b2dec;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  width: 68%;
+  margin: 0 auto 15px;
+}
+.createNewDesign img {
+width: 100%;
+border-radius: 16px;
+}
+.SD-template-popup {
+display: flex;
+}
+.createNewDesign.active {
+box-shadow: 1px 1px 15px 3px #441982ba;
+padding: 5px;
+}
+.myDesigns{
+  display: flex;
+}
+.mydesign_section{
+  /* padding: 40px; */
+  margin-right: 10px;
+  background-color: #ffffff;
+  box-shadow: 6px 5px 9px 1px #bdbdbd;
+}
+  .publishSection{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 11px 9px 7px 0px;
+    background-image: linear-gradient(to right, white , #8f8f8d);
+}
+.publishSection span{
+  margin-right: 8px;
+}
+.designData{
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.mydesign_section:hover{
+  box-shadow: 1px 1px 15px 3px #441982ba;
+}
+.editDesignButton{
+  background: #cbc2c2;
+  padding: 11px 0px 9px 4px;
+  text-align: right;
+}
+.editDesignButton span{
+  cursor: pointer;
+  padding: 6px 13px;
+  background: grey;
+  border-radius: 23px;
+}
+.SD-template-popup h6 {
+  text-align: left;
+  margin: 15px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.popup-head h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.popup-head p {
+  color: #5e5873;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -.025em;
+  margin: 5px 0 20px;
+}
+.SD-publish_app {
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ffffff;
+  width: 73%;
+}
+/* .publishSection{
+  display: none;
+}
+.myDesigns div:hover + .publishSection {
+  display: block;
+} */
+/* ***************************** Dashboard end ************************* */
+
+/* ***************************** Publish app  ************************* */
+.SD-publish_app{
+  margin: 30px;
+  padding: 30px;
+  background-color: #ffffff;
+}
+.first_section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.firstSection_div{
+  width: 33%;
+}
+/* ***************************** Publish app end ************************* */
+
+/* ***************************** App Bar ************************* */
+.app_bar_preview{
+  border: 1px solid #dddbdb;
+  border-radius: 6px;
+  padding: 15px;
+}
+.appBarColorField{
+  width: 48%;
+  padding: 12px;
+}
+.appBarSwitch{
+  border: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.appBarSlider{
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+/* ***************************** App Bar end ************************* */
+
+/* ***************************** Profile Page Start **************************** */
+.profile-temp {
+  display: flex;
+}
+.prfile-design {
+  margin: 20px;
+}
+.prfile-design h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #5f5c5c;
+}
+.prfile-design .active {
+  box-shadow: 1px 1px 15px 3px #441982ba;
+  padding: 5px;
+}
+/* ***************************** Profile Page End **************************** */
+
+/* ***************************** Sidebar **************************** */
+.sidebarPreview{
+  color: #ffffff;
+}
+.sidebar_list li{
+  margin-bottom: 22px;
+}
+.sidebar_list{
+  padding: 15px;
+}
+.sidebar_list span{
+  padding: 13px 13px;
+  border-radius: 6px;
+  background-color: hsla(0,0%,100%,.1);
+  border: 0.795455px solid hsla(0,0%,100%,.2);
+  margin-right: 11px;
+}
+.sidebar_list svg{
+  font-size: 20px;
+}
+.sidebar_profile{
+  margin-top: 20px;
+}
+.profileIcon{
+  padding: 13px 13px;
+  background-color: #42454b;
+  border-radius: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.sidebar_profile svg{
+  font-size: 38px;
+}
+.profile_content{
+  flex-direction: column;
+  justify-content: start;
+}
+/* ***************************** Sidebar End **************************** */
+

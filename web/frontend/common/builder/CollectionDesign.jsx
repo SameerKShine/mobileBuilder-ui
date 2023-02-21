@@ -44,7 +44,7 @@ function CollectionDesign({viewData, app_appearance}) {
                 <div className="SD-grid_slide">
                   <div className="grid_section">
                     {viewData.data.slice(0, 3).map((ele, index) => (
-                      <div className={`pro-item ${index == 2 ? "w100" : "w50"}`}>
+                      <div key={index} className={`pro-item ${index == 2 ? "w100" : "w50"}`}>
                         <figure>
                           <img
                             src={ele?.image?.url ?? DummyImage}
@@ -116,8 +116,8 @@ function CollectionDesign({viewData, app_appearance}) {
           viewData.choose_layout == "layout_1" ? (
             <Swiper slidesPerView={4} spaceBetween={30} className="mySwiper">
               {" "}
-              {Array.from({ length: 5 }).map((ele) => (
-                <SwiperSlide>
+              {Array.from({ length: 5 }).map((ele, index) => (
+                <SwiperSlide key={index}>
                   <div className="custom_slide_section">
                     <img width={100} src={DummyImage} />
     
@@ -162,8 +162,8 @@ function CollectionDesign({viewData, app_appearance}) {
                 centeredSlides
                 loop
               >
-                {Array.from({ length: 5 }).map((ele) => (
-                  <SwiperSlide>
+                {Array.from({ length: 5 }).map((ele, index) => (
+                  <SwiperSlide key={index}>
                     <div className="grdClr_sldr"></div>
                     <img width={100} src={DummyImage} />
                     <div className="SwiperSlideTxt">
@@ -176,8 +176,8 @@ function CollectionDesign({viewData, app_appearance}) {
               </Swiper>
             </div>
           ) : (
-            Array.from({ length: 3 }).map((ele) => (
-              <div className="cat-landscape4">
+            Array.from({ length: 3 }).map((ele, index) => (
+              <div className="cat-landscape4" key={index}>
                 <div className="pro-item">
                   <div className="proItemBx">
                     <div className="proItemBxImg">
