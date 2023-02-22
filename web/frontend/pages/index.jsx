@@ -59,7 +59,8 @@ function index() {
   ];
 
   const handleSelectDesign = (t, i) => {
-    
+    console.log(t)
+    console.log(i)
     navigate({
       pathname: `/builder/${t}`,
       search: `?${t}=${i}`,
@@ -70,7 +71,10 @@ function index() {
     setShowOption(true);
   };
 
+
+
   const modalButton = useMemo(()=>{
+    console.log("activeClass ==>", activeClass)
    return <CommonModal
     headerText={
       <div className="popup-head">
@@ -101,10 +105,10 @@ function index() {
     button={{ ok: "Create", cancel: "Cancel" }}
     buttonText={<div> Please select Template</div>}
   />
-  })
+  },[activeClass])
 
   const showOptions = useMemo(() => {
-    const content = [{}];
+    // const content = [{}];
     return (
       <div className="SD-select-option">
         <div className="createNewDesign">
@@ -271,7 +275,7 @@ function index() {
         </div>
       </div>
     );
-  }, []);
+  },[activeClass]);
 
   const createdDesigns = (ele, index) => {
     return (
