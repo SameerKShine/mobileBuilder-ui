@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { errToast, sucessToast } from "./notification/notification";
 import { useAPI } from "../globalState/getShop";
@@ -6,9 +6,10 @@ import { getSessionToken } from "@shopify/app-bridge-utils";
 import SaveBar from "./navigation/SaveBar";
 import postApi from "../utils/postApi";
 
-function SaveChangesBar({ data, api_url, setDesignName, flag, navigate }) {
+function SaveChangesBar({ data, setDesignName, flag, navigate, step, setStep }) {
   const [allNames, setAllNames] = useState([]);
   const [errorName, setErrorName] = useState("");
+  
   const { app } = useAPI();
   // const getShop = 'test-updatedpre.myshopify.com'
   // useEffect(()=>{
@@ -40,11 +41,10 @@ function SaveChangesBar({ data, api_url, setDesignName, flag, navigate }) {
     getAllNames();
   }, []);
 
-  // console.log(design_name)
 
   const handleSaveBuilder = async () => {
     console.log(data)
-    const res = postApi(`/api/admin${api_url}`, data, app);
+    const res = postApi(`/api/admin/builderData`, data, app);
     res
       .then((res) => {
         console.log("res", res);
@@ -80,16 +80,29 @@ function SaveChangesBar({ data, api_url, setDesignName, flag, navigate }) {
       setDesignName(e.target.value);
     }
   };
+  // const handlePage = useCallback((e) => {
+  //   setStep(e);
+  //   // setSideBar(0)
+  // }, []);
+  const handleExit = useCallback((e) => {
+    navigate("/");
+    setStep(0);
+    // setSideBar(0);
+  }, []);
 
   return (
     <SaveBar
       handleSave={handleSaveBuilder}
       handleEditTitle={handleEditTitle}
       handleDiscard={handleDiscard}
+      // handlePage={handlePage}
+      handleExit={handleExit}
       design_name={data?.design_name ?? ""}
       flag={flag}
       errorName={errorName}
+      // step={step}
     />
+    
   );
 }
 
