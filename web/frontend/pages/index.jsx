@@ -13,6 +13,7 @@ import { useMemo } from "react";
 function index() {
   const [templateList, setTemplatelist] = useState([]);
   const [showOption, setShowOption] = useState(false);
+
   const [isLoading, setLoading] = useState(false);
   const [activeClass, setActiveClass] = useState("");
 
@@ -58,7 +59,7 @@ function index() {
   ];
 
   const handleSelectDesign = (t, i) => {
-    // navigate(`/builder/${t}`)
+    
     navigate({
       pathname: `/builder/${t}`,
       search: `?${t}=${i}`,
