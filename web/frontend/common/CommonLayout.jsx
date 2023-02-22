@@ -77,11 +77,11 @@ function Test() {
     },
   ];
  
-  const builderLayout = [
-    {title:"Builder", path:0, icon:<MobileOutlined style={{ color: "#ffffff", fontSize: "25px" }} />},
-    {title:"App Apperance", path:1, icon:<BgColorsOutlined style={{'color':"#ffffff", fontSize: "25px"}} />},
-    // {title:"Splash Screen", path:2, icon:<SettingOutlined style={{'color':"#ffffff", fontSize: "25px"}} />},
-  ]
+  // const builderLayout = [
+  //   {title:"Builder", path:0, icon:<MobileOutlined style={{ color: "#ffffff", fontSize: "25px" }} />},
+  //   {title:"App Apperance", path:1, icon:<BgColorsOutlined style={{'color':"#ffffff", fontSize: "25px"}} />},
+  //   // {title:"Splash Screen", path:2, icon:<SettingOutlined style={{'color':"#ffffff", fontSize: "25px"}} />},
+  // ]
   // console.log(params.pathname)
   return (
     <div>
@@ -132,17 +132,18 @@ function Test() {
       <section className="SD-app-layout">
         <nav>
           <ul className="SD-layoutSideBar">
-            { params.pathname.includes("/builder")?
-             builderLayout.map((rout, index)=> <li key={index} onClick={()=>setSideBar(rout.path)}  className={
-              rout.path == sideBar 
-                ? "SD-sidebar_active"
-                : "sidebar_no_active"
-            }>
-              <Tooltip title={rout.title}>
-                {rout.icon}
-              </Tooltip>
-            </li>)
-            :
+            { 
+            // params.pathname.includes("/builder")?
+            //  builderLayout.map((rout, index)=> <li key={index} onClick={()=>setSideBar(rout.path)}  className={
+            //   rout.path == sideBar 
+            //     ? "SD-sidebar_active"
+            //     : "sidebar_no_active"
+            // }>
+            //   <Tooltip title={rout.title}>
+            //     {rout.icon}
+            //   </Tooltip>
+            // </li>)
+            // :
             mainLayout.map((rout, index) => (
               <li key={index}>
                 <Tooltip title={rout.title}>
