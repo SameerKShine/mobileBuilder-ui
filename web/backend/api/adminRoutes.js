@@ -23,7 +23,6 @@ const adminRoutes = express.Router();
 adminRoutes.get("/getMobileData/:id", getMobileData);
 adminRoutes.get("/getDesignsList", getDesignsList);
 adminRoutes.get("/getAllDesignNames", getDesignsNames);
-// adminRoutes.get("/getBuilderApperance", getBuilderApperance);
 
 adminRoutes.post("/builderData", saveBuilderData);
 adminRoutes.post("/publishDesign", publishDesign);
