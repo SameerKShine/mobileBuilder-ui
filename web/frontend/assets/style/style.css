@@ -92,25 +92,28 @@ li {
     display: flex;
     align-items: center;
     padding: 10px;
+    justify-content: end;
+  }
+  .topbar_select{
+    width: 15%;
+    margin: auto;
   }
   .topbar_select select{
     border: none;
-    background: #ffffff70;
+    /* background: #ffffff70; */
+    background: #1b1a1a70;
     color: #fff;
     padding: 4px 12px;
     border-radius: 4px;
   }
   .topbar_select select option{
-    background: #7b2dec54;
+    background:#828384;
   border-radius: 4px;
   padding: 10px 2px !important;
-  color: #7b2dec;
+  color: #ffffff;
   height: 20px !important;
   }
-  .topbar_elements {
-    width: 50%;
-    text-align: right;
-  }
+
   .fullScreen_button button.ant-btn{
     background: #b688f2;
     border: none;
@@ -234,7 +237,8 @@ li {
   justify-content: space-evenly;
   padding: 20px 2px 80px 2px;
   background: #fff;
-  height: 94vh;
+  /* height: 94vh; */
+  height: 91vh;
   overflow: auto;
   align-content: baseline;
   width: 16%;
@@ -313,7 +317,8 @@ li {
     border-radius: 3px;
     box-shadow: 0 0 0.3125rem #1718180d, 0 0.0625rem 0.125rem #00000026;
     transition: all 0.5s ease-in-out;
-    height: 94vh;
+    /* height: 94vh; */
+    height: 91vh;
     overflow: auto;
     overflow-x: hidden;
     padding-bottom: 30px;
@@ -744,13 +749,13 @@ li {
     height: 735px;
     overflow: auto;
     border: 0;
-    padding: 11px;
+    padding: 0px 0px 27px 0;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin-top: 25px;
     position: relative;
     background-color: #fff;
-    border-radius: 40px;
+    border-radius: 4px;
   }
   .inner-scroll-cont::-webkit-scrollbar {
     width: 5px;
@@ -1453,7 +1458,7 @@ li {
     width: 25%;
     background-color: #ffffff;
     padding: 11px;
-    height: 100vh;
+    height: 91vh;
   }
   .SD-menuElements img {
     margin-bottom: 20px;
@@ -1527,12 +1532,12 @@ li {
     padding: 0;
     padding: 9px 15px;
     background-color: #202123;
-    z-index: 999999;
-    position: absolute;
+    /* z-index: 999999; */
+    /* position: absolute; */
     /* top: -54px; */
-    top: -21px;
-    width: 100%;
-    left: 0px;
+    /* top: -21px; */
+    /* width: 100%;
+    left: 0px; */
     justify-content: space-between;
     align-items: center;
 }
@@ -1586,6 +1591,15 @@ li {
     background: none;
     color: #fff;
     border: 1px solid #fff;
+  }
+  .exitButton{
+    cursor: pointer;
+  }
+  .exitButton .Polaris-Icon--colorBase svg{
+    fill: #ffffff;
+  }
+  .exitSpan{
+    color: #ffffff;
   }
   /* ******************* SAVE CHANGES BAR END ********************* */
 

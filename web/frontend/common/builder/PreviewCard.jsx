@@ -2,11 +2,11 @@ import React, { useState, useCallback}  from 'react'
 import { Radio } from 'antd';
 import MobileHeader from './MobileHeader';
 import MenuPreview from './MenuPreview';
-import { useMobileview } from '../../globalState/mobileView';
+// import { useMobileview } from '../../globalState/mobileView';
  
 function PreviewCard({children, data, bottomRef, className, mainClass,bgColor, logo, app_bar}) {
 
-  const { mobileview , setMobileview} = useMobileview();
+  // const { mobileview , setMobileview} = useMobileview();
   // console.log(mobileview)
     const [value, setValue] = useState('/assets/images/phoneView/android.png');
     const onChange = useCallback((e)=>{
@@ -28,7 +28,7 @@ function PreviewCard({children, data, bottomRef, className, mainClass,bgColor, l
 
       <div
         className={"white-bg-box mobile_preview " +className??''}
-        style={{ backgroundImage: `url(${mobileview})` }}
+        // style={{ backgroundImage: `url(${mobileview})` }}
       >
         {data !=="globalSetting_hideHeader"&&<MobileHeader app_bar={app_bar} app_logo={logo}/>}
         <div className="inner-scroll-cont" style={{'backgroundColor':bgColor??"#fff"}}>

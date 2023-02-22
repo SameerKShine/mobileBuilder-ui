@@ -21,7 +21,7 @@ export default function Routes({ pages }) {
   const routeComponents = 
   // <Route></Route>
   routes.map(({ path, component: Component }) => (
-    // path !== '/builder/:id' &&
+    path !== '/builder/:id' &&
     <Route key={path} path={path} element={<Component />} />
   ));
 
@@ -32,7 +32,7 @@ export default function Routes({ pages }) {
       <Route element={<CommonLayout/>}>
         {routeComponents}
         </Route>
-        {/* <Route path='/builder/:id' element={<HomePage/>} /> */}
+        <Route path='/builder/:id' element={<HomePage/>} />
       <Route path="*" element={<NotFound />} />
     </ReactRouterRoutes>
   );

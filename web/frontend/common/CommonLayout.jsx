@@ -3,15 +3,15 @@ import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
   ExitMajor
 } from '@shopify/polaris-icons';
-import { Icon } from "@shopify/polaris";
-import { useAppBridge } from "@shopify/app-bridge-react";
+
+// import { useAppBridge } from "@shopify/app-bridge-react";
 import DashboardIcon from "../assets/images/layout/dashboard.svg";
 import ExitIcon from "../assets/images/layout/exit.svg";
-import { Fullscreen } from "@shopify/app-bridge/actions";
-import { Button, Tooltip } from "antd";
+// import { Fullscreen } from "@shopify/app-bridge/actions";
+import { Tooltip } from "antd";
 import {
-  FullscreenOutlined,
-  FullscreenExitOutlined,
+  // FullscreenOutlined,
+  // FullscreenExitOutlined,
   SettingOutlined,
   BgColorsOutlined,
   BellOutlined,
@@ -19,39 +19,40 @@ import {
   AppstoreOutlined,
   UploadOutlined
 } from "@ant-design/icons";
+import FullScreenButton from "./elements/FullScreenButton";
 
 function Test() {
   const [step, setStep] = useState(0);
   const [sideBar, setSideBar] = useState(0);
-  const [showScreen, setFullScreen] = useState(false);
-  const app = useAppBridge();
+  // const [showScreen, setFullScreen] = useState(false);
+  // const app = useAppBridge();
   const params = useLocation();
-  const navigate = useNavigate();
-  const handlePage = useCallback((e) => {
-    setStep(e);
-    setSideBar(0)
-  }, []);
-  useEffect(() => {
-    const fullPage = sessionStorage.getItem("full_screen");
-    if (fullPage == "enter") {
-      const fullscreen = Fullscreen.create(app);
-      fullscreen.dispatch(Fullscreen.Action.ENTER);
-      setFullScreen(true);
-    }
-  }, []);
-  const handleScreenApp = () => {
-    const fullPage = sessionStorage.getItem("full_screen");
-    const fullscreen = Fullscreen.create(app);
-    if (fullPage == "enter") {
-      sessionStorage.setItem("full_screen", "exit");
-      fullscreen.dispatch(Fullscreen.Action.EXIT);
-      setFullScreen(false);
-    } else {
-      sessionStorage.setItem("full_screen", "enter");
-      fullscreen.dispatch(Fullscreen.Action.ENTER);
-      setFullScreen(true);
-    }
-  };
+  // const navigate = useNavigate();
+  // const handlePage = useCallback((e) => {
+  //   setStep(e);
+  //   setSideBar(0)
+  // }, []);
+  // useEffect(() => {
+  //   const fullPage = sessionStorage.getItem("full_screen");
+  //   if (fullPage == "enter") {
+  //     const fullscreen = Fullscreen.create(app);
+  //     fullscreen.dispatch(Fullscreen.Action.ENTER);
+  //     setFullScreen(true);
+  //   }
+  // }, []);
+  // const handleScreenApp = () => {
+  //   const fullPage = sessionStorage.getItem("full_screen");
+  //   const fullscreen = Fullscreen.create(app);
+  //   if (fullPage == "enter") {
+  //     sessionStorage.setItem("full_screen", "exit");
+  //     fullscreen.dispatch(Fullscreen.Action.EXIT);
+  //     setFullScreen(false);
+  //   } else {
+  //     sessionStorage.setItem("full_screen", "enter");
+  //     fullscreen.dispatch(Fullscreen.Action.ENTER);
+  //     setFullScreen(true);
+  //   }
+  // };
 
   const mainLayout = [
     {
@@ -85,8 +86,8 @@ function Test() {
   return (
     <div>
  
-      <div className="SD-TopBar">
-        {params.pathname.includes("/builder")
+      {/* <div className="SD-TopBar"> */}
+        {/* {params.pathname.includes("/builder")
         &&
           <div onClick={()=>{
             navigate("/")
@@ -98,8 +99,8 @@ function Test() {
         color="base"
       />
         </div>
-}
-        <div className="topbar_elements topbar_select">
+} */}
+        {/* <div className="topbar_elements topbar_select">
           {params.pathname.includes("/builder") && (
             <select value={step} onChange={(e)=>handlePage(e.target.value)}>
               <option value={0}>Landing Page</option>
@@ -111,8 +112,8 @@ function Test() {
               <option value={5}>Product Detail Page</option>
             </select>
           )}
-        </div>
-        <div className=" topbar_elements fullScreen_button">
+        </div> */}
+        {/* <div className="topbar_elements fullScreen_button">
           <Button
             icon={
               showScreen ? (
@@ -125,8 +126,9 @@ function Test() {
           >
             {showScreen ? "Exit full screen" : "Enter to full screen"}
           </Button>
-        </div>
-      </div>
+        </div> */}
+        {/* <FullScreenButton/> */}
+      {/* </div> */}
       <section className="SD-app-layout">
         <nav>
           <ul className="SD-layoutSideBar">

@@ -8,7 +8,7 @@ import {
   PolarisProvider,
 } from "./components";
 import ContextProvider from "./globalState/getShop";
-import ContextMobileView from "./globalState/mobileView";
+// import ContextMobileView from "./globalState/mobileView";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route
@@ -21,9 +21,9 @@ export default function App() {
         <AppBridgeProvider>
           <QueryProvider>
             <ContextProvider>
-              <ContextMobileView>
+              {/* <ContextMobileView> */}
               <Routes pages={pages} />
-              </ContextMobileView>
+              {/* </ContextMobileView> */}
             </ContextProvider>
           </QueryProvider>
         </AppBridgeProvider>

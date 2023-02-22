@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
-  useOutletContext,
+  // useOutletContext,
   useParams,
   useNavigate,
   useSearchParams,
@@ -138,13 +138,14 @@ export default function HomePage() {
   })
   const [loading, setLoading] = useState(false);
 
+  const [step, setStep] = useState(0);
   const [delName, setDelName] = useState("");
   const [updateId, setUpDateId] = useState("");
 
-  const [step, sideBar] = useOutletContext();
+  // const [step, sideBar] = useOutletContext();
   // console.log("sideBar ", sideBar)
   // const step = 0
-  // const sideBar = 0
+  const sideBar = 0
   const { app } = useAPI();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -238,11 +239,16 @@ export default function HomePage() {
       });
   };
 
+    const handlePage = useCallback((e) => {
+    setStep(e);
+    // setSideBar(0)
+  }, []);
+
   return (
     <Spin spinning={loading} indicator={
       <LoadingOutlined style={{ fontSize: "40px", color: "#7d2ae8" }} />
     }>
-      {
+     
         <SaveChangesBar
           data={{
             builderFields,
@@ -255,12 +261,26 @@ export default function HomePage() {
             layoutSelection,
             sideBar_data
           }}
-          api_url="/builderData"
+          // api_url="/builderData"
+          step={step}
+          setStep={setStep}
           flag="builder"
           navigate={navigate}
           setDesignName={setDesignName}
         />
-      }
+        
+        
+          <div className="topbar_select">
+            <select value={step} onChange={(e) => handlePage(e.target.value)}>
+              <option value={0}>Landing Page</option>
+              <option value={1}>Bottom Bar</option>
+              <option value={2}>App Bar</option>
+              <option value={6}>Side Bar</option>
+              <option value={3}>Profile Page</option>
+              <option value={4}>Cart Page</option>
+              <option value={5}>Product Detail Page</option>
+            </select>
+          </div>
       {sideBar == 0 ? (
         step == 0 ? (
           <CreatePage
