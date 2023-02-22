@@ -171,7 +171,7 @@ li {
     color: #000;
   }
   .SD-mainSection {
-    width: 100%;
+    width: 95%;
   }
   /*****************************END*****************/
 
@@ -2183,6 +2183,11 @@ span.anticon.anticon-edit.icon-edit {
   padding: 30px;
   background-color: #ffffff;
   width: 73%;
+}
+span.update-date-template {
+  background: none;
+  color: #fff;
+  font-size: 12px;
 }
 /* .publishSection{
   display: none;
