@@ -15,7 +15,7 @@ function PreviewCard({children, data, bottomRef, className, mainClass,bgColor, l
     },[value])
   return (
     <div className={"SD-builderPreview " + mainClass}>
-    { (data !== "globalSetting" && data !=="globalSetting_hideHeader")  &&<div className='SD-mpbile_select'>
+    {/* { (data !== "globalSetting" && data !=="globalSetting_hideHeader")  &&<div className='SD-mpbile_select'>
         <Radio.Group onChange={onChange} value={mobileview}>
           <Radio.Button value="/assets/images/phoneView/android.png">
             Andriod View
@@ -24,7 +24,7 @@ function PreviewCard({children, data, bottomRef, className, mainClass,bgColor, l
             IOS View
           </Radio.Button>
         </Radio.Group>
-      </div>}
+      </div>} */}
 
       <div
         className={"white-bg-box mobile_preview " +className??''}

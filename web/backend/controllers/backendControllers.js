@@ -298,7 +298,7 @@ export const saveBuilderData = async(req,res)=>{
         .status(200)
         .send({
           message: "succcess",
-          data: "Landing page data saved Successfully ",
+          data: "Data saved Successfully ",
         });
     } else {
       res.status(200).send({ message: "error", data: "Something Went wrong" });

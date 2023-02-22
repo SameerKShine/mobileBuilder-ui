@@ -143,6 +143,8 @@ export default function HomePage() {
 
   const [step, sideBar] = useOutletContext();
   // console.log("sideBar ", sideBar)
+  // const step = 0
+  // const sideBar = 0
   const { app } = useAPI();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();

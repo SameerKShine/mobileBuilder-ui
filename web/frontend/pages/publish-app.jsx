@@ -84,7 +84,7 @@ function PublishApp() {
       shortDescription: "",
       keywords: [],
       copyright_text: "",
-      privacy_policy_url: "",
+      privacy_policy_url: '',
       developer_account: "",
       appstore_email: "",
       playstore_account: "",
@@ -93,12 +93,12 @@ function PublishApp() {
     },
     validate,
     onSubmit: (values) => {
-      const res = postApi(`/api/admin/publishApp`, values, app);
-      res
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((Err) => console.log(Err));
+      // const res = postApi(`/api/admin/publishApp`, values, app);
+      // res
+      //   .then((data) => {
+      //     console.log(data);
+      //   })
+      //   .catch((Err) => console.log(Err));
       console.log(values);
     },
   });

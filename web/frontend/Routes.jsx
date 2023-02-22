@@ -1,5 +1,6 @@
 import { Routes as ReactRouterRoutes, Route } from "react-router-dom";
 import CommonLayout from './common/CommonLayout'
+import HomePage from "./pages/builder/[id]"
 
 /**
  * File-based routing.
@@ -30,8 +31,8 @@ export default function Routes({ pages }) {
     <ReactRouterRoutes>
       <Route element={<CommonLayout/>}>
         {routeComponents}
-        {/* <Route path='/builder/:id' element={} /> */}
         </Route>
+        {/* <Route path='/builder/:id' element={<HomePage/>} /> */}
       <Route path="*" element={<NotFound />} />
     </ReactRouterRoutes>
   );
