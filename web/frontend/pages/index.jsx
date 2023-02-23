@@ -10,6 +10,7 @@ import { Spin, Switch } from "antd";
 import { sucessToast } from "../common/notification/notification";
 import { useMemo } from "react";
 
+
 function index() {
   const [templateList, setTemplatelist] = useState([]);
   const [showOption, setShowOption] = useState(false);
@@ -384,7 +385,7 @@ function index() {
               </div>
             </div>
           </div>
-          <h2 className="SD-dashboard-headings">My Designs design</h2>
+          <h2 className="SD-dashboard-headings">My Designs</h2>
           <div className="myDesigns">
             {templateList.map(
               (ele, index) => !ele.publish && createdDesigns(ele, index)
