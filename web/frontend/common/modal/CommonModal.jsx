@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, Tooltip } from "antd";
 
-function CommonModal({ title, okFunc, button, openBtn, buttonText, modalWidth, visible }) {
+function CommonModal({ title, okFunc, button, openBtn, openButtonClass, buttonText, modalWidth, visible }) {
     const [isModalVisible, setIsModalVisible] = useState(visible??false);
 
     const showModal = () => {
@@ -19,7 +19,7 @@ function CommonModal({ title, okFunc, button, openBtn, buttonText, modalWidth, v
   return (
     <div className="SD-ShowModal">
     {/* <Tooltip title={tooltip}> */}
-  { !visible&& <button disabled={openBtn??false} className="SD-saveButton" onClick={showModal}>
+  { !visible&& <button disabled={openBtn??false} className={`SD-saveButton ${openButtonClass??""}` }onClick={showModal}>
       {buttonText}
       {/* <Icon source={icon} color={iconColor} /> */}
     </button>}
