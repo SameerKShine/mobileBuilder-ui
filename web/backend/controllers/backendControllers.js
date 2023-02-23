@@ -309,7 +309,7 @@ export const saveBuilderData = async(req,res)=>{
   }
 }
 
-//Get designs builder Data
+//Get designs builder List
 export const getDesignsList = async(req,res)=>{
   try {
     const shop = res.locals.shopify.session.shop;
@@ -353,14 +353,28 @@ export const getDesignsNames = async(req,res)=>{
 //Delete deleteAppDesign
 export const deleteAppDesign = async(req,res)=>{
   try{
+    console.log("Delete Api for design")
     const shop = res.locals.shopify.session.shop
-    console.log(req.body)
+    const id = req.params.id
+    console.log(shop)
+    console.log(req.params)
   //   console.log('enter here agregation', shop)
-  // builderDataModel.find(
-  //     {  shop: shop }, {design_name: 1}
-  //   ).then((data)=>{
-  //     res.send({status:true, result:data})
-  //   })
+ const deleteQuery = await builderDataModel.deleteOne(
+      {  shop: shop, _id:id }
+    )
+    console.log(deleteQuery)
+    if(deleteQuery.acknowledged){
+      const d = getList(shop);
+      d.then((data) =>
+        res.status(200).send({
+          message: "succcess",
+          data: data,
+        })
+      )
+      .catch((err)=> res.status(200).send({
+        message: "Something went wrong",
+      }))
+    }
     // res.send({status:true, result:data})
   }
   catch(err){
@@ -368,24 +382,3 @@ export const deleteAppDesign = async(req,res)=>{
     res.send({status:false, result:"Something went wrong"})
   }
 }
-
-
-//get builder apperance data
-// export const getBuilderApperance = async(req,res)=>{
-//   try{
-//     const shop = res.locals.shopify.session.shop
-//     console.log('enter here apperance data', shop)
-//   builderApperanceModel.find(
-//       {  shop: shop }, {builder_apperance: 1}
-//     ).then((data)=>{
-//       res.send({status:true, result:data})
-//     })
-//     // res.send({status:true, result:data})
-//   }
-//   catch(err){
-//     console.log('enter in catch', err)
-//     res.send({status:false, result:"Something went wrong"})
-//   }
-// }
-
-

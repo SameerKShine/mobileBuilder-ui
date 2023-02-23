@@ -22,8 +22,8 @@ import {
 import FullScreenButton from "./elements/FullScreenButton";
 
 function Test() {
-  const [step, setStep] = useState(0);
-  const [sideBar, setSideBar] = useState(0);
+  // const [step, setStep] = useState(0);
+  // const [sideBar, setSideBar] = useState(0);
   // const [showScreen, setFullScreen] = useState(false);
   // const app = useAppBridge();
   const params = useLocation();
@@ -168,7 +168,8 @@ function Test() {
         </nav>
         <div className="SD-mainSection">
         <FullScreenButton/>
-          <Outlet context={[step, sideBar]} />
+          {/* <Outlet context={[step, sideBar]} /> */}
+          <Outlet/>
         </div>
       </section>
     </div>

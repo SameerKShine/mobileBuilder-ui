@@ -34,7 +34,7 @@ adminRoutes.post("/globalSetting", saveGlobalSetting);
 
 adminRoutes.post("/uploadImage", UploadImage);
 adminRoutes.post("/deleteImage", deleteimg);
-adminRoutes.delete("/deleteAppDesign", deleteAppDesign);
+adminRoutes.delete("/deleteAppDesign/:id", deleteAppDesign);
 
 adminRoutes.post("/getProduct", getProducts);
 adminRoutes.post("/getCollections", getCollection);

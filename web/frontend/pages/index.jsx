@@ -9,6 +9,7 @@ import { getSessionToken } from "@shopify/app-bridge-utils";
 import { Spin, Switch } from "antd";
 import { sucessToast } from "../common/notification/notification";
 import { useMemo } from "react";
+import deleteApi from "../utils/deleteApi";
 
 
 function index() {
@@ -279,8 +280,15 @@ function index() {
   },[activeClass]);
 
   const handleDelete = (id) =>{
+    setLoading(true)
     console.log(id)
-    // axios.delete(URL, payload, header);
+     deleteApi(`deleteAppDesign/${id}`, app)
+     .then((res)=>{
+       setLoading(false)
+       setTemplatelist(res.data.data)
+     })
+     .catch((err)=>setLoading(false))
+    
   }
 
   const createdDesigns = (ele, index) => {
@@ -299,6 +307,7 @@ function index() {
                   title={
                   <h2>Are you sure you want to delete ?</h2>
                   }
+                  openBtn = {ele.publish}
                   okFunc={()=>handleDelete(ele._id)}
                   button={{ ok: "Delete", cancel: "Cancel" }}
                   buttonText={<div> Delete <DeleteFilled/></div>}
