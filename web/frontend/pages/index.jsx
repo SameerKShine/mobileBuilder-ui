@@ -277,6 +277,11 @@ function index() {
     );
   },[activeClass]);
 
+  const handleDelete = (id) =>{
+    console.log(id)
+    // axios.delete(URL, payload, header);
+  }
+
   const createdDesigns = (ele, index) => {
     return (
       <div className="mydesign_section" key={index}>
@@ -288,7 +293,15 @@ function index() {
           />
         </div>
         <div className="del-btn">
-          <DeleteFilled />
+          {/* <DeleteFilled onClick={()=>handleDelete(ele._id)} /> */}
+          <CommonModal
+                  title={
+                  <h2>Are you sure you want to delete ?</h2>
+                  }
+                  okFunc={()=>handleDelete(ele._id)}
+                  button={{ ok: "Delete", cancel: "Cancel" }}
+                  buttonText={<div> Delete <DeleteFilled/></div>}
+          />
         </div>
         <div className="designData">
           {ele.design_name}
