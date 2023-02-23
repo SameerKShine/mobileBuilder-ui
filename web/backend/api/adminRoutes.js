@@ -8,7 +8,8 @@ import {
   saveBuilderData,
   getDesignsList,
   getDesignsNames,
-  publishApp
+  publishApp,
+  deleteAppDesign
 } from "../controllers/backendControllers.js";
 import { UploadImage, deleteimg } from "../helpers/multer.js";
 import {
@@ -23,7 +24,6 @@ const adminRoutes = express.Router();
 adminRoutes.get("/getMobileData/:id", getMobileData);
 adminRoutes.get("/getDesignsList", getDesignsList);
 adminRoutes.get("/getAllDesignNames", getDesignsNames);
-// adminRoutes.get("/getBuilderApperance", getBuilderApperance);
 
 adminRoutes.post("/builderData", saveBuilderData);
 adminRoutes.post("/publishDesign", publishDesign);
@@ -34,6 +34,7 @@ adminRoutes.post("/globalSetting", saveGlobalSetting);
 
 adminRoutes.post("/uploadImage", UploadImage);
 adminRoutes.post("/deleteImage", deleteimg);
+adminRoutes.put("/deleteAppDesign", deleteAppDesign);
 
 adminRoutes.post("/getProduct", getProducts);
 adminRoutes.post("/getCollections", getCollection);

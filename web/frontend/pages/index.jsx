@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { EditOutlined, LoadingOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import { EditOutlined, LoadingOutlined, PlusCircleOutlined, DeleteFilled } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import CommonModal from "../common/modal/CommonModal";
 import postApi from "../utils/postApi";
@@ -281,23 +281,27 @@ function index() {
     return (
       <div className="mydesign_section" key={index}>
         <div className="publishSection">
-          <span>publish</span>{" "}
+          <span>Publish</span>{" "}
           <Switch
             checked={ele.publish}
             onChange={(e) => handlePublish(e, ele._id)}
           />
         </div>
+        <div className="del-btn">
+          <DeleteFilled />
+        </div>
         <div className="designData">
           {ele.design_name}
-          <span>
-            Last Updated at :{" "}
-            <strong>{new Date(ele?.updatedAt)?.toDateString()}</strong>
-          </span>
+         
         </div>
         <div
           className="editDesignButton"
           onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
         >
+          <span className="update-date-template">
+            Last Updated:{" "}
+            <strong>{new Date(ele?.updatedAt)?.toDateString()}</strong>
+          </span> 
        <span> <EditOutlined className="icon-edit"/> Edit</span>
         </div>
       </div>
