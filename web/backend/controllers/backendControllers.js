@@ -257,17 +257,21 @@ export const saveBuilderData = async(req,res)=>{
   // console.log(req.body)
   try {
     const { builderFields, menu, design_name, updateId, app_apperance, app_bar, layoutSelection, side_bar } = req.body;
-    console.log("app_apperance ==>", app_apperance)
     const shop = res.locals.shopify.session.shop;
-    console.log(req.body);
     const returnData = await builderDataModel.find(
       { store: shop },
       { template_id: 1}
     );
+    const prevData = await getList(shop)
+    console.log("prevData ==>", prevData )
     const uniqueId = createUniqueCode(returnData)
     console.log(uniqueId)
     let findObj = {
       shop: shop, _id:updateId
+    }
+    let publish = false
+    if(prevData.length< 1){
+        publish = true
     }
     if(updateId == ""){
       findObj._id = uniqueId
@@ -278,6 +282,7 @@ export const saveBuilderData = async(req,res)=>{
         findObj,
         {
           landing_page: builderFields,
+          publish:publish,
           design_name:design_name,
           template_id:uniqueId,
           profile_page_design:layoutSelection.profile_page_design,
