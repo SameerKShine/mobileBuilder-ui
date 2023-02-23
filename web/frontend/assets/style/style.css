@@ -1546,6 +1546,10 @@ li {
     justify-content: space-between;
     align-items: center;
 }
+.builderSidebar{
+  width: 4%;
+  background-color: #7d2ae8;
+}
 .SD-builderToBarCondition{
   top: 0;
 }

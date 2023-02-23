@@ -4,6 +4,11 @@ import { CommonInput } from "../elements/commonElements";
 import { Icon } from "@shopify/polaris";
 import { ExitMajor } from "@shopify/polaris-icons";
 import FullScreenButton from "../elements/FullScreenButton";
+import { Tooltip } from "antd";
+import {
+  BgColorsOutlined,
+  MobileOutlined,
+} from "@ant-design/icons";
 
 function SaveBar({
   handleSave,
@@ -11,10 +16,18 @@ function SaveBar({
   errorName,
   handleEditTitle,
   design_name,
-  // handlePage,
+  children,
   // step,
+  sideBar,
+  setSideBar,
   handleExit,
 }) {
+
+  const builderLayout = [
+    {title:"Builder", path:0, icon:<MobileOutlined style={{ color: "#ffffff", fontSize: "25px" }} />},
+    {title:"App Apperance", path:1, icon:<BgColorsOutlined style={{'color':"#ffffff", fontSize: "25px"}} />},
+    // {title:"Splash Screen", path:2, icon:<SettingOutlined style={{'color':"#ffffff", fontSize: "25px"}} />},
+  ]
   return (
     <>
       <div
@@ -74,6 +87,22 @@ function SaveBar({
           <FullScreenButton />
         </div>
       </div>
+      <div className="builderLayout" style={{'display':'flex'}}>
+        <nav className="builderSidebar">
+          <ul className="SD-layoutSideBar">
+          {builderLayout.map((rout, index)=> <li key={index} onClick={()=>setSideBar(rout.path)}  className={
+              rout.path == sideBar
+                ? "SD-sidebar_active"
+                : "sidebar_no_active"
+            }>
+              <Tooltip title={rout.title}>
+                {rout.icon}
+              </Tooltip>
+            </li>)  }
+          </ul>
+        </nav>
+        {children}
+        </div>
     </>
   );
 }

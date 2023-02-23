@@ -139,13 +139,14 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
 
   const [step, setStep] = useState(0);
+  const [sideBar, setSideBar] = useState(0);
   const [delName, setDelName] = useState("");
   const [updateId, setUpDateId] = useState("");
 
   // const [step, sideBar] = useOutletContext();
   // console.log("sideBar ", sideBar)
   // const step = 0
-  const sideBar = 0
+  // const sideBar = 0
   const { app } = useAPI();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -241,7 +242,7 @@ export default function HomePage() {
 
     const handlePage = useCallback((e) => {
     setStep(e);
-    // setSideBar(0)
+    setSideBar(0)
   }, []);
 
   return (
@@ -264,13 +265,14 @@ export default function HomePage() {
           // api_url="/builderData"
           step={step}
           setStep={setStep}
+          sideBar={sideBar}
+          setSideBar={setSideBar}
           flag="builder"
           navigate={navigate}
           setDesignName={setDesignName}
-        />
-        
-        
-          <div className="topbar_select">
+        >
+          <div style={{'width':'96%'}}>
+           <div className="topbar_select">
             <select value={step} onChange={(e) => handlePage(e.target.value)}>
               <option value={0}>Landing Page</option>
               <option value={1}>Bottom Bar</option>
@@ -315,6 +317,9 @@ export default function HomePage() {
       ) : (
         "SplashScreen"
       )}
+      </div>
+        </SaveChangesBar>
+         
     </Spin>
   );
 }
