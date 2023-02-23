@@ -1,21 +1,21 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import {
-  ExitMajor
-} from '@shopify/polaris-icons';
+// import {
+//   ExitMajor
+// } from '@shopify/polaris-icons';
 
 // import { useAppBridge } from "@shopify/app-bridge-react";
-import DashboardIcon from "../assets/images/layout/dashboard.svg";
-import ExitIcon from "../assets/images/layout/exit.svg";
+// import DashboardIcon from "../assets/images/layout/dashboard.svg";
+// import ExitIcon from "../assets/images/layout/exit.svg";
 // import { Fullscreen } from "@shopify/app-bridge/actions";
-import { Tooltip } from "antd";
+// import { Tooltip } from "antd";
 import {
   // FullscreenOutlined,
   // FullscreenExitOutlined,
   SettingOutlined,
-  BgColorsOutlined,
+  // BgColorsOutlined,
   BellOutlined,
-  MobileOutlined,
+  // MobileOutlined,
   AppstoreOutlined,
   UploadOutlined
 } from "@ant-design/icons";
@@ -146,7 +146,7 @@ function Test() {
             // :
             mainLayout.map((rout, index) => (
               <li key={index}>
-                <Tooltip title={rout.title}>
+                {/* <Tooltip title={rout.title}> */}
                   <Link
                     className={
                       params.pathname == rout.path 
@@ -161,7 +161,7 @@ function Test() {
                     {rout.title}
                     </p>
                   </Link>
-                </Tooltip>
+                {/* </Tooltip> */}
               </li>
             ))}
           </ul>
