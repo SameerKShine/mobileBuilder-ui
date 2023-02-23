@@ -372,7 +372,7 @@ function index() {
               </div>
             </div>
           </div>
-          <h2 className="SD-dashboard-headings">My Designs design</h2>
+          <h2 className="SD-dashboard-headings">My Designs</h2>
           <div className="myDesigns">
             {templateList.map(
               (ele, index) => !ele.publish && createdDesigns(ele, index)

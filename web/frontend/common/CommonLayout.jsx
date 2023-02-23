@@ -156,10 +156,10 @@ function Test() {
                     to={rout.path}
                   >
                     {rout.icon}
-                    <span>
+                    <p className="sidebar-label">
 
                     {rout.title}
-                    </span>
+                    </p>
                   </Link>
                 </Tooltip>
               </li>

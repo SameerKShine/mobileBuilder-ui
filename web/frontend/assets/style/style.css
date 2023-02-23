@@ -144,7 +144,7 @@ li {
   .SD-layoutSideBar li {
     display: flex;
     justify-content: left;
-    padding: 20px 0px 20px 0px;
+    padding: 10px 0px 10px 0px;
   }
   .SD-layoutSideBar li img {
     width: 14px;
@@ -160,17 +160,27 @@ li {
     border-radius: 4px 4px 4px 4px;
     box-shadow: 18px 14px 20px #00000040;
     margin-left: 10px;
+    width: 100%;
+    margin-right: 10px;
+}
+.SD-sidebar_active p {
+  color: #000;
+}
+p.sidebar-label {
+  margin: 0 0 0 10px;
 }
 .sidebar_no_active {
-  background: #b488f5;
+  
   border-radius: 4px 4px 4px 4px;
-  transform: matrix(-1, 0, 0, 1, 0, 0);
   height: 2rem;
   display: flex;
   align-items: center;
   justify-content: right;
   padding: 24px 12.5px;
   margin-left: 10px;
+}
+.SD-layoutSideBar a {
+  text-decoration: none;
 }
 
   .SD-sidebar_active svg{
