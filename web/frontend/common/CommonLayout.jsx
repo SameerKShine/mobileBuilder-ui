@@ -156,6 +156,10 @@ function Test() {
                     to={rout.path}
                   >
                     {rout.icon}
+                    <span>
+
+                    {rout.title}
+                    </span>
                   </Link>
                 </Tooltip>
               </li>
