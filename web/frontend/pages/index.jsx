@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { EditOutlined, LoadingOutlined, PlusCircleOutlined, DeleteFilled } from "@ant-design/icons";
+import {
+  EditOutlined,
+  LoadingOutlined,
+  PlusCircleOutlined,
+  DeleteFilled,
+  CopyOutlined,
+  FontColorsOutlined
+} from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import CommonModal from "../common/modal/CommonModal";
 import postApi from "../utils/postApi";
@@ -10,7 +17,6 @@ import { Spin, Switch } from "antd";
 import { sucessToast } from "../common/notification/notification";
 import { useMemo } from "react";
 import deleteApi from "../utils/deleteApi";
-
 
 function index() {
   const [templateList, setTemplatelist] = useState([]);
@@ -61,8 +67,8 @@ function index() {
   ];
 
   const handleSelectDesign = (t, i) => {
-    console.log(t)
-    console.log(i)
+    console.log(t);
+    console.log(i);
     navigate({
       pathname: `/builder/${t}`,
       search: `?${t}=${i}`,
@@ -73,41 +79,40 @@ function index() {
     setShowOption(true);
   };
 
-
-
-  const modalButton = useMemo(()=>{
-    console.log("activeClass ==>", activeClass)
-   return <CommonModal
-    headerText={
-      <div className="popup-head">
-        <h2>Choose Design</h2>
-        <p>
-          Select The Default Design To Start With The Design Process.
-        </p>
-      </div>
-    }
-    modalWidth={1500}
-    title={
-      <div className="SD-template-popup">
-        {preDefineTemplate.map((temp, index) => (
-          <div
-            className={`createNewDesign ${
-              temp.id == activeClass && " active"
-            }`}
-            key={index}
-          >
-            <div onClick={() => setActiveClass(temp.id)}>
-              <img src={temp.cover_img} /> <h6>{temp.name}</h6>
-            </div>
+  const modalButton = useMemo(() => {
+    console.log("activeClass ==>", activeClass);
+    return (
+      <CommonModal
+        headerText={
+          <div className="popup-head">
+            <h2>Choose Design</h2>
+            <p>Select The Default Design To Start With The Design Process.</p>
           </div>
-        ))}
-      </div>
-    }
-    okFunc={() => handleSelectDesign("selected-template", activeClass)}
-    button={{ ok: "Create", cancel: "Cancel" }}
-    buttonText={<div> Please select Template</div>}
-  />
-  },[activeClass])
+        }
+        modalWidth={1500}
+        title={
+          <div className="SD-template-popup">
+            {preDefineTemplate.map((temp, index) => (
+              <div
+                className={`createNewDesign ${
+                  temp.id == activeClass && " active"
+                }`}
+                key={index}
+              >
+                <div onClick={() => setActiveClass(temp.id)}>
+                  <img src={temp.cover_img} /> <h6>{temp.name}</h6>
+                </div>
+              </div>
+            ))}
+          </div>
+        }
+        icon={false}
+        okFunc={() => handleSelectDesign("selected-template", activeClass)}
+        button={{ ok: "Create", cancel: "Cancel" }}
+        buttonText={<div> Please select Template</div>}
+      />
+    );
+  }, [activeClass]);
 
   const showOptions = useMemo(() => {
     // const content = [{}];
@@ -277,55 +282,54 @@ function index() {
         </div>
       </div>
     );
-  },[activeClass]);
+  }, [activeClass]);
 
-  const handleDelete = (id) =>{
-    setLoading(true)
-    console.log(id)
-     deleteApi(`deleteAppDesign/${id}`, app)
-     .then((res)=>{
-       setLoading(false)
-       setTemplatelist(res.data.data)
-     })
-     .catch((err)=>setLoading(false))
-    
-  }
+  const handleDelete = (id) => {
+    setLoading(true);
+    console.log(id);
+    deleteApi(`deleteAppDesign/${id}`, app)
+      .then((res) => {
+        setLoading(false);
+        setTemplatelist(res.data.data);
+      })
+      .catch((err) => setLoading(false));
+  };
 
   const createdDesigns = (ele, index) => {
     return (
-      <div className="mydesign_section" key={index}>
-        <div className="publishSection">
-          <span>Publish</span>{" "}
-          <Switch
-            checked={ele.publish}
-            onChange={(e) => handlePublish(e, ele._id)}
-          />
+      <div className="design-card">
+        <div className="mydesign_section" key={index}>
+          <div className="publishSection">
+            <span>Publish</span>{" "}
+            <Switch
+              checked={ele.publish}
+              onChange={(e) => handlePublish(e, ele._id)}
+            />
+          </div>
+          <div className="designData">{ele.design_name}</div>
+          <div
+            className="editDesignButton"
+            onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
+          >
+            <span className="update-date-template">
+              Last Updated:{" "}
+              <strong>{new Date(ele?.updatedAt)?.toDateString()}</strong>
+            </span>
+          </div>
         </div>
-        <div className="del-btn">
-          {/* <DeleteFilled onClick={()=>handleDelete(ele._id)} /> */}
+        <div className="designCard_icons">
           <CommonModal
-                  title={
-                  <h2>Are you sure you want to delete ?</h2>
-                  }
-                  openBtn = {ele.publish}
-                  okFunc={()=>handleDelete(ele._id)}
-                  button={{ ok: "Delete", cancel: "Cancel" }}
-                  buttonText={<div> Delete <DeleteFilled/></div>}
+            openButtonClass="deleteIcon"
+            icon={true}
+            title={<h2>Are you sure you want to delete ?</h2>}
+            openBtn={ele.publish}
+            okFunc={() => handleDelete(ele._id)}
+            button={{ ok: "Delete", cancel: "Cancel" }}
+            buttonText={<DeleteFilled />}
           />
-        </div>
-        <div className="designData">
-          {ele.design_name}
-         
-        </div>
-        <div
-          className="editDesignButton"
-          onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
-        >
-          <span className="update-date-template">
-            Last Updated:{" "}
-            <strong>{new Date(ele?.updatedAt)?.toDateString()}</strong>
-          </span> 
-       <span> <EditOutlined className="icon-edit"/> Edit</span>
+          <EditOutlined className="icon-edit" />
+          <CopyOutlined />
+          <FontColorsOutlined />
         </div>
       </div>
     );
@@ -364,58 +368,57 @@ function index() {
   };
   return (
     <div className="mid-sec">
-    <Spin
-      spinning={isLoading}
-      indicator={
-        <LoadingOutlined style={{ fontSize: "40px", color: "#7d2ae8" }} />
-      }
-      className="SD-dashboard "
-    >
-      {templateList.length >= 1 ? (
-        <>
-          <div style={{ textAlign: "right" }}>
-       
-            {modalButton}
-          </div>
-          <h2 className="SD-dashboard-headings">Published design</h2>
-          <div className="myDesigns">
-            {templateList.map(
-              (ele, index) => ele.publish && createdDesigns(ele, index)
-            )}
-            <div>
-              <div className="custom-create-temp">
-                <div
-                  className="custom-create-button"
-                  onClick={() =>
-                    handleSelectDesign("create-theme", "create-theme")
-                  }
-                >
-                  <PlusCircleOutlined /> Create Custom Design
+      <Spin
+        spinning={isLoading}
+        indicator={
+          <LoadingOutlined style={{ fontSize: "40px", color: "#7d2ae8" }} />
+        }
+        className="SD-dashboard "
+      >
+        {templateList.length >= 1 ? (
+          <>
+            <div style={{ textAlign: "right" }}>{modalButton}</div>
+            <h2 className="SD-dashboard-headings">Published design</h2>
+            <div className="myDesigns">
+              {templateList.map(
+                (ele, index) => ele.publish && createdDesigns(ele, index)
+              )}
+              <div>
+                <div className="custom-create-temp">
+                  <div
+                    className="custom-create-button"
+                    onClick={() =>
+                      handleSelectDesign("create-theme", "create-theme")
+                    }
+                  >
+                    <PlusCircleOutlined /> Create Custom Design
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <h2 className="SD-dashboard-headings">My Designs</h2>
-          <div className="myDesigns">
-            {templateList.map(
-              (ele, index) => !ele.publish && createdDesigns(ele, index)
-            )}
-          </div>
-        </>
-      ) : (
-        <>
-          {showOption && showOptions}
-          {!showOption && (
-            <div className="SD-createapp">
-              <div className="createAppInitial">
-                <button onClick={handleCreateApp}>Create App</button>
-              </div>
-              <div className="no-app-message">There is no app created yet</div>
+            <h2 className="SD-dashboard-headings">My Designs</h2>
+            <div className="myDesigns">
+              {templateList.map(
+                (ele, index) => !ele.publish && createdDesigns(ele, index)
+              )}
             </div>
-          )}
-        </>
-      )}
-    </Spin>
+          </>
+        ) : (
+          <>
+            {showOption && showOptions}
+            {!showOption && (
+              <div className="SD-createapp">
+                <div className="createAppInitial">
+                  <button onClick={handleCreateApp}>Create App</button>
+                </div>
+                <div className="no-app-message">
+                  There is no app created yet
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </Spin>
     </div>
   );
 }
