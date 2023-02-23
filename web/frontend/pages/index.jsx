@@ -363,12 +363,13 @@ function index() {
       });
   };
   return (
+    <div className="mid-sec">
     <Spin
       spinning={isLoading}
       indicator={
         <LoadingOutlined style={{ fontSize: "40px", color: "#7d2ae8" }} />
       }
-      className="SD-dashboard"
+      className="SD-dashboard "
     >
       {templateList.length >= 1 ? (
         <>
@@ -415,6 +416,7 @@ function index() {
         </>
       )}
     </Spin>
+    </div>
   );
 }
 
