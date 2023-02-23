@@ -162,6 +162,7 @@ function Test() {
           </ul>
         </nav>
         <div className="SD-mainSection">
+        <FullScreenButton/>
           <Outlet context={[step, sideBar]} />
         </div>
       </section>
