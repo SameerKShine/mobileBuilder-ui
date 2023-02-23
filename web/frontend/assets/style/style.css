@@ -2158,8 +2158,12 @@ padding: 5px;
 .mydesign_section{
   border-radius: 12px;
   margin-right: 10px;
-  background-color: #ffffff;
+  background-color: #f7f2fe;
   box-shadow: 6px 5px 9px 1px #bdbdbd;
+  min-height: 300px;
+}
+.design-card {
+  width: 300px;
 }
   .publishSection{
     display: flex;
@@ -2305,6 +2309,7 @@ h2.SD-dashboard-headings {
   width: 301px;
   box-shadow: 6px 5px 9px 1px #bdbdbd;
   border-radius: 12px;
+  height: 300px;
 }
 .custom-create-button {
   text-align: center;
@@ -2314,7 +2319,7 @@ h2.SD-dashboard-headings {
   width: 185px;
   padding: 15px;
   font-size: 15px;
-  margin: 60px auto;
+  margin: 107px auto;
   border: 1px dashed #5424a2;
   border-radius: 10px;
 }
