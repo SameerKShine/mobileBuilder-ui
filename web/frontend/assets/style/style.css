@@ -84,12 +84,19 @@ li {
     flex-wrap: wrap;
   }
 /*************** Common Class END *******************  */
-.topbar_elements.fullScreen_button {
+.topbar_elements {
+  display: flex;
   background: #fff;
   padding: 15px;
   margin-right: 2%;
   border-radius: 6px;
   box-shadow: -1px 3px 9px 5px #ededed;
+  justify-content: space-between;
+  align-items: center;
+}
+.topbar_elements strong {
+  color: #999898;
+  font-size: 22px;
 }
 
 /* TOP BAR FOR APP */

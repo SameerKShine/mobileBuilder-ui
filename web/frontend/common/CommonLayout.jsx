@@ -56,7 +56,7 @@ function Test() {
 
   const mainLayout = [
     {
-      title: "Builder",
+      title: "Dashboard",
       path: "/",
       icon: <AppstoreOutlined  style={{ color: "#ffffff", fontSize: "25px" }} /> ,
     },
@@ -167,7 +167,10 @@ function Test() {
           </ul>
         </nav>
         <div className="SD-mainSection">
+          <div className="topbar_elements">
+          {mainLayout.map((pageName, index)=> params.pathname == pageName.path &&<strong key={index}>{pageName.title}</strong>)}
         <FullScreenButton/>
+          </div>
           {/* <Outlet context={[step, sideBar]} /> */}
           <Outlet/>
         </div>

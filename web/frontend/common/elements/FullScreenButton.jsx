@@ -35,7 +35,7 @@ function FullScreenButton() {
         }
       };
   return (
-    <div className="topbar_elements fullScreen_button">
+    <div className="fullScreen_button">
     <Button
       icon={
         showScreen ? (

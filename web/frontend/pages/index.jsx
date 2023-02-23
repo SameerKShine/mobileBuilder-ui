@@ -327,7 +327,7 @@ function index() {
             button={{ ok: "Delete", cancel: "Cancel" }}
             buttonText={<DeleteFilled />}
           />
-          <EditOutlined className="icon-edit" />
+          <EditOutlined onClick={() => handleSelectDesign("theme-edit", ele.template_id)} className="icon-edit" />
           <CopyOutlined />
           <FontColorsOutlined />
         </div>
