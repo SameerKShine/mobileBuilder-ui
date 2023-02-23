@@ -350,6 +350,26 @@ export const getDesignsNames = async(req,res)=>{
 }
 
 
+//Delete deleteAppDesign
+export const deleteAppDesign = async(req,res)=>{
+  try{
+    const shop = res.locals.shopify.session.shop
+    console.log(req.body)
+  //   console.log('enter here agregation', shop)
+  // builderDataModel.find(
+  //     {  shop: shop }, {design_name: 1}
+  //   ).then((data)=>{
+  //     res.send({status:true, result:data})
+  //   })
+    // res.send({status:true, result:data})
+  }
+  catch(err){
+    console.log('enter in catch', err)
+    res.send({status:false, result:"Something went wrong"})
+  }
+}
+
+
 //get builder apperance data
 // export const getBuilderApperance = async(req,res)=>{
 //   try{

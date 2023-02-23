@@ -8,7 +8,8 @@ import {
   saveBuilderData,
   getDesignsList,
   getDesignsNames,
-  publishApp
+  publishApp,
+  deleteAppDesign
 } from "../controllers/backendControllers.js";
 import { UploadImage, deleteimg } from "../helpers/multer.js";
 import {
@@ -33,6 +34,7 @@ adminRoutes.post("/globalSetting", saveGlobalSetting);
 
 adminRoutes.post("/uploadImage", UploadImage);
 adminRoutes.post("/deleteImage", deleteimg);
+adminRoutes.put("/deleteAppDesign", deleteAppDesign);
 
 adminRoutes.post("/getProduct", getProducts);
 adminRoutes.post("/getCollections", getCollection);
