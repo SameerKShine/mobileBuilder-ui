@@ -2162,42 +2162,59 @@ padding: 5px;
 .myDesigns{
   display: flex;
 }
-.mydesign_section{
+.mydesign_section {
   border-radius: 12px;
   margin-right: 10px;
-  background-color: #f7f2fe;
+  background-color: #f0e6fd;
   box-shadow: 6px 5px 9px 1px #bdbdbd;
   min-height: 300px;
+  position: relative;
+  overflow: hidden;
 }
 .design-card {
   width: 300px;
 }
-  .publishSection{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 11px 9px 7px 0px;
-    background: #b488f51c;
-    border-top-right-radius: 12px;
-    border-top-left-radius: 12px;
+.publishSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 11px 9px 7px 0px;
+  background: no-repeat;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
 }
 .publishSection span{
   margin-right: 8px;
 }
-.designData{
+.designData {
   padding: 40px;
   display: flex;
   flex-direction: column;
-  background: #b488f51c;
+  background: no-repeat;
+  text-align: center;
+}
+.designData h3 {
+  font-size: 24px;
+  background: #5424a287;
+  width: 20%;
+  margin: 0 auto;
+  border-radius: 60%;
+  padding: 11px;
+  color: #fff;
+  font-weight: 700;
 }
 .mydesign_section:hover{
   box-shadow: 1px 1px 15px 3px #441982ba;
   
 }
-.editDesignButton{
+.editDesignButton {
   background: #55239f;
   padding: 11px 0px 9px 4px;
   text-align: right;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .editDesignButton span {
   cursor: pointer;
