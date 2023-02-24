@@ -134,37 +134,6 @@ export const saveGlobalSetting = async (req, res) =>{
   }
 }
 
-// Builder Apperance Api controller
-// export const saveBuilderApperance = async (req, res) => {
-//   try {
-//     console.log("saveBuilderApperance")
-//     const { app_appearance } = req.body;
-//     console.log(req.body)
-//     const shop = res.locals.shopify.session.shop;
-//     if (shop) {
-//       const results = await builderApperanceModel.findOneAndUpdate(
-//         { shop: shop },
-//         {
-//           builder_apperance: app_appearance,
-//         },
-//         {
-//           upsert: true, // Make this update into an upsert
-//           new: true,
-//         }
-//       );
-//       //   console.log(results)
-//       res
-//         .status(200)
-//         .send({ message: "succcess", data: "Setting saved Successfully " });
-//     } else {
-//       res.status(200).send({ message: "error", data: "Something Went wrong" });
-//     }
-//   } catch {
-//     console.log("enter in CTACH");
-//     res.status(200).send({ message: "error", data: "Something Went wrong" });
-//   }
-// }
-
 // get all mobile data
 export const getMobileData = async (req, res) => {
     try{
@@ -386,4 +355,46 @@ export const deleteAppDesign = async(req,res)=>{
     console.log('enter in catch', err)
     res.send({status:false, result:"Something went wrong"})
   }
+}
+
+//duplicate Design
+export async function duplicateDesign(req, res) {
+  const { id } = req.params;
+  const shop = res.locals.shopify.session.shop
+  const updatedField = req.body;
+  // console.log(updatedField);
+  const returnData = await builderDataModel.find(
+    { store: shop },
+    { design_name: 1, short_code: 1 }
+  );
+  const newCode = createUniqueCode(returnData);
+    console.log(newCode)
+  const getData = await builderDataModel.findOne({
+    _id: id,
+    shop: shop,
+    template_id:updatedField.template_id
+  });
+  // console.log(getData);
+  const duplicateData = new builderDataModel({
+    shop: shop,
+    design_name: updatedField.name,
+    publish: false,
+    template_id:  newCode,
+    profile_page_design: getData.profile_page_design,
+    side_bar: getData.side_bar,
+    app_bar: getData.app_bar,
+    app_apperance: getData.app_apperance,
+    menu_data: getData.menu_data,
+    product_detail_page_design: getData.product_detail_page_design,
+    cart_page_design: getData.cart_page_design,
+    landing_page: getData.landing_page,
+  });
+  duplicateData.save(function (err, room) {
+    if (!err) {
+      // console.log("room");
+      res.send({ status: 200, message: "Duplicate form created Sucessfully" });
+    } else {
+      console.log("bbb");
+    }
+  });
 }

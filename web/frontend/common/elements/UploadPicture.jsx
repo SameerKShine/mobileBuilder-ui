@@ -31,7 +31,7 @@ function UploadPicture({
     const formData = new FormData();
     setErrorMessage("");
     formData.append("menuIcon", e.target.files[0]);
-    const res = postApi("/api/admin/uploadImage", formData, app);
+    const res = postApi("uploadImage", formData, app);
     res
       .then((data) => {
         // console.log(data);
@@ -45,7 +45,7 @@ function UploadPicture({
   const handleDelete = async () => {
     console.log(serverImg);
     const res =  postApi(
-      "/api/admin/deleteImage",
+      "deleteImage",
       { file: serverImg },
       app
     );

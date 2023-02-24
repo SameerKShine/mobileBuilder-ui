@@ -3,7 +3,7 @@ import {
   publishDesign,
   saveGlobalSetting,
   getMobileData,
-  // saveBuilderApperance,
+  duplicateDesign,
   pushNotification,
   saveBuilderData,
   getDesignsList,
@@ -30,7 +30,7 @@ adminRoutes.post("/publishDesign", publishDesign);
 adminRoutes.post("/publishApp", publishApp);
 
 adminRoutes.post("/globalSetting", saveGlobalSetting);
-// adminRoutes.post("/builderApperance", saveBuilderApperance);
+adminRoutes.post("/duplicateDesign/:id", duplicateDesign);
 
 adminRoutes.post("/uploadImage", UploadImage);
 adminRoutes.post("/deleteImage", deleteimg);

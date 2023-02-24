@@ -44,7 +44,7 @@ function SaveChangesBar({ data, setDesignName, flag, navigate, step, setStep,sid
 
   const handleSaveBuilder = async () => {
     console.log(data)
-    const res = postApi(`/api/admin/builderData`, data, app);
+    const res = postApi(`builderData`, data, app);
     res
       .then((res) => {
         console.log("res", res);

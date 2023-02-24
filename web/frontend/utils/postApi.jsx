@@ -12,7 +12,7 @@ async function postApi(url, body, app) {
   };
 
  const response = await axios
-    .post(url, body, config)
+    .post(`/api/admin/${url}`, body, config)
     .then(({ data: isData }) => {
       return isData;
     })

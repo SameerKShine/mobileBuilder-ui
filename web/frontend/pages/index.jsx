@@ -294,7 +294,11 @@ function index() {
       })
       .catch((err) => setLoading(false));
   };
-
+const handleDuplicateDesign = (data) => {
+  postApi(`duplicateDesign/${data._id}`, data, app)
+  .then((res)=>console.log(res))
+  .catch((err)=>console.log(err))
+}
   const createdDesigns = (ele, index) => {
     return (
       <div className="design-card">
@@ -328,7 +332,7 @@ function index() {
             buttonText={<DeleteFilled />}
           />
           <EditOutlined onClick={() => handleSelectDesign("theme-edit", ele.template_id)} className="icon-edit" />
-          <CopyOutlined />
+          <CopyOutlined onClick={() => handleDuplicateDesign(ele)} className="icon-edit"  />
           <FontColorsOutlined />
         </div>
       </div>
@@ -336,19 +340,19 @@ function index() {
   };
 
   console.log(templateList.length);
-  const handleeClick = async () => {
-    const res = postApi(`/api/storefront/customerCreate`, {}, app);
-    res
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((Err) => console.log(Err));
-  };
+  // const handleeClick = async () => {
+  //   const res = postApi(`/api/storefront/customerCreate`, {}, app);
+  //   res
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((Err) => console.log(Err));
+  // };
 
   const handlePublish = (e, id) => {
     setLoading(true);
     const res = postApi(
-      "/api/admin/publishDesign",
+      "publishDesign",
       { publish: e, updateId: id },
       app
     );
