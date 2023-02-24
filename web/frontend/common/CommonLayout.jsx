@@ -32,26 +32,9 @@ function Test() {
   //   setStep(e);
   //   setSideBar(0)
   // }, []);
-  // useEffect(() => {
-  //   const fullPage = sessionStorage.getItem("full_screen");
-  //   if (fullPage == "enter") {
-  //     const fullscreen = Fullscreen.create(app);
-  //     fullscreen.dispatch(Fullscreen.Action.ENTER);
-  //     setFullScreen(true);
-  //   }
-  // }, []);
+
   // const handleScreenApp = () => {
-  //   const fullPage = sessionStorage.getItem("full_screen");
-  //   const fullscreen = Fullscreen.create(app);
-  //   if (fullPage == "enter") {
-  //     sessionStorage.setItem("full_screen", "exit");
-  //     fullscreen.dispatch(Fullscreen.Action.EXIT);
-  //     setFullScreen(false);
-  //   } else {
-  //     sessionStorage.setItem("full_screen", "enter");
-  //     fullscreen.dispatch(Fullscreen.Action.ENTER);
-  //     setFullScreen(true);
-  //   }
+
   // };
 
   const mainLayout = [

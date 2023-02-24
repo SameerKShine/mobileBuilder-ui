@@ -1,55 +1,42 @@
-import React, {useEffect, useState} from 'react'
+import React, { useCallback, useState } from "react";
 import { Fullscreen } from "@shopify/app-bridge/actions";
-import { Button} from "antd";
-import {
-    FullscreenOutlined,
-    FullscreenExitOutlined,
-  } from "@ant-design/icons";
-  import { useAppBridge } from "@shopify/app-bridge-react";
-  
+import { Button } from "antd";
+import { FullscreenOutlined, FullscreenExitOutlined } from "@ant-design/icons";
+import { useAppBridge } from "@shopify/app-bridge-react";
+
 function FullScreenButton() {
-    const [showScreen, setFullScreen] = useState(false);
+  const [showScreen, setFullScreen] = useState(false);
 
-    const app = useAppBridge();
+  const app = useAppBridge();
 
-    useEffect(() => {
-        const fullPage = sessionStorage.getItem("full_screen");
-        if (fullPage == "enter") {
-          const fullscreen = Fullscreen.create(app);
-          fullscreen.dispatch(Fullscreen.Action.ENTER);
-          setFullScreen(true);
-        }
-      }, []);
+  const handleScreenApp = useCallback(() => {
+    const fullscreen = Fullscreen.create(app);
+    setFullScreen(!showScreen);
+    if (showScreen) {
+      console.log("Enter in True condition");
+      fullscreen.dispatch(Fullscreen.Action.EXIT);
+    } else {
+      console.log("Enter in False condition");
 
-    const handleScreenApp = () => {
-        const fullPage = sessionStorage.getItem("full_screen");
-        const fullscreen = Fullscreen.create(app);
-        if (fullPage == "enter") {
-          sessionStorage.setItem("full_screen", "exit");
-          fullscreen.dispatch(Fullscreen.Action.EXIT);
-          setFullScreen(false);
-        } else {
-          sessionStorage.setItem("full_screen", "enter");
-          fullscreen.dispatch(Fullscreen.Action.ENTER);
-          setFullScreen(true);
-        }
-      };
+      fullscreen.dispatch(Fullscreen.Action.ENTER);
+    }
+  }, []);
   return (
     <div className="fullScreen_button">
-    <Button
-      icon={
-        showScreen ? (
-          <FullscreenExitOutlined width="2rem" />
-        ) : (
-          <FullscreenOutlined />
-        )
-      }
-      onClick={handleScreenApp}
-    >
-      {showScreen ? "Exit full screen" : "Enter to full screen"}
-    </Button>
-  </div>
-  )
+      <Button
+        icon={
+          showScreen ? (
+            <FullscreenExitOutlined width="2rem" />
+          ) : (
+            <FullscreenOutlined />
+          )
+        }
+        onClick={handleScreenApp}
+      >
+        {showScreen ? "Exit full screen" : "Enter to full screen"}
+      </Button>
+    </div>
+  );
 }
 
-export default FullScreenButton
+export default FullScreenButton;

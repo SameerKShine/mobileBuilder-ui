@@ -362,6 +362,7 @@ export async function duplicateDesign(req, res) {
   const { id } = req.params;
   const shop = res.locals.shopify.session.shop
   const updatedField = req.body;
+  console.log(updatedField)
   // console.log(updatedField);
   const returnData = await builderDataModel.find(
     { store: shop },
@@ -377,7 +378,7 @@ export async function duplicateDesign(req, res) {
   // console.log(getData);
   const duplicateData = new builderDataModel({
     shop: shop,
-    design_name: updatedField.name,
+    design_name: updatedField.design_name,
     publish: false,
     template_id:  newCode,
     profile_page_design: getData.profile_page_design,
@@ -392,7 +393,16 @@ export async function duplicateDesign(req, res) {
   duplicateData.save(function (err, room) {
     if (!err) {
       // console.log("room");
-      res.send({ status: 200, message: "Duplicate form created Sucessfully" });
+      const d = getList(shop);
+      d.then((data) =>
+        res.status(200).send({
+          message: "succcess",
+          data: data,
+        })
+      )
+      .catch((err)=> res.status(200).send({
+        message: "Something went wrong",
+      }))
     } else {
       console.log("bbb");
     }
