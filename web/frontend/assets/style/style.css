@@ -2193,6 +2193,7 @@ padding: 5px;
   flex-direction: column;
   background: no-repeat;
   text-align: center;
+  margin-top: 40px;
 }
 .designData h3 {
   font-size: 24px;

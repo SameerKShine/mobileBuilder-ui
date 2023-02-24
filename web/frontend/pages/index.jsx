@@ -217,7 +217,11 @@ const handleDuplicateDesign = (data) => {
               onChange={(e) => handlePublish(e, ele._id)}
             />
           </div>
-          <div className="designData">{ele.design_name}</div>
+
+          <div className="designData">
+            <h3>T</h3>
+            {ele.design_name}
+            </div>
           <div
             className="editDesignButton"
             onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
