@@ -6,7 +6,7 @@ import {
   DeleteFilled,
   CopyOutlined,
   CheckOutlined,
-  FontColorsOutlined
+  FontColorsOutlined,
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import CommonModal from "../common/modal/CommonModal";
@@ -23,6 +23,7 @@ import { CommonInput } from "../common/elements/commonElements";
 function index() {
   const [templateList, setTemplatelist] = useState([]);
   const [showOption, setShowOption] = useState(false);
+  const [error, setError] = useState(false);
 
   const [isLoading, setLoading] = useState(false);
   const [activeClass, setActiveClass] = useState("");
@@ -119,11 +120,17 @@ function index() {
 
   const showOptions = useMemo(() => {
     const content1 = [
-      "iOS App","Android App","Enhance your mobile app with your custom fonts.","Automate your push notification campaigns."
+      "iOS App",
+      "Android App",
+      "Enhance your mobile app with your custom fonts.",
+      "Automate your push notification campaigns.",
     ];
     const content2 = [
-      "iOS App", "Android App","Free Templates","Push Notifications"
-    ]
+      "iOS App",
+      "Android App",
+      "Free Templates",
+      "Push Notifications",
+    ];
     return (
       <div className="SD-select-option">
         <div className="createNewDesign">
@@ -134,10 +141,12 @@ function index() {
               modules within the app.
             </p>
             <ul className="plan-list">
-             {content1.map((ele, index)=> <li key={index}>
-                <CheckOutlined />
-                {ele}
-              </li>)}
+              {content1.map((ele, index) => (
+                <li key={index}>
+                  <CheckOutlined />
+                  {ele}
+                </li>
+              ))}
               {/* <li>
                 <span className="check-plan-icon">
                   <svg
@@ -171,10 +180,12 @@ function index() {
             your vision.
           </p>
           <ul className="plan-list">
-            {content2.map((ele, index)=><li key={index}>
-            <CheckOutlined />
-             {ele}
-            </li>)}
+            {content2.map((ele, index) => (
+              <li key={index}>
+                <CheckOutlined />
+                {ele}
+              </li>
+            ))}
           </ul>
           {modalButton}
         </div>
@@ -192,20 +203,34 @@ function index() {
       })
       .catch((err) => setLoading(false));
   };
-const handleDuplicateDesign = (data) => {
-    setLoading(true)
-    data.design_name = duplicateName
-  console.log(data)
-  postApi(`duplicateDesign/${data._id}`, data, app)
-  .then((res)=>{
-    setTemplatelist(res.data.data);
-    setLoading(false)
-  })
-  .catch((err)=>{
-    setLoading(false)
-    console.log(err)
-  })
-}
+  const handleDuplicateDesign = (data) => {
+    setLoading(true);
+    data.design_name = duplicateName;
+    console.log(data);
+    postApi(`duplicateDesign/${data._id}`, data, app)
+      .then((res) => {
+        setTemplatelist(res.data.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  };
+
+  const handleDuplicateName = (e)=>{
+    let oldNames = []
+    const newName  = e.target.value
+   const validate = templateList.filter((el)=>el.design_name == newName)
+    if(validate.length> 0){
+      setError(true)
+    } else{
+      setError(false)
+    }
+    
+
+    setDuplicateName(e.target.value)
+  }
   const createdDesigns = (ele, index) => {
     return (
       <div className="design-card">
@@ -219,9 +244,9 @@ const handleDuplicateDesign = (data) => {
           </div>
 
           <div className="designData">
-            <h3>T</h3>
+            <h3>{ele.design_name.charAt(0).toUpperCase()}</h3>
             {ele.design_name}
-            </div>
+          </div>
           <div
             className="editDesignButton"
             onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
@@ -242,11 +267,24 @@ const handleDuplicateDesign = (data) => {
             button={{ ok: "Delete", cancel: "Cancel" }}
             buttonText={<DeleteFilled />}
           />
-          <EditOutlined onClick={() => handleSelectDesign("theme-edit", ele.template_id)} className="icon-edit" />
+          <EditOutlined
+            onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
+            className="icon-edit"
+          />
           <CommonModal
             openButtonClass="deleteIcon"
             icon={true}
-            title={<CommonInput label = "Enter Design Name" value={duplicateName} onChange = {(e)=>setDuplicateName(e.target.value)} input={{name: "design_name"}} />}
+            title={
+              <>
+              <CommonInput
+                label="Design Name"
+                value={duplicateName}
+                onChange={handleDuplicateName }
+                input={{ name: "design_name", placeholder: "Design Name" }}
+              />
+              {error&&<span style={{"color":"red"}}>This Name is already taken</span>}
+              </>
+            }
             okFunc={() => handleDuplicateDesign(ele)}
             button={{ ok: "Create", cancel: "Cancel" }}
             buttonText={<CopyOutlined />}
@@ -269,11 +307,7 @@ const handleDuplicateDesign = (data) => {
 
   const handlePublish = (e, id) => {
     setLoading(true);
-    const res = postApi(
-      "publishDesign",
-      { publish: e, updateId: id },
-      app
-    );
+    const res = postApi("publishDesign", { publish: e, updateId: id }, app);
     res
       .then((data) => {
         console.log(data);

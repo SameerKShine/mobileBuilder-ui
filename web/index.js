@@ -29,6 +29,8 @@ app.get(
 );
 
 console.log(process.env.HOST)
+console.log("GDPRWebhookHandlers", GDPRWebhookHandlers)
+console.log("shopify.config.webhooks.path", shopify.config.webhooks.path)
 
 app.post(
   shopify.config.webhooks.path,

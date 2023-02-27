@@ -10,6 +10,10 @@ const { TextArea } = Input;
 function PublishApp() {
   const { app } = useAPI();
   const [value, setValue] = useState("");
+  const [publishData, setPublishData] = useState({
+    country_name:['AD', 'AS'],
+    keywords:['a10', 'c12']
+  })
   const options = useMemo(() => countryList().getData(), []);
   const validate = (values) => {
     const errors = {};
@@ -82,14 +86,14 @@ function PublishApp() {
       storeUrl: "",
       fullDescription: "",
       shortDescription: "",
-      keywords: [],
+      // keywords: [],
       copyright_text: "",
       privacy_policy_url: '',
       developer_account: "",
       appstore_email: "",
       playstore_account: "",
       playstore_email: "",
-      country_select: [],
+      // country_select: [],
     },
     validate,
     onSubmit: (values) => {
@@ -100,9 +104,10 @@ function PublishApp() {
       //   })
       //   .catch((Err) => console.log(Err));
       console.log(values);
+      console.log("publishData==>  " , publishData)
     },
   });
-
+  
   const firstSection = [
     { label: "App Name", name: "appName" },
     { label: "App Sub-title", name: "appSubtitle" },
@@ -166,7 +171,7 @@ function PublishApp() {
           <div style={{ width: "65%" }}>
             <label htmlFor="keywords">Keywords</label>
             <Select
-              mode="multiple"
+              mode="tags"
               name="keywords"
               id="keywords"
               allowClear
@@ -174,8 +179,9 @@ function PublishApp() {
                 width: "100%",
               }}
               placeholder="Please select"
+              value={publishData.keywords}
               // defaultValue={['a10', 'c12']}
-              onChange={formik.handleChange}
+              onChange={(e)=>setPublishData({...publishData, keywords:e })}
               // options={options}
             />
             {formik.errors.keywords ? (
@@ -225,9 +231,8 @@ function PublishApp() {
             placeholder="Please select"
             name="country_select"
             id="country_select"
-            // value={formik.values.country_select}
-            // onChange={formik.handleChange}
-            onChange={(e)=>console.log(e)}
+            value={publishData.country_name}
+            onChange={(e)=>setPublishData({...publishData, country_name:e })}
           />
         </div>
         </div>

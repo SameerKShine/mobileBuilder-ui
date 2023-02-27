@@ -9,7 +9,7 @@ export default {
 
    PRODUCTS_UPDATE: {
     deliveryMethod: DeliveryMethod.Http,
-    callbackUrl: "products/update",
+    callbackUrl: "https://5b3e-14-99-195-170.ngrok.io/api/webhooks/product/update",
     callback: async (topic, shop, body, webhookId) => {
       console.log('--- Product update ---');
       const payload = JSON.parse(body);
