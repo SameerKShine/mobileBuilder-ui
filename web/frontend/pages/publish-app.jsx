@@ -16,6 +16,7 @@ function PublishApp() {
   })
   const options = useMemo(() => countryList().getData(), []);
   const validate = (values) => {
+    const urlValidate = /^((https?|ftp):\/\/)?(www.)?(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i
     const errors = {};
     if (!values.appName) {
       errors.appName = "Required";
@@ -45,20 +46,32 @@ function PublishApp() {
 
     if (!values.supportUrl) {
       errors.supportUrl = "Required";
-    } else if (values.supportUrl.length > 20) {
-      errors.supportUrl = "Must be 20 characters or less";
+    } else if (
+      !urlValidate.test(values.supportUrl)
+    ) {
+      errors.supportUrl = "Invalid URL address";
     }
 
-    if (!values.supportUrl) {
-      errors.supportUrl = "Required";
-    } else if (values.supportUrl.length > 20) {
-      errors.supportUrl = "Must be 20 characters or less";
-    }
+    // if (!values.supportUrl) {
+    //   errors.supportUrl = "Required";
+    // } else if (values.supportUrl.length > 20) {
+    //   errors.supportUrl = "Must be 20 characters or less";
+    // }
 
     if (!values.storeUrl) {
       errors.storeUrl = "Required";
-    } else if (values.storeUrl.length > 20) {
-      errors.storeUrl = "Must be 20 characters or less";
+    } else if (
+      !urlValidate.test(values.storeUrl)
+    ) {
+      errors.storeUrl = "Invalid URL address";
+    }
+
+    if (!values.privacy_policy_url) {
+      errors.privacy_policy_url = "Required";
+    } else if (
+      !urlValidate.test(values.privacy_policy_url)
+    ) {
+      errors.privacy_policy_url = "Invalid URL address";
     }
 
     if (!values.fullDescription) {

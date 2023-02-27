@@ -28,12 +28,13 @@ export default {
       const secretKey = process.env.SHOPIFY_API_SECRET;
       const payload = JSON.parse(body);
       // let hmac_header = req.headers["x-shopify-hmac-sha256"];
-      console.log( "heaader", body)
-      // const hmac_calculated = crypto.createHmac("sha256", secretKey).update(body).digest("base64");
+      console.log( "heaader", webhookId)
+      const hmac_calculated = crypto.createHmac("sha256", secretKey).update(body).digest("base64");
+      console.log(hmac_calculated, "cal")
 
-      const sessionId = await shopify.api.session.getOfflineId(shop)
-      const session = await shopify.config.sessionStorage.loadSession(sessionId);
-      const client = new shopify.api.clients.Rest({session});
+      // const sessionId = await shopify.api.session.getOfflineId(shop)
+      // const session = await shopify.config.sessionStorage.loadSession(sessionId);
+      // const client = new shopify.api.clients.Rest({session});
       console.log('--- /Product update ---', session);
     },
   },
