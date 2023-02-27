@@ -7,7 +7,7 @@ import mongodb from './backend/config/mongodb.js'
 import adminRoutes from "./backend/api/adminRoutes.js";
 import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
-import GDPRWebhookHandlers   from "./gdpr.js";
+import webhookHandlers   from "./webhook-handlers.js";
 import storefrontRoutes from "./backend/api/storefrontRoutes.js";
 
 
@@ -29,17 +29,18 @@ app.get(
 );
 
 console.log(process.env.HOST)
-console.log("GDPRWebhookHandlers", GDPRWebhookHandlers)
-console.log("shopify.config.webhooks.path", shopify.config.webhooks.path)
+console.log(process.env.SCOPES)
+// console.log("GDPRWebhookHandlers", GDPRWebhookHandlers.PRODUCTS_UPDATE)
+// console.log("shopify.config.webhooks.path", shopify.config.webhooks.path)
 
-app.post(
-  shopify.config.webhooks.path,
-  shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
-);
 // app.post(
 //   shopify.config.webhooks.path,
-//   shopify.processWebhooks({ webhookHandlers })
-//   );
+//   shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
+// );
+app.post(
+  shopify.config.webhooks.path,
+  shopify.processWebhooks({ webhookHandlers : webhookHandlers })
+  );
 mongodb()
 app.use(express.json());
 

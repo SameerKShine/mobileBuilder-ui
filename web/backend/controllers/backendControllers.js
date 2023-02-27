@@ -286,6 +286,7 @@ export const saveBuilderData = async(req,res)=>{
 //Get designs builder List
 export const getDesignsList = async(req,res)=>{
   try {
+    console.log(res.locals.shopify.session)
     const shop = res.locals.shopify.session.shop;
 
     if (shop) {

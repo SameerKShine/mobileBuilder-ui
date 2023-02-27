@@ -1,4 +1,6 @@
 import { DeliveryMethod } from "@shopify/shopify-api";
+import shopify from "./shopify.js";
+import crypto from "node:crypto";
 export default {
   /**
    * Customers can request their data from a store owner. When this happens,
@@ -7,14 +9,32 @@ export default {
    * https://shopify.dev/apps/webhooks/configuration/mandatory-webhooks#customers-data_request
    */
 
-   PRODUCTS_UPDATE: {
+  //  PRODUCTS_UPDATE: {
+  //   deliveryMethod: DeliveryMethod.Http,
+  //   callbackUrl: "/products/update",
+  //   callback: async (topic, shop, body, webhookId) => {
+  //     console.log('--- Product update ---');
+  //     const payload = JSON.parse(body);
+  //     console.log(payload);
+  //     console.log('--- /Product update ---');
+  //   },
+  // },
+
+  PRODUCTS_UPDATE: {
     deliveryMethod: DeliveryMethod.Http,
-    callbackUrl: "https://5b3e-14-99-195-170.ngrok.io/api/webhooks/product/update",
+    callbackUrl: "/api/webhooks/products/update",
     callback: async (topic, shop, body, webhookId) => {
       console.log('--- Product update ---');
+      const secretKey = process.env.SHOPIFY_API_SECRET;
       const payload = JSON.parse(body);
-      console.log(payload);
-      console.log('--- /Product update ---');
+      // let hmac_header = req.headers["x-shopify-hmac-sha256"];
+      console.log( "heaader", body)
+      // const hmac_calculated = crypto.createHmac("sha256", secretKey).update(body).digest("base64");
+
+      const sessionId = await shopify.api.session.getOfflineId(shop)
+      const session = await shopify.config.sessionStorage.loadSession(sessionId);
+      const client = new shopify.api.clients.Rest({session});
+      console.log('--- /Product update ---', session);
     },
   },
 
