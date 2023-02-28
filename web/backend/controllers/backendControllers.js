@@ -234,7 +234,7 @@ export const saveBuilderData = async(req,res)=>{
     const prevData = await getList(shop)
     console.log("prevData ==>", prevData )
     const uniqueId = createUniqueCode(returnData)
-    console.log(updateId)
+    console.log("updateId ==>", updateId )
     // console.log(prevData)
     let findObj = {
       shop: shop, _id:updateId
@@ -246,10 +246,13 @@ export const saveBuilderData = async(req,res)=>{
     if(updateId == ""){
       findObj._id = uniqueId
     }
-    // const alreadypublish = await builderDataModel.findOne({ shop: shop, _id:updateId, publish:true})
-    // if(alreadypublish){
-    //   publish = true
-    // }
+    if(updateId){
+      const alreadypublish = await builderDataModel.findOne({ shop: shop, _id:updateId, publish:true})
+      if(alreadypublish){
+        publish = true
+      }
+    }
+ 
     if (shop) {
       const results = await builderDataModel.findOneAndUpdate(
         findObj,
