@@ -96,7 +96,7 @@ return(
             min_range = {18}
             step = ''
             val = {eleValue.heading_size}
-            onChange={(e) => onChange(e.toString(), 'heading_size')}
+            onChange={(e) => onChange(e, 'heading_size')}
             />
             <Slider_field
             label = 'Subheading size'
@@ -104,7 +104,7 @@ return(
             min_range = {12}
             step = ''
             val = {eleValue.subheading_size}
-            onChange={(e) => onChange(e.toString(), 'subheading_size')}
+            onChange={(e) => onChange(e, 'subheading_size')}
             />
              <Slider_field
             label = 'Heading weight'
@@ -286,25 +286,12 @@ return(
             />
           </div>
           {colorField_group(colorFields)}
-          {/* <div className="SD-colorFieldSection SD-common-margin">
-            <h2 className="SD-section-heading">Color</h2>
-            <div className="color_fieldWrapper">
-              {colorFields.map((inp, index) => (
-                <Color_field
-                  label={inp.label}
-                  value={data[fieldIndex]?.style[inp.name]}
-                  name={inp.name}
-                  onChange={(e) =>
-                    handleEditElement(e.target.value, e.target.name)
-                  }
-                />
-              ))}
-            </div>
-          </div> */}
+
           {margin_padding()}
         </>
       );
     };
+
     const countdownEdit = () => {
       const options = [
         { label: "Left", value: "left" },
@@ -314,8 +301,8 @@ return(
       const val = data[fieldIndex];
       console.log(val);
       const gradiantClr = [
-        { label: "Gradient Color 1", name: "gradient_color1" },
-        { label: "Gradient Color 2", name: "gradient_color2" },
+        { label: "Gradient Color 1", name: "countdown_gradient_color1" },
+        { label: "Gradient Color 2", name: "countdown_gradient_color2" },
       ];
       // const colorFields = [{label:'', name:''}]
       return (
@@ -380,7 +367,7 @@ return(
               value={val?.style?.background_image}
               onChange={(e) => handleEditElement(e.target.value, e.target.name)}
               input={{
-                name: "background_image",
+                name: "countdown_background_image",
                 type: "text",
               }}
             />

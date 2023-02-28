@@ -35,20 +35,35 @@ function EditSection({
     setShowTopbar(true);
     const arr = [...builderFields];
     if (name == "background_style") {
-      arr[elementIndex].style[name] = {
+      if(e == 'gradiant'){
+        console.log
+        arr[elementIndex].style.background_style = {
+          countdown_gradient_color1:"#d28e8e",countdown_gradient_color2:"#7c3636"
+        }
+      } else{
+        arr[elementIndex].style.background_style = {
+          countdown_background_color:"#d24747"
+        }
+        } 
+     
+     arr[elementIndex].style.background_style = {
+      ...arr[elementIndex].style.background_style,
         type: e,
       };
-    } else if (
+    } 
+
+    else if (
       name == "countdown_background_color" ||
-      name == "background_image" ||
-      name == "gradient_color1" ||
-      name == "gradient_color2"
+      name == "countdown_background_image" ||
+      name == "countdown_gradient_color1" ||
+      name == "countdown_gradient_color2"
     ) {
       arr[elementIndex].style.background_style = {
         ...arr[elementIndex].style.background_style,
         [name]: e,
       };
-    } else {
+    } 
+    else {
       arr[elementIndex].style[name] = e;
     }
     setBuilderFields(arr);

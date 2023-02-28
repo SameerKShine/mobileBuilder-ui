@@ -183,7 +183,7 @@ export default function HomePage() {
       // console.log(templateData[searchParam]);
       if (templateData[searchParam]) {
         setDelName(templateData[searchParam].design_name);
-        setDesignName(templateData[searchParam].design_name);
+        setDesignName("");
         setBuilderFields(templateData[searchParam].landing_page);
         // setMenu(templateData[_id].menu_data)
         setApp_apperance(templateData[searchParam].builder_apperance);

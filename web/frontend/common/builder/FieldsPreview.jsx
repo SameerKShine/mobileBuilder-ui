@@ -29,7 +29,7 @@ export const FieldsPreview = (eleType, index, app_appearance) => {
                 style={{
                   color: eleType.style.heading_color,
                   fontWeight: style.heading_weight,
-                  fontSize: style.heading_size,
+                  fontSize: `${style.heading_size}px`,
                 }}
               >
                 {eleType.heading_text}
@@ -39,7 +39,7 @@ export const FieldsPreview = (eleType, index, app_appearance) => {
                   style={{
                     color: eleType.style.subheading_color,
                     fontWeight: style.subheading_weight,
-                    fontSize: style.subheading_size,
+                    fontSize:`${style.subheading_size}px`,
                   }}
                 >
                   {eleType.subheading_text}

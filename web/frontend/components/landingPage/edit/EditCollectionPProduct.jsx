@@ -170,7 +170,7 @@ const  getShop  = 'test-updatedpre.myshopify.com'
                   : ""}
                 {elementType == "products" || elementType == "collections"
                   ? commonToggle(
-                      "Show price",
+                      "Price",
                       "show_price",
                       values,
                       elementIndex,
@@ -178,8 +178,15 @@ const  getShop  = 'test-updatedpre.myshopify.com'
                     )
                   : ""}
                 {commonToggle(
-                  "Show heading",
+                  "Heading",
                   "show_heading",
+                  values,
+                  elementIndex,
+                  setBuilderFields
+                )}
+                {commonToggle(
+                  "View All",
+                  "show_viewAll",
                   values,
                   elementIndex,
                   setBuilderFields
@@ -196,6 +203,18 @@ const  getShop  = 'test-updatedpre.myshopify.com'
                   name: "heading",
                   type: "text",
                   placeholder: "Enter Heading here...",
+                }}
+              />
+            )}
+            {val.show_viewAll && (
+              <CommonInput
+                label="View All"
+                value={val.viewAll ?? ""}
+                onChange={handleEditElement}
+                input={{
+                  name: "viewAll",
+                  type: "text",
+                  placeholder: "Enter here...",
                 }}
               />
             )}

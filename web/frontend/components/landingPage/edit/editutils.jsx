@@ -23,6 +23,7 @@ export const commonToggle = (
   elementIndex,
   setBuilderFields
 ) => {
+  console.log(builderFields[elementIndex][field])
   const onChange = (checked) => {
     let newArr = [...builderFields];
     newArr[elementIndex][field] = checked;
@@ -33,7 +34,7 @@ export const commonToggle = (
       <div className="SD-switch appreance_bar_icon">
         <label>{label}</label>
         <Switch
-          checked={builderFields[elementIndex][field]}
+          checked={builderFields[elementIndex][field]??false}
           onChange={onChange}
         />
       </div>
@@ -73,9 +74,9 @@ export const editHeader = (
           elementIndex,
           setBuilderFields
         )}
-        {builderFields[elementIndex].show_subheading && (
+        {builderFields[elementIndex]?.show_subheading ? (
           <CommonInput
-            value={builderFields[elementIndex].subheading_text}
+            value={builderFields[elementIndex]?.subheading_text}
             onChange={handleEditElement}
             input={{
               name: "subheading_text",
@@ -83,7 +84,7 @@ export const editHeader = (
               placeholder: "Edit Sub-Heading",
             }}
           />
-        )}
+        ):""}
       </div>
 
       <CommonSelect

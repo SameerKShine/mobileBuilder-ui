@@ -30,6 +30,8 @@ export const useElementVal = (data) => {
           view_style: "slider",
           slider_style: "square",
           choose_layout: "layout_1",
+          show_viewAll:true,
+          viewAll:"View All",
           data: [],
         };
         newData = saveData;
@@ -85,6 +87,10 @@ export const useElementVal = (data) => {
           heading1: "Deal of the day",
           paragraph1: "Black Friday",
           choose_layout: "layout_1",
+          day_text : "Day",
+          hours_text:"Hours",
+          min_text:"Miniute",
+          sec_text:"Seconds",
           countdown_date: {
             start_date: "",
             end_date: "",
@@ -93,7 +99,7 @@ export const useElementVal = (data) => {
           },
           style: {
             ...newData.style,
-            background_style: { type: "color" },
+            background_style: { type: "color", countdown_background_color:"#d24747" },
           },
         };
         newData = saveData;

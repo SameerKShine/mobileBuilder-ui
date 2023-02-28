@@ -19,11 +19,12 @@ function ProductDesign({ viewData, app_appearance }) {
     } else {
       className = "lay4";
     }
+    console.log(viewData)
   return (
     <>
     <div className="jstBtwn">
       {viewData.show_heading && <h2 style={{"color":primary_color??"#000"}}>{viewData.heading ?? "Products"}</h2>}
-      <a>View All</a>
+      {viewData.show_viewAll &&<a>{viewData.viewAll ?? "View All"}</a>}
     </div>
     <>
       <div className="grid-container">
@@ -33,7 +34,7 @@ function ProductDesign({ viewData, app_appearance }) {
               <img width={100} src={ele?.image?.url ?? DummyImage} />
               <div className="product-text">
                 <h6 style={{"color":secondary_color??"#000"}}>{ele.label}</h6>
-                {viewData?.show_price && <p>$ {ele?.price?.amount}</p>}
+                {viewData?.show_price && <p>$ {ele?.amount}</p>}
               </div>
             </div>
           ))

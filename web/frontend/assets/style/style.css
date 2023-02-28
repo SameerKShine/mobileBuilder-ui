@@ -873,7 +873,7 @@ p.sidebar-label {
   .hroSldrTxt {
     position: absolute;
     bottom: 40px;
-    text-align: center !important;
+    /* text-align: center !important; */
     width: 100%;
     z-index: 999;
   }
@@ -986,9 +986,9 @@ p.sidebar-label {
     margin-right: 1%;
     border-radius: 8px;
   }
-  .countDown_layout_1 {
+  /* .countDown_layout_1 {
     background: #d24747;
-  }
+  } */
   .countDown_layout_1 #countdown li {
     background: transparent;
     color: #fff;

@@ -16,7 +16,7 @@ function CollectionDesign({viewData, app_appearance}) {
         <>
           <div className="jstBtwn">
             {viewData.show_heading && <h2 style={{"color":primary_color??"#000"}}>{viewData.heading ?? "Collection"}</h2>}
-            <a>View All</a>
+            {viewData.show_viewAll &&<a>{viewData.viewAll ?? "View All"}</a>}
           </div>
     
           {viewData.data.length > 0 ? (
