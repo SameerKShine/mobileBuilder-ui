@@ -267,7 +267,7 @@ export default function HomePage() {
           setStep={setStep}
           sideBar={sideBar}
           setSideBar={setSideBar}
-          flag="builder"
+          setLoading={setLoading}
           navigate={navigate}
           setDesignName={setDesignName}
         >

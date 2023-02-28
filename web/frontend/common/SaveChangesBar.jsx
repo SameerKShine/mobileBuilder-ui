@@ -6,7 +6,7 @@ import { getSessionToken } from "@shopify/app-bridge-utils";
 import SaveBar from "./navigation/SaveBar";
 import postApi from "../utils/postApi";
 
-function SaveChangesBar({ data, setDesignName, flag, navigate, step, setStep,sideBar,setSideBar, children }) {
+function SaveChangesBar({ data, setDesignName, setLoading, navigate, step, setStep,sideBar,setSideBar, children }) {
   const [allNames, setAllNames] = useState([]);
   const [errorName, setErrorName] = useState("");
   
@@ -43,6 +43,7 @@ function SaveChangesBar({ data, setDesignName, flag, navigate, step, setStep,sid
 
 
   const handleSaveBuilder = async () => {
+    setLoading(true)
     console.log(data)
     const res = postApi(`builderData`, data, app);
     res
@@ -51,13 +52,18 @@ function SaveChangesBar({ data, setDesignName, flag, navigate, step, setStep,sid
         if (res.message == "succcess") {
           console.log("enter IN SUCESS CONDITION")
           sucessToast(res.data, "top");
+          setLoading(false)
             navigate("/");
         } else {
           console.log("enter in error condition")
           errToast(res.data, "top");
+          setLoading(false)
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>{
+        setLoading(false)
+        console.log(err)
+        });
   };
   const handleDiscard = () => {
     setShowTopbar(false);
@@ -100,7 +106,6 @@ function SaveChangesBar({ data, setDesignName, flag, navigate, step, setStep,sid
         sideBar={sideBar}
         handleExit={handleExit}
         design_name={data?.design_name ?? ""}
-        flag={flag}
         errorName={errorName}
         children={children}
       />
