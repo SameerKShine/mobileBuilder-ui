@@ -246,10 +246,10 @@ export const saveBuilderData = async(req,res)=>{
     if(updateId == ""){
       findObj._id = uniqueId
     }
-    const alreadypublish = await builderDataModel.findOne({ shop: shop, _id:updateId, publish:true})
-    if(alreadypublish){
-      publish = true
-    }
+    // const alreadypublish = await builderDataModel.findOne({ shop: shop, _id:updateId, publish:true})
+    // if(alreadypublish){
+    //   publish = true
+    // }
     if (shop) {
       const results = await builderDataModel.findOneAndUpdate(
         findObj,
