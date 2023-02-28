@@ -44,7 +44,8 @@ app.post(
 mongodb()
 app.use(express.json());
 
-app.use("/api/storefront/",shopify.validateAuthenticatedSession(), storefrontRoutes)
+app.use("/api/storefront/", storefrontRoutes)
+// app.use("/api/storefront/",shopify.validateAuthenticatedSession(), storefrontRoutes)
 app.use("/api/admin/",shopify.validateAuthenticatedSession(), adminRoutes)
 // All endpoints after this point will require an active session
 app.use("/api/*", shopify.validateAuthenticatedSession());

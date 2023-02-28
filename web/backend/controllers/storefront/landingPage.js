@@ -1,10 +1,11 @@
-import landingPageModel from "../../models/landingPageModel.js"
+
 import shopify from "../../../shopify.js"
+import builderDataModel from "../../models/builderData.js"
 
 export const  landingPage = async (req, res) =>{
         console.log("Enter in store fron api")
-          landingPageModel.findOne(
-            { shop: "test-updatedpre.myshopify.com" }
+          builderDataModel.findOne(
+            { shop: "test-updatedpre.myshopify.com", publish : true }
           ).then((data)=>{
               res.send({status:true, response: data, message:"Data Sucessfully Send"})
           })

@@ -128,7 +128,7 @@ function PublishApp() {
     <div className="SD-publish_app publish_section">
       <form onSubmit={formik.handleSubmit}>
         <div className="display_flex">
-          <div>
+          <div className="publish_form">
             <div className="first_section">
               {firstSection.map((inp, index) => (
                 <div className="firstSection_div" key={index}>

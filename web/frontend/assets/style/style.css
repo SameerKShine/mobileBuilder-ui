@@ -2381,6 +2381,9 @@ h2.SD-dashboard-headings {
 .firstSection_div{
   width: 33%;
 }
+.publish_form{
+  width: 70%;
+}
 /* ***************************** Publish app end ************************* */
 
 /* ***************************** App Bar ************************* */
