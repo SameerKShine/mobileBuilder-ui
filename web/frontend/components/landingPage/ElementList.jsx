@@ -40,7 +40,7 @@ function ElementList(props) {
       icon: ProductsMajor,
     },
     { type: "countdown_offer", label: "Countdown offer", icon: ClockMajor },
-    { type: "video", label: "Video", icon: PlayCircleMajor },
+    // { type: "video", label: "Video", icon: PlayCircleMajor },
   ];
 
   //drag and drop
