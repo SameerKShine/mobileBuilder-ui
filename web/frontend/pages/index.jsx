@@ -244,7 +244,7 @@ function index() {
 
   const createdDesigns = (ele, index) => {
     return (
-      <div className="design-card">
+      <div className="inner_mid_card_box">
         <div className="mydesign_section" key={index}>
           <div className="publishSection">
             <span>Publish</span>{" "}
@@ -365,7 +365,7 @@ function index() {
       });
   };
   return (
-    <div className="mid-sec">
+    <div className="inner_mid_box_MN">
       <Spin
         spinning={isLoading}
         indicator={
@@ -377,12 +377,12 @@ function index() {
           <>
             <div style={{ textAlign: "right" }}>{modalButton}</div>
             <h2 className="SD-dashboard-headings">Published design</h2>
-            <div className="myDesigns">
+            <div className="inner_mid_box">
               {templateList.map(
                 (ele, index) => ele.publish && createdDesigns(ele, index)
               )}
-              <div>
-                <div className="custom-create-temp">
+            
+                <div className="inner_mid_card_box">
                   <div
                     className="custom-create-button"
                     onClick={() =>
@@ -392,10 +392,10 @@ function index() {
                     <PlusCircleOutlined /> Create Custom Design
                   </div>
                 </div>
-              </div>
+              
             </div>
             <h2 className="SD-dashboard-headings">My Designs</h2>
-            <div className="myDesigns">
+            <div className="inner_mid_box">
               {templateList.map(
                 (ele, index) => !ele.publish && createdDesigns(ele, index)
               )}

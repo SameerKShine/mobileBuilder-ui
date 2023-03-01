@@ -88,7 +88,6 @@ li {
   display: flex;
   background: #fff;
   padding: 15px;
-  margin-right: 2%;
   border-radius: 6px;
   box-shadow: -1px 3px 9px 5px #ededed;
   justify-content: space-between;
@@ -201,6 +200,7 @@ p.sidebar-label {
   .SD-mainSection {
     width: 95%;
     margin-left: 2%;
+    margin-right: 2%;
     margin-top: 2%;
 }
   /*****************************END*****************/
@@ -2160,75 +2160,6 @@ display: flex;
 box-shadow: 1px 1px 15px 3px #441982ba;
 padding: 5px;
 }
-.myDesigns{
-  display: flex;
-  flex-wrap: wrap;
-}
-.mydesign_section {
-  border-radius: 12px;
-  margin-right: 10px;
-  background-color: #f0e6fd;
-  box-shadow: 6px 5px 9px 1px #bdbdbd;
-  min-height: 300px;
-  position: relative;
-  overflow: hidden;
-}
-.design-card {
-  width: 300px;
-}
-.publishSection {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 11px 9px 7px 0px;
-  background: no-repeat;
-  border-top-right-radius: 12px;
-  border-top-left-radius: 12px;
-}
-.publishSection span{
-  margin-right: 8px;
-}
-.designData {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  background: no-repeat;
-  text-align: center;
-  margin-top: 40px;
-}
-.designData h3 {
-  font-size: 24px;
-  background: #5424a287;
-  width: 20%;
-  margin: 0 auto;
-  border-radius: 60%;
-  padding: 11px;
-  color: #fff;
-  font-weight: 700;
-}
-.mydesign_section:hover{
-  box-shadow: 1px 1px 15px 3px #441982ba;
-  
-}
-.editDesignButton {
-  background: #55239f;
-  padding: 11px 0px 9px 4px;
-  text-align: right;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.editDesignButton span {
-  cursor: pointer;
-  padding: 6px 7px;
-  background: #fff;
-  border-radius: 23px;
-  margin-right: 10px;
-}
-span.anticon.anticon-edit.icon-edit {
-  margin-right: 0;
-}
 .SD-template-popup h6 {
   text-align: left;
   margin: 15px;
@@ -2251,11 +2182,6 @@ span.anticon.anticon-edit.icon-edit {
   padding: 30px;
   background-color: #ffffff;
   width: 73%;
-}
-span.update-date-template {
-  background: none;
-  color: #fff;
-  font-size: 12px;
 }
 /* .publishSection{
   display: none;
@@ -2338,30 +2264,9 @@ h2.SD-dashboard-headings {
   border-radius: 12px;
   height: 300px;
 }
-.custom-create-button {
-  text-align: center;
-  flex-direction: column;
-  display: flex;
-  background: #f7f2fe;
-  width: 185px;
-  padding: 15px;
-  font-size: 15px;
-  margin: 107px auto;
-  border: 1px dashed #5424a2;
-  border-radius: 10px;
-}
-.custom-create-button svg {
-  font-size: 30px;
-  color: #5424a2;
-}
-.mid-sec {
-  background: #fff;
-  padding: 15px;
-  margin-right: 2%;
-  border-radius: 6px;
-  box-shadow: -1px 3px 9px 5px #ededed;
-  margin-top: 25px;
-}
+
+
+
 /* **************************** Dashboard Design End ************************ */
 
 /* ***************************** Publish app  ************************* */
@@ -2449,5 +2354,125 @@ h2.SD-dashboard-headings {
   flex-direction: column;
   justify-content: start;
 }
+
+
+span.anticon.anticon-edit.icon-edit {
+  margin-right: 0;
+}
+
+
 /* ***************************** Sidebar End **************************** */
 
+
+
+/*-- 
+
+.inner_mid_box{
+  display: flex;
+  flex-wrap: wrap;
+}
+.mydesign_section {
+  border-radius: 12px;
+  margin-right: 10px;
+  background-color: #f0e6fd;
+  box-shadow: 6px 5px 9px 1px #bdbdbd;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+.dasbord_design_box {
+  width: 300px;
+}
+.publishSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 11px 9px 7px 0px;
+  background: no-repeat;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+}
+.publishSection span{
+  margin-right: 8px;
+}
+.designData {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  background: no-repeat;
+  text-align: center;
+  margin-top: 40px;
+}
+.designData h3 {
+  font-size: 24px;
+  background: #5424a287;
+  width: 20%;
+  margin: 0 auto;
+  border-radius: 60%;
+  padding: 11px;
+  color: #fff;
+  font-weight: 700;
+}
+.mydesign_section:hover{
+  box-shadow: 1px 1px 15px 3px #441982ba;
+  
+}
+.editDesignButton {
+  background: #55239f;
+  padding: 11px 0px 9px 4px;
+  text-align: right;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.editDesignButton span {
+  cursor: pointer;
+  padding: 6px 7px;
+  background: #fff;
+  border-radius: 23px;
+  margin-right: 10px;
+}
+
+
+span.update-date-template {
+  background: none;
+  color: #fff;
+  font-size: 12px;
+}
+
+
+.custom-create-button {
+  text-align: center;
+  flex-direction: column;
+  display: flex;
+  background: #f7f2fe;
+  width: 185px;
+  padding: 15px;
+  font-size: 15px;
+  margin: 107px auto;
+  border: 1px dashed #5424a2;
+  border-radius: 10px;
+}
+.custom-create-button svg {
+  font-size: 30px;
+  color: #5424a2;
+}
+
+
+--*/
+
+.inner_mid_box_MN {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: -1px 3px 9px 5px #ededed;
+  margin-top: 25px;
+}
+
+
+.inner_mid_box{
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 15px;
+}
