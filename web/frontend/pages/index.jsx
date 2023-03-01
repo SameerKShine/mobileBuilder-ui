@@ -31,6 +31,9 @@ function index() {
   const [activeClass, setActiveClass] = useState("");
   const [duplicateName, setDuplicateName] = useState("");
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [prevId, setPrevId] = useState("");
+
   const navigate = useNavigate();
 
   const { app } = useAPI();
@@ -72,12 +75,13 @@ function index() {
     },
   ];
 
-  const handleSelectDesign = (t, i) => {
+  const handleSelectDesign = (t, i, id) => {
     console.log(t);
     console.log(i);
     navigate({
       pathname: `/builder/${t}`,
       search: `?${t}=${i}`,
+      hash:id
     });
   };
 
@@ -113,7 +117,7 @@ function index() {
           </div>
         }
         icon={false}
-        okFunc={() => handleSelectDesign("selected-template", activeClass)}
+        okFunc={() => handleSelectDesign("selected-template", activeClass,"selected-template" )}
         button={{ ok: "Create", cancel: "Cancel" }}
         buttonText={<div> Please select Template</div>}
       />
@@ -171,7 +175,7 @@ function index() {
               </li> */}
             </ul>
             <h2
-              onClick={() => handleSelectDesign("create-theme", "create-theme")}
+              onClick={() => handleSelectDesign("create-theme", "create-theme","create-theme")}
             >
               Create Custom Design
             </h2>
@@ -246,29 +250,13 @@ function index() {
     return (
       <div className="inner_mid_card_box">
         <div className="mydesign_section" key={index}>
-          <div className="publishSection">
-            <span>Publish</span>{" "}
-            <Switch
-              checked={ele.publish}
-              onChange={(e) => handlePublish(e, ele._id)}
-            />
-          </div>
-
+       
+          <div className="new div added">
           <div className="designData">
             <h3>{ele.design_name.charAt(0).toUpperCase()}</h3>
             {ele.design_name}
           </div>
-          <div
-            className="editDesignButton"
-            onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
-          >
-            <span className="update-date-template">
-              Last Updated:{" "}
-              <strong>{new Date(ele?.updatedAt)?.toDateString()}</strong>
-            </span>
-          </div>
-        </div>
-        <div className="designCard_icons">
+          <div className="designCard_icons">
           <CommonModal
             openButtonClass="deleteIcon"
             icon={true}
@@ -279,12 +267,15 @@ function index() {
             buttonText={<DeleteFilled />}
           />
           <EditOutlined
-            onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
+            onClick={() => handleSelectDesign("theme-edit",ele._id, ele.template_id)}
             className="icon-edit"
           />
           
-          {/* <PreviewModal data = {ele} page = "index"/> */}
-          <EyeOutlined />
+          <EyeOutlined onClick={()=>{
+            setPrevId(ele._id)
+            setIsModalOpen(true)
+            }} />
+          
           <CommonModal
             openButtonClass="deleteIcon"
             icon={true}
@@ -333,6 +324,30 @@ function index() {
             buttonText={<FontColorsOutlined onClick={()=> setDuplicateName(ele.design_name)} />}
           />
         </div>
+          </div>
+
+          <div className="editDesignButton">
+
+          <div
+             className="update-date-template"
+            onClick={() => handleSelectDesign("theme-edit", ele._id, ele.template_id)}
+            >
+            <p>
+              Last Updated:{" "}
+              </p>
+              <strong>{new Date(ele?.updatedAt)?.toDateString()}</strong>
+           
+          </div>
+          <div className="publishSection">
+            <span>Publish</span>{" "}
+            <Switch
+              checked={ele.publish}
+              onChange={(e) => handlePublish(e, ele._id)}
+            />
+          </div>
+            </div>
+        </div>
+
       </div>
     );
   };
@@ -386,7 +401,7 @@ function index() {
                   <div
                     className="custom-create-button"
                     onClick={() =>
-                      handleSelectDesign("create-theme", "create-theme")
+                      handleSelectDesign("create-theme", "create-theme","create-theme")
                     }
                   >
                     <PlusCircleOutlined /> Create Custom Design
@@ -417,6 +432,7 @@ function index() {
           </>
         )}
       </Spin>
+      { isModalOpen && <PreviewModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} id = {prevId} page = "index"/>}
     </div>
   );
 }

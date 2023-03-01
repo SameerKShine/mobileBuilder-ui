@@ -138,10 +138,13 @@ export const saveGlobalSetting = async (req, res) =>{
 export const getMobileData = async (req, res) => {
     try{
       const shop = res.locals.shopify.session.shop
-      const { id } = req.params;
+      const {id} = req.params;
+      console.log(req.query)
+      // console.log(req)
+      // console.log(temp)
       console.log('enter here agregation', shop)
   const data = await  builderDataModel.findOne(
-        {  shop: shop , template_id:id },
+        {  shop: shop , _id:id },
       )
       console.log(data)
       res.send({status:true, result:data})
