@@ -257,7 +257,8 @@ function index() {
             {ele.design_name}
           </div>
           <div className="designCard_icons">
-          <CommonModal
+         <div>
+         <CommonModal
             openButtonClass="deleteIcon"
             icon={true}
             title={<h2>Are you sure you want to delete ?</h2>}
@@ -323,6 +324,10 @@ function index() {
             button={{ ok: "Change", cancel: "Cancel" }}
             buttonText={<FontColorsOutlined onClick={()=> setDuplicateName(ele.design_name)} />}
           />
+         </div>
+         <div>
+
+         </div>
         </div>
           </div>
 
