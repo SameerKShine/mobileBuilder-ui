@@ -4,6 +4,7 @@ import { EyeOutlined } from "@ant-design/icons";
 import getApi from '../../utils/getApi';
 import { useAPI } from '../../globalState/getShop';
 import PreviewCard from '../builder/PreviewCard';
+import { FieldsPreview } from '../builder/FieldsPreview';
 
 function PreviewModal({id, page, setIsModalOpen, isModalOpen}) {
 
@@ -67,7 +68,9 @@ const {app} = useAPI()
          loading ? "Lodaing..."
          :
          <PreviewCard data = "globalSetting_hideHeader" bar_color = "#ffffff">
-             
+             {prevData.landing_page.map((eleType, index) => {
+            return <div key={index}>{FieldsPreview(eleType, index, prevData.app_apperance)}</div>;
+          })}
          </PreviewCard>
      }
     </Modal>
