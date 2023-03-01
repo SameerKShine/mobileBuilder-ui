@@ -2,27 +2,31 @@ import React, { useState, useEffect } from 'react'
 import { Button, Modal } from 'antd';
 import { EyeOutlined } from "@ant-design/icons";
 import getApi from '../../utils/getApi';
+import { useAPI } from '../../globalState/getShop';
+import PreviewCard from '../builder/PreviewCard';
 
-function PreviewModal({data, page}) {
+function PreviewModal({id, page, setIsModalOpen, isModalOpen}) {
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [design_name, setDesignName] = useState("")
-    const [builderFields, setBuilderFields] = useState("")
-    const [menu, setMenu] = useState("")
-    const [app_apperance, setApp_apperance] = useState("")
-    const [app_bar, setAppBar] = useState("")
-    const [layoutSelection, setLayoutSelect] = useState("")
-    const [sideBar_data, setSidebar] = useState("")
-
+    // const [isModalOpen, setIsModalOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [prevData, setPrevData] = useState({})
+    // const [builderFields, setBuilderFields] = useState("")
+    // const [menu, setMenu] = useState("")
+    // const [app_apperance, setApp_apperance] = useState("")
+    // const [app_bar, setAppBar] = useState("")
+    // const [layoutSelection, setLayoutSelect] = useState("")
+    // const [sideBar_data, setSidebar] = useState("")
+const {app} = useAPI()
     useEffect(()=>{
+       
         if(page == "index"){
             console.log('enter in preview')
-            console.log(data._id)
-            getApi(`/api/admin/getMobileData/${data._id}`, app)
+            console.log(id)
+            getApi(`/api/admin/getMobileData/${id}`, app)
             .then((res) => {
               console.log("res", res.result);
-            //   setDesignName(res.result.design_name);
+              setPrevData(res.result)
+              setLoading(false)
             //   setBuilderFields(res.result.landing_page);
             //   setMenu(res.result.menu_data);
             //   setUpDateId(res.result._id);
@@ -57,11 +61,15 @@ function PreviewModal({data, page}) {
     {/* <Button type="primary" onClick={showModal}>
       Open Modal
     </Button> */}
-    <EyeOutlined  onClick={showModal} />
+    {/* <EyeOutlined  onClick={showModal} /> */}
     <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+     {
+         loading ? "Lodaing..."
+         :
+         <PreviewCard data = "globalSetting_hideHeader" bar_color = "#ffffff">
+             
+         </PreviewCard>
+     }
     </Modal>
   </>
   )
