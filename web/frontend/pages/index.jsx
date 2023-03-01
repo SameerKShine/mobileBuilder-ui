@@ -251,7 +251,7 @@ function index() {
       <div className="inner_mid_card_box">
         <div className="mydesign_section" key={index}>
        
-          <div className="new div added">
+          <div className="mn">
           <div className="designData">
             <h3>{ele.design_name.charAt(0).toUpperCase()}</h3>
             {ele.design_name}

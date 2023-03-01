@@ -2476,3 +2476,35 @@ span.update-date-template {
   flex-wrap: wrap;
   column-gap: 15px;
 }
+
+
+.inner_mid_card_box {
+  border: 2px solid #7930f0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 15px;
+  height: 9rem;
+}
+
+.mydesign_section {
+  width: 310px;
+}
+
+.editDesignButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.mn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1rem;
+}
+
+.designCard_icons {
+  display: flex;
+  justify-content: space-around;
+}
