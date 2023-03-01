@@ -416,3 +416,40 @@ export async function duplicateDesign(req, res) {
     }
   });
 }
+
+//edit design name Design
+export async function editDesignName(req, res) {
+  const { id } = req.params;
+  const shop = res.locals.shopify.session.shop
+  const updatedField = req.body;
+  // console.log(updatedField)
+
+  // const newCode = createUniqueCode(returnData);
+    // console.log(newCode)
+ const updateName =  await  builderDataModel.findOneAndUpdate({
+    _id: id,
+    shop: shop,
+    template_id:updatedField.template_id
+  },
+  {
+    design_name:updatedField.design_name,
+  },
+  )
+  if(updateName){
+    const d = getList(shop);
+    d.then((data) =>
+      res.status(200).send({
+        message: "succcess",
+        data: data,
+      })
+    )
+    .catch((err)=> res.status(200).send({
+      message: "Something went wrong",
+    }))
+  } else{
+    res.status(200).send({
+      message: "Something went wrong",
+    })
+  }
+ 
+}

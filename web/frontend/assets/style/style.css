@@ -2162,6 +2162,7 @@ padding: 5px;
 }
 .myDesigns{
   display: flex;
+  flex-wrap: wrap;
 }
 .mydesign_section {
   border-radius: 12px;
