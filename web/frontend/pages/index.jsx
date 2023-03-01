@@ -118,6 +118,8 @@ function index() {
     );
   }, [activeClass]);
 
+
+
   const showOptions = useMemo(() => {
     const content1 = [
       "iOS App",
@@ -218,19 +220,25 @@ function index() {
       });
   };
 
-  const handleDuplicateName = (e)=>{
-    let oldNames = []
+  const handleDuplicateName = (e, prevName)=>{
     const newName  = e.target.value
-   const validate = templateList.filter((el)=>el.design_name == newName)
+    let validate = []
+    console.log(prevName)
+    if(prevName){
+      if(prevName !== newName){
+         validate = templateList.filter((el)=>el.design_name == newName)
+      }
+    } else{
+      validate = templateList.filter((el)=>el.design_name == newName)
+    }
     if(validate.length> 0){
       setError(true)
     } else{
       setError(false)
     }
-    
-
     setDuplicateName(e.target.value)
   }
+
   const createdDesigns = (ele, index) => {
     return (
       <div className="design-card">
@@ -276,20 +284,48 @@ function index() {
             icon={true}
             title={
               <>
-              <CommonInput
-                label="Design Name"
-                value={duplicateName}
-                onChange={handleDuplicateName }
-                input={{ name: "design_name", placeholder: "Design Name" }}
-              />
-              {error&&<span style={{"color":"red"}}>This Name is already taken</span>}
+                <CommonInput
+                  label="Design Name"
+                  // value={duplicateName}
+                  onChange={(e)=>handleDuplicateName(e, "")}
+                  input={{ name: "duplicate _name", placeholder: "Design Name" }}
+                />
+                {error && (
+                  <span style={{ color: "red" }}>
+                    This Name is already taken
+                  </span>
+                )}
               </>
             }
+            disableok = {error}
             okFunc={() => handleDuplicateDesign(ele)}
             button={{ ok: "Create", cancel: "Cancel" }}
             buttonText={<CopyOutlined />}
           />
-          <FontColorsOutlined />
+          {/* <FontColorsOutlined /> */}
+          <CommonModal
+            openButtonClass="deleteIcon"
+            icon={true}
+            title={
+              <>
+                <CommonInput
+                  label="Design Name"
+                  value={duplicateName}
+                  onChange={(e)=> handleDuplicateName(e, ele.design_name)}
+                  input={{ name: "design_name", placeholder: "Design Name" }}
+                />
+                {error && (
+                  <span style={{ color: "red" }}>
+                    This Name is already taken
+                  </span>
+                )}
+              </>
+            }
+            disableok = {error}
+            okFunc={() => handleDuplicateDesign(ele)}
+            button={{ ok: "Change", cancel: "Cancel" }}
+            buttonText={<FontColorsOutlined onClick={()=> setDuplicateName(ele.design_name)} />}
+          />
         </div>
       </div>
     );
