@@ -253,11 +253,11 @@ function index() {
        
           <div className="mn">
           <div className="designData">
-            <h3>{ele.design_name.charAt(0).toUpperCase()}</h3>
-            {ele.design_name}
+            <span>{ele.design_name.charAt(0).toUpperCase()}</span>
+            <p> {ele.design_name} </p>
           </div>
           <div className="designCard_icons">
-         <div>
+         <div class="design_edit_options">
          <CommonModal
             openButtonClass="deleteIcon"
             icon={true}
@@ -325,8 +325,8 @@ function index() {
             buttonText={<FontColorsOutlined onClick={()=> setDuplicateName(ele.design_name)} />}
           />
          </div>
-         <div>
-
+         <div className="design_option_icon">
+              <p>II</p>
          </div>
         </div>
           </div>
