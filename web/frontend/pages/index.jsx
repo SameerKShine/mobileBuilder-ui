@@ -205,13 +205,14 @@ function index() {
       })
       .catch((err) => setLoading(false));
   };
-  const handleDuplicateDesign = (data) => {
+  
+  const handleDuplicateDesign = (url,data) => {
     setLoading(true);
     data.design_name = duplicateName;
     console.log(data);
-    postApi(`duplicateDesign/${data._id}`, data, app)
+    postApi(`${url}/${data._id}`, data, app)
       .then((res) => {
-        setTemplatelist(res.data.data);
+        setTemplatelist(res.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -298,7 +299,7 @@ function index() {
               </>
             }
             disableok = {error}
-            okFunc={() => handleDuplicateDesign(ele)}
+            okFunc={() => handleDuplicateDesign("duplicateDesign",ele)}
             button={{ ok: "Create", cancel: "Cancel" }}
             buttonText={<CopyOutlined />}
           />
@@ -322,7 +323,7 @@ function index() {
               </>
             }
             disableok = {error}
-            okFunc={() => handleDuplicateDesign(ele)}
+            okFunc={() => handleDuplicateDesign("editName",ele)}
             button={{ ok: "Change", cancel: "Cancel" }}
             buttonText={<FontColorsOutlined onClick={()=> setDuplicateName(ele.design_name)} />}
           />
