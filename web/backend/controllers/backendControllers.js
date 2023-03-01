@@ -372,6 +372,7 @@ export async function duplicateDesign(req, res) {
   const updatedField = req.body;
   console.log(updatedField)
   // console.log(updatedField);
+  if(updatedField.design_name.length > 1){
   const returnData = await builderDataModel.find(
     { store: shop },
     { design_name: 1, short_code: 1 }
@@ -415,6 +416,11 @@ export async function duplicateDesign(req, res) {
       console.log("bbb");
     }
   });
+} else{
+  res.status(200).send({
+    message: "Name cannot be empty",
+  })
+}
 }
 
 //edit design name Design
@@ -422,10 +428,6 @@ export async function editDesignName(req, res) {
   const { id } = req.params;
   const shop = res.locals.shopify.session.shop
   const updatedField = req.body;
-  // console.log(updatedField)
-
-  // const newCode = createUniqueCode(returnData);
-    // console.log(newCode)
  const updateName =  await  builderDataModel.findOneAndUpdate({
     _id: id,
     shop: shop,

@@ -7,6 +7,7 @@ import {
   CopyOutlined,
   CheckOutlined,
   FontColorsOutlined,
+  EyeOutlined
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import CommonModal from "../common/modal/CommonModal";
@@ -19,6 +20,7 @@ import { sucessToast } from "../common/notification/notification";
 import { useMemo } from "react";
 import deleteApi from "../utils/deleteApi";
 import { CommonInput } from "../common/elements/commonElements";
+import PreviewModal from "../common/modal/PreviewModal";
 
 function index() {
   const [templateList, setTemplatelist] = useState([]);
@@ -205,7 +207,7 @@ function index() {
       })
       .catch((err) => setLoading(false));
   };
-  
+
   const handleDuplicateDesign = (url,data) => {
     setLoading(true);
     data.design_name = duplicateName;
@@ -280,6 +282,9 @@ function index() {
             onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
             className="icon-edit"
           />
+          
+          {/* <PreviewModal data = {ele} page = "index"/> */}
+          <EyeOutlined />
           <CommonModal
             openButtonClass="deleteIcon"
             icon={true}
