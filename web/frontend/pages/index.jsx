@@ -245,7 +245,7 @@ function index() {
     }
     setDuplicateName(e.target.value)
   }
-
+/*---test--*/
   const createdDesigns = (ele, index) => {
     return (
       <div className="inner_mid_card_box">
