@@ -263,7 +263,6 @@ function index() {
           <div className="mn">
             <div className="designData">
               <span>{ele.design_name.charAt(0).toUpperCase()}</span>
-             
             </div>
             <div className="designCard_icons">
               <div class="design_edit_options">
@@ -276,7 +275,7 @@ function index() {
                   buttonText={<DeleteFilled />}
                 />
                 <a
-                className="SD-icon"
+                  className="SD-icon"
                   onClick={() =>
                     handleSelectDesign("theme-edit", ele._id, ele.template_id)
                   }
@@ -358,7 +357,7 @@ function index() {
             </div>
           </div>
           <div className="designName">
-          <p> {ele.design_name} </p>
+            <p> {ele.design_name} </p>
           </div>
           <div className="editDesignButton">
             <div
@@ -422,32 +421,37 @@ function index() {
         {templateList.length >= 1 ? (
           <>
             <div style={{ textAlign: "right" }}>{modalButton}</div>
-            <h2 className="SD-dashboard-headings">Published design</h2>
-            <div className="inner_mid_box">
-              {templateList.map(
-                (ele, index) => ele.publish && createdDesigns(ele, index)
-              )}
+            <div className="card-section">
+              <h2 className="SD-dashboard-headings">Published design</h2>
+              <div className="inner_mid_box">
+                {templateList.map(
+                  (ele, index) => ele.publish && createdDesigns(ele, index)
+                )}
 
-              <div className="inner_mid_card_box">
-                <div
-                  className="custom-create-button"
-                  onClick={() =>
-                    handleSelectDesign(
-                      "create-theme",
-                      "create-theme",
-                      "create-theme"
-                    )
-                  }
-                >
-                  <PlusCircleOutlined /> Create Custom Design
+                <div className="inner_mid_card_box">
+                  <div
+                    className="custom-create-button"
+                    onClick={() =>
+                      handleSelectDesign(
+                        "create-theme",
+                        "create-theme",
+                        "create-theme"
+                      )
+                    }
+                  >
+                    <PlusCircleOutlined /> Create Custom Design
+                  </div>
                 </div>
               </div>
             </div>
-            <h2 className="SD-dashboard-headings">My Designs</h2>
-            <div className="inner_mid_box">
-              {templateList.map(
-                (ele, index) => !ele.publish && createdDesigns(ele, index)
-              )}
+
+            <div className="card-section">
+              <h2 className="SD-dashboard-headings">My Designs</h2>
+              <div className="inner_mid_box">
+                {templateList.map(
+                  (ele, index) => !ele.publish && createdDesigns(ele, index)
+                )}
+              </div>
             </div>
           </>
         ) : (
