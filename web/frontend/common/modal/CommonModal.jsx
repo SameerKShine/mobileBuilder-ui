@@ -21,7 +21,7 @@ function CommonModal({ title, okFunc, button, openBtn, icon, openButtonClass, bu
          {
        icon ? 
        <Tooltip>
-   <a disabled={openBtn??false} className={openButtonClass??'' }onClick={showModal}>
+   <a className={`SD-icon ${openButtonClass}`} disabled={openBtn??false} onClick={showModal}>
       {buttonText}
     </a>
      </Tooltip>
