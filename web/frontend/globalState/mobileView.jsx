@@ -3,8 +3,8 @@ import React, { useContext, useState, createContext } from "react";
 const APIContext = createContext();
 
 function ContextMobileView({ children }) {
-  const [mobileview, setMobileview] = useState('/assets/images/phoneView/android.png');
-  return <APIContext.Provider value={{mobileview, setMobileview}}>{children}</APIContext.Provider>;
+  const [getFullscreen, setFullscreen] = useState(false);
+  return <APIContext.Provider value={{getFullscreen, setFullscreen}}>{children}</APIContext.Provider>;
 }
 export default ContextMobileView;
 
