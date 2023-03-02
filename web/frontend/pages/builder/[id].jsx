@@ -73,6 +73,13 @@ export default function HomePage() {
         display_icon: "My_Orders0",
         icon_url: "/assets/images/menu/account.svg",
       },
+      {
+        icon: "",
+        title: "FAQs",
+        id: "FAQs",
+        display_icon: "FAQs0",
+        icon_url: "/assets/images/menu/faqs.svg",
+      },
     ],
     background_color: "",
   });
@@ -124,10 +131,10 @@ export default function HomePage() {
   });
   const [app_bar, setAppBar] = useState({
     bar_color: "#ffffff",
-    notification_icon: true,
+    notification_icon: false,
     search_icon: true,
     cart_icon: true,
-    favorite_icon: true,
+    favorite_icon: false,
     bottom_radius: "4",
     shadow: "",
     app_logo: "",

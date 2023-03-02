@@ -13,23 +13,6 @@ function globalSettings() {
     app_logo: "",
     app_name:""
   });
-  const [showTopBar, setShowtopbar] = useState(false);
-
-  const checkVal = usePrevious(global_setting);
-  useEffect(() => {
-    console.log("MENU USE EFFECT");
-    if (checkVal !== undefined) {
-      if (checkVal !== global_setting) {
-        console.log("enter in if condition");
-        console.log("checkVal  ==>", checkVal);
-        setShowtopbar(true);
-      } else {
-        console.log("enter in ELSE condition");
-        console.log("checkVal  ==>", checkVal);
-        //  setShowBtn(false)
-      }
-    }
-  }, [global_setting]);
 
   const uploadImage = (img, name) => {
     setGlobalSetting({ ...global_setting, [name]: img });
@@ -42,16 +25,7 @@ function globalSettings() {
 
   return (
     <>
-      {showTopBar && (
-        <SaveChangesBar
-        data={{
-          global_setting,
-        }}
-          api_url="/globalSetting"
-          setShowTopbar={setShowtopbar}
-          flag="global_setting"
-        />
-      )}
+
       <div className="SD-globalSetting">
         <div className="rightSidebar open-right-sidebar globalSettingLeftSection">
           <h2 className="SD-section-heading">

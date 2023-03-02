@@ -47,6 +47,8 @@ app.use(express.json());
 app.use("/api/storefront/", storefrontRoutes)
 // app.use("/api/storefront/",shopify.validateAuthenticatedSession(), storefrontRoutes)
 app.use("/api/admin/",shopify.validateAuthenticatedSession(), adminRoutes)
+console.log(process.cwd())
+app.use('/uploads', express.static(join(process.cwd(), 'uploads')));
 // All endpoints after this point will require an active session
 app.use("/api/*", shopify.validateAuthenticatedSession());
 
