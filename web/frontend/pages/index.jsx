@@ -125,7 +125,7 @@ function index() {
           )
         }
         button={{ ok: "Create", cancel: "Cancel" }}
-        buttonText={<div> Please select Template</div>}
+        buttonText={<div> Select Template</div>}
       />
     );
   }, [activeClass]);
@@ -228,6 +228,7 @@ function index() {
     console.log(data);
     postApi(`${url}/${data._id}`, data, app)
       .then((res) => {
+        console.log(res.data)
         setTemplatelist(res.data);
         setLoading(false);
       })
@@ -350,9 +351,6 @@ function index() {
                     />
                   }
                 />
-              </div>
-              <div className="design_option_icon">
-                <p>II</p>
               </div>
             </div>
           </div>
