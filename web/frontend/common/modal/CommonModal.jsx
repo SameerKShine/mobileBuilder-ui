@@ -17,14 +17,8 @@ function CommonModal({ title, okFunc, button, openBtn, icon, openButtonClass, bu
       setIsModalVisible(false);
     };
   return (
-    <div className="SD-ShowModal">
-    {/* <Tooltip title={tooltip}>
-  { !visible&& <button disabled={openBtn??false} className={`SD-saveButton ${openButtonClass??""}` }onClick={showModal}>
-      {buttonText}
-      {/* <Icon source={icon} color={iconColor} /> 
-    </button>
-     </Tooltip> */}
-     {
+    <>
+         {
        icon ? 
        <Tooltip>
    <a disabled={openBtn??false} className={openButtonClass??'' }onClick={showModal}>
@@ -36,7 +30,9 @@ function CommonModal({ title, okFunc, button, openBtn, icon, openButtonClass, bu
       {buttonText}
     </button>
      }
+   
     <Modal
+     className="SD-ShowModal"
       width={modalWidth ?? 400}
       open={isModalVisible}
       footer={[
@@ -59,7 +55,7 @@ function CommonModal({ title, okFunc, button, openBtn, icon, openButtonClass, bu
     >
       {title}
     </Modal>
-  </div>
+  </>
   )
 }
 
