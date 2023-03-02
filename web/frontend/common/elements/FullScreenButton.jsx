@@ -20,7 +20,9 @@ function FullScreenButton() {
 
       fullscreen.dispatch(Fullscreen.Action.ENTER);
     }
-  }, []);
+  }, [showScreen]);
+
+  console.log(showScreen)
   return (
     <div className="fullScreen_button">
       <Button

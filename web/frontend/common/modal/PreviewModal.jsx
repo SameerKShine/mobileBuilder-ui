@@ -5,6 +5,8 @@ import getApi from '../../utils/getApi';
 import { useAPI } from '../../globalState/getShop';
 import PreviewCard from '../builder/PreviewCard';
 import { FieldsPreview } from '../builder/FieldsPreview';
+import MobileHeader from '../builder/MobileHeader';
+import MenuPreview from '../builder/MenuPreview';
 
 function PreviewModal({id, page, setIsModalOpen, isModalOpen}) {
 
@@ -63,14 +65,16 @@ const {app} = useAPI()
       Open Modal
     </Button> */}
     {/* <EyeOutlined  onClick={showModal} /> */}
-    <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+    <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
      {
          loading ? "Lodaing..."
          :
-         <PreviewCard data = "globalSetting_hideHeader" bar_color = "#ffffff">
+         <PreviewCard className="innerPreviewDiv" data = "globalSetting_hideHeader" bar_color = "#ffffff">
+             <MobileHeader app_bar={prevData.app_bar} />
              {prevData.landing_page.map((eleType, index) => {
             return <div key={index}>{FieldsPreview(eleType, index, prevData.app_apperance)}</div>;
           })}
+          <MenuPreview data = {prevData.menu_data} />
          </PreviewCard>
      }
     </Modal>
