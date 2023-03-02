@@ -194,7 +194,6 @@ li {
     color: #ffffff;
   }
 
-
   .SD-app_logo {
     width: 140px;
     margin-right: 5px;
@@ -202,10 +201,10 @@ li {
 
   .SD-app-layout {
     display: flex;
-    width: 100%;
     justify-content: space-between;
     height: 100vh;
-}
+  }
+
 .SD-app-layout nav {
     width: 15%;
     background: rgb(87, 34, 156);
@@ -2520,9 +2519,11 @@ span.update-date-template {
   font-size: 30px;
   color: #5424a2;
 }
-
-
 --*/
+
+.publishSection span {
+  font-size: 12px;
+}
 
 .inner_mid_box_MN {
   background: #fff;
@@ -2530,8 +2531,8 @@ span.update-date-template {
   border-radius: 6px;
   box-shadow: -1px 3px 9px 5px #ededed;
   margin-top: 25px;
+  height: 88%;
 }
-
 
 .inner_mid_box{
   display: flex;
@@ -2546,7 +2547,7 @@ span.update-date-template {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  height: 10rem;
+  height: 11rem;
   background: #fbfbff;
   box-shadow: -1px 3px 9px 5px #f2f2ffb3;
   min-width: 352px;
@@ -2566,12 +2567,16 @@ span.update-date-template {
 .mn {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.2rem;
 }
 
 .designCard_icons {
   display: flex;
   justify-content: end;
+}
+
+.designName {
+  margin-bottom: 0.8rem;
 }
 
 
@@ -2605,13 +2610,13 @@ span.update-date-template {
   margin-top: 0.5rem;
 }
 .update-date-template p {
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.2px;
 }
 
 .update-date-template strong {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .design_option_icon {
@@ -2621,19 +2626,25 @@ span.update-date-template {
   border-radius: 22px;
   margin-left: 8px;
   cursor: pointer;
+  display: none;
+}
+
+.design_edit_options a {
+  color: #858585;
 }
 
 .design_edit_options {
   display: flex;
   gap: 0.3rem;
-  /* opacity: 0; */
-  transition: 0.5s ease-in;
-}
-
-/* .inner_mid_card_box:hover .design_edit_options {
   opacity: 1;
   transition: 0.5s ease-in;
-} */
+  align-items: center;
+}
+
+.inner_mid_card_box:hover .design_edit_options {
+  opacity: 1;
+  transition: 0.5s ease-in;
+}
 
 .custom-create-button {
   display: flex;
@@ -2647,6 +2658,36 @@ span.update-date-template {
   width: auto;
   height: 22px;
 }
+
+.designName {
+  padding-bottom: 0.8rem;
+  border-bottom: 0.2px solid #ededed;
+}
+
+.designName p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+
+
+.inner_mid_box_MN .ant-switch{
+  height: 18px!important;
+}
+
+.inner_mid_box_MN .ant-switch .ant-switch-handle::before {
+  inset-inline-start: initial!important;
+  width: 14px!important;
+  height: 14px!important;
+}
+
+.card-section {
+  padding-bottom: 3rem;
+}
+
+
+
 
 /************** PREVIEW MODAL *********************  */
 .innerPreviewDiv{
