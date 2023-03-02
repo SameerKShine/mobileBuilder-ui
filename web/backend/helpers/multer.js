@@ -2,20 +2,13 @@
 
 import multer from "multer";
 
-
-
-
-
-
-
 import path from "path";
 import fs from 'fs'
-import { Console } from "console";
 
 
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/images");
+    cb(null, "uploads/");
   },
   filename: (req, file, cb) => {
        console.log(file)
@@ -88,7 +81,7 @@ console.log('enter here in upload function')
 
       // console.log('enter in correct ====>> ', req.file.destination)
       console.log(req.file.path)
-      res.send({ status: true, url: `${req.file.destination}/${req.file.filename}`});
+      res.send({ status: true, url: req.file.path});
       // res.send({ status: true, url: req.file.path});
     }
     // console.log(req.file,"hahahah") 
