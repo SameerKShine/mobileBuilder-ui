@@ -137,6 +137,9 @@ li {
     width: 140px;
     margin-right: 5px;
   }
+  .SD-topbar-logo{
+    text-align: center;
+  }
 
   .SD-app-layout {
     display: flex;
