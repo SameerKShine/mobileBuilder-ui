@@ -263,12 +263,11 @@ function index() {
           <div className="mn">
             <div className="designData">
               <span>{ele.design_name.charAt(0).toUpperCase()}</span>
-              <p> {ele.design_name} </p>
+             
             </div>
             <div className="designCard_icons">
               <div class="design_edit_options">
                 <CommonModal
-                  openButtonClass="deleteIcon"
                   icon={true}
                   title={<h2>Are you sure you want to delete ?</h2>}
                   openBtn={ele.publish}
@@ -277,11 +276,12 @@ function index() {
                   buttonText={<DeleteFilled />}
                 />
                 <a
+                className="SD-icon"
                   onClick={() =>
                     handleSelectDesign("theme-edit", ele._id, ele.template_id)
                   }
                 >
-                  <EditOutlined className="icon-edit" />
+                  <EditOutlined />
                 </a>
 
                 <a
@@ -289,12 +289,12 @@ function index() {
                     setPrevId(ele._id);
                     setIsModalOpen(true);
                   }}
+                  className="SD-icon"
                 >
                   <EyeOutlined />
                 </a>
 
                 <CommonModal
-                  openButtonClass="deleteIcon"
                   icon={true}
                   title={
                     <>
@@ -321,7 +321,6 @@ function index() {
                 />
                 {/* <FontColorsOutlined /> */}
                 <CommonModal
-                  openButtonClass="deleteIcon"
                   icon={true}
                   title={
                     <>
@@ -358,7 +357,9 @@ function index() {
               </div>
             </div>
           </div>
-
+          <div className="designName">
+          <p> {ele.design_name} </p>
+          </div>
           <div className="editDesignButton">
             <div
               className="update-date-template"
