@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import './assets/style/style.css'
+import "../frontend/fonts/poppins.woff";
 // import "~antd/dist/antd.css";
 import "swiper/css";
 
