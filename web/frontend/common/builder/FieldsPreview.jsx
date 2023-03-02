@@ -140,10 +140,10 @@ export const FieldsPreview = (eleType, index, app_appearance) => {
             style={{
               margin: `${style.margin_top}px  ${style.margin_right}px  ${style.margin_bottom}px  ${style.margin_left}px `,
               padding: `${style.padding_top}px  ${style.padding_right}px  ${style.padding_bottom}px  ${style.padding_left}px `,
-              textAlign: eleType.text_align,
             }}
           >
             {/* <span>Featured Products</span> */}
+            <div style={{textAlign: eleType.text_align}}>
             <h2
               style={{
                 color: style.heading_color,
@@ -160,6 +160,8 @@ export const FieldsPreview = (eleType, index, app_appearance) => {
             >
               {eleType.subtitle_text}
             </p>
+            </div>
+          
             <figure className="img-box">
               <img
                 src={eleType?.featured_product?.image?.url ?? DummyProductImage}
