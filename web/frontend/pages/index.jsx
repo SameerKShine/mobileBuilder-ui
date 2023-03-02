@@ -7,6 +7,7 @@ import {
   CopyOutlined,
   CheckOutlined,
   FontColorsOutlined,
+  EyeOutlined
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import CommonModal from "../common/modal/CommonModal";
@@ -19,6 +20,7 @@ import { sucessToast } from "../common/notification/notification";
 import { useMemo } from "react";
 import deleteApi from "../utils/deleteApi";
 import { CommonInput } from "../common/elements/commonElements";
+import PreviewModal from "../common/modal/PreviewModal";
 
 function index() {
   const [templateList, setTemplatelist] = useState([]);
@@ -28,6 +30,9 @@ function index() {
   const [isLoading, setLoading] = useState(false);
   const [activeClass, setActiveClass] = useState("");
   const [duplicateName, setDuplicateName] = useState("");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [prevId, setPrevId] = useState("");
 
   const navigate = useNavigate();
 
@@ -70,12 +75,13 @@ function index() {
     },
   ];
 
-  const handleSelectDesign = (t, i) => {
+  const handleSelectDesign = (t, i, id) => {
     console.log(t);
     console.log(i);
     navigate({
       pathname: `/builder/${t}`,
       search: `?${t}=${i}`,
+      hash:id
     });
   };
 
@@ -111,12 +117,14 @@ function index() {
           </div>
         }
         icon={false}
-        okFunc={() => handleSelectDesign("selected-template", activeClass)}
+        okFunc={() => handleSelectDesign("selected-template", activeClass,"selected-template" )}
         button={{ ok: "Create", cancel: "Cancel" }}
         buttonText={<div> Please select Template</div>}
       />
     );
   }, [activeClass]);
+
+
 
   const showOptions = useMemo(() => {
     const content1 = [
@@ -167,7 +175,7 @@ function index() {
               </li> */}
             </ul>
             <h2
-              onClick={() => handleSelectDesign("create-theme", "create-theme")}
+              onClick={() => handleSelectDesign("create-theme", "create-theme","create-theme")}
             >
               Create Custom Design
             </h2>
@@ -203,13 +211,14 @@ function index() {
       })
       .catch((err) => setLoading(false));
   };
-  const handleDuplicateDesign = (data) => {
+
+  const handleDuplicateDesign = (url,data) => {
     setLoading(true);
     data.design_name = duplicateName;
     console.log(data);
-    postApi(`duplicateDesign/${data._id}`, data, app)
+    postApi(`${url}/${data._id}`, data, app)
       .then((res) => {
-        setTemplatelist(res.data.data);
+        setTemplatelist(res.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -218,47 +227,38 @@ function index() {
       });
   };
 
-  const handleDuplicateName = (e)=>{
-    let oldNames = []
+  const handleDuplicateName = (e, prevName)=>{
     const newName  = e.target.value
-   const validate = templateList.filter((el)=>el.design_name == newName)
+    let validate = []
+    console.log(prevName)
+    if(prevName){
+      if(prevName !== newName){
+         validate = templateList.filter((el)=>el.design_name == newName)
+      }
+    } else{
+      validate = templateList.filter((el)=>el.design_name == newName)
+    }
     if(validate.length> 0){
       setError(true)
     } else{
       setError(false)
     }
-    
-
     setDuplicateName(e.target.value)
   }
+
   const createdDesigns = (ele, index) => {
     return (
-      <div className="design-card">
+      <div className="inner_mid_card_box">
         <div className="mydesign_section" key={index}>
-          <div className="publishSection">
-            <span>Publish</span>{" "}
-            <Switch
-              checked={ele.publish}
-              onChange={(e) => handlePublish(e, ele._id)}
-            />
-          </div>
-
+       
+          <div className="mn">
           <div className="designData">
             <h3>{ele.design_name.charAt(0).toUpperCase()}</h3>
             {ele.design_name}
           </div>
-          <div
-            className="editDesignButton"
-            onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
-          >
-            <span className="update-date-template">
-              Last Updated:{" "}
-              <strong>{new Date(ele?.updatedAt)?.toDateString()}</strong>
-            </span>
-          </div>
-        </div>
-        <div className="designCard_icons">
-          <CommonModal
+          <div className="designCard_icons">
+         <div>
+         <CommonModal
             openButtonClass="deleteIcon"
             icon={true}
             title={<h2>Are you sure you want to delete ?</h2>}
@@ -268,29 +268,91 @@ function index() {
             buttonText={<DeleteFilled />}
           />
           <EditOutlined
-            onClick={() => handleSelectDesign("theme-edit", ele.template_id)}
+            onClick={() => handleSelectDesign("theme-edit",ele._id, ele.template_id)}
             className="icon-edit"
           />
+          
+          <EyeOutlined onClick={()=>{
+            setPrevId(ele._id)
+            setIsModalOpen(true)
+            }} />
+          
           <CommonModal
             openButtonClass="deleteIcon"
             icon={true}
             title={
               <>
-              <CommonInput
-                label="Design Name"
-                value={duplicateName}
-                onChange={handleDuplicateName }
-                input={{ name: "design_name", placeholder: "Design Name" }}
-              />
-              {error&&<span style={{"color":"red"}}>This Name is already taken</span>}
+                <CommonInput
+                  label="Design Name"
+                  // value={duplicateName}
+                  onChange={(e)=>handleDuplicateName(e, "")}
+                  input={{ name: "duplicate _name", placeholder: "Design Name" }}
+                />
+                {error && (
+                  <span style={{ color: "red" }}>
+                    This Name is already taken
+                  </span>
+                )}
               </>
             }
-            okFunc={() => handleDuplicateDesign(ele)}
+            disableok = {error}
+            okFunc={() => handleDuplicateDesign("duplicateDesign",ele)}
             button={{ ok: "Create", cancel: "Cancel" }}
             buttonText={<CopyOutlined />}
           />
-          <FontColorsOutlined />
+          {/* <FontColorsOutlined /> */}
+          <CommonModal
+            openButtonClass="deleteIcon"
+            icon={true}
+            title={
+              <>
+                <CommonInput
+                  label="Design Name"
+                  value={duplicateName}
+                  onChange={(e)=> handleDuplicateName(e, ele.design_name)}
+                  input={{ name: "design_name", placeholder: "Design Name" }}
+                />
+                {error && (
+                  <span style={{ color: "red" }}>
+                    This Name is already taken
+                  </span>
+                )}
+              </>
+            }
+            disableok = {error}
+            okFunc={() => handleDuplicateDesign("editName",ele)}
+            button={{ ok: "Change", cancel: "Cancel" }}
+            buttonText={<FontColorsOutlined onClick={()=> setDuplicateName(ele.design_name)} />}
+          />
+         </div>
+         <div>
+
+         </div>
         </div>
+          </div>
+
+          <div className="editDesignButton">
+
+          <div
+             className="update-date-template"
+            onClick={() => handleSelectDesign("theme-edit", ele._id, ele.template_id)}
+            >
+            <p>
+              Last Updated:{" "}
+              </p>
+              <strong>{new Date(ele?.updatedAt)?.toDateString()}</strong>
+           
+          </div>
+          <div className="publishSection">
+            <span>Publish</span>{" "}
+            <Switch
+              checked={ele.publish}
+              onChange={(e) => handlePublish(e, ele._id)}
+            />
+          </div>
+            </div>
+        </div>
+
       </div>
     );
   };
@@ -323,7 +385,7 @@ function index() {
       });
   };
   return (
-    <div className="mid-sec">
+    <div className="inner_mid_box_MN">
       <Spin
         spinning={isLoading}
         indicator={
@@ -335,25 +397,25 @@ function index() {
           <>
             <div style={{ textAlign: "right" }}>{modalButton}</div>
             <h2 className="SD-dashboard-headings">Published design</h2>
-            <div className="myDesigns">
+            <div className="inner_mid_box">
               {templateList.map(
                 (ele, index) => ele.publish && createdDesigns(ele, index)
               )}
-              <div>
-                <div className="custom-create-temp">
+            
+                <div className="inner_mid_card_box">
                   <div
                     className="custom-create-button"
                     onClick={() =>
-                      handleSelectDesign("create-theme", "create-theme")
+                      handleSelectDesign("create-theme", "create-theme","create-theme")
                     }
                   >
                     <PlusCircleOutlined /> Create Custom Design
                   </div>
                 </div>
-              </div>
+              
             </div>
             <h2 className="SD-dashboard-headings">My Designs</h2>
-            <div className="myDesigns">
+            <div className="inner_mid_box">
               {templateList.map(
                 (ele, index) => !ele.publish && createdDesigns(ele, index)
               )}
@@ -375,6 +437,7 @@ function index() {
           </>
         )}
       </Spin>
+      { isModalOpen && <PreviewModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} id = {prevId} page = "index"/>}
     </div>
   );
 }

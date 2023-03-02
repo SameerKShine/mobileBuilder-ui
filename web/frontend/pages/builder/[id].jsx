@@ -4,6 +4,7 @@ import {
   useParams,
   useNavigate,
   useSearchParams,
+  useLocation 
 } from "react-router-dom";
 import CreatePage from "../../components/landingPage/CreatePage";
 import CreateMenu from "../../components/menu/CreateMenu";
@@ -150,11 +151,17 @@ export default function HomePage() {
   const { app } = useAPI();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const { hash } = useLocation();
   useEffect(() => {
+    
+   
     const _id = params.id;
     const searchParam = searchParams.get(_id);
     setLoading(true);
     if (_id == "theme-edit") {
+      const builder_id = hash.slice(1)
+      console.log(builder_id)
+      // getApi(`/api/admin/getMobileData/${{temp :builder_id, id:searchParam}}`, app)
       getApi(`/api/admin/getMobileData/${searchParam}`, app)
         .then((res) => {
           // console.log("res", res.result);

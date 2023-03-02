@@ -5,7 +5,7 @@ import builderDataModel from "../../models/builderData.js"
 export const  landingPage = async (req, res) =>{
         console.log("Enter in store fron api")
           builderDataModel.findOne(
-            { shop: "test-updatedpre.myshopify.com", publish : true }
+            { shop: "sameertestnode.myshopify.com", publish : true }
           ).then((data)=>{
               res.send({status:true, response: data, message:"Data Sucessfully Send"})
           })

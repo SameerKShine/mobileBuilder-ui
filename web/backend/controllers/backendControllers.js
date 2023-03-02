@@ -138,10 +138,13 @@ export const saveGlobalSetting = async (req, res) =>{
 export const getMobileData = async (req, res) => {
     try{
       const shop = res.locals.shopify.session.shop
-      const { id } = req.params;
+      const {id} = req.params;
+      console.log(req.query)
+      // console.log(req)
+      // console.log(temp)
       console.log('enter here agregation', shop)
   const data = await  builderDataModel.findOne(
-        {  shop: shop , template_id:id },
+        {  shop: shop , _id:id },
       )
       console.log(data)
       res.send({status:true, result:data})
@@ -372,6 +375,7 @@ export async function duplicateDesign(req, res) {
   const updatedField = req.body;
   console.log(updatedField)
   // console.log(updatedField);
+  if(updatedField.design_name.length > 1){
   const returnData = await builderDataModel.find(
     { store: shop },
     { design_name: 1, short_code: 1 }
@@ -415,4 +419,42 @@ export async function duplicateDesign(req, res) {
       console.log("bbb");
     }
   });
+} else{
+  res.status(200).send({
+    message: "Name cannot be empty",
+  })
+}
+}
+
+//edit design name Design
+export async function editDesignName(req, res) {
+  const { id } = req.params;
+  const shop = res.locals.shopify.session.shop
+  const updatedField = req.body;
+ const updateName =  await  builderDataModel.findOneAndUpdate({
+    _id: id,
+    shop: shop,
+    template_id:updatedField.template_id
+  },
+  {
+    design_name:updatedField.design_name,
+  },
+  )
+  if(updateName){
+    const d = getList(shop);
+    d.then((data) =>
+      res.status(200).send({
+        message: "succcess",
+        data: data,
+      })
+    )
+    .catch((err)=> res.status(200).send({
+      message: "Something went wrong",
+    }))
+  } else{
+    res.status(200).send({
+      message: "Something went wrong",
+    })
+  }
+ 
 }

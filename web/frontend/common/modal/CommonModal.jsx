@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, Tooltip } from "antd";
 
-function CommonModal({ title, okFunc, button, openBtn, icon, openButtonClass, buttonText, modalWidth, visible }) {
+function CommonModal({ title, okFunc, button, openBtn, icon, openButtonClass, buttonText, modalWidth, visible, disableok }) {
     const [isModalVisible, setIsModalVisible] = useState(visible??false);
 
     const showModal = () => {
@@ -47,6 +47,7 @@ function CommonModal({ title, okFunc, button, openBtn, icon, openButtonClass, bu
           key="submit"
           type="primary"
           className="modalPopoOkBtn"
+          disabled={disableok??false}
           onClick={handleOk}
         >
           {button.ok}
