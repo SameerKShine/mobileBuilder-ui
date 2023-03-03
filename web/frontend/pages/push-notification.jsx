@@ -7,7 +7,7 @@ import ProductandCollectionPicker from "../common/elements/ProductCollectionPick
 import UploadPicture from "../common/elements/UploadPicture";
 import { CommonSelect, CommonInput } from "../common/elements/commonElements";
 import PreviewCard from "../common/builder/PreviewCard";
-import bckndImg from "../../public/images/menuIcon-1675851983457.png"
+import bckndImg from "../../public/images/menuIcon-1675851983457.png";
 
 const { TextArea } = Input;
 function PushNotification() {
@@ -16,10 +16,10 @@ function PushNotification() {
     message: "",
     selected_media: "",
     delivery: "",
-    audience :"",
-    custom_image:"",
-    url:"",
-    type:"products"
+    audience: "",
+    custom_image: "",
+    url: "",
+    type: "products",
   });
   const [open, setOpen] = useState(false);
   const [imgTest, setImageTest] = useState("");
@@ -56,11 +56,11 @@ function PushNotification() {
     // console.log(e);
     // console.log(i);
   };
-const uploadImage = (img, name) =>{
-  console.log(img,  "imgggg")
-  console.log(name, "img nmae")
-  setImageTest(img)
-}
+  const uploadImage = (img, name) => {
+    console.log(img, "imgggg");
+    console.log(name, "img nmae");
+    setImageTest(img);
+  };
   const option = [
     { value: "all_users", label: "All users" },
     { value: "abandoned_cart", label: "Abandoned Cart" },
@@ -70,15 +70,20 @@ const uploadImage = (img, name) =>{
   const tabContent = (type) => {
     const condition = type == "collection" || type == "products";
     return (
-      <div>
+      <div className="pushNotificationTabContent">
         {type == "url" && (
           <>
-            <CommonInput label="URL" onChange={onChange} value={notificationData.url} Input={{name:"url", placeholder:"Enter Url"}} />
+            <CommonInput
+              label="URL"
+              onChange={onChange}
+              value={notificationData.url}
+              Input={{ name: "url", placeholder: "Enter Url" }}
+            />
             <Checkbox onChange={onChange}>Open Outside the App</Checkbox>
           </>
         )}
         {condition ? <h3>Select {type}</h3> : ""}
-        <div className="selectMedia">
+        <div className="selectMedia commonPushNotification">
           {condition ? (
             <div onClick={() => setOpen(true)}>
               <AppstoreOutlined
@@ -90,7 +95,6 @@ const uploadImage = (img, name) =>{
           )}
           <UploadPicture onuploadImage={uploadImage} name="custom_image" />
           <img src={imgTest} />
-          
         </div>
         {open && (
           <ProductandCollectionPicker
@@ -107,40 +111,68 @@ const uploadImage = (img, name) =>{
             elementType={type}
           />
         )}
+        <div className="commonPushNotification">
+          <label>Title</label>
+          <Input name="title" showCount maxLength={50} onChange={onChange} />
+        </div>
+        <div className="commonPushNotification">
+          <label>Message</label>
+          <TextArea
+            name="message"
+            showCount
+            maxLength={200}
+            onChange={onChange}
+          />
+        </div>
 
-        <label>Title</label>
-        <Input name="title" showCount maxLength={50} onChange={onChange} />
-        <label>Message</label>
-        <TextArea
-          name="message"
-          showCount
-          maxLength={200}
+        <CommonSelect
+        className="commonPushNotification"
+          label="Audience"
+          option={option}
           onChange={onChange}
+          name="audience"
+          value={notificationData.audience}
         />
-        <CommonSelect label="Audience" option={option} onChange={onChange} name="audience" value={notificationData.audience} />
-        <div className="pushNotification_delivery">
+        <div className="pushNotification_delivery commonPushNotification">
           <label>Send immediately</label>
-          <Switch checked={notificationData.delivery == 'send_immediately'? true:false} onChange={(e)=>onswitch(e,"send_immediately")} />
+          <Switch
+            checked={
+              notificationData.delivery == "send_immediately" ? true : false
+            }
+            onChange={(e) => onswitch(e, "send_immediately")}
+          />
         </div>
-        <div className="pushNotification_delivery">
+        <div className="pushNotification_delivery commonPushNotification">
           <label>Send in a particular time</label>
-          <Switch checked={notificationData.delivery == 'particular_time'? true:false} name="test" defaultChecked onChange={(e)=>onswitch(e,"particular_time")} />
+          <Switch
+            checked={
+              notificationData.delivery == "particular_time" ? true : false
+            }
+            name="test"
+            defaultChecked
+            onChange={(e) => onswitch(e, "particular_time")}
+          />
         </div>
-       { notificationData.delivery == 'particular_time' && <DatePicker
-          style={{
-            width: 100,
-            marginLeft: 10,
-          }}
-          name="particular_time"
-          onChange={(dates, dateStrings) =>
-            onChange1(dates, dateStrings, "date")
-          }
-          value={notificationData?.particular_time}
-          showTime
-        />}
+        {notificationData.delivery == "particular_time" && (
+          <DatePicker
+            style={{
+              width: 100,
+              marginLeft: 10,
+            }}
+            name="particular_time"
+            onChange={(dates, dateStrings) =>
+              onChange1(dates, dateStrings, "date")
+            }
+            value={notificationData?.particular_time}
+            showTime
+          />
+        )}
         <div className="pushNotification_delivery">
           <div>
-            <UsergroupAddOutlined className="subscriber_icon" style={{'color':'#7d2ae8', 'fontSize':'17px'}} />
+            <UsergroupAddOutlined
+              className="subscriber_icon"
+              style={{ color: "#7d2ae8", fontSize: "17px" }}
+            />
             you have 0 push subscriber
           </div>
 
@@ -189,10 +221,12 @@ const uploadImage = (img, name) =>{
           animated={true}
           items={items}
           type="card"
-          onTabClick={(e)=>{  setNotificationData({
-            ...notificationData,
-            type: e,
-          });}}
+          onTabClick={(e) => {
+            setNotificationData({
+              ...notificationData,
+              type: e,
+            });
+          }}
         />
       </div>
       <PreviewCard
@@ -201,10 +235,10 @@ const uploadImage = (img, name) =>{
       >
         <div className="notificationPrev">
           <div>
-           <h2> {notificationData.title ||"Title"} </h2>
+            <h2> {notificationData.title || "Title"} </h2>
           </div>
           <div>
-           <p> {notificationData.message ||"Message"} </p>
+            <p> {notificationData.message || "Message"} </p>
           </div>
         </div>
       </PreviewCard>
