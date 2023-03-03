@@ -34,7 +34,7 @@ console.log("use Context", getFullscreen)
         }
         onClick={handleScreenApp}
       >
-        {getFullscreen ? "Exit full screen" : "Enter to full screen"}
+        {getFullscreen ? " " : " "}
       </Button>
     </div>
   );

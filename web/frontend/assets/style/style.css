@@ -149,16 +149,16 @@ li {
 .topbar_elements {
   display: flex;
   background: #fff;
-  padding: 15px;
+  padding: 10px 15px;
   border-radius: 6px;
   box-shadow: -1px 3px 9px 5px #ededed;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .topbar_elements strong {
   color: #999898;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -190,11 +190,31 @@ li {
   height: 20px !important;
   }
 
-  .fullScreen_button button.ant-btn{
-    background: #57229c;
-    border: none;
-    color: #ffffff;
-  }
+.fullScreen_button button.ant-btn {
+ 
+  border: 1px solid #f4f4f4;
+  color: #ffffff;
+  height: 35px;
+  width: 35px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0 9px 12px 0px rgb(0 0 0 / 16%);
+     background: #979797;
+  */
+}
+
+.fullScreen_button button.ant-btn span svg {
+  font-size: 21px;
+  line-height: 5px;
+  height: 100%;
+  color: #626262;
+}
+
+.fullScreen_button button.ant-btn >.anticon+span{
+  margin-inline-start: 0px!important; 
+}
 
   .SD-app_logo {
     width: 140px;
@@ -270,9 +290,7 @@ p.sidebar-label {
   }
   .SD-mainSection {
     width: 95%;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 2%;
+    margin: 10px;
 }
   /*****************************END*****************/
 
@@ -470,17 +488,6 @@ p.sidebar-label {
     background-color: #5b595e
   }
 
-  .common_input input,
-.common_input select,
-.inputHeight32 {
-  width: 100%;
-  padding: 4px 11px;
-  border: 1px solid #e5e5e5;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #6b7280;
-  height: 32px;
-}
 .SD-common_input {
   margin-bottom: 10px;
 }
@@ -2060,18 +2067,27 @@ figure {
   }
   .pushNotificationSection{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2.5fr 1fr;
   }
   .SD-pushNotifiction{
     background: #ffff;
     padding: 40px;
 }
-  .selectMedia .push_notification_select_product{
-    padding: 10px;
-    background-color: rgb(198 198 198);
-    margin-right: 20px;
-    border-radius: 4px;
-  }
+.selectMedia .push_notification_select_product {
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  margin-right: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ececec;
+}
+
+.push_notification_select_product:hover {
+  box-shadow: 4px 15px 20px 2px #cfcfcf47;
+}
+
   .send_notification{
     padding: 7px 16px 7px 16px;
     margin-top: 21px;
@@ -2079,6 +2095,7 @@ figure {
     background: #7d2ae8;
     color: #ffffff;
     border-radius: 4px;
+    box-shadow: 0 5px 20px rgb(221 221 221);
 }
 .send_notification:hover{
   background: #b688f2;
@@ -2737,8 +2754,8 @@ span.update-date-template {
   border-radius: 6px;
   font-weight: 400;
   border-bottom: 1px solid #ededed;
-  padding: 4px 14px;
-  font-size: 13px;
+  padding: 15px 30px;
+  font-size: 14px;
 }
 
 .SD-pushNotifiction.ant-tabs .ant-tabs-tab-btn:active,
@@ -2788,4 +2805,53 @@ span.update-date-template {
 
 .inner_mid_card_box_D .publishSection span {
   color: #d4d4d4;
+}
+.commonPushNotification {
+  margin: 17px 0px;
+}
+
+.push_notification_image_uploader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #f4f4f48a;
+  padding: 9px;
+  border-radius: 5px;
+}
+
+.push_notification_image_uploader input::file-selector-button {
+  border: none!important;
+  background: #ececec;
+  padding: 14px 16px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-family: poppins;
+  color: #414141;
+  margin-right: 10px;
+}
+
+
+.common_input input,
+.common_input select,
+.inputHeight32 {
+  width: 100%;
+  padding: 4px 11px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #6b7280;
+  height: 50px;
+}
+
+.pushNotificationTabContent .commonPushNotification .ant-input-affix-wrapper {
+  height: 50px;
+}
+
+.commonPushNotification h3 {
+  font-size: 16px;
+  text-transform: capitalize;
+  border-bottom: 1px solid #d4d4d4;
+  padding: 0px 0px 10px 0px;
+  margin-bottom: 30px;
+  font-weight: 500;
 }
