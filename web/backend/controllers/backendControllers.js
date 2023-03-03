@@ -375,7 +375,7 @@ export async function duplicateDesign(req, res) {
   const updatedField = req.body;
   console.log(updatedField)
   // console.log(updatedField);
-  if(updatedField.design_name.length > 1){
+  if(updatedField.design_name.length > 0){
   const returnData = await builderDataModel.find(
     { store: shop },
     { design_name: 1, short_code: 1 }

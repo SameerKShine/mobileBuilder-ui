@@ -125,7 +125,7 @@ function index() {
           )
         }
         button={{ ok: "Create", cancel: "Cancel" }}
-        buttonText={<div> Please select Template</div>}
+        buttonText={<div> Select Template</div>}
       />
     );
   }, [activeClass]);
@@ -228,6 +228,7 @@ function index() {
     console.log(data);
     postApi(`${url}/${data._id}`, data, app)
       .then((res) => {
+        console.log(res.data)
         setTemplatelist(res.data);
         setLoading(false);
       })
@@ -351,9 +352,6 @@ function index() {
                   }
                 />
               </div>
-              <div className="design_option_icon">
-                <p>II</p>
-              </div>
             </div>
           </div>
           <div className="designName">
@@ -449,8 +447,11 @@ function index() {
               <h2 className="SD-dashboard-headings">My Designs</h2>
               <div className="inner_mid_box">
                 {templateList.map(
-                  (ele, index) => !ele.publish && createdDesigns(ele, index)
+                  (ele, index) => !ele.publish ? createdDesigns(ele, index) : "No design"
                 )}
+                 {/* {templateList.map(
+                  (ele, index) => console.log(" !ele.publish ",  !ele.publish) 
+                )} */}
               </div>
             </div>
           </>
