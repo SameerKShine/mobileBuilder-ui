@@ -85,7 +85,7 @@ function PushNotification() {
         {condition ? <div className="commonPushNotification"> <h3>Select {type}</h3></div> : ""}
         <div className="selectMedia commonPushNotification">
           {condition ? (
-            <div onClick={() => setOpen(true)}>
+            <div className="push_notification_select_product" onClick={() => setOpen(true)}>
               <AppstoreOutlined
                 style={{ fontSize: "30px", color: "#5a5a5a" }}
               />
@@ -93,8 +93,10 @@ function PushNotification() {
           ) : (
             ""
           )}
-          <UploadPicture onuploadImage={uploadImage} name="custom_image" />
-          <img src={imgTest} />
+          <div className="push_notification_image_uploader"> 
+            <UploadPicture onuploadImage={uploadImage} name="custom_image" />
+            <img src={imgTest} />
+          </div>
         </div>
         {open && (
           <ProductandCollectionPicker
@@ -167,7 +169,7 @@ function PushNotification() {
             showTime
           />
         )}
-        <div className="pushNotification_delivery">
+        <div className="pushNotification_delivery commonPushNotification">
           <div>
             <UsergroupAddOutlined
               className="subscriber_icon"
@@ -214,7 +216,7 @@ function PushNotification() {
   return (
     <div className="pushNotificationSection">
       <div className="SD-pushNotifiction">
-        Create Notification
+        {/* Create Notification */}
         <Tabs
           className="SD-tabs"
           defaultActiveKey="products"

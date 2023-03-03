@@ -259,120 +259,122 @@ function index() {
   /*---test--*/
   const createdDesigns = (ele, index) => {
     return (
-      <div className="inner_mid_card_box">
-        <div className="mydesign_section" key={index}>
-          <div className="mn">
-            <div className="designData">
-              <span>{ele.design_name.charAt(0).toUpperCase()}</span>
-            </div>
-            <div className="designCard_icons">
-              <div class="design_edit_options">
-                <CommonModal
-                  icon={true}
-                  title={<h2>Are you sure you want to delete ?</h2>}
-                  openBtn={ele.publish}
-                  okFunc={() => handleDelete(ele._id)}
-                  button={{ ok: "Delete", cancel: "Cancel" }}
-                  buttonText={<DeleteFilled />}
-                />
-                <a
-                  className="SD-icon"
-                  onClick={() =>
-                    handleSelectDesign("theme-edit", ele._id, ele.template_id)
-                  }
-                >
-                  <EditOutlined />
-                </a>
+      <div className="inner_mid_box">
+        <div className="inner_mid_card_box">
+          <div className="mydesign_section" key={index}>
+            <div className="mn">
+              <div className="designData">
+                <span>{ele.design_name.charAt(0).toUpperCase()}</span>
+              </div>
+              <div className="designCard_icons">
+                <div class="design_edit_options">
+                  <CommonModal
+                    icon={true}
+                    title={<h2>Are you sure you want to delete ?</h2>}
+                    openBtn={ele.publish}
+                    okFunc={() => handleDelete(ele._id)}
+                    button={{ ok: "Delete", cancel: "Cancel" }}
+                    buttonText={<DeleteFilled />}
+                  />
+                  <a
+                    className="SD-icon"
+                    onClick={() =>
+                      handleSelectDesign("theme-edit", ele._id, ele.template_id)
+                    }
+                  >
+                    <EditOutlined />
+                  </a>
 
-                <a
-                  onClick={() => {
-                    setPrevId(ele._id);
-                    setIsModalOpen(true);
-                  }}
-                  className="SD-icon"
-                >
-                  <EyeOutlined />
-                </a>
+                  <a
+                    onClick={() => {
+                      setPrevId(ele._id);
+                      setIsModalOpen(true);
+                    }}
+                    className="SD-icon"
+                  >
+                    <EyeOutlined />
+                  </a>
 
-                <CommonModal
-                  icon={true}
-                  title={
-                    <>
-                      <CommonInput
-                        label="Design Name"
-                        // value={duplicateName}
-                        onChange={(e) => handleDuplicateName(e, "")}
-                        input={{
-                          name: "duplicate _name",
-                          placeholder: "Design Name",
-                        }}
+                  <CommonModal
+                    icon={true}
+                    title={
+                      <>
+                        <CommonInput
+                          label="Design Name"
+                          // value={duplicateName}
+                          onChange={(e) => handleDuplicateName(e, "")}
+                          input={{
+                            name: "duplicate _name",
+                            placeholder: "Design Name",
+                          }}
+                        />
+                        {error && (
+                          <span style={{ color: "red" }}>
+                            This Name is already taken
+                          </span>
+                        )}
+                      </>
+                    }
+                    disableok={error}
+                    okFunc={() => handleDuplicateDesign("duplicateDesign", ele)}
+                    button={{ ok: "Create", cancel: "Cancel" }}
+                    buttonText={<CopyOutlined />}
+                  />
+                  {/* <FontColorsOutlined /> */}
+                  <CommonModal
+                    icon={true}
+                    title={
+                      <>
+                        <CommonInput
+                          label="Design Name"
+                          value={duplicateName}
+                          onChange={(e) =>
+                            handleDuplicateName(e, ele.design_name)
+                          }
+                          input={{
+                            name: "design_name",
+                            placeholder: "Design Name",
+                          }}
+                        />
+                        {error && (
+                          <span style={{ color: "red" }}>
+                            This Name is already taken
+                          </span>
+                        )}
+                      </>
+                    }
+                    disableok={error}
+                    okFunc={() => handleDuplicateDesign("editName", ele)}
+                    button={{ ok: "Change", cancel: "Cancel" }}
+                    buttonText={
+                      <FontColorsOutlined
+                        onClick={() => setDuplicateName(ele.design_name)}
                       />
-                      {error && (
-                        <span style={{ color: "red" }}>
-                          This Name is already taken
-                        </span>
-                      )}
-                    </>
-                  }
-                  disableok={error}
-                  okFunc={() => handleDuplicateDesign("duplicateDesign", ele)}
-                  button={{ ok: "Create", cancel: "Cancel" }}
-                  buttonText={<CopyOutlined />}
-                />
-                {/* <FontColorsOutlined /> */}
-                <CommonModal
-                  icon={true}
-                  title={
-                    <>
-                      <CommonInput
-                        label="Design Name"
-                        value={duplicateName}
-                        onChange={(e) =>
-                          handleDuplicateName(e, ele.design_name)
-                        }
-                        input={{
-                          name: "design_name",
-                          placeholder: "Design Name",
-                        }}
-                      />
-                      {error && (
-                        <span style={{ color: "red" }}>
-                          This Name is already taken
-                        </span>
-                      )}
-                    </>
-                  }
-                  disableok={error}
-                  okFunc={() => handleDuplicateDesign("editName", ele)}
-                  button={{ ok: "Change", cancel: "Cancel" }}
-                  buttonText={
-                    <FontColorsOutlined
-                      onClick={() => setDuplicateName(ele.design_name)}
-                    />
-                  }
-                />
+                    }
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="designName">
-            <p> {ele.design_name} </p>
-          </div>
-          <div className="editDesignButton">
-            <div
-              className="update-date-template"
-              onClick={() =>
-                handleSelectDesign("theme-edit", ele._id, ele.template_id)
-              }
-            >
-              <p>Last Updated: </p>
-              <strong>{new Date(ele?.updatedAt)?.toDateString()}</strong>
+            <div className="designName">
+              <p> {ele.design_name} </p>
             </div>
-            <div className="publishSection">
-              <span>Publish</span>{" "}
-              <Switch
-                checked={ele.publish}
-                onChange={(e) => handlePublish(e, ele._id)}
-              />
+            <div className="editDesignButton">
+              <div
+                className="update-date-template"
+                onClick={() =>
+                  handleSelectDesign("theme-edit", ele._id, ele.template_id)
+                }
+              >
+                <p>Last Updated: </p>
+                <strong>{new Date(ele?.updatedAt)?.toDateString()}</strong>
+              </div>
+              <div className="publishSection">
+                <span>Publish</span>{" "}
+                <Switch
+                  checked={ele.publish}
+                  onChange={(e) => handlePublish(e, ele._id)}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -445,14 +447,107 @@ function index() {
 
             <div className="card-section">
               <h2 className="SD-dashboard-headings">My Designs</h2>
-              <div className="inner_mid_box">
+                    <div className="inner_mid_box_D_cover">
                 {templateList.map(
-                  (ele, index) => !ele.publish ? createdDesigns(ele, index) : "No design"
+                  (ele, index) => !ele.publish ? createdDesigns(ele, index) : 
+                   <div className="inner_mid_box_D">
+                      <div class='inner_mid_card_box_D'>
+                      <div class='mydesign_section'>
+                        <div class='mn'><div class='designData'>
+                          <span>S</span>
+                        </div>
+                          <div class='designCard_icons'>
+                            <div class='design_edit_options'>
+                              <a class='SD-icon undefined' disabled=''>
+                                <span role='img' aria-label='delete' class='anticon anticon-delete'>
+                                  <svg viewBox='64 64 896 896' focusable='false' data-icon='delete' width='1em' height='1em' fill='currentColor' aria-hidden='true'>
+                                    <path d='M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-200 0H360v-72h304v72z'></path></svg></span></a><a class='SD-icon'><span role='img' aria-label='edit' class='anticon anticon-edit'><svg viewBox='64 64 896 896' focusable='false' data-icon='edit' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z'></path></svg></span></a><a class='SD-icon'><span role='img' aria-label='eye' class='anticon anticon-eye'><svg viewBox='64 64 896 896' focusable='false' data-icon='eye' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z'></path></svg></span></a><a class='SD-icon undefined'><span role='img' aria-label='copy' class='anticon anticon-copy'><svg viewBox='64 64 896 896' focusable='false' data-icon='copy' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z'></path></svg></span></a><a class='SD-icon undefined'><span role='img' aria-label='font-colors' tabindex='-1' class='anticon anticon-font-colors'><svg viewBox='64 64 896 896' focusable='false' data-icon='font-colors' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M904 816H120c-4.4 0-8 3.6-8 8v80c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-80c0-4.4-3.6-8-8-8zm-650.3-80h85c4.2 0 8-2.7 9.3-6.8l53.7-166h219.2l53.2 166c1.3 4 5 6.8 9.3 6.8h89.1c1.1 0 2.2-.2 3.2-.5a9.7 9.7 0 006-12.4L573.6 118.6a9.9 9.9 0 00-9.2-6.6H462.1c-4.2 0-7.9 2.6-9.2 6.6L244.5 723.1c-.4 1-.5 2.1-.5 3.2-.1 5.3 4.3 9.7 9.7 9.7zm255.9-516.1h4.1l83.8 263.8H424.9l84.7-263.8z'></path>
+                                    </svg>
+                                    </span>
+                                    </a>
+                                    </div>
+                          </div>
+                        </div>
+                                  <div class='designName'>
+                                    <p> Selected Design </p>
+                                  </div>
+                                <div class='editDesignButton'>
+                                  <div class='update-date-template'>
+                                    <p>Last Updated: </p>
+                                    <strong>Thu Mar 02 2023</strong>
+                                    </div><div class='publishSection'>
+                                      <span>Publish</span> 
+                                      <button type='button' role='switch' aria-checked='true' class='ant-switch css-dev-only-do-not-override-10ed4xt ant-switch-checked'>
+                                        <div class='ant-switch-handle'></div><span class='ant-switch-inner'>
+                                          <span class='ant-switch-inner-checked'></span><span class='ant-switch-inner-unchecked'></span></span></button></div></div></div>
+                      </div>
+                      <div class='inner_mid_card_box_D'>
+                      <div class='mydesign_section'>
+                        <div class='mn'><div class='designData'>
+                          <span>S</span>
+                        </div>
+                          <div class='designCard_icons'>
+                            <div class='design_edit_options'>
+                              <a class='SD-icon undefined' disabled=''>
+                                <span role='img' aria-label='delete' class='anticon anticon-delete'>
+                                  <svg viewBox='64 64 896 896' focusable='false' data-icon='delete' width='1em' height='1em' fill='currentColor' aria-hidden='true'>
+                                    <path d='M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-200 0H360v-72h304v72z'></path></svg></span></a><a class='SD-icon'><span role='img' aria-label='edit' class='anticon anticon-edit'><svg viewBox='64 64 896 896' focusable='false' data-icon='edit' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z'></path></svg></span></a><a class='SD-icon'><span role='img' aria-label='eye' class='anticon anticon-eye'><svg viewBox='64 64 896 896' focusable='false' data-icon='eye' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z'></path></svg></span></a><a class='SD-icon undefined'><span role='img' aria-label='copy' class='anticon anticon-copy'><svg viewBox='64 64 896 896' focusable='false' data-icon='copy' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z'></path></svg></span></a><a class='SD-icon undefined'><span role='img' aria-label='font-colors' tabindex='-1' class='anticon anticon-font-colors'><svg viewBox='64 64 896 896' focusable='false' data-icon='font-colors' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M904 816H120c-4.4 0-8 3.6-8 8v80c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-80c0-4.4-3.6-8-8-8zm-650.3-80h85c4.2 0 8-2.7 9.3-6.8l53.7-166h219.2l53.2 166c1.3 4 5 6.8 9.3 6.8h89.1c1.1 0 2.2-.2 3.2-.5a9.7 9.7 0 006-12.4L573.6 118.6a9.9 9.9 0 00-9.2-6.6H462.1c-4.2 0-7.9 2.6-9.2 6.6L244.5 723.1c-.4 1-.5 2.1-.5 3.2-.1 5.3 4.3 9.7 9.7 9.7zm255.9-516.1h4.1l83.8 263.8H424.9l84.7-263.8z'></path>
+                                    </svg>
+                                    </span>
+                                    </a>
+                                    </div>
+                          </div>
+                        </div>
+                                  <div class='designName'>
+                                    <p> Selected Design </p>
+                                  </div>
+                                <div class='editDesignButton'>
+                                  <div class='update-date-template'>
+                                    <p>Last Updated: </p>
+                                    <strong>Thu Mar 02 2023</strong>
+                                    </div><div class='publishSection'>
+                                      <span>Publish</span> 
+                                      <button type='button' role='switch' aria-checked='true' class='ant-switch css-dev-only-do-not-override-10ed4xt ant-switch-checked'>
+                                        <div class='ant-switch-handle'></div><span class='ant-switch-inner'>
+                                          <span class='ant-switch-inner-checked'></span><span class='ant-switch-inner-unchecked'></span></span></button></div></div></div>
+                      </div>
+                      <div class='inner_mid_card_box_D'>
+                      <div class='mydesign_section'>
+                        <div class='mn'><div class='designData'>
+                          <span>S</span>
+                        </div>
+                          <div class='designCard_icons'>
+                            <div class='design_edit_options'>
+                              <a class='SD-icon undefined' disabled=''>
+                                <span role='img' aria-label='delete' class='anticon anticon-delete'>
+                                  <svg viewBox='64 64 896 896' focusable='false' data-icon='delete' width='1em' height='1em' fill='currentColor' aria-hidden='true'>
+                                    <path d='M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-200 0H360v-72h304v72z'></path></svg></span></a><a class='SD-icon'><span role='img' aria-label='edit' class='anticon anticon-edit'><svg viewBox='64 64 896 896' focusable='false' data-icon='edit' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z'></path></svg></span></a><a class='SD-icon'><span role='img' aria-label='eye' class='anticon anticon-eye'><svg viewBox='64 64 896 896' focusable='false' data-icon='eye' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z'></path></svg></span></a><a class='SD-icon undefined'><span role='img' aria-label='copy' class='anticon anticon-copy'><svg viewBox='64 64 896 896' focusable='false' data-icon='copy' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z'></path></svg></span></a><a class='SD-icon undefined'><span role='img' aria-label='font-colors' tabindex='-1' class='anticon anticon-font-colors'><svg viewBox='64 64 896 896' focusable='false' data-icon='font-colors' width='1em' height='1em' fill='currentColor' aria-hidden='true'><path d='M904 816H120c-4.4 0-8 3.6-8 8v80c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-80c0-4.4-3.6-8-8-8zm-650.3-80h85c4.2 0 8-2.7 9.3-6.8l53.7-166h219.2l53.2 166c1.3 4 5 6.8 9.3 6.8h89.1c1.1 0 2.2-.2 3.2-.5a9.7 9.7 0 006-12.4L573.6 118.6a9.9 9.9 0 00-9.2-6.6H462.1c-4.2 0-7.9 2.6-9.2 6.6L244.5 723.1c-.4 1-.5 2.1-.5 3.2-.1 5.3 4.3 9.7 9.7 9.7zm255.9-516.1h4.1l83.8 263.8H424.9l84.7-263.8z'></path>
+                                    </svg>
+                                    </span>
+                                    </a>
+                                    </div>
+                          </div>
+                        </div>
+                                  <div class='designName'>
+                                    <p> Selected Design </p>
+                                  </div>
+                                <div class='editDesignButton'>
+                                  <div class='update-date-template'>
+                                    <p>Last Updated: </p>
+                                    <strong>Thu Mar 02 2023</strong>
+                                    </div><div class='publishSection'>
+                                      <span>Publish</span> 
+                                      <button type='button' role='switch' aria-checked='true' class='ant-switch css-dev-only-do-not-override-10ed4xt ant-switch-checked'>
+                                        <div class='ant-switch-handle'></div><span class='ant-switch-inner'>
+                                          <span class='ant-switch-inner-checked'></span><span class='ant-switch-inner-unchecked'></span></span></button></div></div></div>
+                      </div>
+                   </div>                                     
                 )}
+                    </div>
                  {/* {templateList.map(
                   (ele, index) => console.log(" !ele.publish ",  !ele.publish) 
                 )} */}
-              </div>
+              
             </div>
           </>
         ) : (

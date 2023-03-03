@@ -2066,7 +2066,7 @@ figure {
     background: #ffff;
     padding: 40px;
 }
-  .selectMedia div{
+  .selectMedia .push_notification_select_product{
     padding: 10px;
     background-color: rgb(198 198 198);
     margin-right: 20px;
@@ -2541,11 +2541,26 @@ span.update-date-template {
   margin-top: 25px;
 }
 
+.inner_mid_box_D_cover {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  column-gap: 15px;
+}
+
 .inner_mid_box{
   display: flex;
   flex-wrap: wrap;
   column-gap: 15px;
   row-gap: 15px;
+}
+
+.inner_mid_box_D {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 15px;
+  row-gap: 15px;
+  flex-direction: row-reverse;
 }
 
 .inner_mid_card_box {
@@ -2644,7 +2659,7 @@ span.update-date-template {
 .design_edit_options {
   display: flex;
   gap: 0.3rem;
-  opacity: 1;
+  opacity: 0;
   transition: 0.5s ease-in;
   align-items: center;
 }
@@ -2652,6 +2667,16 @@ span.update-date-template {
 .inner_mid_card_box:hover .design_edit_options {
   opacity: 1;
   transition: 0.5s ease-in;
+}
+
+.inner_mid_card_box_D:hover .design_edit_options {
+  opacity: 0;
+  transition: 0.5s ease-in;
+}
+
+.inner_mid_card_box_D .ant-switch.ant-switch-checked {
+  background: #dddddd!important;
+  margin-left: 5px;
 }
 
 .custom-create-button {
@@ -2709,9 +2734,11 @@ span.update-date-template {
 }
 
 .SD-pushNotifiction .ant-tabs-card.ant-tabs-top >.ant-tabs-nav .ant-tabs-tab {
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 400;
   border-bottom: 1px solid #ededed;
+  padding: 4px 14px;
+  font-size: 13px;
 }
 
 .SD-pushNotifiction.ant-tabs .ant-tabs-tab-btn:active,
@@ -2726,4 +2753,39 @@ span.update-date-template {
 }
 /************** PREVIEW MODAL END *******************/
 
+.inner_mid_card_box_D {
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  height: 11rem;
+  background: #ededed;
+  box-shadow: -1px 3px 9px 5px #f2f2ffb3;
+  min-width: 352px;
+  cursor: pointer;
+}
 
+.inner_mid_card_box_D .designData span {
+  background: #e7e7e7;
+  color: #cdcdcd;
+}
+
+.designData span p {}
+
+.inner_mid_card_box_D .designName p {
+  color: #a1a1a1;
+}
+
+.inner_mid_card_box_D .update-date-template strong {
+  color: #b2b2b2;
+}
+
+.inner_mid_card_box_D .update-date-template p {
+  color: #b2b2b2;
+}
+
+.inner_mid_card_box_D .publishSection span {
+  color: #d4d4d4;
+}
