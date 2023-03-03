@@ -25,6 +25,7 @@ function SideBar({ sideBar, setSidebar }) {
               <UserOutlined /> {menu.title}
             </li>)}
           </ul>
+          {sideBar.layout !== "layout_1"&&<img src="" alt="Image" />}
         </div>
       </PreviewCard>
       <EditSidebar sideBar={sideBar} setSidebar={setSidebar} />

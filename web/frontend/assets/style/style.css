@@ -2252,6 +2252,15 @@ padding: 5px;
   background-color: #ffffff;
   width: 73%;
 }
+
+.publishedesign{
+  border: 1px solid #e0d7eb;
+  background: #fbfbff;
+}
+.unpublishedesign{
+  border: 1px solid #ffffff;
+  background: #ededed;
+}
 /* .publishSection{
   display: none;
 }
@@ -2564,14 +2573,14 @@ span.update-date-template {
 }
 
 .inner_mid_card_box {
-  border: 1px solid #e0d7eb;
+  /* border: 1px solid #e0d7eb; */
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   height: 11rem;
-  background: #fbfbff;
+  /* background: #fbfbff; */
   box-shadow: -1px 3px 9px 5px #f2f2ffb3;
   min-width: 352px;
   cursor: pointer;

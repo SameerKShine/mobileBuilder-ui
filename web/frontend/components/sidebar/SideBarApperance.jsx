@@ -15,6 +15,8 @@ function SideBarApperance({ sideBar, setSidebar }) {
   const handleApperance = (e) => {
     setSidebar({ ...sideBar, [e.target.name]: e.target.value });
   };
+
+  console.log("sideBar ==>", sideBar)
   return (
     <div className="SD-menuElements">
       <div>

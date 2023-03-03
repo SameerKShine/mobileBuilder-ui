@@ -31,6 +31,19 @@ function EditSidebar({ sideBar, setSidebar }) {
     setSelectedIndex(index);
     setEditElement(true);
   };
+
+  const handleAddMenu =()=>{
+    const newEle = {
+      icon: "",
+      title: "Products",
+      id: "Products",
+      display_icon: "Products",
+      icon_url: "/assets/images/menu/home.svg",
+    }
+    let menuList = {...sideBar}
+      menuList.elements.push(newEle)
+    setSidebar(menuList)
+  }
   return (
     <div className="SD-editMenu">
       {editElement ? (
@@ -42,7 +55,7 @@ function EditSidebar({ sideBar, setSidebar }) {
         />
       ) : (
         <>
-        
+        <button onClick={handleAddMenu}>Add menu item</button>
           <DragDrop
             handleDrag={handleDrag}
             data={sideBar.elements}
