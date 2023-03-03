@@ -82,7 +82,7 @@ function PushNotification() {
             <Checkbox onChange={onChange}>Open Outside the App</Checkbox>
           </>
         )}
-        {condition ? <h3>Select {type}</h3> : ""}
+        {condition ? <div className="commonPushNotification"> <h3>Select {type}</h3></div> : ""}
         <div className="selectMedia commonPushNotification">
           {condition ? (
             <div onClick={() => setOpen(true)}>

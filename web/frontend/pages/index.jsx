@@ -446,12 +446,12 @@ function index() {
             <div className="card-section">
               <h2 className="SD-dashboard-headings">My Designs</h2>
               <div className="inner_mid_box">
-                {/* {templateList.map(
-                  (ele, index) => !ele.publish && createdDesigns(ele, index)
-                )} */}
-                 {templateList.map(
-                  (ele, index) => console.log(" !ele.publish ",  !ele.publish) 
+                {templateList.map(
+                  (ele, index) => !ele.publish ? createdDesigns(ele, index) : "No design"
                 )}
+                 {/* {templateList.map(
+                  (ele, index) => console.log(" !ele.publish ",  !ele.publish) 
+                )} */}
               </div>
             </div>
           </>
