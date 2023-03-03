@@ -154,10 +154,12 @@ li {
   box-shadow: -1px 3px 9px 5px #ededed;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 .topbar_elements strong {
   color: #999898;
-  font-size: 22px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 /* TOP BAR FOR APP */
@@ -215,13 +217,18 @@ li {
   .SD-layoutSideBar {
     padding: 0.5rem 0px;
   }
+
+  .SD-layoutSideBar li {
+    margin: 20px 0px;
+  }
   
   .SD-layoutSideBar li img {
     width: 14px;
   }
+
   .sidebar_no_active p {
     color: #fff;
-}
+  }
   
   .SD-sidebar_active {
     padding: 24px 12.5px;
@@ -271,8 +278,7 @@ p.sidebar-label {
       display: flex;
   }
   .SD-builderPreview {
-    width: 59%;
-    background-color: #ebecf0;
+
   }
   .SD-mpbile_select {
     text-align: center;
@@ -1665,16 +1671,16 @@ p.sidebar-label {
   }
   .SD-saveButton {
     background-color: #5ab563;
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 13px;
     line-height: 17px;
-    padding: 6px 37px;
+    padding: 14px 37px;
     border: none;
     background: #7b2dec;
     border-radius: 4px;
     color: #fff;
     cursor: pointer;
-  }
+}
   .SD-topbar-right .SD-saveButton:nth-child(2) {
     margin-left: 10px;
   }
@@ -2050,13 +2056,12 @@ figure {
     display: flex;
   }
   .pushNotificationSection{
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
   }
   .SD-pushNotifiction{
-    margin: 50px;
     background: #ffff;
     padding: 40px;
-    width: 85%;
 }
   .selectMedia div{
     padding: 10px;
@@ -2527,21 +2532,21 @@ span.update-date-template {
 
 .inner_mid_box_MN {
   background: #fff;
-  padding: 15px;
+  padding: 15px 30px;
   border-radius: 6px;
   box-shadow: -1px 3px 9px 5px #ededed;
   margin-top: 25px;
-  height: 88%;
 }
 
 .inner_mid_box{
   display: flex;
   flex-wrap: wrap;
   column-gap: 15px;
+  row-gap: 15px;
 }
 
 .inner_mid_card_box {
-  border: 1px solid #7930f0;
+  border: 1px solid #e0d7eb;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -2667,7 +2672,7 @@ span.update-date-template {
 .designName p {
   font-size: 16px;
   font-weight: 500;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 
@@ -2686,7 +2691,30 @@ span.update-date-template {
   padding-bottom: 3rem;
 }
 
+.SD-pushNotifiction .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn span {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+}
 
+.SD-pushNotifiction .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
+  justify-content: center;
+}
+
+.SD-pushNotifiction .ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-bottom > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before, .ant-tabs-bottom > div > .ant-tabs-nav::before {
+  border-bottom: 1px solid transparent;
+}
+
+.SD-pushNotifiction .ant-tabs-card.ant-tabs-top >.ant-tabs-nav .ant-tabs-tab {
+  border-radius: 8px;
+  font-weight: 400;
+  border-bottom: 1px solid #ededed;
+}
+
+.SD-pushNotifiction.ant-tabs .ant-tabs-tab-btn:active,
+.SD-pushNotifiction.ant-tabs .ant-tabs-tab-btn:hover{
+  color: #55239f;
+}
 
 
 /************** PREVIEW MODAL *********************  */
@@ -2694,3 +2722,5 @@ span.update-date-template {
   width: 100%;
 }
 /************** PREVIEW MODAL END *******************/
+
+
