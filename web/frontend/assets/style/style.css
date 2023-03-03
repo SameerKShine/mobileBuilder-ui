@@ -2267,7 +2267,7 @@ padding: 5px;
   margin: 0 auto;
   padding: 30px;
   background-color: #ffffff;
-  width: 73%;
+  width: 100%;
 }
 /* .publishSection{
   display: none;
@@ -2356,8 +2356,7 @@ h2.SD-dashboard-headings {
 /* **************************** Dashboard Design End ************************ */
 
 /* ***************************** Publish app  ************************* */
-.SD-publish_app{
-  
+.SD-publish_app{  
   padding: 30px;
   background-color: #ffffff;
 }
@@ -2369,7 +2368,13 @@ h2.SD-dashboard-headings {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  row-gap: 10px;
 }
+
+.first_section + div {
+  margin-top: 10px;
+}
+
 .firstSection_div{
   width: 33%;
 }
@@ -2854,4 +2859,15 @@ span.update-date-template {
   padding: 0px 0px 10px 0px;
   margin-bottom: 30px;
   font-weight: 500;
+}
+
+
+.first_section .ant-select-multiple .ant-select-selection-item {
+  height: 44px;
+  align-items: center;
+}
+
+.common_input label {
+  display: block;
+  margin-bottom: 6px;
 }
