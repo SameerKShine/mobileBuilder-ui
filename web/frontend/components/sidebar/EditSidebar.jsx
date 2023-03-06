@@ -8,6 +8,7 @@ import {
   Slider_field,
 } from "../../common/elements/commonElements";
 import UploadPicture from "../../common/elements/UploadPicture";
+import { CloseOutlined } from "@ant-design/icons";
 
 function EditSidebar({ sideBar, setSidebar }) {
   const [selectedIndex, setSelectedIndex] = useState();
@@ -99,12 +100,18 @@ function EditSidebar({ sideBar, setSidebar }) {
   return (
     <div className="SD-editMenu">
       {editElement ? (
-        <CustomiseIcon
+        <>
+         <div className="closeBtn_editForm" onClick={() => setEditElement(false)}>
+        <CloseOutlined />
+      </div>
+      <CustomiseIcon
           index={selectedIndex}
           setMenu={setSidebar}
           data={sideBar}
           setEditElement={setEditElement}
         />
+        </>
+     
       ) : (
         <>
           {/* <button onClick={handleAddMenu}>Add menu item</button> */}

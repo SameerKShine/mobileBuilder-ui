@@ -228,10 +228,10 @@ catch{
 export const saveBuilderData = async(req,res)=>{
   // console.log(req.body)
   try {
-    const { builderFields, menu, design_name, updateId, app_apperance, app_bar, layoutSelection, side_bar } = req.body;
+    const { builderFields, menu, design_name, updateId, app_apperance, app_bar, layoutSelection, sideBar_data } = req.body;
     const shop = res.locals.shopify.session.shop;
     const returnData = await builderDataModel.find(
-      { store: shop },
+      { shop: shop },
       { template_id: 1}
     );
     const prevData = await getList(shop)
@@ -270,7 +270,7 @@ export const saveBuilderData = async(req,res)=>{
           menu_data:menu,
           app_apperance:app_apperance,
           app_bar:app_bar,
-          side_bar:side_bar,
+          side_bar:sideBar_data,
         },
         {
           upsert: true, // Make this update into an upsert

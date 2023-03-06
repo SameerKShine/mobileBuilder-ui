@@ -220,7 +220,7 @@ function PushNotification() {
         <Tabs
           className="SD-tabs"
           defaultActiveKey="products"
-          animated={true}
+          // animated={true}
           items={items}
           type="card"
           onTabClick={(e) => {

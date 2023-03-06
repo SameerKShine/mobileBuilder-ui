@@ -147,7 +147,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
 
   const [step, setStep] = useState(0);
-  const [sideBar, setSideBar] = useState(0);
+  const [sideBar, setSideBarView] = useState(0);
   const [delName, setDelName] = useState("");
   const [updateId, setUpDateId] = useState("");
 
@@ -179,6 +179,7 @@ export default function HomePage() {
           setUpDateId(res.result._id);
           setApp_apperance(res.result.app_apperance);
           setAppBar(res.result.app_bar);
+          setSidebar(res.result.side_bar);
           setLayoutSelect({
             cart_page_design : res.result.cart_page_design,
             product_detail_page_design : res.result.product_detail_page_design,
@@ -256,7 +257,7 @@ export default function HomePage() {
 
     const handlePage = useCallback((e) => {
     setStep(e);
-    setSideBar(0)
+    setSideBarView(0)
   }, []);
 
   return (
@@ -280,7 +281,7 @@ export default function HomePage() {
           step={step}
           setStep={setStep}
           sideBar={sideBar}
-          setSideBar={setSideBar}
+          setSideBar={setSideBarView}
           setLoading={setLoading}
           navigate={navigate}
           setDesignName={setDesignName}

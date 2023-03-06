@@ -82,27 +82,16 @@ function CustomiseIcon({ index, data, setMenu, setEditElement }) {
           placeholder: "Edit Text",
         }}
       />
-      {/* <div className="menu_edit_icons">
-        {menu_icons[data.elements[index].id.replace(/ /g, "_")].map(
-          (img, i) => (
-            <div
-              key={i}
-              onClick={() =>
-                handleChange(
-                  data.elements[index].id.replace(/ /g, "_") + i,
-                  "display_icon",
-                  img[data.elements[index].id.replace(/ /g, "_") + i]
-                )
-              }
-            >
-              <img
-                width={20}
-                src={img[data.elements[index].id.replace(/ /g, "_") + i]}
-              />
-            </div>
-          )
-        )}
-      </div> */}
+      <CommonInput
+        className="editSection"
+        value={data.elements[index].link_to}
+        onChange={(e) => handleChange(e.target.value, e.target.name)}
+        input={{
+          name: "link_to",
+          type: "text",
+          placeholder: "Link To",
+        }}
+      />
       <div>
         <UploadPicture onuploadImage = {uploadImage} disable={getImageUrl.length > 0 ? true:false} handleAddIcon={setImgUrl} />
         {getImageUrl.length > 0 &&<button onClick={deleteImage}>delete</button>}
