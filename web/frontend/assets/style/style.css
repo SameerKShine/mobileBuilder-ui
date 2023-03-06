@@ -145,6 +145,10 @@ li {
     justify-content: space-between;
     flex-wrap: wrap;
   }
+
+  .modalPopoOkBtn{
+    background-color: #441982;
+  }
 /*************** Common Class END *******************  */
 .topbar_elements {
   display: flex;

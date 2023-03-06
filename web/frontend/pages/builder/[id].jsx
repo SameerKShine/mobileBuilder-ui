@@ -84,7 +84,7 @@ export default function HomePage() {
     background_color: "",
   });
   const [sideBar_data, setSidebar] = useState({
-    layout: "menu_1",
+    layout: "layout_1",
     background_color:"#000",
     font_color:"#ffffff",
     font_size:"25",
