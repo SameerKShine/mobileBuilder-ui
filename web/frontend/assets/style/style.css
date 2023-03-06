@@ -681,6 +681,7 @@ p.sidebar-label {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .cross span {
   margin-left: 57%;
@@ -2104,9 +2105,15 @@ figure {
 .send_notification:hover{
   background: #b688f2;
 }
-.pushNotificationPicker{
+.pushNotificationPicker {
   top: 52px;
-  width: 23%;
+  width: 25%;
+  background: #ffffff;
+  z-index: 99;
+  padding: 6px;
+  border-radius: 7px;
+  box-shadow: 0px 0px 20px 0px #f1f1f1;
+  height: calc(100vh - 55%);
 }
 .pushNotification_delivery{
   display: flex;
@@ -2883,4 +2890,14 @@ span.update-date-template {
 .common_input label {
   display: block;
   margin-bottom: 6px;
+}
+
+.sd-productLists::-webkit-scrollbar {
+  width: 5px;
+  background: #ebecf0;
+  display: none;
+}
+
+.sd-productLists::-webkit-scrollbar-thumb {
+  background: #dfdfdf;
 }
