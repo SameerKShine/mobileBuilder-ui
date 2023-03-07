@@ -69,7 +69,7 @@ const {app} = useAPI()
      {
          loading ? "Lodaing..."
          :
-         <PreviewCard className="innerPreviewDiv" data = "globalSetting_hideHeader" bar_color = "#ffffff">
+         <PreviewCard primaryClass="SD-builderPreview" secondaryClass="white-bg-box mobile_preview innerPreviewDiv" data = "hideHeadBottom" bar_color = "#ffffff">
              <MobileHeader app_bar={prevData.app_bar} />
              {prevData.landing_page.map((eleType, index) => {
             return <div key={index}>{FieldsPreview(eleType, index, prevData.app_apperance)}</div>;

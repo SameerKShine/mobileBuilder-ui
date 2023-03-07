@@ -77,7 +77,10 @@ function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_
           setDropHere={setDropHere}
           handleAddElements={handleAddElements}
         />
-        <PreviewCard data={menu} bottomRef={bottomRef} app_bar={app_bar} bgColor={app_apperance?.background_color}>
+        <PreviewCard  primaryClass="SD-builderPreview" secondaryClass="white-bg-box mobile_preview"
+         data={menu} bottomRef={bottomRef}
+          app_bar={app_bar}
+           bgColor={app_apperance?.background_color}>
           <Droppable
             types={["string"]}
             onDrop={(data) => handleAddElements(data.string, "TOP_DRAG")}

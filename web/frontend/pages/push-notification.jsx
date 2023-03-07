@@ -162,10 +162,6 @@ function PushNotification() {
         </div>
         {notificationData.delivery == "particular_time" && (
           <DatePicker
-            style={{
-              width: 100,
-              marginLeft: 10,
-            }}
             name="particular_time"
             onChange={(dates, dateStrings) =>
               onChange1(dates, dateStrings, "date")

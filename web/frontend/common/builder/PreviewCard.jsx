@@ -4,7 +4,7 @@ import MobileHeader from './MobileHeader';
 import MenuPreview from './MenuPreview';
 // import { useMobileview } from '../../globalState/mobileView';
  
-function PreviewCard({children, data, bottomRef, className, mainClass,bgColor, logo, app_bar}) {
+function PreviewCard({children, data, bottomRef, secondaryClass, primaryClass,bgColor, logo, app_bar}) {
 
   // const { mobileview , setMobileview} = useMobileview();
   // console.log(mobileview)
@@ -14,18 +14,18 @@ function PreviewCard({children, data, bottomRef, className, mainClass,bgColor, l
     //     setMobileview(e.target.value)
     // },[value])
   return (
-    <div className={"SD-builderPreview " + mainClass}>
+    <div className={primaryClass}>
       <div
-        className={"white-bg-box mobile_preview " +className??''}
+        className={secondaryClass??''}
         // style={{ backgroundImage: `url(${mobileview})` }}
       >
-        {data !=="globalSetting_hideHeader"&&<MobileHeader app_bar={app_bar} app_logo={logo}/>}
+        {data !=="hideHeadBottom"&&<MobileHeader app_bar={app_bar} app_logo={logo}/>}
         <div className="inner-scroll-cont" style={{'backgroundColor':bgColor??"#fff"}}>
           {children}
           <div ref={bottomRef}></div>
         </div>
        
-       {(data !== "globalSetting" && data !=="globalSetting_hideHeader") && <MenuPreview data={data} />}
+       {(data !== "globalSetting" && data !=="hideHeadBottom") && <MenuPreview data={data} />}
       </div>
     </div>
   )
