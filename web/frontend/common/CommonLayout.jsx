@@ -121,10 +121,10 @@ function Test() {
             {mainLayout.map(
               (pageName, index) =>
                 params.pathname == pageName.path && (
-                  <>
-                  <strong key={index}>{pageName.title}</strong>
+                  <div key={index}>
+                  <strong>{pageName.title}</strong>
                   <a>Know more about {pageName.title}</a>
-                  </>
+                  </div>
                 )
             )}
             <FullScreenButton />
