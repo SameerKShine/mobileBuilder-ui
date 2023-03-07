@@ -225,8 +225,10 @@ li {
     margin-right: 5px;
   }
   .SD-topbar-logo{
-    text-align: center;
-  }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
   .SD-app-layout {
     display: flex;
