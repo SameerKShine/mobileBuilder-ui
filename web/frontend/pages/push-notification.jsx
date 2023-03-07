@@ -49,6 +49,8 @@ function PushNotification() {
     // postApi("/api/admin/pushNotification", notificationData, app);
   };
   const onswitch = (e, i) => {
+    console.log('e', e)
+    console.log('i', i)
     setNotificationData({
       ...notificationData,
       delivery: i,
