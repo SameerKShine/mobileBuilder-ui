@@ -274,7 +274,7 @@ function index() {
                     openBtn={ele.publish}
                     okFunc={() => handleDelete(ele._id)}
                     button={{ ok: "Delete", cancel: "Cancel" }}
-                    buttonText={<DeleteFilled />}
+                    buttonText={<DeleteFilled style={{'color':!ele.publish&&"#57229c"}} />}
                   />
                   <a
                     className="SD-icon"
@@ -282,7 +282,7 @@ function index() {
                       handleSelectDesign("theme-edit", ele._id, ele.template_id)
                     }
                   >
-                    <EditOutlined />
+                    <EditOutlined  style={{'color':"#57229c"}}  />
                   </a>
 
                   <a
@@ -292,7 +292,7 @@ function index() {
                     }}
                     className="SD-icon"
                   >
-                    <EyeOutlined />
+                    <EyeOutlined style={{'color':"#57229c"}} />
                   </a>
 
                   <CommonModal
@@ -318,7 +318,7 @@ function index() {
                     disableok={error}
                     okFunc={() => handleDuplicateDesign("duplicateDesign", ele)}
                     button={{ ok: "Create", cancel: "Cancel" }}
-                    buttonText={<CopyOutlined />}
+                    buttonText={<CopyOutlined style={{'color':"#57229c"}}  />}
                   />
                   {/* <FontColorsOutlined /> */}
                   <CommonModal
@@ -348,6 +348,7 @@ function index() {
                     button={{ ok: "Change", cancel: "Cancel" }}
                     buttonText={
                       <FontColorsOutlined
+                      style={{'color':"#57229c"}} 
                         onClick={() => setDuplicateName(ele.design_name)}
                       />
                     }
