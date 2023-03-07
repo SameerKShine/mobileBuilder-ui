@@ -2148,7 +2148,7 @@ figure {
 }
 .pushNotificationPicker {
   top: 52px;
-  width: 25%;
+  width: 100%;
   background: #ffffff;
   z-index: 99;
   padding: 6px;

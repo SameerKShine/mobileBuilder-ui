@@ -42,6 +42,7 @@ app.post(
   shopify.processWebhooks({ webhookHandlers : webhookHandlers })
   );
 mongodb()
+
 app.use(express.json());
 
 app.use("/api/storefront/", storefrontRoutes)
@@ -56,6 +57,8 @@ app.use("/api/*", shopify.validateAuthenticatedSession());
 //   console.log("enter here")
 //   console.log(res.locals.shopify)
 // })
+
+
 
 
 app.post("/api/admin/test", async ( _req, res) => {

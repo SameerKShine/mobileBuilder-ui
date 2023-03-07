@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { UsergroupAddOutlined, AppstoreOutlined } from "@ant-design/icons";
-import { DatePicker, Input, Switch, Checkbox, Tabs } from "antd";
+import { DatePicker, Input, Switch, Checkbox, Tabs, Drawer } from "antd";
 import postApi from "../utils/postApi";
 import { useAPI } from "../globalState/getShop";
 import ProductandCollectionPicker from "../common/elements/ProductCollectionPicker";
@@ -98,10 +98,11 @@ function PushNotification() {
             <img src={imgTest} />
           </div>
         </div>
+        <Drawer placement="right" onClose={()=>setOpen(false)} open={open}>
         {open && (
           <ProductandCollectionPicker
             className="pushNotificationPicker"
-            checkedIDs={[]}
+            checkedIDs={[notificationData.selected_media.id??""]}
             onSelect={(e, ele, id) => {
               setNotificationData({
                 ...notificationData,
@@ -113,6 +114,8 @@ function PushNotification() {
             elementType={type}
           />
         )}
+        </Drawer>
+       
         <div className="commonPushNotification">
           <label>Title</label>
           <Input name="title" showCount maxLength={50} onChange={onChange} />
