@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import {
   // useOutletContext,
   useParams,
@@ -20,6 +20,7 @@ import AppApperance from "../../components/appApperance/AppApperance";
 import AppBar from "../../components/appBar/AppBar";
 import LayoutSelect from "../../components/layoutSelect/LayoutSelect";
 import SideBar from "../../components/sidebar/SideBar";
+import { CommonSelect } from "../../common/elements/commonElements";
 // import {ProductsCard} from '../components/ProductsCard'
 
 export default function HomePage() {
@@ -260,6 +261,16 @@ export default function HomePage() {
     setSideBarView(0)
   }, []);
 
+  const pagesDropDown = 
+    [
+      {label:"Landing Page", value:0},
+      {label:"Bottom Bar", value:1},
+      {label:"App Bar", value:2},
+      {label:"Profile Pag", value:3},
+      {label:"Cart Page", value:4},
+      {label:"Product Detail Page", value:5},
+      {label:"Side Bar", value:6},
+    ]
   return (
     <Spin spinning={loading} indicator={
       <LoadingOutlined style={{ fontSize: "40px", color: "#7d2ae8" }} />
@@ -277,7 +288,6 @@ export default function HomePage() {
             layoutSelection,
             sideBar_data
           }}
-          // api_url="/builderData"
           step={step}
           setStep={setStep}
           sideBar={sideBar}
@@ -288,15 +298,12 @@ export default function HomePage() {
         >
           <div style={{'width':'96%'}}>
            <div className="topbar_select">
-            <select value={step} onChange={(e) => handlePage(e.target.value)}>
-              <option value={0}>Landing Page</option>
-              <option value={1}>Bottom Bar</option>
-              <option value={2}>App Bar</option>
-              <option value={6}>Side Bar</option>
-              <option value={3}>Profile Page</option>
-              <option value={4}>Cart Page</option>
-              <option value={5}>Product Detail Page</option>
-            </select>
+             <CommonSelect
+              //  name="font_family"
+               value={step}
+               option={pagesDropDown}
+               onChange={(e) => handlePage(e.target.value)}
+             />
           </div>
       {sideBar == 0 ? (
         step == 0 ? (
