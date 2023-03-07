@@ -228,6 +228,7 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0px 20px;
 }
 
   .SD-app-layout {
@@ -258,6 +259,13 @@ li {
 
   .sidebar_no_active p {
     color: #fff;
+  }
+
+  .collapsedBar .SD-sidebar_active {
+    padding: 24px;
+    justify-content: center;
+    margin-left: 10px;
+    width:auto;
   }
   
   .SD-sidebar_active {
@@ -855,8 +863,10 @@ p.sidebar-label {
   /* ****************** create page END **********************/
 
   /************************************* PREVIEW CARD **********************************  */
-  .mobile_preview {    
+  .mobile_preview {
+    width: 35%;
     margin: auto;
+    height: 735px;
     overflow: auto;
     border: 0;
     padding: 0px 0px 27px 0;
@@ -866,8 +876,8 @@ p.sidebar-label {
     position: relative;
     background-color: #fff;
     border-radius: 4px;
-    /* background-image: url('../images/phoneView/iphone.png'); */
   }
+  
   .inner-scroll-cont::-webkit-scrollbar {
     width: 5px;
     background: #ebecf0;
@@ -2944,3 +2954,4 @@ span.update-date-template {
 .sd-productLists::-webkit-scrollbar-thumb {
   background: #dfdfdf;
 }
+
