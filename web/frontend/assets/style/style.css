@@ -2738,7 +2738,9 @@ span.update-date-template {
 .design_edit_options a {
   color: #858585;
 }
-
+.design_edit_options a:hover{
+  box-shadow: -1px 3px 9px 5px #f2f2ffb3;
+}
 .design_edit_options {
   display: flex;
   gap: 0.3rem;
