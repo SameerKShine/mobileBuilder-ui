@@ -231,9 +231,8 @@ function PushNotification() {
           }}
         />
       </div>
-      <PreviewCard
+      <div
         className="globalSettingView"
-        data="globalSetting_hideHeader"
       >
         <div className="notificationPrev">
           <div>
@@ -243,7 +242,7 @@ function PushNotification() {
             <p> {notificationData.message || "Message"} </p>
           </div>
         </div>
-      </PreviewCard>
+      </div>
     </div>
   );
 }
