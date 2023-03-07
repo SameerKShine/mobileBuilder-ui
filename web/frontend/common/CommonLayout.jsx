@@ -15,10 +15,10 @@ import {
   SettingOutlined,
   // BgColorsOutlined,
   BellOutlined,
-  CaretRightOutlined,
-  CaretLeftOutlined,
+  DoubleRightOutlined,
+  DoubleLeftOutlined,
   AppstoreOutlined,
-  UploadOutlined
+  UploadOutlined,
 } from "@ant-design/icons";
 import FullScreenButton from "./elements/FullScreenButton";
 
@@ -42,7 +42,7 @@ function Test() {
     {
       title: "Dashboard",
       path: "/",
-      icon: <AppstoreOutlined  style={{ color: "#ffffff", fontSize: "25px" }} /> ,
+      icon: <AppstoreOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
     },
     {
       title: "Push Notification",
@@ -54,13 +54,18 @@ function Test() {
       path: "/publish-app",
       icon: <UploadOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
     },
-    {
-      title: "Global Settings",
-      path: "/globalSettings",
-      icon: <SettingOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
-    },
+    // {
+    //   title: "Customer List",
+    //   path: "/customer-list",
+    //   icon: <SettingOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
+    // },
+    // {
+    //   title: "Global Settings",
+    //   path: "/globalSettings",
+    //   icon: <SettingOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
+    // },
   ];
- 
+
   // const builderLayout = [
   //   {title:"Builder", path:0, icon:<MobileOutlined style={{ color: "#ffffff", fontSize: "25px" }} />},
   //   {title:"App Apperance", path:1, icon:<BgColorsOutlined style={{'color':"#ffffff", fontSize: "25px"}} />},
@@ -69,38 +74,43 @@ function Test() {
   // console.log(params.pathname)
 
   const handleCollapse = () => {
-    setCollapseBar(!collapseBar)
-  }
+    setCollapseBar(!collapseBar);
+  };
   return (
     <div>
-
       <section className="SD-app-layout">
-        <nav>
-        <div className="SD-topbar-logo">
-          <img src="https://cdn.shopify.com/shopifycloud/web/assets/v1/f5416ec27e17f00a67f8c2d6603088baa6635c7bc2071b4f6533c8d260fc8644.svg" />
-          { collapseBar ?<CaretRightOutlined style={{'color':'#ffffff', fontSize:'20px'}} onClick={handleCollapse} />
-          :
-          <CaretLeftOutlined style={{'color':'#ffffff', fontSize:'20px'}}  onClick={handleCollapse} />}
-        </div>
+        <nav style={{ width: collapseBar && "3%" }}>
+          <div className="SD-topbar-logo">
+            {!collapseBar && (
+              <img src="https://cdn.shopify.com/shopifycloud/web/assets/v1/f5416ec27e17f00a67f8c2d6603088baa6635c7bc2071b4f6533c8d260fc8644.svg" />
+            )}
+            {collapseBar ? (
+              <DoubleRightOutlined
+                style={{ color: "#ffffff", fontSize: "20px" }}
+                onClick={handleCollapse}
+              />
+            ) : (
+              <DoubleLeftOutlined
+                style={{ color: "#ffffff", fontSize: "20px" }}
+                onClick={handleCollapse}
+              />
+            )}
+          </div>
           <ul className="SD-layoutSideBar">
-            { 
-            mainLayout.map((rout, index) => (
+            {mainLayout.map((rout, index) => (
               <li key={index}>
                 {/* <Tooltip title={rout.title}> */}
-                  <Link
-                    className={
-                      params.pathname == rout.path 
-                        ? "SD-sidebar_active"
-                        : "sidebar_no_active"
-                    }
-                    to={rout.path}
-                  >
-                    {rout.icon}
-                    <p className="sidebar-label">
-
-                    {rout.title}
-                    </p>
-                  </Link>
+                <Link
+                  className={
+                    params.pathname == rout.path
+                      ? "SD-sidebar_active"
+                      : "sidebar_no_active"
+                  }
+                  to={rout.path}
+                >
+                  {rout.icon}
+                  <p className="sidebar-label">{rout.title}</p>
+                </Link>
                 {/* </Tooltip> */}
               </li>
             ))}
@@ -108,11 +118,19 @@ function Test() {
         </nav>
         <div className="SD-mainSection">
           <div className="topbar_elements">
-          {mainLayout.map((pageName, index)=> params.pathname == pageName.path &&<strong key={index}>{pageName.title}</strong>)}
-        <FullScreenButton/>
+            {mainLayout.map(
+              (pageName, index) =>
+                params.pathname == pageName.path && (
+                  <>
+                  <strong key={index}>{pageName.title}</strong>
+                  <a>Know more about {pageName.title}</a>
+                  </>
+                )
+            )}
+            <FullScreenButton />
           </div>
           {/* <Outlet context={[step, sideBar]} /> */}
-          <Outlet/>
+          <Outlet />
         </div>
       </section>
     </div>
