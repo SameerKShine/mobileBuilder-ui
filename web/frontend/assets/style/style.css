@@ -242,6 +242,7 @@ li {
     text-align: left;
     border-right: 1px solid rgb(240, 240, 240);
     padding-top: 20px;
+    transition: 0.3s;
 }
   .SD-layoutSideBar {
     padding: 0.5rem 0px;

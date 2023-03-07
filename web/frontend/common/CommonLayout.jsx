@@ -75,7 +75,7 @@ function Test() {
     <div>
 
       <section className="SD-app-layout">
-        <nav>
+        <nav  style={{'width':collapseBar&&'3%'}}>
         <div className="SD-topbar-logo">
           <img src="https://cdn.shopify.com/shopifycloud/web/assets/v1/f5416ec27e17f00a67f8c2d6603088baa6635c7bc2071b4f6533c8d260fc8644.svg" />
           { collapseBar ?<CaretRightOutlined style={{'color':'#ffffff', fontSize:'20px'}} onClick={handleCollapse} />
