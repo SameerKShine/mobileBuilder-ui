@@ -8,24 +8,13 @@ function PreviewCard({children, data, bottomRef, className, mainClass,bgColor, l
 
   // const { mobileview , setMobileview} = useMobileview();
   // console.log(mobileview)
-    const [value, setValue] = useState('/assets/images/phoneView/android.png');
-    const onChange = useCallback((e)=>{
-        setValue(e.target.value);
-        setMobileview(e.target.value)
-    },[value])
+    // const [value, setValue] = useState('/assets/images/phoneView/android.png');
+    // const onChange = useCallback((e)=>{
+    //     setValue(e.target.value);
+    //     setMobileview(e.target.value)
+    // },[value])
   return (
     <div className={"SD-builderPreview " + mainClass}>
-    {/* { (data !== "globalSetting" && data !=="globalSetting_hideHeader")  &&<div className='SD-mpbile_select'>
-        <Radio.Group onChange={onChange} value={mobileview}>
-          <Radio.Button value="/assets/images/phoneView/android.png">
-            Andriod View
-          </Radio.Button>
-          <Radio.Button value="/assets/images/phoneView/iphone.png">
-            IOS View
-          </Radio.Button>
-        </Radio.Group>
-      </div>} */}
-
       <div
         className={"white-bg-box mobile_preview " +className??''}
         // style={{ backgroundImage: `url(${mobileview})` }}
