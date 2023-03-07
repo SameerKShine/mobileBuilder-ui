@@ -852,10 +852,8 @@ p.sidebar-label {
   /* ****************** create page END **********************/
 
   /************************************* PREVIEW CARD **********************************  */
-  .mobile_preview {
-    width: 35%;
+  .mobile_preview {    
     margin: auto;
-    height: 735px;
     overflow: auto;
     border: 0;
     padding: 0px 0px 27px 0;
@@ -865,6 +863,7 @@ p.sidebar-label {
     position: relative;
     background-color: #fff;
     border-radius: 4px;
+    background-image: url('../images/phoneView/iphone.png');
   }
   .inner-scroll-cont::-webkit-scrollbar {
     width: 5px;
