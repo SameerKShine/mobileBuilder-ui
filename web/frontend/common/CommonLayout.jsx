@@ -15,14 +15,15 @@ import {
   SettingOutlined,
   // BgColorsOutlined,
   BellOutlined,
-  // MobileOutlined,
+  CaretRightOutlined,
+  CaretLeftOutlined,
   AppstoreOutlined,
   UploadOutlined
 } from "@ant-design/icons";
 import FullScreenButton from "./elements/FullScreenButton";
 
 function Test() {
-  // const [step, setStep] = useState(0);
+  const [collapseBar, setCollapseBar] = useState(false);
   // const [sideBar, setSideBar] = useState(0);
   // const [showScreen, setFullScreen] = useState(false);
   // const app = useAppBridge();
@@ -66,70 +67,23 @@ function Test() {
   //   // {title:"Splash Screen", path:2, icon:<SettingOutlined style={{'color':"#ffffff", fontSize: "25px"}} />},
   // ]
   // console.log(params.pathname)
+
+  const handleCollapse = () => {
+    setCollapseBar(!collapseBar)
+  }
   return (
     <div>
- 
-      {/* <div className="SD-TopBar"> */}
-        {/* {params.pathname.includes("/builder")
-        &&
-          <div onClick={()=>{
-            navigate("/")
-            setStep(0)
-            setSideBar(0)
-          }}>
-      <Icon
-        source={ExitMajor}
-        color="base"
-      />
-        </div>
-} */}
-        {/* <div className="topbar_elements topbar_select">
-          {params.pathname.includes("/builder") && (
-            <select value={step} onChange={(e)=>handlePage(e.target.value)}>
-              <option value={0}>Landing Page</option>
-              <option value={1}>Bottom Bar</option>
-              <option value={2}>App Bar</option>
-              <option value={6}>Side Bar</option>
-              <option value={3}>Profile Page</option>
-              <option value={4}>Cart Page</option>
-              <option value={5}>Product Detail Page</option>
-            </select>
-          )}
-        </div> */}
-        {/* <div className="topbar_elements fullScreen_button">
-          <Button
-            icon={
-              showScreen ? (
-                <FullscreenExitOutlined width="2rem" />
-              ) : (
-                <FullscreenOutlined />
-              )
-            }
-            onClick={handleScreenApp}
-          >
-            {showScreen ? "Exit full screen" : "Enter to full screen"}
-          </Button>
-        </div> */}
-        {/* <FullScreenButton/> */}
-      {/* </div> */}
+
       <section className="SD-app-layout">
         <nav>
         <div className="SD-topbar-logo">
           <img src="https://cdn.shopify.com/shopifycloud/web/assets/v1/f5416ec27e17f00a67f8c2d6603088baa6635c7bc2071b4f6533c8d260fc8644.svg" />
+          { collapseBar ?<CaretRightOutlined style={{'color':'#ffffff', fontSize:'20px'}} onClick={handleCollapse} />
+          :
+          <CaretLeftOutlined style={{'color':'#ffffff', fontSize:'20px'}}  onClick={handleCollapse} />}
         </div>
           <ul className="SD-layoutSideBar">
             { 
-            // params.pathname.includes("/builder")?
-            //  builderLayout.map((rout, index)=> <li key={index} onClick={()=>setSideBar(rout.path)}  className={
-            //   rout.path == sideBar 
-            //     ? "SD-sidebar_active"
-            //     : "sidebar_no_active"
-            // }>
-            //   <Tooltip title={rout.title}>
-            //     {rout.icon}
-            //   </Tooltip>
-            // </li>)
-            // :
             mainLayout.map((rout, index) => (
               <li key={index}>
                 {/* <Tooltip title={rout.title}> */}
