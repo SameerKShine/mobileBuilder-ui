@@ -857,7 +857,7 @@ p.sidebar-label {
 }
 .active_bgType {
   border: 1px solid #7d2ae8;
-}
+} 
   /* Appearance END */
   /* ********************************** EDIT SECTION END ****************************** */
   /* ****************** create page END **********************/
@@ -877,7 +877,7 @@ p.sidebar-label {
     background-color: #fff;
     border-radius: 4px;
   }
-  
+
   .inner-scroll-cont::-webkit-scrollbar {
     width: 5px;
     background: #ebecf0;
@@ -2942,7 +2942,7 @@ span.update-date-template {
 
 .common_input label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 0px;
 }
 
 .sd-productLists::-webkit-scrollbar {
