@@ -230,8 +230,20 @@ function PushNotification() {
             });
           }}
         />
-      </div>
-      <PreviewCard
+    </div>
+
+        <div className="MN-mobilePreview">
+          <div className="MN-mobilePreview_Frame">
+            <div className="MN-mobilePreview_inner_body">
+              <div className="notificationPrev"> 
+                <div> <h2> Title </h2> </div>
+                <div> <p> Message </p> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      {/* <PreviewCard
         className="globalSettingView"
         data="globalSetting_hideHeader"
         bgColor="#ffffff"
@@ -244,7 +256,7 @@ function PushNotification() {
             <p> {notificationData.message || "Message"} </p>
           </div>
         </div>
-      </PreviewCard>
+      </PreviewCard> */}
     </div>
   );
 }
