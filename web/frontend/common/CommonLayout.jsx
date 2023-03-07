@@ -79,9 +79,11 @@ function Test() {
   return (
     <div>
       <section className="SD-app-layout">
-        <nav className={collapseBar ? "collapsedBar": "nonCollapsedBar"} style={{ width: collapseBar && "3%" }}>
+        <nav className={collapseBar ? "collapsedBar": "nonCollapsedBar"} style={{ width: collapseBar && "4%" }}>
           <div className="SD-topbar-logo">
-            {!collapseBar && (
+            {collapseBar ?
+            <img src="assets/images/logo/shopifylogo.png" width="30px" />
+            : (
               <img src="https://cdn.shopify.com/shopifycloud/web/assets/v1/f5416ec27e17f00a67f8c2d6603088baa6635c7bc2071b4f6533c8d260fc8644.svg" />
             )}
             {collapseBar ? (
@@ -109,7 +111,7 @@ function Test() {
                   to={rout.path}
                 >
                   {rout.icon}
-                  <p className="sidebar-label">{rout.title}</p>
+                 {!collapseBar&& <p className="sidebar-label">{rout.title}</p>}
                 </Link>
                 {/* </Tooltip> */}
               </li>

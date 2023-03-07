@@ -54,8 +54,8 @@ function globalSettings() {
         </div>
         <div className="globalSettingPrev">
           <PreviewCard
-            className="globalSettingView"
-            data="globalSetting_hideHeader"
+            primaryClass="SD-builderPreview" secondaryClass="white-bg-box mobile_preview globalSettingView"
+            data="hideHeadBottom"
           ></PreviewCard>
         </div>
       </div>

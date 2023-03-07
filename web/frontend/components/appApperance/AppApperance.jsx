@@ -102,8 +102,8 @@ function AppApperance({app_appearance, setapp_appearance, app_bar}) {
         {/* <Spin spinning={loading}> */}
         <div className="appApperancePrev">
           <PreviewCard
-            className="builderApperancePrev"
-            mainClass="mainClassApperancePrev"
+           primaryClass="SD-builderPreview mainClassApperancePrev"
+            secondaryClass="white-bg-box mobile_preview builderApperancePrev"
             logo={dummyLogo}
             app_bar={app_bar}
             data="globalSetting"

@@ -37,7 +37,7 @@ function CreateMenu({ setMenu, menu, builderFields, app_apperance, app_bar }) {
 
       <div className="SD-editSection">
         <MenuOptions menu={menu} setMenu={setMenu} />
-        <PreviewCard data={menu} app_bar={app_bar}  bgColor={app_apperance?.background_color}>
+        <PreviewCard   primaryClass="SD-builderPreview" secondaryClass="white-bg-box mobile_preview" data={menu} app_bar={app_bar}  bgColor={app_apperance?.background_color}>
           {builderFields.map((eleType, index) => {
             return <div key={index}>{FieldsPreview(eleType, index, app_apperance)}</div>;
           })}

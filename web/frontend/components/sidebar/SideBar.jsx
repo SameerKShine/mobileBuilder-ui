@@ -7,7 +7,7 @@ function SideBar({ sideBar, setSidebar }) {
   return (
     <div className="SD-editSection">
       <SideBarApperance sideBar={sideBar} setSidebar={setSidebar} />
-      <PreviewCard bgColor={sideBar.background_color} data="globalSetting_hideHeader">
+      <PreviewCard   primaryClass="SD-builderPreview" secondaryClass="white-bg-box mobile_preview" bgColor={sideBar.background_color} data="hideHeadBottom">
         <div className="sidebarPreview">
           <div className="display_flex">
             <div className="display_flex sidebar_profile">
