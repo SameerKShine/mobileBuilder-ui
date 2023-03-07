@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Fullscreen } from "@shopify/app-bridge/actions";
-import { Button } from "antd";
+import { Button, Tooltip } from "antd";
 import { FullscreenOutlined, FullscreenExitOutlined } from "@ant-design/icons";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { useMobileview } from "../../globalState/mobileView";
@@ -24,6 +24,7 @@ console.log("use Context", getFullscreen)
 
   return (
     <div className="fullScreen_button">
+      <Tooltip title={getFullscreen ? " Exit Fillscreen " : " Enter Fullscreen "}>
       <Button
         icon={
           getFullscreen ? (
@@ -34,8 +35,8 @@ console.log("use Context", getFullscreen)
         }
         onClick={handleScreenApp}
       >
-        {getFullscreen ? " " : " "}
       </Button>
+      </Tooltip>
     </div>
   );
 }
