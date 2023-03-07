@@ -15,8 +15,8 @@ import {
   SettingOutlined,
   // BgColorsOutlined,
   BellOutlined,
-  CaretRightOutlined,
-  CaretLeftOutlined,
+  DoubleRightOutlined,
+  DoubleLeftOutlined,
   AppstoreOutlined,
   UploadOutlined
 } from "@ant-design/icons";
@@ -54,11 +54,16 @@ function Test() {
       path: "/publish-app",
       icon: <UploadOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
     },
-    {
-      title: "Global Settings",
-      path: "/globalSettings",
-      icon: <SettingOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
-    },
+    // {
+    //   title: "Customer List",
+    //   path: "/customer-list",
+    //   icon: <SettingOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
+    // },
+    // {
+    //   title: "Global Settings",
+    //   path: "/globalSettings",
+    //   icon: <SettingOutlined style={{ color: "#ffffff", fontSize: "25px" }} />,
+    // },
   ];
  
   // const builderLayout = [
@@ -77,10 +82,10 @@ function Test() {
       <section className="SD-app-layout">
         <nav  style={{'width':collapseBar&&'3%'}}>
         <div className="SD-topbar-logo">
-          <img src="https://cdn.shopify.com/shopifycloud/web/assets/v1/f5416ec27e17f00a67f8c2d6603088baa6635c7bc2071b4f6533c8d260fc8644.svg" />
-          { collapseBar ?<CaretRightOutlined style={{'color':'#ffffff', fontSize:'20px'}} onClick={handleCollapse} />
+         { !collapseBar && <img src="https://cdn.shopify.com/shopifycloud/web/assets/v1/f5416ec27e17f00a67f8c2d6603088baa6635c7bc2071b4f6533c8d260fc8644.svg" />}
+          { collapseBar ?<DoubleRightOutlined style={{'color':'#ffffff', fontSize:'20px'}} onClick={handleCollapse} />
           :
-          <CaretLeftOutlined style={{'color':'#ffffff', fontSize:'20px'}}  onClick={handleCollapse} />}
+          <DoubleLeftOutlined style={{'color':'#ffffff', fontSize:'20px'}}  onClick={handleCollapse} />}
         </div>
           <ul className="SD-layoutSideBar">
             { 
