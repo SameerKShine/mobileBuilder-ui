@@ -855,10 +855,8 @@ p.sidebar-label {
   /* ****************** create page END **********************/
 
   /************************************* PREVIEW CARD **********************************  */
-  .mobile_preview {
-    width: 35%;
+  .mobile_preview {    
     margin: auto;
-    height: 735px;
     overflow: auto;
     border: 0;
     padding: 0px 0px 27px 0;
@@ -868,6 +866,7 @@ p.sidebar-label {
     position: relative;
     background-color: #fff;
     border-radius: 4px;
+    /* background-image: url('../images/phoneView/iphone.png'); */
   }
   .inner-scroll-cont::-webkit-scrollbar {
     width: 5px;
@@ -884,9 +883,47 @@ p.sidebar-label {
     text-align: center;
     margin-bottom: 9px;
   }
+
   .hideDropBox {
     display: none;
   }
+
+  .MN-mobilePreview {
+    margin: auto;
+    overflow: auto;
+    border: 0;
+    padding: 30px 0px;
+    margin-top: 0px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 4px;
+    width: 90%;
+    height: 100%;
+  }
+
+  .MN-mobilePreview_Frame {
+    background-image: url('/assets/images/phoneView/iphone.png');
+    background-size: 100% 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 80%;
+    margin: auto;
+    border-radius: 59px;
+    padding: 15px;
+}
+
+  
+  .MN-mobilePreview_inner_body{
+    max-height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 100%;
+    border-radius: 48px;
+    padding: 0px;
+  }
+
+
   /************************************* PREVIEW CARD END **********************************  */
 
   /************************************* BUILDER  PREVIEW **********************************  */
