@@ -261,16 +261,28 @@ export default function HomePage() {
     setSideBarView(0)
   }, []);
 
-  const pagesDropDown = 
-    [
-      {label:"Landing Page", value:0},
-      {label:"Bottom Bar", value:1},
-      {label:"App Bar", value:2},
-      {label:"Profile Pag", value:3},
-      {label:"Cart Page", value:4},
-      {label:"Product Detail Page", value:5},
-      {label:"Side Bar", value:6},
-    ]
+ 
+
+    const pageSelectFunction = useMemo(()=>{
+      const pagesDropDown = 
+      [
+        {label:"Landing Page", value:0},
+        {label:"Bottom Bar", value:1},
+        {label:"App Bar", value:2},
+        {label:"Profile Pag", value:3},
+        {label:"Cart Page", value:4},
+        {label:"Product Detail Page", value:5},
+        {label:"Side Bar", value:6},
+      ]
+      return <div className="topbar_select">
+      <CommonSelect
+       //  name="font_family"
+        value={step}
+        option={pagesDropDown}
+        onChange={(e) => handlePage(e.target.value)}
+      />
+   </div>
+    },[step])
   return (
     <Spin spinning={loading} indicator={
       <LoadingOutlined style={{ fontSize: "40px", color: "#7d2ae8" }} />
@@ -297,18 +309,19 @@ export default function HomePage() {
           setDesignName={setDesignName}
         >
           <div>
-           <div className="topbar_select">
+           {/* <div className="topbar_select">
              <CommonSelect
               //  name="font_family"
                value={step}
                option={pagesDropDown}
                onChange={(e) => handlePage(e.target.value)}
              />
-          </div>
+          </div> */}
       {sideBar == 0 ? (
         step == 0 ? (
           <CreatePage
             setBuilderFields={setBuilderFields}
+            pageSelectFunction={pageSelectFunction}
             builderFields={builderFields}
             menu={menu}
             app_apperance={app_apperance}
@@ -316,6 +329,7 @@ export default function HomePage() {
           />
         ) : step == 1 ? (
           <CreateMenu
+          pageSelectFunction={pageSelectFunction}
             menu={menu}
             setMenu={setMenu}
             builderFields={builderFields}
@@ -337,7 +351,7 @@ export default function HomePage() {
           setapp_appearance={setApp_apperance}
         />
       ) : (
-        "SplashScreen"
+        "No Preview"
       )}
       </div>
         </SaveChangesBar>
