@@ -19,11 +19,16 @@ function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_
 
   //hide drop here box on preview
   useEffect(() => {
+    console.log(builderFields)
     document.body.addEventListener("dragend", function (e) {
       // Prevent default to allow drop.
       e.preventDefault();
       setDropHere(false);
     });
+    if(builderFields.length > 0){
+      console.log("enter in condition")
+      setElementType(builderFields[0].type)
+    }
   }, []);
 
 
@@ -61,13 +66,19 @@ function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_
 
   //delete element
   const handleRemoveEle = (elementIndex) => {
-    console.log(elementIndex);
+  
     let prevData = [...builderFields];
     if (elementIndex !== -1) {
       prevData.splice(elementIndex, 1);
     }
     setBuilderFields(prevData);
     setEditForm(false);
+    // if(builderFields.length > 1){
+    //   setElementIndex(elementIndex)
+    // } else{
+    //   setEditForm(false);
+    // }
+
   };
   
   return (
@@ -108,9 +119,16 @@ function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_
             handleAddElements={handleAddElements}
             setActiveClass={setActiveClass}
           />
+          {builderFields.length == 0 &&  !dropHere ?  <div
+                className="dropableBox"
+                id="txtInput2"
+                placeholder="Drop here"
+              >
+                Drop here
+              </div> : null }
         </PreviewCard >
      
-        {openEditForm && (
+        { builderFields.length > 0  && openEditForm ?(
           <EditSection
             elementIndex={elementIndex}
             elementType={elementType}
@@ -121,7 +139,7 @@ function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_
             setEditForm={setEditForm}
             setShowTopbar={setShowTopbar}
           />
-        )}
+        ):null}
       </div>
     </>
   );

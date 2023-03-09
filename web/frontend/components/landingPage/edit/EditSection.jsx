@@ -99,19 +99,14 @@ function EditSection({
     if(restValues[elementIndex]){
       console.log("enter in condition")
       const resetVal = restValues[elementIndex];
-      console.log(resetVal)
-      console.log(arr[elementIndex]);
       arr[elementIndex] = resetVal;
     } else{
   const resetVal = useElementVal(elementType);
-    console.log("handle reset");
-    console.log(resetVal);
-    console.log(arr[elementIndex]);
     arr[elementIndex] = resetVal;
     }
     setBuilderFields(arr);
   };
-
+ console.log(elementType)
   //show edit fields
   const childrenData =
     elementType == "header" ? (
@@ -216,17 +211,19 @@ function EditSection({
       <div className="rightSidebar open-right-sidebar">
         <div className="rightSide-inner side-slct">
           <div className="right-inner-wrapper">
-            <strong>
-              {" "}
-              {elementType.charAt(0).toUpperCase() +
-                elementType.slice(1).replace(/_/g, " ")}
-            </strong>
+       
             <div
               className="closeBtn_editForm"
               onClick={() => setEditForm(false)}
             >
               <CloseOutlined />
             </div>
+            <div>
+            <strong>
+              {" "}
+              {elementType.charAt(0).toUpperCase() +
+                elementType.slice(1).replace(/_/g, " ")}
+            </strong>
             <TabScreen
               firstTab={childrenData}
               secondTab={
@@ -239,6 +236,8 @@ function EditSection({
                 />
               }
             />
+            </div>
+       
             {!open && (
               <div className="SD-delete_reset">
                 <button

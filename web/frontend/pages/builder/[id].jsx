@@ -27,20 +27,7 @@ export default function HomePage() {
   const params = useParams();
 
   const [builderFields, setBuilderFields] = useState([
-    {
-      type: "header",
-      id: "0",
-      heading_text: "Welcome to your Store",
-      subheading_text: "Enter Subheading Here",
-      text_alignment: "left",
-      show_subheading: true,
-      style: {
-        margin_top: "0",
-        margin_bottom: "0",
-        margin_left: "0",
-        margin_right: "0",
-      },
-    },
+ 
   ]);
 
   const [restValue, setResetVal] = useState([])
