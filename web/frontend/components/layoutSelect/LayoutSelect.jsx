@@ -79,7 +79,7 @@ const handleSelectLayout = (id) => {
 console.log(props.layoutSelection)
   return (
     <div className="SD-publish_app">
-      {" "}
+      {props.pageSelectFunction}
       <h2 className="SD-section-heading">Select {heading} Design</h2>{" "}
       <div className="SD-profile-templates">
         {" "}

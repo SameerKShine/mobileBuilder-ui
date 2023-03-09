@@ -7,7 +7,7 @@ import EditSection from "./edit/EditSection";
 import { useElementVal, useApi } from "../../hooks";
 import SaveChangesBar from "../../common/SaveChangesBar";
 
-function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_bar }) {
+function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_bar, pageSelectFunction }) {
   const [dropHere, setDropHere] = useState(false);
   const [openEditForm, setEditForm] = useState(true);
 
@@ -77,7 +77,7 @@ function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_
           setDropHere={setDropHere}
           handleAddElements={handleAddElements}
         />
-        <PreviewCard  primaryClass="SD-builderPreview" secondaryClass="white-bg-box mobile_preview"
+        <PreviewCard pageSelectFunction={pageSelectFunction}  primaryClass="SD-builderPreview" secondaryClass="white-bg-box mobile_preview"
          data={menu} bottomRef={bottomRef}
           app_bar={app_bar}
            bgColor={app_apperance?.background_color}>

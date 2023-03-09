@@ -4,7 +4,7 @@ import MobileHeader from './MobileHeader';
 import MenuPreview from './MenuPreview';
 // import { useMobileview } from '../../globalState/mobileView';
  
-function PreviewCard({children, data, bottomRef, secondaryClass, primaryClass,bgColor, logo, app_bar}) {
+function PreviewCard({children, data, bottomRef, secondaryClass, primaryClass,bgColor, logo, app_bar, pageSelectFunction}) {
 
   // const { mobileview , setMobileview} = useMobileview();
   // console.log(mobileview)
@@ -15,11 +15,14 @@ function PreviewCard({children, data, bottomRef, secondaryClass, primaryClass,bg
     // },[value])
   return (
     <div className={primaryClass}>
+      {pageSelectFunction}
       <div
         className={secondaryClass??''}
         // style={{ backgroundImage: `url(${mobileview})` }}
       >
+         
         {data !=="hideHeadBottom"&&<MobileHeader app_bar={app_bar} app_logo={logo}/>}
+       
         <div className="inner-scroll-cont" style={{'backgroundColor':bgColor??"#fff"}}>
           {children}
           <div ref={bottomRef}></div>

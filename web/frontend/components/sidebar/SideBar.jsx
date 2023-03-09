@@ -3,11 +3,17 @@ import PreviewCard from "../../common/builder/PreviewCard";
 import SideBarApperance from "./SideBarApperance";
 import EditSidebar from "./EditSidebar";
 import { UserOutlined, CloseOutlined } from "@ant-design/icons";
-function SideBar({ sideBar, setSidebar }) {
+function SideBar({ sideBar, setSidebar, pageSelectFunction }) {
   return (
     <div className="SD-editSection">
       <SideBarApperance sideBar={sideBar} setSidebar={setSidebar} />
-      <PreviewCard   primaryClass="SD-builderPreview" secondaryClass="white-bg-box mobile_preview" bgColor={sideBar.background_color} data="hideHeadBottom">
+      <PreviewCard
+        pageSelectFunction={pageSelectFunction}
+        primaryClass="SD-builderPreview"
+        secondaryClass="white-bg-box mobile_preview"
+        bgColor={sideBar.background_color}
+        data="hideHeadBottom"
+      >
         <div className="sidebarPreview">
           <div className="display_flex">
             <div className="display_flex sidebar_profile">
@@ -21,11 +27,19 @@ function SideBar({ sideBar, setSidebar }) {
           </div>
 
           <ul className="sidebar_list">
-           { sideBar.elements.map((menu, index)=><li style={{'fontSize':sideBar.font_size, 'color':sideBar.font_color}} key={index}>
-              <UserOutlined /> {menu.title}
-            </li>)}
+            {sideBar.elements.map((menu, index) => (
+              <li
+                style={{
+                  fontSize: sideBar.font_size,
+                  color: sideBar.font_color,
+                }}
+                key={index}
+              >
+                <UserOutlined /> {menu.title}
+              </li>
+            ))}
           </ul>
-          {sideBar.layout !== "layout_1"&&<img src="" alt="Image" />}
+          {sideBar.layout !== "layout_1" && <img src="" alt="Image" />}
         </div>
       </PreviewCard>
       <EditSidebar sideBar={sideBar} setSidebar={setSidebar} />

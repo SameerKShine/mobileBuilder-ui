@@ -7,12 +7,13 @@ import {
 } from "../../common/elements/commonElements";
 import UploadPicture from "../../common/elements/UploadPicture";
 
-function AppBar({ app_bar, setAppBar }) {
+function AppBar({ app_bar, setAppBar, pageSelectFunction }) {
   const handeAppbar = (name, value) => {
     setAppBar({ ...app_bar, [name]: value });
   };
   return (
     <div className="SD-publish_app">
+      {pageSelectFunction}
       <h2 className="SD-section-heading"> App Bar Setting</h2>
       <div>
         <h2>Preview</h2>
