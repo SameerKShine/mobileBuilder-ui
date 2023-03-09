@@ -218,7 +218,7 @@ function EditSection({
             >
               <CloseOutlined />
             </div>
-            <div>
+            <div className="editSectionTabSection">
             <strong>
               {" "}
               {elementType.charAt(0).toUpperCase() +
