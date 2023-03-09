@@ -21,6 +21,7 @@ import {
   UploadOutlined,
 } from "@ant-design/icons";
 import FullScreenButton from "./elements/FullScreenButton";
+import { Tooltip } from "antd";
 
 function Test() {
   const [collapseBar, setCollapseBar] = useState(false);
@@ -87,10 +88,12 @@ function Test() {
               <img src="https://cdn.shopify.com/shopifycloud/web/assets/v1/f5416ec27e17f00a67f8c2d6603088baa6635c7bc2071b4f6533c8d260fc8644.svg" />
             )}
             {collapseBar ? (
+              <Tooltip title="Expand Sidebar">
               <DoubleRightOutlined
                 style={{ color: "#ffffff", fontSize: "20px" }}
                 onClick={handleCollapse}
               />
+              </Tooltip>
             ) : (
               <DoubleLeftOutlined
                 style={{ color: "#ffffff", fontSize: "20px" }}
@@ -101,7 +104,7 @@ function Test() {
           <ul className="SD-layoutSideBar">
             {mainLayout.map((rout, index) => (
               <li key={index}>
-                {/* <Tooltip title={rout.title}> */}
+                
                 <Link
                   className={
                     params.pathname == rout.path
@@ -110,10 +113,12 @@ function Test() {
                   }
                   to={rout.path}
                 >
+                  <Tooltip  title={collapseBar&&rout.title}>
+
                   {rout.icon}
+                  </Tooltip>
                  {!collapseBar&& <p className="sidebar-label">{rout.title}</p>}
                 </Link>
-                {/* </Tooltip> */}
               </li>
             ))}
           </ul>
