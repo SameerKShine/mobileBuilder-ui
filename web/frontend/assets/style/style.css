@@ -166,6 +166,17 @@ li {
   font-weight: 500;
 }
 
+.topbarTitle{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+.topbarTitle a{
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /* TOP BAR FOR APP */
 .SD-TopBar {
     background-color: #7d2ae8;

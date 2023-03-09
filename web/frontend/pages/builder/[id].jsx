@@ -296,7 +296,7 @@ export default function HomePage() {
           navigate={navigate}
           setDesignName={setDesignName}
         >
-          <div style={{'width':'96%'}}>
+          <div>
            <div className="topbar_select">
              <CommonSelect
               //  name="font_family"

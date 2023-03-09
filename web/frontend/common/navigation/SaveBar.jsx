@@ -29,7 +29,23 @@ function SaveBar({
   ]
   return (
     <>
-      <div
+   
+      <div className="builderLayout" style={{'display':'flex'}}>
+        <nav className="builderSidebar">
+          <ul className="SD-layoutSideBar">
+          {builderLayout.map((rout, index)=> <li key={index} onClick={()=>setSideBar(rout.path)}  className={
+              rout.path == sideBar
+                ? "SD-sidebar_active"
+                : "sidebar_no_active"
+            }>
+              <Tooltip title={rout.title}>
+                {rout.icon}
+              </Tooltip>
+            </li>)  }
+          </ul>
+        </nav>
+        <div style={{'width':'96%'}}>
+        <div
         className="SD-builderToBar"
       >
         <div className="SD-topbar-logo">
@@ -51,19 +67,7 @@ function SaveBar({
           />
           <span style={{ color: "#ffffff" }}>{errorName}</span>
         </div>
-        {/* <div className="SD-topbar-center">
-          <div className="topbar_elements topbar_select">
-            <select value={step} onChange={(e) => handlePage(e.target.value)}>
-              <option value={0}>Landing Page</option>
-              <option value={1}>Bottom Bar</option>
-              <option value={2}>App Bar</option>
-              <option value={6}>Side Bar</option>
-              <option value={3}>Profile Page</option>
-              <option value={4}>Cart Page</option>
-              <option value={5}>Product Detail Page</option>
-            </select>
-          </div>
-        </div> */}
+    
         <div className="small-mobile-view top-bar SD-topbar-right">
           <button
             className={`SD-saveButton ${
@@ -82,21 +86,8 @@ function SaveBar({
           <FullScreenButton />
         </div>
       </div>
-      <div className="builderLayout" style={{'display':'flex'}}>
-        <nav className="builderSidebar">
-          <ul className="SD-layoutSideBar">
-          {builderLayout.map((rout, index)=> <li key={index} onClick={()=>setSideBar(rout.path)}  className={
-              rout.path == sideBar
-                ? "SD-sidebar_active"
-                : "sidebar_no_active"
-            }>
-              <Tooltip title={rout.title}>
-                {rout.icon}
-              </Tooltip>
-            </li>)  }
-          </ul>
-        </nav>
         {children}
+        </div>
         </div>
     </>
   );
