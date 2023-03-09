@@ -387,7 +387,7 @@ p.sidebar-label {
   padding: 20px 2px 80px 2px;
   background: #fff;
   /* height: 94vh; */
-  height: 91vh;
+  height: 93.2vh;
   overflow: auto;
   align-content: baseline;
   width: 16%;
@@ -467,7 +467,7 @@ p.sidebar-label {
     box-shadow: 0 0 0.3125rem #1718180d, 0 0.0625rem 0.125rem #00000026;
     transition: all 0.5s ease-in-out;
     /* height: 94vh; */
-    height: 91vh;
+    height: 93vh;
     overflow: auto;
     overflow-x: hidden;
     padding-bottom: 30px;
