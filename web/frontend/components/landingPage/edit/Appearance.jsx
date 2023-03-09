@@ -426,7 +426,7 @@ return(
             />
           )}
           <div className="SD-slider_group">
-            <h2 className="SD-section-heading"> Font Size </h2>
+            {val.choose_layout !== "layout_1" &&<h2 className="SD-section-heading"> Font Size </h2>}
             {val.choose_layout !== "layout_1" &&
                <Slider_field
                label = 'Heading'
@@ -447,7 +447,7 @@ return(
               onChange={(e) => onChange(e, 'subtitle_text_size')}
               />}
 
-            <h2 className="SD-section-heading"> Line Space </h2>
+           {val.choose_layout !== "layout_1" && <h2 className="SD-section-heading"> Line Space </h2>}
             {val.choose_layout !== "layout_1" &&
             <Slider_field
             label = 'Heading'

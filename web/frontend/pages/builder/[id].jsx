@@ -43,6 +43,8 @@ export default function HomePage() {
     },
   ]);
 
+  const [restValue, setResetVal] = useState([])
+
   const [menu, setMenu] = useState({
     layout: "menu_1",
     elements: [
@@ -174,6 +176,7 @@ export default function HomePage() {
           setDesignName(res.result.design_name);
           setDelName(res.result.design_name);
           setBuilderFields(res.result.landing_page);
+          setResetVal(res.result.landing_page);
           setMenu(res.result.menu_data);
           setUpDateId(res.result._id);
           setApp_apperance(res.result.app_apperance);
@@ -324,6 +327,7 @@ export default function HomePage() {
             menu={menu}
             app_apperance={app_apperance}
             app_bar={app_bar}
+            restValue={restValue}
           />
         ) : step == 1 ? (
           <CreateMenu

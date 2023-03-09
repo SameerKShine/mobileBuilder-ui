@@ -11,6 +11,7 @@ import {  editHeader,
   editAnnouncemenrBar,} from './editutils'
   import { CommonInput } from "../../../common/elements/commonElements";
 import EditCollectionProduct from "./EditCollectionPProduct";
+import { useElementVal } from "../../../hooks";
 
 function EditSection({
   elementIndex,
@@ -20,6 +21,7 @@ function EditSection({
   setBuilderFields,
   handleRemoveEle,
   setShowTopbar,
+  restValue
 }) {
   const [open, setOpen] = useState(false);
 
@@ -93,6 +95,7 @@ function EditSection({
   };
 
   const handleRestValues = () => {
+    console.log(restValues)
     const resetVal = useElementVal(elementType);
     console.log("handle reset");
     const arr = [...builderFields];
