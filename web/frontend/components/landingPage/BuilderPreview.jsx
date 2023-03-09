@@ -67,7 +67,7 @@ function BuilderPreview({
     setActiveClass(id + 1);
     setElementIndex(id + 1);
   };
-console.log("builderFields == >", builderFields)
+// console.log("builderFields == >", builderFields)
   const Dragging = () => {
     return (
       <>      <DragDropContext onDragEnd={handleDrag}>

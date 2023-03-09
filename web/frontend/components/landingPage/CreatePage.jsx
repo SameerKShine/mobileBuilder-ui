@@ -7,7 +7,7 @@ import EditSection from "./edit/EditSection";
 import { useElementVal, useApi } from "../../hooks";
 import SaveChangesBar from "../../common/SaveChangesBar";
 
-function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_bar, pageSelectFunction, restValue }) {
+function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_bar, pageSelectFunction, restValues }) {
   const [dropHere, setDropHere] = useState(false);
   const [openEditForm, setEditForm] = useState(true);
 
@@ -116,7 +116,7 @@ function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_
             elementType={elementType}
             builderFields={builderFields}
             setBuilderFields={setBuilderFields}
-            restValue={restValue}
+            restValues={restValues}
             handleRemoveEle={handleRemoveEle}
             setEditForm={setEditForm}
             setShowTopbar={setShowTopbar}

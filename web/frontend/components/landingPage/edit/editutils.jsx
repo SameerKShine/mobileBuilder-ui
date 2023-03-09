@@ -23,7 +23,7 @@ export const commonToggle = (
   elementIndex,
   setBuilderFields
 ) => {
-  console.log(builderFields[elementIndex][field])
+  // console.log(builderFields[elementIndex][field])
   const onChange = (checked) => {
     let newArr = [...builderFields];
     newArr[elementIndex][field] = checked;

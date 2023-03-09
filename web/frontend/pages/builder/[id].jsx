@@ -327,7 +327,7 @@ export default function HomePage() {
             menu={menu}
             app_apperance={app_apperance}
             app_bar={app_bar}
-            restValue={restValue}
+            restValues={restValue}
           />
         ) : step == 1 ? (
           <CreateMenu

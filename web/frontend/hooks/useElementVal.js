@@ -14,7 +14,7 @@ export const useElementVal = (data) => {
           ...newData,
           heading_text: "Enter Heading here",
           subheading_text: "Enter Subheading Here",
-          text_alignment: "center",
+          text_alignment: "left",
           show_subheading: true,
         };
         newData = saveData;

@@ -21,7 +21,7 @@ function EditSection({
   setBuilderFields,
   handleRemoveEle,
   setShowTopbar,
-  restValue
+  restValues
 }) {
   const [open, setOpen] = useState(false);
 
@@ -35,7 +35,7 @@ function EditSection({
     console.log(typeof(e));
     console.log(name);
     setShowTopbar(true);
-    const arr = [...builderFields];
+    const arr = JSON.parse(JSON.stringify([...builderFields]));
     if (name == "background_style") {
       if(e == 'gradiant'){
         console.log
@@ -75,7 +75,7 @@ function EditSection({
   const handleEditElement = (e) => {
     setShowTopbar(true);
     const condition = e.target.name;
-    const arr = [...builderFields];
+    const arr = JSON.parse(JSON.stringify([...builderFields]));
     switch (condition) {
       case "divider_type":
         return (
@@ -95,12 +95,20 @@ function EditSection({
   };
 
   const handleRestValues = () => {
-    console.log(restValues)
-    const resetVal = useElementVal(elementType);
+    const arr = JSON.parse(JSON.stringify([...builderFields]));
+    if(restValues[elementIndex]){
+      console.log("enter in condition")
+      const resetVal = restValues[elementIndex];
+      console.log(resetVal)
+      console.log(arr[elementIndex]);
+      arr[elementIndex] = resetVal;
+    } else{
+  const resetVal = useElementVal(elementType);
     console.log("handle reset");
-    const arr = [...builderFields];
+    console.log(resetVal);
     console.log(arr[elementIndex]);
     arr[elementIndex] = resetVal;
+    }
     setBuilderFields(arr);
   };
 

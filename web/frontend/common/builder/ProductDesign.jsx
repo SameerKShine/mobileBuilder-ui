@@ -19,7 +19,7 @@ function ProductDesign({ viewData, app_appearance }) {
     } else {
       className = "lay4";
     }
-    console.log(viewData)
+    // console.log(viewData)
   return (
     <>
     <div className="jstBtwn">
