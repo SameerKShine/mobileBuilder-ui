@@ -9,10 +9,10 @@ import SaveChangesBar from "../../common/SaveChangesBar";
 
 function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_bar, pageSelectFunction, restValues }) {
   const [dropHere, setDropHere] = useState(false);
-  const [openEditForm, setEditForm] = useState(true);
+  const [openEditForm, setEditForm] = useState(false);
 
   const [elementIndex, setElementIndex] = useState(0);
-  const [elementType, setElementType] = useState("header");
+  const [elementType, setElementType] = useState("");
 
   const [activeClass, setActiveClass] = useState(0);
   const [showTopbar, setShowTopbar] = useState(false);
@@ -25,10 +25,6 @@ function CreatePage({ builderFields, setBuilderFields, menu, app_apperance, app_
       e.preventDefault();
       setDropHere(false);
     });
-    if(builderFields.length > 0){
-      console.log("enter in condition")
-      setElementType(builderFields[0].type)
-    }
   }, []);
 
 
