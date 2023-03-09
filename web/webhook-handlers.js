@@ -23,19 +23,14 @@ export default {
   PRODUCTS_UPDATE: {
     deliveryMethod: DeliveryMethod.Http,
     callbackUrl: "/api/webhooks",
-    callback: async (topic, shop, body, webhookId) => {
-      console.log('--- Product update ---');
-      const secretKey = process.env.SHOPIFY_API_SECRET;
-      const payload = JSON.parse(body);
+    callback: async (req, res) => {
+      // const body = req.body;
       // let hmac_header = req.headers["x-shopify-hmac-sha256"];
-      console.log( "heaader", payload)
+      // const secretKey = process.env.SHOPIFY_API_SECRET;
+      // console.log( "heaader", hmac_header)
       // const hmac_calculated = crypto.createHmac("sha256", secretKey).update(body).digest("base64");
       // console.log(hmac_calculated, "cal")
-
-      // const sessionId = await shopify.api.session.getOfflineId(shop)
-      // const session = await shopify.config.sessionStorage.loadSession(sessionId);
-      // const client = new shopify.api.clients.Rest({session});
-      // console.log('--- /Product update ---', session);
+      console.log(req.body, 'request')
     },
   },
 

@@ -9,6 +9,7 @@ import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import webhookHandlers   from "./webhook-handlers.js";
 import storefrontRoutes from "./backend/api/storefrontRoutes.js";
+import { verifyWebhooks } from "./backend/api/verifyWebhooks.js";
 
 
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
@@ -21,6 +22,13 @@ const STATIC_PATH =
 const app = express();
 // console.log( "process.env.SCOPES", process.env.SCOPES)
 // Set up Shopify authentication and webhook handling
+
+/************************ Webhooks Verification********************************************* */
+
+app.post(shopify.config.webhooks.path, express.text({type : "*/*"}), verifyWebhooks)
+
+
+
 app.get(shopify.config.auth.path, shopify.auth.begin());
 app.get(
   shopify.config.auth.callbackPath,
@@ -38,9 +46,10 @@ console.log(process.env.SCOPES)
 //   shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
 // );
 app.post(
-  shopify.config.webhooks.path,
+  shopify.config.webhooks.path, express.text({type : "*/*"}), 
   shopify.processWebhooks({ webhookHandlers : webhookHandlers })
   );
+
 mongodb()
 
 app.use(express.json());
