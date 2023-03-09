@@ -337,11 +337,11 @@ export default function HomePage() {
             app_bar={app_bar}
           />
         ) : step == 2 ? (
-          <AppBar app_bar={app_bar} setAppBar={setAppBar} />
+          <AppBar pageSelectFunction={pageSelectFunction} app_bar={app_bar} setAppBar={setAppBar} />
         ) : step == 3 || step == 4 || step == 5 ? (
-          <LayoutSelect step={step} layoutSelection={layoutSelection} setLayoutSelect={setLayoutSelect} />
+          <LayoutSelect pageSelectFunction={pageSelectFunction} step={step} layoutSelection={layoutSelection} setLayoutSelect={setLayoutSelect} />
         ) : step == 6 ? (
-         <SideBar sideBar={sideBar_data} setSidebar={setSidebar}/>
+         <SideBar pageSelectFunction={pageSelectFunction} sideBar={sideBar_data} setSidebar={setSidebar}/>
         )
         : null
       ) : sideBar == 1 ? (
