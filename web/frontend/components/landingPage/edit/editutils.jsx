@@ -546,7 +546,7 @@ export function editAnnouncemenrBar(
           elementIndex,
           setBuilderFields
         )}
-        {builderFields[elementIndex].show_icon && <UploadImage className="" />}
+        {builderFields[elementIndex].show_icon && <UploadImage className="uploaderInput" />}
       </div>
 
       <CommonSelect
