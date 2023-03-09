@@ -161,8 +161,6 @@ export default function HomePage() {
   const [searchParams] = useSearchParams();
   const { hash } = useLocation();
   useEffect(() => {
-    
-   
     const _id = params.id;
     const searchParam = searchParams.get(_id);
     setLoading(true);
@@ -276,7 +274,7 @@ export default function HomePage() {
       ]
       return <div className="topbar_select">
       <CommonSelect
-       //  name="font_family"
+      className="builderSelectPage"
         value={step}
         option={pagesDropDown}
         onChange={(e) => handlePage(e.target.value)}
@@ -301,8 +299,8 @@ export default function HomePage() {
             sideBar_data
           }}
           step={step}
-          setStep={setStep}
           sideBar={sideBar}
+          setStep={setStep}
           setSideBar={setSideBarView}
           setLoading={setLoading}
           navigate={navigate}

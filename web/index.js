@@ -30,6 +30,7 @@ app.get(
 
 console.log(process.env.HOST)
 console.log(process.env.SCOPES)
+// console.log(process.env)
 // console.log("GDPRWebhookHandlers", GDPRWebhookHandlers.PRODUCTS_UPDATE)
 // console.log("shopify.config.webhooks.path", shopify.config.webhooks.path)
 
