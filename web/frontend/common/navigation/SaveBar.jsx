@@ -56,7 +56,11 @@ function SaveBar({
           </div>
         </div>
 
-        <div>
+  
+    
+        <div className="small-mobile-view top-bar SD-topbar-right">
+        <div className="SaveBarNameFieldDiv">
+        <span style={{ color: "#ffffff" }}>{errorName}</span>
           <CommonInput
             onChange={handleEditTitle}
             value={design_name}
@@ -65,10 +69,8 @@ function SaveBar({
               name: "builder_title",
             }}
           />
-          <span style={{ color: "#ffffff" }}>{errorName}</span>
+          
         </div>
-    
-        <div className="small-mobile-view top-bar SD-topbar-right">
           <button
             className={`SD-saveButton ${
               design_name.length < 1 || errorName.length > 0

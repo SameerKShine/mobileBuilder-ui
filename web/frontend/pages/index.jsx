@@ -242,6 +242,9 @@ function index() {
     const newName = e.target.value;
     let validate = [];
     console.log(prevName);
+    if(newName.length < 1){
+      setError(true);
+    }
     if (prevName) {
       if (prevName !== newName) {
         validate = templateList.filter((el) => el.design_name == newName);

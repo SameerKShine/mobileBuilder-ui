@@ -307,13 +307,13 @@ function PublishApp() {
           </div>
         )}
 
-        <button type="submit">Submit</button>
+       <div style={{"textAlign":"right"}}> <button className="SD-saveButton" type="submit">Submit</button> </div>
       </form>
     </div>
-    <div className="upload-screen">
+    {/* <div className="upload-screen">
       
               <input type={"file"} name={"app-icon"}/>
-    </div>
+    </div> */}
     </>
   );
 }
