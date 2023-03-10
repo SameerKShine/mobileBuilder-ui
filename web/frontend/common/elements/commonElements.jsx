@@ -4,7 +4,7 @@ import { Col, InputNumber, Row, Slider } from "antd";
 export function CommonInput(props) {
   return (
     <div key={props.uniqueKey} className={`common_input  ${props.className}`}>
-      <label>{props.label}</label>
+      {props.label&&<label>{props.label}</label>}
       <input
         className={"SD-common_input " + props.className}
         onChange={props.onChange}
