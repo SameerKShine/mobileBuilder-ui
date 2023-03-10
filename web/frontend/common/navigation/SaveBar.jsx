@@ -66,7 +66,7 @@ function SaveBar({
                 Save
               </button>
 
-              <FullScreenButton positionTip="leftBottom" />
+              <FullScreenButton/>
             </div>
           </div>
       <div className="builderLayout" style={{ display: "flex" }}>

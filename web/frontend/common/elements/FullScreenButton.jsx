@@ -5,7 +5,7 @@ import { FullscreenOutlined, FullscreenExitOutlined } from "@ant-design/icons";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { useMobileview } from "../../globalState/mobileView";
 
-function FullScreenButton({positionTip}) {
+function FullScreenButton() {
   const app = useAppBridge();
 const {getFullscreen, setFullscreen} = useMobileview()
 console.log("use Context", getFullscreen)
@@ -24,7 +24,7 @@ console.log("use Context", getFullscreen)
 
   return (
     <div className="fullScreen_button">
-      <Tooltip placement={positionTip??"bottom"} title={getFullscreen ? " Exit Fillscreen " : " Enter Fullscreen "}>
+      <Tooltip placement="left" title={getFullscreen ? " Exit Fillscreen " : " Enter Fullscreen "}>
       <Button
         icon={
           getFullscreen ? (

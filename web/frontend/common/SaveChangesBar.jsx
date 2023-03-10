@@ -11,15 +11,7 @@ function SaveChangesBar({ data, setDesignName, setLoading, navigate, step, setSt
   const [errorName, setErrorName] = useState("");
   
   const { app } = useAPI();
-  // const getShop = 'test-updatedpre.myshopify.com'
-  // useEffect(()=>{
-  //   console.log(checkVal, ' checkVal')
-  //   if(checkVal !== builderFields){
-  //     setShowBtn(true)
-  //   } else{
-  //     setShowBtn(false)
-  //   }
-  // }, [builderFields])
+
   async function getAllNames() {
     const sessionToken = await getSessionToken(app);
     // console.log(sessionToken)
