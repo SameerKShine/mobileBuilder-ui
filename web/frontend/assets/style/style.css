@@ -185,27 +185,35 @@ li {
     padding: 10px;
     justify-content: end;
   }
+
   .topbar_select {
     display: flex;
     justify-content: center;
-    /* background: #d4d4d4; */
-    padding: 9px 0px;
+    padding: 14px 0px;
   }
 
-.topbar_select select, .topbar_select .builderSelectPage select {
+.topbar_select select {
   border: none;
-  /* background: #ffffff70; */
-  background: #1b1a1a70;
+  background: #a975f5;
   color: #fff;
-  padding: 4px 12px;
+  padding: 8px 12px;
   border-radius: 4px;
-  height: auto;
-  font-size: 13px;
-  margin: 0px;
+  font-size: 14px;
+  min-width: 354px;
+  font-weight: 400;
+  letter-spacing: 0.7px;
+  outline: 1px solid #d3b1ff;
+  outline-offset: 2px;
+  cursor: pointer;
 }
 
-  .topbar_select select option{
-    background:#828384;
+.topbar_select select:hover {
+  outline: 1px solid #7a28e3;
+  transition: 0.2s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.topbar_select select option{
+  background:#828384;
   border-radius: 4px;
   padding: 10px 2px !important;
   color: #ffffff;
@@ -357,9 +365,9 @@ p.sidebar-label {
     color: #7d2ae8;
   }
   .SD-editSection:not(.rightSidebar) .SD-builderPreview {
-    min-width: 91%;
+    min-width: 84%;
     transition: 0.5s ease;
-    width: 91%;
+    width: 84%;
   }
   .SD-editSection:not(.rightSidebar) .mobile_preview {
     width: 354px;
@@ -384,15 +392,15 @@ p.sidebar-label {
   /* Element LIST */
   .SD-builderElementList {
     display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding: 20px 2px 80px 2px;
-  background: #fff;
-  /* height: 94vh; */
-  height: 93.2vh;
-  overflow: auto;
-  align-content: baseline;
-  width: 16%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px 2px 80px 2px;
+    background: #fff;
+    /* height: 94vh; */
+    height: 93.2vh;
+    overflow: auto;
+    align-content: baseline;
+    width: 16%;
   }
   .SD-builderElementListTag {
     width: 45%;
@@ -487,7 +495,7 @@ p.sidebar-label {
     position: absolute;
     padding: 3px 6px;
     border-radius: 50%;
-    margin-top: -22px;
+    margin-top: -3px;
     border-left: 1px solid #f4f4f4;
     border: 1px solid #b688f2;
   }
@@ -841,10 +849,6 @@ p.sidebar-label {
     border-radius: 4px;
     align-items: center;
   }
-  .SD-common-input,
-.SD-common_input {
-  margin-bottom: 10px;
-}
 
 .border-radius-sec {
   display: flex;
@@ -899,7 +903,6 @@ p.sidebar-label {
     padding: 0px 0px 27px 0;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    margin-top: 25px;
     position: relative;
     background-color: #fff;
     border-radius: 4px;
@@ -1749,31 +1752,20 @@ p.sidebar-label {
     justify-content: space-between;
     align-items: center;
 } 
-  .SD-topbar-right input {
- margin-bottom: 0;
- margin-right: 8px;
-} 
-  
-  .SD-topbar-right .SD-saveButton:nth-child(2) {
-    margin-left: 10px;
-  }
-  
-  .SD-saveButton {
-    background-color: #5ab563;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 17px;
-    padding: 14px 37px;
-    border: none;
-    background: #7b2dec;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-}
-  .SD-topbar-right .SD-saveButton:nth-child(2) {
-    margin-left: 10px;
-  }
-  
+    
+/* .SD-saveButton {
+  background-color: #5ab563;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 17px;
+  padding: 14px 37px;
+  border: none;
+  background: #7b2dec;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+} */
+
   .SD-topbar-right .SD-saveButton:nth-child(1) {
     background: none;
     color: #fff;
@@ -2979,9 +2971,17 @@ span.update-date-template {
 }
 
 .SD-builderToBar .small-mobile-view .SD-saveButton {
-  border: none;
+  border: 0.5px solid #646464;
   background: none;
   font-size: 14px;
+  padding: 8px 24px;
+  margin-right: 20px;
+  margin-left: 20px; 
+  font-weight: 500;
+  line-height: 17px;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
 }
 
 .SD-builderToBar .small-mobile-view .fullScreen_button button {
@@ -2992,20 +2992,26 @@ span.update-date-template {
   fill: white;
 }
 
-.SD-builderToBar input {
+.SD-builderToBar .SaveBarNameFieldDiv input {
   border-top: 0px;
-  background: none;
   border-left: 0;
   border-right: 0px;
+  background: none;
   color: #fff;
-  padding: 8px 0px;
+  padding: 7px 0px;
   text-align: center;
   height: auto;
-  margin: 5px 0px;
-  border-radius: 0px;
+  margin: 10px 0px;
+  border-radius: 4px;
+  border: 0.5px solid #646464;
 }
 
-
+.SD-builderToBar .SaveBarNameFieldDiv span {
+  font-size: 12px;
+  color: #fb6b6b!important;
+  letter-spacing: 0.5px;
+  margin-right: 9px;
+}
 
 :where(.css-dev-only-do-not-override-10ed4xt).ant-slider .ant-slider-handle::after {
   top: -2px;  
