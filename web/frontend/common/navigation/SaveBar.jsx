@@ -32,29 +32,7 @@ function SaveBar({
   ];
   return (
     <>
-      <div className="builderLayout" style={{ display: "flex" }}>
-        <nav className="builderSidebar">
-          <div className="builderSidebarLogo">
-            <img src="/assets/images/logo/shopifylogo.png" width="30px" />
-          </div>
-          <ul className="SD-layoutSideBar">
-            {builderLayout.map((rout, index) => (
-              <li
-                key={index}
-                onClick={() => setSideBar(rout.path)}
-                className={
-                  rout.path == sideBar
-                    ? "SD-sidebar_active"
-                    : "sidebar_no_active"
-                }
-              >
-                <Tooltip title={rout.title}>{rout.icon}</Tooltip>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div style={{ width: "96%" }}>
-          <div className="SD-builderToBar">
+        <div className="SD-builderToBar">
             <div className="SD-topbar-logo">
               {/* <img src="https://cdn.shopify.com/shopifycloud/web/assets/v1/f5416ec27e17f00a67f8c2d6603088baa6635c7bc2071b4f6533c8d260fc8644.svg" /> */}
               <div onClick={handleExit} className="exitButton">
@@ -91,6 +69,29 @@ function SaveBar({
               <FullScreenButton positionTip="leftBottom" />
             </div>
           </div>
+      <div className="builderLayout" style={{ display: "flex" }}>
+        <nav className="builderSidebar">
+          {/* <div className="builderSidebarLogo">
+            <img src="/assets/images/logo/shopifylogo.png" width="30px" />
+          </div> */}
+          <ul className="SD-layoutSideBar">
+            {builderLayout.map((rout, index) => (
+              <li
+                key={index}
+                onClick={() => setSideBar(rout.path)}
+                className={
+                  rout.path == sideBar
+                    ? "SD-sidebar_active"
+                    : "sidebar_no_active"
+                }
+              >
+                <Tooltip title={rout.title}>{rout.icon}</Tooltip>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div style={{ width: "96%" }}>
+                
           {children}
         </div>
       </div>
