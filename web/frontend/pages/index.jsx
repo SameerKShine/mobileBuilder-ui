@@ -90,7 +90,7 @@ function index() {
   };
 
   const modalButton = useMemo(() => {
-    console.log("activeClass ==>", activeClass);
+    console.log("activeClass +==>", activeClass);
     return (
       <CommonModal
         headerText={
