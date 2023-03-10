@@ -212,13 +212,11 @@ li {
   transition: 0.2s cubic-bezier(0.4, 0, 1, 1);
 }
 
-.topbar_select select option{
-  background:#828384;
-  border-radius: 4px;
-  padding: 10px 2px !important;
-  color: #ffffff;
-  height: 20px !important;
-  }
+.topbar_select select option {
+  background: #dbc5ff;
+  color: #585858;
+  line-height: 12px;
+}
 
 .fullScreen_button button.ant-btn {
  
@@ -3002,8 +3000,8 @@ span.update-date-template {
   text-align: center;
   height: auto;
   margin: 10px 0px;
-  border-radius: 4px;
-  border: 0.5px solid #646464;
+  border-radius: 0px;
+  border-bottom: 0.5px solid #fb6b6b;
 }
 
 .SD-builderToBar .SaveBarNameFieldDiv span {
