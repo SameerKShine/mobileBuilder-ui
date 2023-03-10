@@ -20,7 +20,6 @@ import AppApperance from "../../components/appApperance/AppApperance";
 import AppBar from "../../components/appBar/AppBar";
 import LayoutSelect from "../../components/layoutSelect/LayoutSelect";
 import SideBar from "../../components/sidebar/SideBar";
-import { CommonSelect } from "../../common/elements/commonElements";
 // import {ProductsCard} from '../components/ProductsCard'
 
 export default function HomePage() {
@@ -263,12 +262,17 @@ export default function HomePage() {
         {label:"Side Bar", value:6},
       ]
       return <div className="topbar_select">
-      <CommonSelect
+      <select
       className="builderSelectPage"
         value={step}
-        option={pagesDropDown}
         onChange={(e) => handlePage(e.target.value)}
-      />
+      >
+         {pagesDropDown.map((opt, index) => (
+            <option key={index} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
    </div>
     },[step])
   return (
