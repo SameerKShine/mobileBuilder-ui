@@ -192,9 +192,8 @@ li {
     padding: 9px 0px;
   }
 
-.topbar_select select, .topbar_select .builderSelectPage select {
+.topbar_select .builderSelectPage select {
   border: none;
-  /* background: #ffffff70; */
   background: #1b1a1a70;
   color: #fff;
   padding: 4px 12px;
@@ -204,8 +203,8 @@ li {
   margin: 0px;
 }
 
-  .topbar_select select option{
-    background:#828384;
+.topbar_select select option{
+  background:#828384;
   border-radius: 4px;
   padding: 10px 2px !important;
   color: #ffffff;
@@ -841,10 +840,6 @@ p.sidebar-label {
     border-radius: 4px;
     align-items: center;
   }
-  .SD-common-input,
-.SD-common_input {
-  margin-bottom: 10px;
-}
 
 .border-radius-sec {
   display: flex;
@@ -1749,31 +1744,20 @@ p.sidebar-label {
     justify-content: space-between;
     align-items: center;
 } 
-  .SD-topbar-right input {
- margin-bottom: 0;
- margin-right: 8px;
-} 
-  
-  .SD-topbar-right .SD-saveButton:nth-child(2) {
-    margin-left: 10px;
-  }
-  
-  .SD-saveButton {
-    background-color: #5ab563;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 17px;
-    padding: 14px 37px;
-    border: none;
-    background: #7b2dec;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-}
-  .SD-topbar-right .SD-saveButton:nth-child(2) {
-    margin-left: 10px;
-  }
-  
+    
+/* .SD-saveButton {
+  background-color: #5ab563;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 17px;
+  padding: 14px 37px;
+  border: none;
+  background: #7b2dec;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+} */
+
   .SD-topbar-right .SD-saveButton:nth-child(1) {
     background: none;
     color: #fff;
@@ -2979,9 +2963,17 @@ span.update-date-template {
 }
 
 .SD-builderToBar .small-mobile-view .SD-saveButton {
-  border: none;
+  border: 0.5px solid #646464;
   background: none;
   font-size: 14px;
+  padding: 8px 24px;
+  margin-right: 10px;
+  margin-left: 10px; 
+  font-weight: 500;
+  line-height: 17px;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
 }
 
 .SD-builderToBar .small-mobile-view .fullScreen_button button {
@@ -2998,14 +2990,13 @@ span.update-date-template {
   border-left: 0;
   border-right: 0px;
   color: #fff;
-  padding: 8px 0px;
+  padding: 2px 0px;
   text-align: center;
   height: auto;
-  margin: 5px 0px;
+  margin: 10px 0px;
   border-radius: 0px;
+  border-bottom:0.5px solid #646464;
 }
-
-
 
 :where(.css-dev-only-do-not-override-10ed4xt).ant-slider .ant-slider-handle::after {
   top: -2px;  
