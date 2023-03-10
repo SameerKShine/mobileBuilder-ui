@@ -1,6 +1,5 @@
 import React from "react";
 import CommonModal from "../modal/CommonModal";
-import { CommonInput } from "../elements/commonElements";
 import { Icon } from "@shopify/polaris";
 import { ExitMajor } from "@shopify/polaris-icons";
 import FullScreenButton from "../elements/FullScreenButton";
@@ -61,13 +60,12 @@ function SaveBar({
         <div className="small-mobile-view top-bar SD-topbar-right">
         <div className="SaveBarNameFieldDiv">
         <span style={{ color: "#ffffff" }}>{errorName}</span>
-          <CommonInput
+          <input
             onChange={handleEditTitle}
             value={design_name}
-            input={{
-              placeholder: "Enter Template Title",
-              name: "builder_title",
-            }}
+            placeholder= "Enter Template Title"
+            name= "builder_title"
+            className="templatenameField"
           />
           
         </div>
