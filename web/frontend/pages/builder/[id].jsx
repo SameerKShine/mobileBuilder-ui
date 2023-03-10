@@ -341,6 +341,7 @@ export default function HomePage() {
         <AppApperance
           app_appearance={app_apperance}
           app_bar={app_bar}
+          builderFields={builderFields}
           setapp_appearance={setApp_apperance}
         />
       ) : (

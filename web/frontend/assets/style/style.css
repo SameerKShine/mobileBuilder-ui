@@ -2969,8 +2969,8 @@ span.update-date-template {
 }
 
 .SD-builderToBar .small-mobile-view .SD-saveButton {
-  border: 0.5px solid #646464;
-  background: none;
+  border:0.5px solid #ffffff;
+  background: #7d2ae8;
   font-size: 14px;
   padding: 8px 24px;
   margin-right: 20px;
@@ -2994,10 +2994,10 @@ span.update-date-template {
   border-top: 0px;
   border-left: 0;
   border-right: 0px;
-  background: none;
-  color: #fff;
-  padding: 7px 0px;
-  text-align: center;
+  background: #ffffff;
+  /* color: #fff; */
+  padding: 7px 6px;
+  /* text-align: center; */
   height: auto;
   margin: 10px 0px;
   border-radius: 0px;

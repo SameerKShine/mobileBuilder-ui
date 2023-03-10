@@ -34,6 +34,7 @@ function SaveBar({
     <>
       <div className="builderLayout" style={{ display: "flex" }}>
         <nav className="builderSidebar">
+        <img src="/assets/images/logo/shopifylogo.png" width="30px" />
           <ul className="SD-layoutSideBar">
             {builderLayout.map((rout, index) => (
               <li
@@ -62,7 +63,7 @@ function SaveBar({
 
             <div className="small-mobile-view top-bar SD-topbar-right">
               <div className="SaveBarNameFieldDiv">
-                <span style={{ color: "#ffffff" }}>{errorName}</span>
+                <span style={{ color: "#fb6b6b" }}>{errorName}</span>
                 <input
                   onChange={handleEditTitle}
                   value={design_name}
