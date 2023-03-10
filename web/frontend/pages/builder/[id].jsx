@@ -13,7 +13,7 @@ import { useAPI } from "../../globalState/getShop";
 import getApi from "../../utils/getApi";
 import { getSessionToken } from "@shopify/app-bridge-utils";
 import { Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
+import { LoadingOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import templateData from "../../templateData.json";
 import SaveChangesBar from "../../common/SaveChangesBar";
 import AppApperance from "../../components/appApperance/AppApperance";
@@ -256,7 +256,7 @@ export default function HomePage() {
         {label:"Landing Page", value:0},
         {label:"Bottom Bar", value:1},
         {label:"App Bar", value:2},
-        {label:"Profile Pag", value:3},
+        {label:"Profile Page", value:3},
         {label:"Cart Page", value:4},
         {label:"Product Detail Page", value:5},
         {label:"Side Bar", value:6},

@@ -34,7 +34,9 @@ function SaveBar({
     <>
       <div className="builderLayout" style={{ display: "flex" }}>
         <nav className="builderSidebar">
-        <img src="/assets/images/logo/shopifylogo.png" width="30px" />
+          <div className="builderSidebarLogo">
+            <img src="/assets/images/logo/shopifylogo.png" width="30px" />
+          </div>
           <ul className="SD-layoutSideBar">
             {builderLayout.map((rout, index) => (
               <li
@@ -86,7 +88,7 @@ function SaveBar({
                 Save
               </button>
 
-              <FullScreenButton />
+              <FullScreenButton positionTip="leftBottom" />
             </div>
           </div>
           {children}
