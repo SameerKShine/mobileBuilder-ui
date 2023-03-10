@@ -78,6 +78,8 @@ return(
 )
   }
 
+  
+
   const styleTitle = () => {
     const titleStyle = () => {
       const colorFields = [
