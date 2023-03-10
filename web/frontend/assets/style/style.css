@@ -1781,6 +1781,7 @@ p.sidebar-label {
   }
   .exitButton .Polaris-Icon--colorBase svg{
     fill: #ffffff;
+    transform: scale(1.2);
   }
   .exitSpan{
     color: #ffffff;
@@ -3011,7 +3012,24 @@ span.update-date-template {
   margin-right: 9px;
 }
 
-:where(.css-dev-only-do-not-override-10ed4xt).ant-slider .ant-slider-handle::after {
-  top: -2px;  
-  box-shadow: 0 0 0 2px #c4a1f7!important;
+.builderSidebarLogo {
+  text-align: center;
+  border-bottom: 0.4px solid #adadad;
+  padding: 11px 0px;
 }
+
+.SD-builderToBar .SD-topbar-logo .exitButton .exitSpan {
+  display: none;
+}
+
+.SD-builderToBar .SD-topbar-logo:hover .exitButton .exitSpan {
+  display: block;
+}
+
+/*  
+    :where(.css-dev-only-do-not-override-10ed4xt).ant-slider .ant-slider-handle::after {
+      top: -2px;  
+      box-shadow: 0 0 0 2px #c4a1f7!important;
+    }
+*/
+
