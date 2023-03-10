@@ -355,9 +355,9 @@ p.sidebar-label {
     color: #7d2ae8;
   }
   .SD-editSection:not(.rightSidebar) .SD-builderPreview {
-    min-width: 91%;
+    min-width: 84%;
     transition: 0.5s ease;
-    width: 91%;
+    width: 84%;
   }
   .SD-editSection:not(.rightSidebar) .mobile_preview {
     width: 354px;
@@ -382,15 +382,15 @@ p.sidebar-label {
   /* Element LIST */
   .SD-builderElementList {
     display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding: 20px 2px 80px 2px;
-  background: #fff;
-  /* height: 94vh; */
-  height: 93.2vh;
-  overflow: auto;
-  align-content: baseline;
-  width: 16%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px 2px 80px 2px;
+    background: #fff;
+    /* height: 94vh; */
+    height: 93.2vh;
+    overflow: auto;
+    align-content: baseline;
+    width: 16%;
   }
   .SD-builderElementListTag {
     width: 45%;
