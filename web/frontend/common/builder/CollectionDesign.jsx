@@ -21,10 +21,10 @@ function CollectionDesign({viewData, app_appearance}) {
     
           {viewData.data.length > 0 ? (
             viewData.choose_layout == "layout_1" ? (
-              <div className="collection_swiper_lay_1">
+              // <div className="collection_swiper_lay_1">
                 <Swiper
-                  slidesPerView={10}
-                  spaceBetween={40}
+                  slidesPerView={4}
+                  spaceBetween={30}
                   centeredSlides={true}
                   className="mySwiper"
                 >
@@ -38,7 +38,7 @@ function CollectionDesign({viewData, app_appearance}) {
                     </SwiperSlide>
                   ))}
                 </Swiper>
-              </div>
+              // {/* </div> */}
             ) : viewData.choose_layout == "layout_2" ? (
               <div className="CollectionListElement">
                 <div className="SD-grid_slide">
