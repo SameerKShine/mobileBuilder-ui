@@ -167,7 +167,6 @@ li {
 }
 
 .topbarTitle{
-  width: 95%;
   display: flex;
   justify-content: space-between;
 }
@@ -274,7 +273,7 @@ li {
   }
 
 .SD-app-layout nav {
-    width: 15%;
+    width: 12%;
     background: rgb(87, 34, 156);
     text-align: left;
     border-right: 1px solid rgb(240, 240, 240);
@@ -346,7 +345,7 @@ p.sidebar-label {
     color: #000;
   }
   .SD-mainSection {
-    width: 95%;
+    width: 88%;
     margin: 10px;
 }
   /*****************************END*****************/
@@ -2483,7 +2482,7 @@ h2.SD-dashboard-headings {
 /* ***************************** Publish app  ************************* */
 .SD-publish_app {
   margin: 0 auto;
-  padding: 0px 30px 30px 30px;
+  padding: 30px 30px 30px 30px;
   background-color: #ffffff;
   width: 100%;
 }
@@ -2688,11 +2687,12 @@ span.update-date-template {
   border-radius: 6px;
   box-shadow: -1px 3px 9px 5px #ededed;
   margin-top: 25px;
-  min-height: 85vh;
+  max-height: 88vh;
+  min-height: 88vh;
 }
 
 .SD-mainTemplateScection{
-min-height: 90vh;
+height: 86vh;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -3000,8 +3000,9 @@ justify-content: center;
 
 
 .first_section .ant-select-multiple .ant-select-selection-item {
-  height: 44px;
+  height: 40px;
   align-items: center;
+  background: #ddcdf5;
 }
 
 .common_input label {
@@ -3126,6 +3127,12 @@ justify-content: center;
 }
 .SD-saveButton:hover{
   background-color: #55239f;
+}
+
+.knowMoreLink {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
 }
 
 /*  
