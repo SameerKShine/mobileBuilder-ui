@@ -2688,6 +2688,7 @@ span.update-date-template {
   border-radius: 6px;
   box-shadow: -1px 3px 9px 5px #ededed;
   margin-top: 25px;
+  min-height: 85vh;
 }
 
 .SD-mainTemplateScection{
