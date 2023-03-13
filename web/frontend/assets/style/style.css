@@ -2227,6 +2227,10 @@ figure {
   text-align: center;
   margin-right: 30px;
   width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
 }
 ul.plan-list {
   text-align: left;
@@ -2306,24 +2310,32 @@ margin-top: 15%;
 .createNewDesign p {
   font-size: 13px;
   padding: 0px 18px 10px 18px;
+  font-weight: 300;
 }
 .plan-list li {
   font-size: 12px;
   display: flex;
   margin: 14px 0px;
+  align-items: center;
+}
+.plan-list li span {
+  background: #ede0ff;
+  padding: 5px;
+  margin-right: 6px;
+  border-radius: 4px;
 }
 .createNewDesign h2 {
   font-weight: 600;
   font-size: 14px;
-  line-height: 17px;
-  padding: 6px 37px;
+  line-height: initial;
+  padding: 15px 30px;
   border: none;
   background: #7b2dec;
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
-  width: 68%;
-  margin: 0 auto 15px;
+  /* margin: 5px auto 20px auto; */
+  display: inline-block;
 }
 .createNewDesign img {
 width: 100%;
