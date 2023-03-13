@@ -125,7 +125,8 @@ function index() {
           )
         }
         button={{ ok: "Create", cancel: "Cancel" }}
-        buttonText={<div> Select Template </div>}
+        // buttonText={<div> Select Template </div>}
+        buttonText="Select Template"
       />
     );
   }, [activeClass]);
@@ -163,7 +164,8 @@ function index() {
             </ul>            
           </div>
           <div className="card-footer">
-              <h2
+              <button
+                className="SD-saveButton"
                 onClick={() =>
                 handleSelectDesign(
                   "create-theme",
@@ -171,8 +173,9 @@ function index() {
                   "create-theme"
                   )
                 }
-              > Create Custom Design
-              </h2>
+              > 
+              Create Custom Design
+              </button>
           </div>
         </div>
         <div className="createNewDesign">
@@ -190,21 +193,11 @@ function index() {
                 </li>
               ))}
             </ul>
-            {modalButton}
+            {/* {modalButton} */}
           </div>
           <div className="card-footer">
-              <h2
-                onClick={() =>
-                handleSelectDesign(
-                  "create-theme",
-                  "create-theme",
-                  "create-theme"
-                  )
-                }
-              > Select Templates
-              </h2>
+          {modalButton}
           </div>
-
         </div>
       </div>
     );
@@ -413,7 +406,7 @@ function index() {
       });
   };
   return (
-    <div className="inner_mid_box_MN">
+    <div className="inner_mid_box_MN SD-mainTemplateScection">
       <Spin
         spinning={isLoading}
         indicator={

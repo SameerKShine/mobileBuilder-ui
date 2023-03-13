@@ -131,6 +131,7 @@ function Test() {
                 )
             )}
             <FullScreenButton />
+            
           </div>
           {/* <Outlet context={[step, sideBar]} /> */}
           <Outlet />
