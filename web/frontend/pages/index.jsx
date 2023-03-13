@@ -406,7 +406,7 @@ function index() {
       });
   };
   return (
-    <div className="inner_mid_box_MN SD-mainTemplateScection">
+    <div className="inner_mid_box_MN">
       <Spin
         spinning={isLoading}
         indicator={
@@ -458,7 +458,7 @@ function index() {
           <>
             {showOption && showOptions}
             {!showOption && (
-              <div className="SD-createapp">
+              <div className="SD-createapp SD-mainTemplateScection">
                 <div className="no-app-message">
                   <p> There is no app created yet </p>
                 </div>
