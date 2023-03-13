@@ -153,6 +153,7 @@ function PublishApp() {
           <div className="firstSection_div">
             <label htmlFor="shortDescription">Short Description</label>
             <TextArea
+            className="publishTextarea"
               name="shortDescription"
               id="shortDescription"
               showCount
@@ -168,6 +169,7 @@ function PublishApp() {
           <div className="firstSection_div">
             <label htmlFor="fullDescription">Full Description</label>
             <TextArea
+            className="publishTextarea"
               name="fullDescription"
               id="fullDescription"
               showCount
