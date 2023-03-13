@@ -126,8 +126,7 @@ function Test() {
               (pageName, index) =>
                 params.pathname == pageName.path && (
                   <div key={index} className="topbarTitle">
-                  <strong>{pageName.title}</strong>
-                  <a>Know more about {pageName.title} <SelectOutlined /></a>
+                  <strong>{pageName.title}</strong>                 
                   </div>
                 )
             )}

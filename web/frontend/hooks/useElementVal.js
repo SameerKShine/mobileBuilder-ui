@@ -16,6 +16,11 @@ export const useElementVal = (data) => {
           subheading_text: "Enter Subheading Here",
           text_alignment: "left",
           show_subheading: true,
+          style:{
+            ...newData.style,
+            heading_color:"#000",
+            subheading_color:"#000"
+          }
         };
         newData = saveData;
       } else if (
@@ -72,6 +77,14 @@ export const useElementVal = (data) => {
             },
           ],
           show_content: true,
+          style:{
+            ...newData.style,
+            button_size:"33%",
+            button_border:20,
+            heading_text_size:30,
+            subtitle_text_size:18,
+            button_text_size:10
+          }
         };
         newData = saveData;
       } else if (data == "announcement_bar") {
