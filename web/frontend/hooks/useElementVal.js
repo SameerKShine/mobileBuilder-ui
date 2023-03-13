@@ -83,7 +83,9 @@ export const useElementVal = (data) => {
             button_border:20,
             heading_text_size:30,
             subtitle_text_size:18,
-            button_text_size:10
+            button_text_size:10,
+            heading_weight:200,
+            
           }
         };
         newData = saveData;
