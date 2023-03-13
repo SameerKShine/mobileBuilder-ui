@@ -252,6 +252,7 @@ function PublishApp() {
         </div>
  
         <CommonInput
+        className="publishAppCheckbox"
           label="Do you have an Apple developer account?"
           input={{
             name: "developer_account",
@@ -280,6 +281,7 @@ function PublishApp() {
         )}
 
         <CommonInput
+        className="publishAppCheckbox"
           label="Do you have Google play store account?"
           input={{
             name: "playstore_account",

@@ -303,8 +303,8 @@ return(
       const val = data[fieldIndex];
       console.log(val);
       const gradiantClr = [
-        { label: "Gradient Color 1", name: "countdown_gradient_color1" },
-        { label: "Gradient Color 2", name: "countdown_gradient_color2" },
+        { label: "Gradient Color 1", name: "countdown_background_color1" },
+        { label: "Gradient Color 2", name: "countdown_background_color2" },
       ];
       // const colorFields = [{label:'', name:''}]
       return (
@@ -377,7 +377,7 @@ return(
             <Color_field
               label="Background Color"
               value={data[fieldIndex]?.style?.background_style.countdown_background_color}
-              name="countdown_background_color"
+              name="countdown_background_color1"
               onChange={(e) => handleEditElement(e.target.value, e.target.name)}
             />
           ) : (

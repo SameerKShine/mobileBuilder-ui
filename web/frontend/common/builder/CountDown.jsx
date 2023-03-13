@@ -10,12 +10,12 @@ function CountDown({ eleType, style }) {
   if(style.background_style.type == "color"){
     mainDivStyle ={
       ...mainDivStyle,
-      backgroundColor: style.background_style.countdown_background_color
+      backgroundColor: style.background_style.countdown_background_color1
     }
   } else if(style.background_style.type == "gradiant") {
       mainDivStyle={
         ...mainDivStyle,
-        backgroundImage: `linear-gradient(${style.background_style.countdown_gradient_color1}, ${style.background_style.countdown_gradient_color2})`,
+        backgroundImage: `linear-gradient(${style.background_style.countdown_background_color1}, ${style.background_style.countdown_background_color2})`,
       }
   } else if(style.background_style.type == "image"){
     mainDivStyle={
