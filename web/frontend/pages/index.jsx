@@ -466,12 +466,12 @@ function index() {
             {showOption && showOptions}
             {!showOption && (
               <div className="SD-createapp">
+                <div className="no-app-message">
+                  <p> There is no app created yet </p>
+                </div>
                 <div className="createAppInitial">
                   <button onClick={handleCreateApp}>Create App</button>
-                </div>
-                <div className="no-app-message">
-                  There is no app created yet
-                </div>
+                </div>                
               </div>
             )}
           </>
