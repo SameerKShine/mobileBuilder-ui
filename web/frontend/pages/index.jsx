@@ -256,6 +256,15 @@ function index() {
   };
   /*---test--*/
   const createdDesigns = (ele, index, mainclass) => {
+    if(ele){
+      console.log(mainclass)
+      console.log("When Data is there", ele)
+
+    }
+    else{
+      console.log("ELSE CONDITION",mainclass)
+      console.log("when thre is no data", ele)
+    }
     return (
       <div className="inner_mid_box">
         <div className={"inner_mid_card_box " + mainclass}>

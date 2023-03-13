@@ -127,7 +127,7 @@ function Test() {
                 params.pathname == pageName.path && (
                   <div key={index} className="topbarTitle">
                   <strong>{pageName.title}</strong>   
-                  {/* <a>Know More about {pageName.title}</a>               */}
+                  {/* <a>Know More about {pageName.title}</a>  */}
                   </div>
                 )
             )}
