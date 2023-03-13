@@ -470,6 +470,7 @@ function index() {
               <div className="SD-createapp SD-mainTemplateScection">
                 <div className="initialSectionDashboard">
                   <div className="no-app-message">
+                    <img src="https://img.freepik.com/premium-vector/no-data-concept-illustration_86047-488.jpg"/> 
                     <p> There is no app created yet </p>
                   </div>
                   <div className="createAppInitial">
