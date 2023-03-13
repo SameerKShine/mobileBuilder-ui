@@ -4,7 +4,7 @@ import {
   useParams,
   useNavigate,
   useSearchParams,
-  useLocation 
+  useLocation,
 } from "react-router-dom";
 import CreatePage from "../../components/landingPage/CreatePage";
 import CreateMenu from "../../components/menu/CreateMenu";
@@ -25,11 +25,9 @@ import SideBar from "../../components/sidebar/SideBar";
 export default function HomePage() {
   const params = useParams();
 
-  const [builderFields, setBuilderFields] = useState([
- 
-  ]);
+  const [builderFields, setBuilderFields] = useState([]);
 
-  const [restValue, setResetVal] = useState([])
+  const [restValue, setResetVal] = useState([]);
 
   const [menu, setMenu] = useState({
     layout: "menu_1",
@@ -74,9 +72,9 @@ export default function HomePage() {
   });
   const [sideBar_data, setSidebar] = useState({
     layout: "layout_1",
-    background_color:"#000",
-    font_color:"#ffffff",
-    font_size:"25",
+    background_color: "#000",
+    font_color: "#ffffff",
+    font_size: "25",
     elements: [
       {
         icon: "",
@@ -129,10 +127,10 @@ export default function HomePage() {
     app_logo: "",
   });
   const [layoutSelection, setLayoutSelect] = useState({
-    profile_page_design:"",
-    cart_page_design:"",
-    product_detail_page_design:""
-  })
+    profile_page_design: "",
+    cart_page_design: "",
+    product_detail_page_design: "",
+  });
   const [loading, setLoading] = useState(false);
 
   const [step, setStep] = useState(0);
@@ -153,8 +151,8 @@ export default function HomePage() {
     const searchParam = searchParams.get(_id);
     setLoading(true);
     if (_id == "theme-edit") {
-      const builder_id = hash.slice(1)
-      console.log(builder_id)
+      const builder_id = hash.slice(1);
+      console.log(builder_id);
       // getApi(`/api/admin/getMobileData/${{temp :builder_id, id:searchParam}}`, app)
       getApi(`/api/admin/getMobileData/${searchParam}`, app)
         .then((res) => {
@@ -169,10 +167,10 @@ export default function HomePage() {
           setAppBar(res.result.app_bar);
           setSidebar(res.result.side_bar);
           setLayoutSelect({
-            cart_page_design : res.result.cart_page_design,
-            product_detail_page_design : res.result.product_detail_page_design,
-            profile_page_design : res.result.profile_page_design,
-          })
+            cart_page_design: res.result.cart_page_design,
+            product_detail_page_design: res.result.product_detail_page_design,
+            profile_page_design: res.result.profile_page_design,
+          });
           setLoading(false);
         })
         .catch((err) => {
@@ -244,65 +242,67 @@ export default function HomePage() {
       });
   };
 
-    const handlePage = useCallback((e) => {
+  const handlePage = useCallback((e) => {
     setStep(e);
-    setSideBarView(0)
+    setSideBarView(0);
   }, []);
 
- 
-
-    const pageSelectFunction = useMemo(()=>{
-      const pagesDropDown = 
-      [
-        {label:"Landing Page", value:0},
-        {label:"Bottom Bar", value:1},
-        {label:"App Bar", value:2},
-        {label:"Profile Page", value:3},
-        {label:"Cart Page", value:4},
-        {label:"Product Detail Page", value:5},
-        {label:"Side Bar", value:6},
-      ]
-      return <div className="topbar_select">
-      <select
-      className="builderSelectPage"
-        value={step}
-        onChange={(e) => handlePage(e.target.value)}
-      >
-         {pagesDropDown.map((opt, index) => (
+  const pageSelectFunction = useMemo(() => {
+    const pagesDropDown = [
+      { label: "Landing Page", value: 0 },
+      { label: "Bottom Bar", value: 1 },
+      { label: "App Bar", value: 2 },
+      { label: "Profile Page", value: 3 },
+      { label: "Cart Page", value: 4 },
+      { label: "Product Detail Page", value: 5 },
+      { label: "Side Bar", value: 6 },
+    ];
+    return (
+      <div className="topbar_select">
+        <select
+          className="builderSelectPage"
+          value={step}
+          onChange={(e) => handlePage(e.target.value)}
+        >
+          {pagesDropDown.map((opt, index) => (
             <option key={index} value={opt.value}>
               {opt.label}
             </option>
           ))}
         </select>
-   </div>
-    },[step])
+      </div>
+    );
+  }, [step]);
+  console.log("builderFields ===>", builderFields)
   return (
-    <Spin spinning={loading} indicator={
-      <LoadingOutlined style={{ fontSize: "40px", color: "#7d2ae8" }} />
-    }>
-     
-        <SaveChangesBar
-          data={{
-            builderFields,
-            design_name,
-            menu,
-            delName,
-            updateId,
-            app_apperance,
-            app_bar,
-            layoutSelection,
-            sideBar_data
-          }}
-          step={step}
-          sideBar={sideBar}
-          setStep={setStep}
-          setSideBar={setSideBarView}
-          setLoading={setLoading}
-          navigate={navigate}
-          setDesignName={setDesignName}
-        >
-          <div>
-           {/* <div className="topbar_select">
+    <Spin
+      spinning={loading}
+      indicator={
+        <LoadingOutlined style={{ fontSize: "40px", color: "#7d2ae8" }} />
+      }
+    >
+      <SaveChangesBar
+        data={{
+          builderFields,
+          design_name,
+          menu,
+          delName,
+          updateId,
+          app_apperance,
+          app_bar,
+          layoutSelection,
+          sideBar_data,
+        }}
+        step={step}
+        sideBar={sideBar}
+        setStep={setStep}
+        setSideBar={setSideBarView}
+        setLoading={setLoading}
+        navigate={navigate}
+        setDesignName={setDesignName}
+      >
+        <div>
+          {/* <div className="topbar_select">
              <CommonSelect
               //  name="font_family"
                value={step}
@@ -310,47 +310,58 @@ export default function HomePage() {
                onChange={(e) => handlePage(e.target.value)}
              />
           </div> */}
-      {sideBar == 0 ? (
-        step == 0 ? (
-          <CreatePage
-            setBuilderFields={setBuilderFields}
-            pageSelectFunction={pageSelectFunction}
-            builderFields={builderFields}
-            menu={menu}
-            app_apperance={app_apperance}
-            app_bar={app_bar}
-            restValues={restValue}
-          />
-        ) : step == 1 ? (
-          <CreateMenu
-          pageSelectFunction={pageSelectFunction}
-            menu={menu}
-            setMenu={setMenu}
-            builderFields={builderFields}
-            app_apperance={app_apperance}
-            app_bar={app_bar}
-          />
-        ) : step == 2 ? (
-          <AppBar pageSelectFunction={pageSelectFunction} app_bar={app_bar} setAppBar={setAppBar} />
-        ) : step == 3 || step == 4 || step == 5 ? (
-          <LayoutSelect pageSelectFunction={pageSelectFunction} step={step} layoutSelection={layoutSelection} setLayoutSelect={setLayoutSelect} />
-        ) : step == 6 ? (
-         <SideBar pageSelectFunction={pageSelectFunction} sideBar={sideBar_data} setSidebar={setSidebar}/>
-        )
-        : null
-      ) : sideBar == 1 ? (
-        <AppApperance
-          app_appearance={app_apperance}
-          app_bar={app_bar}
-          builderFields={builderFields}
-          setapp_appearance={setApp_apperance}
-        />
-      ) : (
-        "No Preview"
-      )}
-      </div>
-        </SaveChangesBar>
-         
+          {sideBar == 0 ? (
+            step == 0 ? (
+              <CreatePage
+                setBuilderFields={setBuilderFields}
+                pageSelectFunction={pageSelectFunction}
+                builderFields={builderFields}
+                menu={menu}
+                app_apperance={app_apperance}
+                app_bar={app_bar}
+                restValues={restValue}
+              />
+            ) : step == 1 ? (
+              <CreateMenu
+                pageSelectFunction={pageSelectFunction}
+                menu={menu}
+                setMenu={setMenu}
+                builderFields={builderFields}
+                app_apperance={app_apperance}
+                app_bar={app_bar}
+              />
+            ) : step == 2 ? (
+              <AppBar
+                pageSelectFunction={pageSelectFunction}
+                app_bar={app_bar}
+                setAppBar={setAppBar}
+              />
+            ) : step == 3 || step == 4 || step == 5 ? (
+              <LayoutSelect
+                pageSelectFunction={pageSelectFunction}
+                step={step}
+                layoutSelection={layoutSelection}
+                setLayoutSelect={setLayoutSelect}
+              />
+            ) : step == 6 ? (
+              <SideBar
+                pageSelectFunction={pageSelectFunction}
+                sideBar={sideBar_data}
+                setSidebar={setSidebar}
+              />
+            ) : null
+          ) : sideBar == 1 ? (
+            <AppApperance
+              app_appearance={app_apperance}
+              app_bar={app_bar}
+              builderFields={builderFields}
+              setapp_appearance={setApp_apperance}
+            />
+          ) : (
+            "No Preview"
+          )}
+        </div>
+      </SaveChangesBar>
     </Spin>
   );
 }

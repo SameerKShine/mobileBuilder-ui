@@ -79,6 +79,11 @@ export const useElementVal = (data) => {
           ...newData,
           title: 'Upcomming trends',
           animation_type: "left",
+          show_icon:false,
+          style: {
+            ...newData.style,
+             background_color:"#058a14", text_color:"#f4c3c3" 
+          },
         };
         newData = saveData;
       } else if (data == "countdown_offer") {
