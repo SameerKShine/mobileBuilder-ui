@@ -2294,18 +2294,14 @@ border-radius: 3px;
 font-weight: 600;
 }
 .createAppInitial {
-
+text-align: center;
 }
-
 .no-app-message {
-  
+text-align: center;
+margin-top: 5%;
+font-size: 36px;
+color: #ccc;
 }
-
-.no-app-message p {
-  line-height: normal;
-  color: #ccc;
-}
-
 .SD-createapp {
   text-align: center;
 }
@@ -2676,10 +2672,6 @@ span.update-date-template {
   border-radius: 6px;
   box-shadow: -1px 3px 9px 5px #ededed;
   margin-top: 25px;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .inner_mid_box_D_cover {
