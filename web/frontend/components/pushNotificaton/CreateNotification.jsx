@@ -239,8 +239,8 @@ function CreateNotification() {
         <div className="MN-mobilePreview_Frame">
           <div className="MN-mobilePreview_inner_body">
             <div className="notificationPrev"> 
-              <div> <h2> Title </h2> </div>
-              <div> <p> Message </p> </div>
+              <div> <h2> {notificationData.title} </h2> </div>
+              <div> <p> {notificationData.message} </p> </div>
             </div>
           </div>
         </div>

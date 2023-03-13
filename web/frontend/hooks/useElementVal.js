@@ -47,7 +47,7 @@ export const useElementVal = (data) => {
           style: {
             size: "1",
             color: "#000",
-            width: "100%",
+            width: 100,
             alignment: "center",
           },
         };
@@ -85,7 +85,11 @@ export const useElementVal = (data) => {
             subtitle_text_size:18,
             button_text_size:10,
             heading_weight:200,
-            
+            subtitle_weight:"200",
+            button_background_color:"#121111",
+            button_text_color:"#0d0d0d",
+            title_color:"#050505",
+            subtitle_color:"#050505"
           }
         };
         newData = saveData;
