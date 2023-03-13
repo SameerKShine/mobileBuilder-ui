@@ -190,21 +190,9 @@ function index() {
                 </li>
               ))}
             </ul>
-            {modalButton}
+            {/* {modalButton} */}
           </div>
-          <div className="card-footer">
-              <h2
-                onClick={() =>
-                handleSelectDesign(
-                  "create-theme",
-                  "create-theme",
-                  "create-theme"
-                  )
-                }
-              > Select Templates
-              </h2>
-          </div>
-
+          {modalButton}
         </div>
       </div>
     );
