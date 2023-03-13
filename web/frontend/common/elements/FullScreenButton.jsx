@@ -24,8 +24,6 @@ console.log("use Context", getFullscreen)
 
   return (
     <div className="fullScreen_button">
-       <a>Know more about </a>
-
       <Tooltip placement="left" title={getFullscreen ? " Exit Fillscreen " : " Enter Fullscreen "}>
       
       <Button
