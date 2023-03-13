@@ -32,7 +32,7 @@ function CommonModal({ title, okFunc, button, openBtn, icon, openButtonClass, bu
      }
    
     <Modal
-     className="SD-ShowModal"
+     className="SD-ShowModal modalPopup"
       width={modalWidth ?? 400}
       open={isModalVisible}
       footer={[
@@ -51,7 +51,6 @@ function CommonModal({ title, okFunc, button, openBtn, icon, openButtonClass, bu
       ]}
       closable={false}
       centered
-      className="modalPopup"
     >
       {title}
     </Modal>
