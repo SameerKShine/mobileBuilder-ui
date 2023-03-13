@@ -150,7 +150,7 @@ function PublishApp() {
         </div>
 
         <div className="first_section">
-          <div className="firstSection_div">
+          <div className="firstSection_div_50">
             <label htmlFor="shortDescription">Short Description</label>
             <TextArea
             className="publishTextarea"
@@ -166,7 +166,7 @@ function PublishApp() {
             ) : null}
           </div>
 
-          <div className="firstSection_div">
+          <div className="firstSection_div_50">
             <label htmlFor="fullDescription">Full Description</label>
             <TextArea
             className="publishTextarea"
