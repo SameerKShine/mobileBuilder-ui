@@ -151,8 +151,11 @@ function index() {
             <div className="select-option_imagebox">
               <img src="assets/images/templates/custumCover.png" />
             </div>
-            <p> You can create your own design with the help of given builder
-              modules within the app. </p>
+            <p>
+              {" "}
+              You can create your own design with the help of given builder
+              modules within the app.{" "}
+            </p>
             <ul className="plan-list">
               {content1.map((ele, index) => (
                 <li key={index}>
@@ -160,32 +163,34 @@ function index() {
                   {ele}
                 </li>
               ))}
-             
-            </ul>            
+            </ul>
           </div>
           <div className="card-footer">
-              <button
-                className="SD-saveButton"
-                onClick={() =>
+            <button
+              className="SD-saveButton"
+              onClick={() =>
                 handleSelectDesign(
                   "create-theme",
                   "create-theme",
                   "create-theme"
-                  )
-                }
-              > 
+                )
+              }
+            >
               Create Custom Design
-              </button>
+            </button>
           </div>
         </div>
         <div className="createNewDesign">
           <div className="card_body">
-              <div className="select-option_imagebox">
-                <img src="assets/images/templates/templateCover.png" alt="" />
-              </div>  
-              <p> Please select template of your choice and customize according to
-              your vision. </p>
-              <ul className="plan-list">
+            <div className="select-option_imagebox">
+              <img src="assets/images/templates/templateCover.png" alt="" />
+            </div>
+            <p>
+              {" "}
+              Please select template of your choice and customize according to
+              your vision.{" "}
+            </p>
+            <ul className="plan-list">
               {content2.map((ele, index) => (
                 <li key={index}>
                   <CheckOutlined />
@@ -195,9 +200,7 @@ function index() {
             </ul>
             {/* {modalButton} */}
           </div>
-          <div className="card-footer">
-          {modalButton}
-          </div>
+          <div className="card-footer">{modalButton}</div>
         </div>
       </div>
     );
@@ -220,7 +223,7 @@ function index() {
     console.log(data);
     postApi(`${url}/${data._id}`, data, app)
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         setTemplatelist(res.data);
         setLoading(false);
       })
@@ -234,7 +237,7 @@ function index() {
     const newName = e.target.value;
     let validate = [];
     console.log(prevName);
-    if(newName.length < 1){
+    if (newName.length < 1) {
       setError(true);
     }
     if (prevName) {
@@ -255,7 +258,7 @@ function index() {
   const createdDesigns = (ele, index, mainclass) => {
     return (
       <div className="inner_mid_box">
-        <div className={"inner_mid_card_box "+mainclass}>
+        <div className={"inner_mid_card_box " + mainclass}>
           <div className="mydesign_section" key={index}>
             <div className="mn">
               <div className="designData">
@@ -269,7 +272,11 @@ function index() {
                     openBtn={ele.publish}
                     okFunc={() => handleDelete(ele._id)}
                     button={{ ok: "Delete", cancel: "Cancel" }}
-                    buttonText={<DeleteFilled style={{'color':!ele.publish&&"#57229c"}} />}
+                    buttonText={
+                      <DeleteFilled
+                        style={{ color: !ele.publish && "#57229c" }}
+                      />
+                    }
                   />
                   <a
                     className="SD-icon"
@@ -277,7 +284,7 @@ function index() {
                       handleSelectDesign("theme-edit", ele._id, ele.template_id)
                     }
                   >
-                    <EditOutlined  style={{'color':"#57229c"}}  />
+                    <EditOutlined style={{ color: "#57229c" }} />
                   </a>
 
                   <a
@@ -287,7 +294,7 @@ function index() {
                     }}
                     className="SD-icon"
                   >
-                    <EyeOutlined style={{'color':"#57229c"}} />
+                    <EyeOutlined style={{ color: "#57229c" }} />
                   </a>
 
                   <CommonModal
@@ -313,7 +320,7 @@ function index() {
                     disableok={error}
                     okFunc={() => handleDuplicateDesign("duplicateDesign", ele)}
                     button={{ ok: "Create", cancel: "Cancel" }}
-                    buttonText={<CopyOutlined style={{'color':"#57229c"}}  />}
+                    buttonText={<CopyOutlined style={{ color: "#57229c" }} />}
                   />
                   {/* <FontColorsOutlined /> */}
                   <CommonModal
@@ -343,7 +350,7 @@ function index() {
                     button={{ ok: "Change", cancel: "Cancel" }}
                     buttonText={
                       <FontColorsOutlined
-                      style={{'color':"#57229c"}} 
+                        style={{ color: "#57229c" }}
                         onClick={() => setDuplicateName(ele.design_name)}
                       />
                     }
@@ -421,7 +428,8 @@ function index() {
               <h2 className="SD-dashboard-headings">Published design</h2>
               <div className="inner_mid_box">
                 {templateList.map(
-                  (ele, index) => ele.publish && createdDesigns(ele, index, "publishedesign")
+                  (ele, index) =>
+                    ele.publish && createdDesigns(ele, index, "publishedesign")
                 )}
 
                 <div className="inner_mid_card_box">
@@ -443,15 +451,16 @@ function index() {
 
             <div className="card-section">
               <h2 className="SD-dashboard-headings">My Designs</h2>
-                    <div className="inner_mid_box_D_cover">
-                {templateList.map(
-                  (ele, index) => !ele.publish ? createdDesigns(ele, index, "unpublishedesign") : ""                                  
+              <div className="inner_mid_box_D_cover">
+                {templateList.map((ele, index) =>
+                  !ele.publish
+                    ? createdDesigns(ele, index, "unpublishedesign")
+                    : ""
                 )}
-                    </div>
-                 {/* {templateList.map(
+              </div>
+              {/* {templateList.map(
                   (ele, index) => console.log(" !ele.publish ",  !ele.publish) 
                 )} */}
-              
             </div>
           </>
         ) : (
@@ -459,12 +468,14 @@ function index() {
             {showOption && showOptions}
             {!showOption && (
               <div className="SD-createapp SD-mainTemplateScection">
-                <div className="no-app-message">
-                  <p> There is no app created yet </p>
+                <div className="initialSectionDashboard">
+                  <div className="no-app-message">
+                    <p> There is no app created yet </p>
+                  </div>
+                  <div className="createAppInitial">
+                    <button onClick={handleCreateApp}>Create App</button>
+                  </div>
                 </div>
-                <div className="createAppInitial">
-                  <button onClick={handleCreateApp}>Create App</button>
-                </div>                
               </div>
             )}
           </>
