@@ -56,6 +56,10 @@ export const useElementVal = (data) => {
         let saveData = {
           ...newData,
           divider_text: "Enter Your Title Here",
+          style:{
+            ...newData.style,
+            color:"#000"
+          }
         };
         newData = saveData;
       } else if (data == "hero_slider" || data == "offer") {
@@ -132,6 +136,12 @@ export const useElementVal = (data) => {
           ...newData,
           featured_title: "Featured Product",
           subtitle_text:"The fashion is here!",
+          text_align:"Left",
+          style:{
+              ...newData.style,
+              heading_color:"#050505",
+              subtitle_color:"#080808"
+          }
           // featured_product:{
           //   image:{
           //     url:"/assets/images/dummyImages/hero.png"
