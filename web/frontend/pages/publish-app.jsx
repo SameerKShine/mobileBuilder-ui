@@ -150,7 +150,7 @@ function PublishApp() {
         </div>
 
         <div className="first_section">
-          <div style={{ width: "48%" }}>
+          <div className="firstSection_div">
             <label htmlFor="shortDescription">Short Description</label>
             <TextArea
               name="shortDescription"
@@ -165,7 +165,7 @@ function PublishApp() {
             ) : null}
           </div>
 
-          <div style={{ width: "48%" }}>
+          <div className="firstSection_div">
             <label htmlFor="fullDescription">Full Description</label>
             <TextArea
               name="fullDescription"
@@ -181,8 +181,8 @@ function PublishApp() {
           </div>
         </div>
 
-        <div className="first_section">
-          <div style={{ width: "65%" }}>
+        <div className="firstSection_div">
+          <div className="firstSection_div">
             <label htmlFor="keywords">Keywords</label>
             <Select
               mode="tags"
@@ -203,7 +203,7 @@ function PublishApp() {
             ) : null}
           </div>
 
-          <div style={{ width: "33%" }}>
+          <div className="firstSection_div">
             <label htmlFor="copyright_text">Copyright Text</label>
             <CommonInput
               name="copyright_text"
@@ -220,7 +220,7 @@ function PublishApp() {
 
         <div className="first_section">
      
-        <div style={{ width: "48%" }}>
+        <div className="firstSection_div">
             <label htmlFor="privacy_policy_url">Privacy Policy URL</label>
             <CommonInput
               name="privacy_policy_url"
@@ -233,7 +233,7 @@ function PublishApp() {
               <div>{formik.errors.privacy_policy_url}</div>
             ) : null}
           </div>
-          <div style={{ width: "48%" }}>
+          <div className="firstSection_div">
           <label htmlFor="keywords">Country Name</label>
           <Select
           mode="multiple"
