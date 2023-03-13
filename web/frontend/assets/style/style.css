@@ -2286,35 +2286,46 @@ color: #7b2dec;
 margin: 45px 0;
 }
 .createAppInitial button {
-background: #249d38;
-padding: 10px 15px 10px 15px;
-color: #fff;
-text-transform: uppercase;
-border: none;
-border-radius: 3px;
-font-weight: 600;
+  background: #249d38;
+  padding: 10px 22px;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.5s ease;
+}
+.createAppInitial button:hover {
+  box-shadow: 15px 15px 20px 0px #d4d4d4;
 }
 .createAppInitial {
-
+text-align: center;
 }
-
 .no-app-message {
-  
+text-align: center;
+color: #ccc;
 }
 
 .no-app-message p {
   line-height: normal;
   color: #ccc;
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
 }
-
+.SD-select-option .createNewDesign {
+  height: 644px;
+}
 .SD-createapp {
   text-align: center;
 }
 .SD-select-option {
   display: flex;
-  margin-bottom: 30px;
   justify-content: center;
-  margin-top: 55px;
+  min-height: 85vh;
+  align-items: center;
 }
 .createNewDesign p {
   font-size: 13px;
@@ -2677,12 +2688,14 @@ span.update-date-template {
   border-radius: 6px;
   box-shadow: -1px 3px 9px 5px #ededed;
   margin-top: 25px;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
+.SD-mainTemplateScection{
+min-height: 90vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
 .inner_mid_box_D_cover {
   display: flex;
   flex-direction: row-reverse;
