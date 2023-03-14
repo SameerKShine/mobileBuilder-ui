@@ -28,16 +28,14 @@ app.get(
   shopify.redirectToShopifyOrAppRoot()
 );
 
+
+
 console.log(process.env.HOST)
 console.log(process.env.SCOPES)
 // console.log(process.env)
 // console.log("GDPRWebhookHandlers", GDPRWebhookHandlers.PRODUCTS_UPDATE)
 // console.log("shopify.config.webhooks.path", shopify.config.webhooks.path)
 
-// app.post(
-//   shopify.config.webhooks.path,
-//   shopify.processWebhooks({ webhookHandlers: GDPRWebhookHandlers })
-// );
 app.post(
   shopify.config.webhooks.path,
   shopify.processWebhooks({ webhookHandlers : webhookHandlers })

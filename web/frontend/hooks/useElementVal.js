@@ -71,6 +71,7 @@ export const useElementVal = (data) => {
               button_text: "Add",
               sub_title: "example Subtitle",
               image: "/assets/images/dummyImages/hero.png",
+              text_alignment:"left"
             },
             {
               title_text: "Slider 2",
@@ -78,6 +79,7 @@ export const useElementVal = (data) => {
               sub_title: "example Subtitle",
               image:
                 "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+                text_alignment:"left"
             },
           ],
           show_content: true,
@@ -90,10 +92,10 @@ export const useElementVal = (data) => {
             button_text_size:10,
             heading_weight:200,
             subtitle_weight:"200",
-            button_background_color:"#121111",
-            button_text_color:"#0d0d0d",
-            title_color:"#050505",
-            subtitle_color:"#050505"
+            button_background_color:"#ffffff",
+            button_text_color:"#000",
+            title_color:"#ffffff",
+            subtitle_color:"#ffffff"
           }
         };
         newData = saveData;
