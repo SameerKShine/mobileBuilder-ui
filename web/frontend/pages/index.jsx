@@ -395,8 +395,8 @@ function index() {
   };
 
   console.log(templateList.length);
-  // const handleeClick = async () => {
-  //   const res = postApi(`/api/storefront/customerCreate`, {}, app);
+  // const handleTest = async () => {
+  //   const res = postApi(`getProductDetail`, {}, app);
   //   res
   //     .then((data) => {
   //       console.log(data);
@@ -433,6 +433,7 @@ function index() {
         {templateList.length >= 1 ? (
           <>
             <div style={{ textAlign: "right" }}>{modalButton}</div>
+            {/* <div style={{ textAlign: "right" }}><button onClick={handleTest} className="SD-saveButton"> Select Template</button></div> */}
             <div className="card-section">
               <h2 className="SD-dashboard-headings">Published design</h2>
               <div className="inner_mid_box">

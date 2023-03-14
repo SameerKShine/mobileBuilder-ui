@@ -1,6 +1,6 @@
 import express from "express";
 import { landingPage, createCustomer } from "../controllers/storefront/landingPage.js";
-import { productDetail } from "../controllers/storefront/productDetail.js";
+import { productDetail } from "../controllers/storefront/shopifyApi.js";
 import {getMobileData} from "../controllers/backendControllers.js"
 
 const storefrontRoutes = express.Router();

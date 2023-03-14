@@ -12,6 +12,7 @@ import {
   deleteAppDesign,
   editDesignName
 } from "../controllers/backendControllers.js";
+// import { productDetail } from "../controllers/storefront/shopifyApi.js";
 import { UploadImage, deleteimg } from "../helpers/multer.js";
 import {
   getProducts,
@@ -44,6 +45,8 @@ adminRoutes.post("/collectionProducts", getProductsOfCollection);
 
 
 adminRoutes.post("/pushNotification", pushNotification);
+
+// adminRoutes.post("/getProductDetail", productDetail)
 adminRoutes.get("/update", (req, res) => {
   console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 });
