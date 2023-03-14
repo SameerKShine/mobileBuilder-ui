@@ -140,6 +140,7 @@ export const editHeroSlider = (
         sub_title: "example Subtitle",
         image:
           "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+          text_alignment:"left"
       });
       setBuilderFields(arr);
     } else {
