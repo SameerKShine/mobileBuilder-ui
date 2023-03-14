@@ -6,7 +6,7 @@ import {getMobileData} from "../controllers/backendControllers.js"
 const storefrontRoutes = express.Router();
 
 storefrontRoutes.get("/landingPage", landingPage);
-storefrontRoutes.post("/customerCreate", createCustomer)
+storefrontRoutes.post("/customerSignup", createCustomer)
 storefrontRoutes.get("/getProductDetail", productDetail)
 
   export default storefrontRoutes;
